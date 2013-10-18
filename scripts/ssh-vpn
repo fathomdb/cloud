@@ -105,6 +105,7 @@ function vpn_up() {
 
 	# Add a local route
 	sudo ip route add 2002::/16 dev ${LOCAL_TUN}
+	sudo ip route add fd00::c10d dev ${LOCAL_TUN}
 
 	# Enable local forwarding / proxying
 	ssh ${SSHUSER}@${SERVER} sudo ip6tables -A FORWARD -o ${REMOTE_TUN} -j ACCEPT
