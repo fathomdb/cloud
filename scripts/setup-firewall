@@ -1,0 +1,111 @@
+#!/bin/bash
+
+sudo tee /etc/apply.d/iptables/10-defaults <<EOF
+*filter
+:INPUT DROP
+:FORWARD DROP
+:OUTPUT ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/ip6tables/10-defaults <<EOF
+*filter
+:INPUT DROP
+:FORWARD ACCEPT
+:OUTPUT ACCEPT
+COMMIT
+EOF
+   
+sudo tee /etc/apply.d/iptables/20-allow-dhcp <<EOF
+*filter
+-A INPUT -p udp -m udp --dport 67:68 --sport 67:68 -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 67:68 --sport 67:68 -j ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/iptables/20-allow-established <<EOF
+*filter
+-A INPUT -m state --state ESTABLISHED -j ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/iptables/20-allow-loopback <<EOF
+*filter
+-A INPUT -i lo -j ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/iptables/20-allow-ping <<EOF
+*filter
+-A INPUT -p icmp -j ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/iptables/20-allow-ssh <<EOF
+*filter
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/iptables/20-fathomcloud-bridge <<EOF
+*filter
+-A FORWARD -o virbr0 -j ACCEPT
+-A FORWARD -i virbr0 -j ACCEPT
+COMMIT
+*nat
+:PREROUTING ACCEPT 
+:INPUT ACCEPT 
+:OUTPUT ACCEPT 
+:POSTROUTING ACCEPT 
+-A POSTROUTING -s 100.64.0.0/10 ! -d 100.64.0.0/10 -j MASQUERADE
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/iptables/60-fathomcloud-compute-default <<EOF
+*filter
+-A os-compute-sg-fallback -j DROP
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/ip6tables/20-allow-established <<EOF
+*filter
+-A INPUT -m state --state ESTABLISHED -j ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/ip6tables/20-allow-loopback <<EOF
+*filter
+-A INPUT -i lo -j ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/ip6tables/20-allow-icmp <<EOF
+*filter
+-A INPUT -p icmpv6 -j ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/ip6tables/20-allow-ssh <<EOF
+*filter
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/ip6tables/20-fathomcloud-bridge <<EOF
+*filter
+-A FORWARD -o virbr0 -j ACCEPT
+-A FORWARD -i virbr0 -j ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/ip6tables/60-fathomcloud-compute-default <<EOF
+*filter
+-A os-compute-sg-fallback -j DROP
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/iptables/20-allow-ipv6 <<EOF
+*filter
+-A INPUT -p ipv6 -j ACCEPT
+COMMIT
+EOF
