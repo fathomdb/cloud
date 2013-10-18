@@ -1,0 +1,10 @@
+{
+	"image": "image.tgz",
+	"checksum": "{{CHECKSUM}}",
+	"metadata": {
+		"name": "wheezy-base",
+		"disk_format": "raw",
+		"container_format": "tar",
+		"is_public": "True"
+	}
+}
