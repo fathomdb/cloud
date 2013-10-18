@@ -51,7 +51,7 @@ cat > /tmp/fathomcloud.assume <<EOF
   }
 EOF
 
-${AWS} iam get-role --role-name fathomcloud || aws iam create-role --role-name fathomcloud --assume-role-policy-document file:////tmp/fathomcloud.assume
+aws iam get-role --role-name fathomcloud || aws iam create-role --role-name fathomcloud --assume-role-policy-document file:////tmp/fathomcloud.assume
 
 rm /tmp/fathomcloud.assume
 
