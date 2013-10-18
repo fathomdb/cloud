@@ -192,25 +192,38 @@ aws ec2 create-tags --resources ${SPOT_REQUEST_ID} --tags Key=fathomcloud,Value=
 while : ; do
 # "Code": "pending-fulfillment", 
 # "Code": "fulfilled", 
-
 	STATE=`aws ec2 describe-spot-instance-requests  --spot-instance-request-ids ${SPOT_REQUEST_ID} | grep Code | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
 
 	if [[ "${STATE}" == "fulfilled" ]] ; then
 		echo "Spot instance request is fulfilled"
 		break
 	else
-		echo "Request state: ${STATE}"
+		echo "Spot request state: ${STATE}"
 	fi
-	
+
 	sleep 2
 done
+
+
 
 
 INSTANCE_ID=`aws ec2 describe-instances --filters "Name=spot-instance-request-id,Values=${SPOT_REQUEST_ID}" | grep InstanceId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
 echo "Instance id is ${INSTANCE_ID}"
 aws ec2 create-tags --resources ${INSTANCE_ID} --tags Key=fathomcloud,Value=1
 
-aws ec2 describe-instances --instance-id=${INSTANCE_ID}
+#aws ec2 describe-instances --instance-id=${INSTANCE_ID}
+
+while : ; do
+	STATE=`aws ec2 describe-instances --instance-ids ${INSTANCE_ID}  | python -c 'import json,sys;obj=json.load(sys.stdin);print obj["Reservations"][0]["Instances"][0]["State"]["Name"]'`
+	if [[ "${STATE}" == "running" ]] ; then
+		echo "Instance is running"
+		break
+	else
+		echo "Instance state: ${STATE}"
+	fi
+
+	sleep 2
+done
 
 echo "Attaching volume to instance"
 aws ec2 attach-volume --volume-id ${EBS_ID} --instance-id ${INSTANCE_ID} --device /dev/sdh
