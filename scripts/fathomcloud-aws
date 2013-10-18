@@ -19,7 +19,7 @@ if [[ -z "${REGION}" ]]; then
 fi
 
 if [[ -z "${AZ}" ]]; then
-	AZ=${REGION}
+	AZ=${REGION}a
 	echo "Defaulting to AZ: ${AZ}"
 fi
 
