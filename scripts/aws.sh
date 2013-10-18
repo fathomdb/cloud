@@ -1,0 +1,230 @@
+#!/bin/bash
+
+set -e
+
+if [[ -z "${KEYPAIR}" ]]; then
+	aws ec2 describe-key-pairs --output table
+	echo "You must set KEYPAIR to the name of the AWS keypair to use"
+	exit 1
+fi
+
+if [[ -z "${AMI}" ]]; then
+	AMI=ami-1a9bb25f
+	echo "Defaulting to AMI: ${AMI}"
+fi
+
+if [[ -z "${REGION}" ]]; then
+	REGION=us-west-1
+	echo "Defaulting to region: ${REGION}"
+fi
+
+if [[ -z "${AZ}" ]]; then
+	AZ=${REGION}
+	echo "Defaulting to AZ: ${AZ}"
+fi
+
+MAX_PRICE=0.40
+INSTANCE_TYPE=c1.xlarge
+VOLUME_SIZE=40
+
+export AWS_DEFAULT_REGION=${REGION}
+
+#==================================================
+# IAM (Identity and Access Management)
+#==================================================
+#aws iam list-role-policies --role-name fathomcloud
+
+# Allow EC2 instances to assume this role
+cat > /tmp/fathomcloud.assume <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": "sts:AssumeRole",
+        "Principal": {
+          "Service": "ec2.amazonaws.com"
+        },
+        "Effect": "Allow",
+        "Sid": ""
+      }
+    ]
+  }
+EOF
+
+${AWS} iam get-role --role-name fathomcloud || aws iam create-role --role-name fathomcloud --assume-role-policy-document file:////tmp/fathomcloud.assume
+
+rm /tmp/fathomcloud.assume
+
+cat > /tmp/fathomcloud.policy <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "ec2:ResourceTag/fathomcloud": "1"
+        }
+      },
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    }
+  ]
+}
+EOF
+
+aws iam get-role-policy --role-name fathomcloud --policy-name fathomcloud || aws iam put-role-policy --role-name fathomcloud --policy-name fathomcloud --policy-document file:///tmp/fathomcloud.policy
+rm /tmp/fathomcloud.policy
+
+aws iam get-instance-profile --instance-profile-name fathomcloud || aws iam create-instance-profile --instance-profile-name fathomcloud
+
+#IAM_ARN_ID=`aws iam get-instance-profile --instance-profile-name fathomcloud | grep Arn | grep instance-profile | tr -d ' ' | cut -d ":" -f 2- | tr -d ',\"'`
+
+aws iam list-instance-profiles-for-role  --role-name fathomcloud | grep fathomcloud || aws iam add-role-to-instance-profile --instance-profile-name fathomcloud --role-name fathomcloud
+
+#==================================================
+# VPC / Networking
+#==================================================
+
+VPC_ID=`aws ec2 describe-vpcs --filters Name=tag:fathomcloud,Values=1 | grep VpcId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+if [[ "${VPC_ID}" == "" ]]; then
+	echo "Creating VPC"
+	VPC_ID=`aws ec2 create-vpc --cidr 172.31.0.0/16 | grep VpcId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+	aws ec2 create-tags --resources ${VPC_ID} --tags Key=fathomcloud,Value=1
+fi
+echo "Using VPC: ${VPC_ID}"
+
+SUBNET_ID=`aws ec2 describe-subnets --filters Name=tag:fathomcloud,Values=1 | grep SubnetId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+if [[ "${SUBNET_ID}" == "" ]]; then
+	echo "Creating subnet in VPC"
+	SUBNET_ID=`aws ec2 create-subnet --vpc-id ${VPC_ID} --cidr-block 172.31.0.0/17 | grep SubnetId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+	aws ec2 create-tags --resources ${SUBNET_ID} --tags Key=fathomcloud,Value=1
+fi
+echo "Using subnet: ${SUBNET_ID}"
+
+#aws ec2 describe-vpcs --filter Name=tag-key,Values=fathomcloud
+#aws ec2 describe-subnets --filter Name=tag-key,Values=fathomcloud
+
+GATEWAY_ID=`aws ec2 describe-internet-gateways --filters Name=tag:fathomcloud,Values=1 | grep InternetGatewayId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+if [[ "${GATEWAY_ID}" == "" ]]; then
+	echo "Creating Internet Gateway in VPC"
+	GATEWAY_ID=`aws ec2 create-internet-gateway | grep InternetGatewayId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+	aws ec2 create-tags --resources ${GATEWAY_ID} --tags Key=fathomcloud,Value=1
+fi
+echo "Using internet gateway: ${GATEWAY_ID}"
+
+aws ec2 attach-internet-gateway --internet-gateway-id ${GATEWAY_ID} --vpc-id ${VPC_ID} || echo "Already attached"
+
+# TODO: Main route table vs new route table??
+# TODO: Filter by VPC id?
+ROUTE_TABLE_ID=`aws ec2 describe-route-tables --filters Name=tag:fathomcloud,Values=1 | grep RouteTableId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"' | uniq`
+if [[ "${ROUTE_TABLE_ID}" == "" ]]; then
+	echo "Creating route table in VPC"
+	ROUTE_TABLE_ID=`aws ec2 create-route-table --vpc-id ${VPC_ID} | grep RouteTableId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+	aws ec2 create-tags --resources ${ROUTE_TABLE_ID} --tags Key=fathomcloud,Value=1
+fi
+echo "Using route table: ${ROUTE_TABLE_ID}"
+
+# This is idempotent
+aws ec2 create-route --route-table-id ${ROUTE_TABLE_ID} --destination-cidr-block 0.0.0.0/0 --gateway-id ${GATEWAY_ID} || echo "Route already exists"
+
+# TODO: This fails... we need to disconnect from the main subnet first
+ASSOCIATED_ROUTE_TABLE_ID=`aws ec2 describe-route-tables --filters Name=association.subnet-id,Values=${SUBNET_ID} --filters Name=association.main,Values=true | grep RouteTableId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"' | uniq`
+if [[ "${ASSOCIATED_ROUTE_TABLE_ID}" != "${ROUTE_TABLE_ID}" ]]; then
+	echo "Associating route table with subnet"
+	ASSOCIATION_ID=`aws ec2 describe-route-tables --filters Name=association.subnet-id,Values=${SUBNET_ID} --filters Name=association.route-table-id,Values=${ASSOCIATED_ROUTE_TABLE_ID}  | grep RouteTableAssociationId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+	aws ec2 replace-route-table-association --route-table-id ${ROUTE_TABLE_ID} --association-id ${ASSOCIATION_ID} 
+	#aws ec2 associate-route-table --route-table-id ${ROUTE_TABLE_ID} --subnet-id ${SUBNET_ID}
+fi
+
+SECURITY_GROUP_ID=`aws ec2 describe-security-groups --filters Name=vpc-id,Values=${VPC_ID} --filters Name=group-name,Values=fathomcloud | grep GroupId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+if [[ "${SECURITY_GROUP_ID}" == "" ]]; then
+	echo "Creating security group"
+	SECURITY_GROUP_ID=`aws ec2 create-security-group --group-name=fathomcloud --vpc-id ${VPC_ID} --description "Security group for the fathom cloud" | grep GroupId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+	aws ec2 create-tags --resources ${SECURITY_GROUP_ID} --tags Key=fathomcloud,Value=1
+fi
+echo "Using security group ${SECURITY_GROUP_ID}"
+
+# TODO: Check before create
+# We allow protocol 41 (IPv6 encapsulation)
+# Not yet... aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP_ID --protocol 41 --cidr 0.0.0.0/0  || echo "Rule already exists"
+
+# TODO: Check before create
+# Allow SSH
+aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP_ID --protocol tcp --cidr 0.0.0.0/0 --port 22 || echo "Rule already exists"
+
+# Allow ICMP/pings
+aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP_ID --protocol icmp --cidr 0.0.0.0/0 --port all || echo "Rule already exists"
+
+aws ec2 describe-security-groups --filter Name=tag-key,Values=fathomcloud
+
+#==================================================
+# EC2
+#==================================================
+
+EBS_ID=`aws ec2 describe-volumes --filters Name=tag:fathomcloud,Values=1 | grep VolumeId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+if [[ "${EBS_ID}" == "" ]]; then
+	echo "Creating EBS volume of size ${VOLUME_SIZE}GB"
+	EBS_ID=`aws ec2 create-volume --size ${VOLUME_SIZE} --availability-zone ${AZ} | grep VolumeId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+	aws ec2 create-tags --resources ${EBS_ID} --tags Key=fathomcloud,Value=1
+fi
+echo "Using EBS volume: ${EBS_ID}"
+
+BLOCK_DEVICES="{ 'DeviceName': '/dev/sdb', 'VirtualName': 'ephemeral0' }"
+BLOCK_DEVICES="${BLOCK_DEVICES}, { 'DeviceName': '/dev/sdc', 'VirtualName': 'ephemeral1' }"
+BLOCK_DEVICES="${BLOCK_DEVICES}, { 'DeviceName': '/dev/sdd', 'VirtualName': 'ephemeral2' }"
+BLOCK_DEVICES="${BLOCK_DEVICES}, { 'DeviceName': '/dev/sde', 'VirtualName': 'ephemeral3' }"
+LAUNCH_SPEC="{ 'ImageId': '${AMI}', 'BlockDeviceMappings': [ ${BLOCK_DEVICES} ]"
+LAUNCH_SPEC="${LAUNCH_SPEC}, 'KeyName': '${KEYPAIR}', 'InstanceType': '${INSTANCE_TYPE}'"
+LAUNCH_SPEC="${LAUNCH_SPEC}, 'NetworkInterfaces': [ { 'SubnetId': '${SUBNET_ID}', 'DeviceIndex': 0, 'AssociatePublicIpAddress': 'true', 'Groups': [ '${SECURITY_GROUP_ID}' ] } ]"
+LAUNCH_SPEC="${LAUNCH_SPEC}, 'IamInstanceProfile': {  'Name': 'fathomcloud' }"
+LAUNCH_SPEC="${LAUNCH_SPEC}, 'Placement': { 'AvailabilityZone': '${AZ}' }"
+LAUNCH_SPEC="${LAUNCH_SPEC} }"
+LAUNCH_SPEC=`echo ${LAUNCH_SPEC} | tr "'" '"'`
+SPOT_REQUEST_ID=`aws ec2 request-spot-instances --spot-price ${MAX_PRICE} --type one-time --launch-specification "$LAUNCH_SPEC" | grep SpotInstanceRequestId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+
+echo "Created spot instance request: ${SPOT_REQUEST_ID}"
+
+aws ec2 create-tags --resources ${SPOT_REQUEST_ID} --tags Key=fathomcloud,Value=1
+
+while : ; do
+# "Code": "pending-fulfillment", 
+# "Code": "fulfilled", 
+
+	STATE=`aws ec2 describe-spot-instance-requests  --spot-instance-request-ids ${SPOT_REQUEST_ID} | grep Code | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+
+	if [[ "${STATE}" == "fulfilled" ]] ; then
+		echo "Spot instance request is fulfilled"
+		break
+	else
+		echo "Request state: ${STATE}"
+	fi
+	
+	sleep 2
+done
+
+
+INSTANCE_ID=`aws ec2 describe-instances --filters "Name=spot-instance-request-id,Values=${SPOT_REQUEST_ID}" | grep InstanceId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+echo "Instance id is ${INSTANCE_ID}"
+aws ec2 create-tags --resources ${INSTANCE_ID} --tags Key=fathomcloud,Value=1
+
+aws ec2 describe-instances --instance-id=${INSTANCE_ID}
+
+echo "Attaching volume to instance"
+aws ec2 attach-volume --volume-id ${EBS_ID} --instance-id ${INSTANCE_ID} --device /dev/sdh
+
+PUBLIC_IP=`aws ec2 describe-instances --instance-id=${INSTANCE_ID} | grep PublicIpAddress | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+echo "IP is ${PUBLIC_IP}"
+
+while : ; do
+	ping -c 2 -w 5 ${PUBLIC_IP} && break
+	echo "Instance not yet responding to ping..."
+	sleep 2
+done
+
+
+echo "Connect to the server with: ssh admin@${PUBLIC_IP}"
