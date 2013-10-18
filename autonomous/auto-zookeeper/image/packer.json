@@ -1,0 +1,51 @@
+{
+	"builders": [{
+		"type": "openstack",
+		"username": "admin",
+		"password": "secret",
+		"provider": "http://127.0.0.1:8081/openstack/identity/v2.0/tokens",
+		"image_name": "zookeeper",
+		"source_image": "131793902",
+		"flavor": "1",
+		"project": "default",
+		"region": "main"
+	}],
+	"provisioners": [
+	{
+	  "type": "file",
+	  "source": "run-manager.sh",
+	  "destination": "/tmp/run-manager.sh"
+	},
+	{
+	  "type": "file",
+	  "source": "auto-zookeeper.zip",
+	  "destination": "/tmp/auto-zookeeper.zip"
+	},
+	{
+		"type": "shell",
+		"inline": [
+			"sudo apt-get update",
+			"sudo apt-get upgrade -y",
+			
+			"sudo DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y unzip",
+			"sudo DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y openjdk-7-jre-headless",
+			
+			"wget http://apache.osuosl.org/zookeeper/zookeeper-3.4.5/zookeeper-3.4.5.tar.gz",
+			"tar zxf zookeeper-3.4.5.tar.gz",
+			"mv zookeeper-3.4.5 /opt/zookeeper",
+			"adduser --group --system zk",
+
+			"mkdir -p /opt/manager",
+			"mv /tmp/auto-zookeeper.zip /opt/manager",
+			"cd /opt/manager",
+			"unzip auto-zookeeper.zip",
+			"rm auto-zookeeper.zip",
+			
+			"mv /tmp/run-manager.sh /opt/run-manager.sh",
+			"chmod +x /opt/run-manager.sh",
+			"echo 'mgr:23:respawn:/opt/run-manager.sh' >> /etc/inittab",
+			
+			"sudo apt-get autoremove -y"			
+		]
+	}]
+}
