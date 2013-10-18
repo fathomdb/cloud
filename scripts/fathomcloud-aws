@@ -18,11 +18,6 @@ if [[ -z "${REGION}" ]]; then
 	echo "Defaulting to region: ${REGION}"
 fi
 
-if [[ -z "${AZ}" ]]; then
-	AZ=${REGION}a
-	echo "Defaulting to AZ: ${AZ}"
-fi
-
 MAX_PRICE=0.40
 INSTANCE_TYPE=c1.xlarge
 VOLUME_SIZE=40
@@ -101,10 +96,13 @@ echo "Using VPC: ${VPC_ID}"
 SUBNET_ID=`aws ec2 describe-subnets --filters Name=tag:fathomcloud,Values=1 | grep SubnetId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
 if [[ "${SUBNET_ID}" == "" ]]; then
 	echo "Creating subnet in VPC"
-	SUBNET_ID=`aws ec2 create-subnet --vpc-id ${VPC_ID} --cidr-block 172.31.0.0/17 | grep SubnetId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+	SUBNET_ID=`aws ec2 create-subnet --vpc-id ${VPC_ID} --cidr-block 172.31.0.0/17   | grep SubnetId | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
 	aws ec2 create-tags --resources ${SUBNET_ID} --tags Key=fathomcloud,Value=1
 fi
 echo "Using subnet: ${SUBNET_ID}"
+
+AZ=`aws ec2 describe-subnets --subnet-ids ${SUBNET_ID} | grep AvailabilityZone | tr -d ' ' | cut -d ":" -f 2 | tr -d ',\"'`
+echo "Using AZ: ${AZ}"
 
 #aws ec2 describe-vpcs --filter Name=tag-key,Values=fathomcloud
 #aws ec2 describe-subnets --filter Name=tag-key,Values=fathomcloud
