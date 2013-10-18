@@ -1,0 +1,108 @@
+#!/bin/bash
+
+set -e
+set -x
+
+
+if [[ ${IPV6_BRIDGE_PREFIX} == "" ]]; then
+	IPV4=`wget http://169.254.169.254/latest/meta-data/public-ipv4 -q -O -`
+	IPV4_SPACES=`echo $IPV4| tr "." " "`
+	IPV6=`printf "2002:%02x%02x:%02x%02x::1" ${IPV4_SPACES}`
+	IPV6_BRIDGE_PREFIX=`printf "2002:%02x%02x:%02x%02x:1::" ${IPV4_SPACES}`
+	IPV6_BRIDGE_MASK=64
+	LOCAL_IPV4=`wget http://169.254.169.254/latest/meta-data/local-ipv4 -q -O -`
+
+	IPV6_BRIDGE="${IPV6_BRIDGE_PREFIX}1/${IPV6_BRIDGE_MASK}"
+fi
+
+
+sudo btrfs subvolume create /volumes/persistent/fathomcloud
+sudo chown fathomcloud /volumes/persistent/fathomcloud
+sudo ln -s /volumes/persistent/fathomcloud /var/fathomcloud
+
+sudo btrfs subvolume create /volumes/ephemeral/images
+sudo chown fathomcloud /volumes/ephemeral/images
+sudo ln -s /volumes/ephemeral/images /var/fathomcloud/images
+
+sudo btrfs subvolume create /volumes/ephemeral/rootfs
+sudo chown fathomcloud /volumes/ephemeral/rootfs
+sudo ln -s /volumes/ephemeral/rootfs /var/fathomcloud/roots
+
+sudo btrfs subvolume create /volumes/persistent/vms
+sudo chown fathomcloud /volumes/persistent/vms
+sudo ln -s /volumes/persistent/vms /var/fathomcloud/vms
+
+sudo chown fathomcloud:root /var/fathomcloud
+sudo chown -R fathomcloud:root /var/fathomcloud/
+
+sudo mkdir -p /var/fathomcloud/secrets
+sudo chown fathomcloud:root /var/fathomcloud/secrets
+sudo chmod 770 /var/fathomcloud/secrets/
+
+# A bit of a trick here; we create a read-write temporary image; snapshot it read-only; then delete the read-write version
+sudo btrfs subvolume create /var/fathomcloud/images/temp-1
+sudo wget "https://fathom-cloud-images.s3.amazonaws.com/images/fathomcloud/image.tgz" -O /tmp/image.tgz
+sudo tar --numeric-owner -f  /tmp/image.tgz -C /var/fathomcloud/images/temp-1 -xz
+sudo rm /tmp/image.tgz
+
+sudo btrfs subvolume snapshot -r /var/fathomcloud/images/temp-1 /var/fathomcloud/images/00000000-0000-c10d-0000-000000000000
+sudo btrfs subvolume delete /var/fathomcloud/images/temp-1 
+
+sudo btrfs subvolume snapshot /var/fathomcloud/images/00000000-0000-c10d-0000-000000000000 /var/fathomcloud/rootfs/00000000-0000-c10d-0000-000000000000
+
+sudo btrfs subvolume create /volumes/ephemeral/00000000-0000-c10d-0000-000000000000
+sudo btrfs subvolume create /volumes/persistent/00000000-0000-c10d-0000-000000000000
+
+VMDIR=/var/fathomcloud/vms/00000000-0000-c10d-0000-000000000000
+sudo mkdir ${VMDIR}
+sudo wget "https://fathom-cloud-images.s3.amazonaws.com/images/bootstrap/config.lxc" -O  ${VMDIR}/config.lxc
+
+
+sudo sed -i "s/IPV6_ADDRESS/${IPV6_BRIDGE_PREFIX}c10d\/${IPV6_BRIDGE_MASK}/g" ${VMDIR}/config.lxc
+sudo sed -i "s/IPV6_GATEWAY/${IPV6_BRIDGE_PREFIX}1/g" ${VMDIR}/config.lxc
+
+sudo tee /etc/apply.d/ip6neigh/${IPV6_BRIDGE_PREFIX}c10d << EOF
+ip -6 neigh add proxy ${IPV6_BRIDGE_PREFIX}c10d dev eth0
+EOF
+
+ROOTFS=/var/fathomcloud/rootfs/00000000-0000-c10d-0000-000000000000
+
+# NOTE: we now generate the keys inside the boostrap instance
+#sudo mkdir -p ${ROOTFS}/root/.ssh/
+#sudo cp ~fathomcloud/.ssh/authorized_keys ${ROOTFS}/root/.ssh/
+
+#sudo mkdir -p ${ROOTFS}/home/fathomcloud/.ssh/
+#sudo cp ~fathomcloud/.ssh/id_rsa ${ROOTFS}/home/fathomcloud/.ssh/
+#sudo cp ~fathomcloud/.ssh/id_rsa.pub ${ROOTFS}/home/fathomcloud/.ssh/
+
+#sudo cp ~fathomcloud/.ssh/authorized_keys ${ROOTFS}/home/fathomcloud/.ssh/
+
+# This downloads to gawker's directory, which will start the process
+sudo wget "https://fathom-cloud-images.s3.amazonaws.com/images/bootstrap/process.json" -O  /etc/gawker/processes/vm-00000000-0000-c10d-0000-000000000000.json
+
+sudo mkdir -p /etc/apply.d/tunnel/
+sudo tee /etc/apply.d/tunnel/viptunnel-c10d <<EOF
+ip6ip6 remote ${IPV6_BRIDGE_PREFIX}c10d local ${IPV6_BRIDGE_PREFIX}1
+EOF
+
+sudo mkdir -p /etc/apply.d/route6/
+
+sudo tee /etc/apply.d/route6/fd00::c10d <<EOF
+fd00::c10d dev viptunnel-c10d  metric 1024
+EOF
+
+sudo tee /etc/apply.d/route6/fd00::feed <<EOF
+fd00::feed dev viptunnel-c10d  metric 1024
+EOF
+
+# FIXME: Sadly, we can't use sftp if our shell is /bin/false
+sudo chsh -s /bin/bash fathomcloud
+
+# Apply all the networking changes
+sudo /usr/sbin/applyd
+
+#ping6 -c 2 ${IPV6_BRIDGE_PREFIX}c10d
+
+#sudo ssh -i ~fathomcloud/.ssh/id_rsa root@${IPV6_BRIDGE_PREFIX}c10d
+
+

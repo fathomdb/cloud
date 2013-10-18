@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -x
+
 sudo tee /etc/apply.d/iptables/10-defaults <<EOF
 *filter
 :INPUT DROP
