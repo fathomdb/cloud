@@ -1,0 +1,49 @@
+# /etc/haproxy/haproxy.cfg, version 1.4
+global
+	maxconn 4096
+	user haproxy
+	group haproxy
+	daemon
+
+defaults
+	log	global
+	mode	http
+
+	# Close server connections, otherwise http processing is limited to the first request (!!!)
+	#option http-server-close
+	option http-pretend-keepalive
+	timeout client 60s
+	timeout http-keep-alive 60s
+
+	# logs which servers requests go to, plus current connections and a whole lot of other stuff
+	option	httplog
+	option	dontlognull 
+	retries	3
+	option redispatch
+	maxconn	2000
+	contimeout	5000
+	clitimeout	50000	
+	srvtimeout	50000
+	
+	#log	  127.0.0.1	 local0
+	# use rsyslog rules to forword to a centralized server
+	#log	  127.0.0.1	 local7 debug
+	
+	# check webservers for health, taking them out of the queue as necessary
+	option httpchk
+	
+	# Compression is a bit new right now...
+	#compression algo gzip
+	#compression type text/html text/plain
+	
+#listen stats :1936  
+#	mode http  
+#	stats enable  
+#	stats scope http  
+#	stats scope www  
+#	stats scope static  
+#	stats scope static_httpclose  
+#	stats realm Haproxy\ Statistics  
+#	stats uri /  
+#	stats auth haproxy:YOURPASSWORDHERE  
+

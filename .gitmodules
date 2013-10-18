@@ -1,0 +1,6 @@
+[submodule "fathomdb-shared"]
+	path = fathomdb-shared
+	url = https://github.com/fathomdb/fathomdb-shared.git
+[submodule "wink"]
+	path = wink
+	url = https://github.com/fathomdb/wink.git

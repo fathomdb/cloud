@@ -1,0 +1,22 @@
+frontend http
+	bind 0.0.0.0:80
+	#bind 0.0.0.0:443 ssl crt ./haproxy.pem
+
+	# important, see comment from Willy Tarreau bellow
+	option http-server-close
+  
+	# NAT static host names and static paths in other hostnames to static.bullhornreach.com  
+	#acl host_static hdr_beg(host) -i static  
+	#acl url_static  path_beg	 /static  
+	#use_backend static if host_static  
+	#use_backend static if url_static  
+
+	acl has-x-forwarded-protocol hdr_cnt(x-forwarded-protocol) gt 0
+	block if has-x-forwarded-protocol
+
+	acl is-ssl  ssl_fc
+
+	#redirect scheme https if !{ ssl_fc }
+ 
+	reqadd	X-Forwarded-Protocol:\ https  if is-ssl
+	reqadd  X-Forwarded-Protocol:\ http if ! is-ssl

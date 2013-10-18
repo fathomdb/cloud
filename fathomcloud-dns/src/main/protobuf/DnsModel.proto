@@ -1,0 +1,72 @@
+package fathomcloud.protobuf;
+
+option java_package="io.fathom.cloud.protobuf";
+
+import "CloudCommons.proto";
+
+message BackendSecretData {
+	optional string username = 1;
+	optional string password = 2;
+}
+
+message BackendData {
+	optional string key = 1;
+	optional DnsBackendProviderType type = 2;
+	optional string url = 3;
+	optional bool default = 4;
+	optional SecretData secret_data = 5;
+	optional string backend_cookie = 6;
+}
+
+message DnsSuffixData {
+	optional string key = 1;
+	optional bool tld = 2;
+	optional bool shared_domain = 3;
+	optional int64 owner_project = 4;
+	optional string backend = 5;
+}
+
+message DnsZoneData {
+	optional int64 id = 1;
+	optional string name = 2;
+	optional int64 project_id = 3;
+	optional string backend = 4;
+	optional string backend_id = 5;
+	
+	optional ItemStateData state = 6;
+}
+
+message DnsRecordData {
+	optional string target = 1;
+	optional int32 weight = 2;
+	optional int32 priority = 3;
+	optional int32 port = 4;
+}
+
+message DnsRecordsetData {
+	optional int64 id = 1;
+	optional int64 project_id = 2;
+	
+	optional int64 zone_id = 3;
+	optional string fqdn = 4;
+
+	repeated DnsRecordData record = 5;
+
+	optional string type = 6;
+	
+	optional string system_key = 7;
+	
+	optional int64 ttl = 8;
+	optional int64 weight = 9;
+
+	optional string backend_id = 10;
+	
+	optional ItemStateData state = 12;
+}
+
+enum DnsBackendProviderType {
+	SELF_HOSTED = 1;
+	OPENSTACK = 2;
+	AWS_ROUTE53 = 3;
+}
+	

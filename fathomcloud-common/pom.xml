@@ -1,0 +1,159 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.fathom.cloud</groupId>
+		<artifactId>fathomcloud-parent</artifactId>
+		<version>0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>fathomcloud-common</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.sshd</groupId>
+			<artifactId>sshd-core</artifactId>
+			<version>0.8.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>args4j</groupId>
+			<artifactId>args4j</artifactId>
+			<version>2.0.25</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.fathom.cloud</groupId>
+			<artifactId>fathomcloud-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fathomdb</groupId>
+			<artifactId>fathomdb-discovery</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fathomdb</groupId>
+			<artifactId>fathomdb-ratelimit</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.inject.extensions</groupId>
+			<artifactId>guice-servlet</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+			<version>0.1.50</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.3</version>
+		</dependency>
+
+		<!-- Just the JAX-RS API -->
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.0</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>javax.ws.rs</groupId> <artifactId>jsr311-api</artifactId> 
+			<version>1.1.1</version> </dependency> -->
+
+		<!-- <dependency> <groupId>org.jboss.resteasy</groupId> <artifactId>resteasy-guice</artifactId> 
+			<scope>provided</scope> <exclusions> <exclusion> <artifactId>slf4j-simple</artifactId> 
+			<groupId>org.slf4j</groupId> </exclusion> </exclusions> </dependency> -->
+
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.inject.extensions</groupId>
+			<artifactId>guice-persist</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fathomdb</groupId>
+			<artifactId>fathomdb-commons</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fathomdb</groupId>
+			<artifactId>fathomdb-metrics</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fathomdb</groupId>
+			<artifactId>fathomdb-server</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.jgit</groupId>
+			<artifactId>org.eclipse.jgit</artifactId>
+			<version>3.0.0.201306101825-r</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.keyczar</groupId>
+			<artifactId>keyczar</artifactId>
+			<version>0.71f</version>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>keyczar</id>
+			<url>http://keyczar.googlecode.com/svn/trunk/java/maven/</url>
+		</repository>
+	</repositories>
+</project>

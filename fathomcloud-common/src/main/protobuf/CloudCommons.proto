@@ -1,0 +1,89 @@
+package fathomcloud.protobuf;
+
+option java_package="io.fathom.cloud.protobuf";
+
+message ItemStateData {
+	optional uint64 created_at = 1;
+	optional uint64 updated_at = 2;
+	optional uint64 deleted_at = 3;
+}
+
+enum EncryptedWith {
+	SECRET_KEY = 1;
+	PUBLIC_KEY = 2;
+}
+
+message SecretData {
+	optional EncryptedWith encrypted_with = 1;
+	optional bytes ciphertext = 2;
+	optional int32 version = 3;
+	optional bytes hash_iv = 4;
+}
+
+message PasswordHashData {
+	optional bytes data = 1;
+	optional bytes salt = 2;
+	optional int32 rounds = 3;
+}
+
+message KeyValueData {
+	optional string key = 1;
+	optional string value = 2;
+}
+
+message Attributes {
+	repeated KeyValueData user_attributes = 1;
+}
+
+enum TokenScope {
+	Unscoped = 1;
+	Project = 2;
+	Domain = 3;
+}
+
+message TokenInfo {
+	optional int64 user_id = 1;
+	optional int64 expiration = 2;
+	optional int64 project_id = 3;
+	optional int64 domain_id = 4;
+	
+	optional bytes token_secret = 5;
+	
+	optional TokenScope token_scope = 6;
+	
+	repeated int64 roles = 7;
+	
+	// This lets us use a project token where we really should use a domain token 
+	repeated int64 domain_roles = 8;
+	
+	optional bool service_token = 9;
+	optional int64 instance_id = 10;
+}
+
+message Token {
+	optional bytes signature = 1;
+	optional TokenInfo token_info = 2;
+}
+
+message PeerRequest {
+	repeated FixReplica fix_replica = 1;
+}
+
+message FixReplica {
+	optional string blob_store_key = 1;
+	repeated bytes blob_key = 2;
+}
+
+
+enum NodeType {
+	STORAGE = 1;
+}
+
+message NodeData {
+	optional string key = 1;
+	repeated string address = 2;
+	optional string store = 3;
+	optional string queue = 4;
+	
+	optional NodeType node_type = 5;
+}

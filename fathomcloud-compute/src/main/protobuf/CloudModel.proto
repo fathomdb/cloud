@@ -1,0 +1,194 @@
+package fathomcloud.protobuf;
+
+option java_package="io.fathom.cloud.protobuf";
+
+import "CloudCommons.proto";
+
+enum InstanceState {
+	PENDING = 0;
+	RUNNING = 1;
+	SHUTTING_DOWN = 2;
+	TERMINATED = 3;
+	STOPPING = 4;
+	STOPPED = 5;
+}
+
+message MetadataEntryData {
+	optional string key = 1;
+	optional string value = 2;
+}
+
+message MetadataData {
+	repeated MetadataEntryData entry = 1;
+}
+
+message NetworkAddressData {
+	optional string ip = 1;
+	optional int32 prefix_length = 2;
+	optional string gateway = 3;
+	
+	optional bool public_address = 4;
+	
+	optional string network_key = 5;
+	
+	// We use NetworkAddressData both in the instance and in the pool
+	// For the pool, we need this information...
+	optional int64 instance_id = 6;
+	optional int64 project_id = 7;
+	
+	optional string mac_address = 8;
+}
+
+message InstanceNetworkData {
+	repeated NetworkAddressData addresses = 1;
+}
+
+message FlavorData {
+	optional int64 id = 1;
+	optional string name = 2;
+	optional int32 ram = 3;
+	optional int32 disk = 4;
+	optional int32 swap = 5;
+	optional int32 vcpus = 6;
+	optional int32 ephemeral = 7;
+}
+
+message InstanceData {
+	optional int64 id = 1;
+	optional int64 project_id = 2;
+	optional int64 reservation_id = 3;
+	optional int64 host_id = 4;
+	
+	optional int64 launch_time = 5;
+	optional int32 launch_index = 6;
+	
+	optional InstanceState instance_state = 7;
+	
+	optional InstanceNetworkData network = 8;
+	
+	optional string host_cookie = 9;
+	
+	optional KeyPairData key_pair = 10;
+	
+	optional string name = 11;
+	
+	repeated int64 security_group_id = 12;
+	
+	optional int64 image_id = 13;
+	
+	// TODO: Is this different from ItemState deleted_at??
+	optional int64 terminated_at = 14;
+	
+	optional MetadataData metadata = 16;
+	
+	optional FlavorData flavor = 17;
+}
+
+message ReservationData {
+	optional int64 id = 1;
+	optional int64 project_id = 2;
+	optional int64 image_id = 3;
+}
+
+message ImageData {
+	optional int64 id = 1;
+}
+
+message KeyPairData {
+	optional string key  = 1;
+	
+	// In OpenSSH format
+	optional string public_key = 2;
+
+	optional string public_key_fingerprint = 3;
+}
+
+message SecurityGroupData {
+	optional int64 id  = 1;
+	optional int64 project_id = 2;
+
+	optional string name  = 3;
+	optional string description = 4;
+	
+	repeated SecurityGroupRuleData rules = 5;
+}
+
+enum Protocols {
+	ICMP = 1;
+	TCP = 6;
+	UDP = 17;
+}
+
+message CidrData {
+	optional bytes address = 1;
+	optional int32 prefix_length = 2;
+}
+
+message SecurityGroupRuleData {
+	optional int64 id = 1;
+	
+	optional int32 from_port_low = 3;
+	optional int32 from_port_high = 4;
+	
+	repeated int32 ip_protocol = 5;
+	
+	optional CidrData from_cidr = 6;
+	optional int64 from_security_group = 7;
+}
+
+enum HostGroupType {
+	HOST_GROUP_TYPE_RAW = 1;
+	HOST_GROUP_TYPE_AMAZON_EC2 = 2;
+}
+
+message HostGroupSecretData {
+	optional string username = 1;
+	optional string password = 2;
+}
+
+message HostGroupData {
+	optional int64 id = 1;
+	optional int64 parent = 2;
+	optional string label = 3;
+	optional string key = 4;
+
+	optional HostGroupType host_group_type = 5 [default = HOST_GROUP_TYPE_RAW];
+	
+	optional SecretData secret_data = 6;
+}
+
+message HostData {
+	optional int64 id = 1;
+	optional int64 host_group = 2;
+	optional string label = 3;
+	optional string cidr = 4;
+	optional string gateway = 5;
+	optional string network_device = 6;
+
+	optional string provider_id = 8;
+}
+
+enum VirtualIpPoolType {
+	LAYER_3 = 1;
+	AMAZON_EC2 = 2;
+}
+
+message VirtualIpPoolData {
+	optional int64 id = 1;
+	optional string label = 2;
+	optional string cidr = 3;
+	optional int64 host_group_id = 4;
+	
+	repeated VirtualIpData ip = 5;
+	
+	optional VirtualIpPoolType type = 6 [default = LAYER_3];
+}
+
+message VirtualIpData {
+	// Key must be IP, to prevent concurrent allocation
+	optional string ip = 1;
+	
+	optional int64 project_id = 2;
+	optional int64 instance_id = 3;
+}
+

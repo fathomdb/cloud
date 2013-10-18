@@ -1,0 +1,32 @@
+
+				channel = session.createDirectTcpipChannel(localSocketAddress,
+						tunnelRemote);
+				openFuture = channel.open();
+				if (timeout == 0) {
+					openFuture.await();
+				} else {
+					openFuture.await(timeout);
+				}
+
+				
+				OpenFuture openFuture;
+if (openFuture.getException() != null) {
+				Throwable e = openFuture.getException();
+				log.warn("Error connecting channel", e);
+				throw new IOException("Error connecting channel", e);
+			}
+			
+			
+			
+			close
+			
+							boolean immediately = false;
+					CloseFuture closeFuture = channel.close(immediately);
+				try {
+					closeFuture.await();
+					channel = null;
+				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
+					throw new IOException("Error waiting for close", e);
+				}
+			

@@ -1,0 +1,59 @@
+package fathomcloud.protobuf;
+
+option java_package="io.fathom.cloud.protobuf";
+
+import "CloudCommons.proto";
+
+
+
+enum ImageState {
+	// The image identifier has been reserved for an image in the Glance registry. No image data has been uploaded to Glance and the image size was not explicitly set to zero on creation.
+	QUEUED = 1;
+	
+	// Denotes that an image’s raw data is currently being uploaded to Glance. When an image is registered with a call to POST /images and there is an x-image-meta-location header present, that image will never be in the saving status (as the image data is already available in some other location).
+	SAVING = 2;
+	
+	// Denotes an image that is fully available in Glance. This occurs when the image data is uploaded, or the image size is explicitly set to zero on creation.
+	ACTIVE = 3;
+	
+	// Denotes that an error occurred during the uploading of an image’s data, and that the image is not readable.
+	KILLED = 4;
+	
+	
+	//Glance has retained the information about the image, but it is no longer available to use. An image in this state will be removed automatically at a later date.
+	DELETED = 5;
+	
+	//This is similiar to deleted, however, Glance has not yet removed the image data. An image in this state is recoverable.
+	PENDING_DELETE = 6;
+}
+
+message ImageLocation {
+	optional string stored = 1;
+}
+
+message ImageData {
+	optional int64 id = 1;
+	optional bool is_public = 2;
+	
+	optional string name = 3;
+	optional string disk_format = 4;
+	optional string container_format = 5;
+	
+	repeated string tag = 6;
+	optional ImageLocation location = 7;
+	
+	optional ImageState image_state = 8;
+	optional uint64 created_at = 9;
+	optional uint64 updated_at = 10;
+	optional uint64 deleted_at = 15;
+	
+	optional uint64 owner_project = 11;
+	
+	// A little redundant, but useful for remote images
+	optional uint64 image_size = 12;
+	optional bytes image_checksum = 13;
+	
+	optional Attributes attributes = 14;
+
+	optional bool is_protected = 16;
+}

@@ -1,0 +1,11 @@
+package fathomcloud.protobuf;
+
+option java_package="io.fathom.cloud.protobuf";
+
+import "CloudCommons.proto";
+
+
+message InstanceData {
+	optional int64 id = 1;
+	optional int64 project = 2;
+}

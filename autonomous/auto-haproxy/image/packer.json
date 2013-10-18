@@ -1,0 +1,26 @@
+{
+	"builders": [{
+		"type": "openstack",
+		"username": "admin",
+		"password": "secret",
+		"provider": "http://127.0.0.1:8081/openstack/identity/v2.0/tokens",
+		"image_name": "horizon",
+		"source_image": "1722645971",
+		"flavor": "1",
+		"project": "default",
+		"region": "main"
+	}],
+	"provisioners": [
+	{
+	  "type": "file",
+	  "source": ".",
+	  "destination": "/tmp/image/"
+	},
+	{
+		"type": "shell",
+		"inline": [
+			"sudo /tmp/image/install.sh"
+		]
+	}]
+}
+

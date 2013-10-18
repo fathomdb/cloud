@@ -1,0 +1,138 @@
+package fathomcloud.protobuf;
+
+option java_package="io.fathom.cloud.protobuf";
+
+import "CloudCommons.proto";
+
+message DomainData {
+	optional int64 id = 1;
+	optional string name = 2;
+	optional string description = 3;
+	optional bool enabled = 4;
+}
+
+message ProjectRolesSecretData {
+	optional bytes project_key = 1;
+	optional int32 project_key_version = 2;
+}
+
+message ProjectRoles {
+	optional int64 project = 1;
+	repeated int64 role = 2;
+	
+	optional SecretData secret_data = 14;
+}
+
+message DomainRoles {
+	optional int64 domain = 1;
+	repeated int64 role = 2;
+}
+
+message UserSecretData {
+	/* We include some redundant information so we can double check that we decrypted correctly */
+	optional int64 deprecated_verify_user_id = 2;
+	optional KeyData private_key = 3;
+	optional int64 deprecated_verify_public_key = 4;
+}
+
+message KeyData {
+	//optional bytes encoded = 1;
+	optional string keyczar = 2;
+}
+
+message UserData {
+	optional int64 id = 1;
+	//repeated int64 project_ids = 2;
+	optional string name = 3;
+	optional string description = 4;
+	optional string email = 5;
+
+	//repeated int64 domain_roles = 6;
+	optional int64 domain_id = 7;
+	optional bool enabled = 8;
+	optional int64 default_project_id = 9;
+	repeated int64 groups = 10;
+	
+	repeated ProjectRoles project_roles = 11;
+	repeated DomainRoles domain_roles = 12;
+	
+	optional SecretStoreData secret_store = 13;
+	optional SecretData secret_data = 14;
+	
+	optional KeyData public_key = 15;
+	
+	optional ItemStateData item_state = 16;
+}
+
+message ClientAppSecretData {
+	optional string app_password = 1;
+}
+
+message ClientAppData {
+	optional string key = 1;
+	optional int64 project = 2;
+	
+	optional SecretData secret_data = 4;
+	optional SecretStoreData secret_store = 5;
+}
+
+message AttachmentData {
+	optional string key = 1;
+	optional SecretData data = 2;
+}
+
+message RoleData {
+	optional int64 id = 1;
+	optional string name = 2;
+}
+
+message GroupData {
+	optional int64 domain_id = 1;
+	optional int64 id = 2;
+	optional string name = 3;
+	optional string description = 4;
+	repeated int64 roles = 5;
+}
+
+message ProjectData {
+	optional int64 domain_id = 1;
+	optional int64 id = 2;
+	optional string name = 3;
+	optional string description = 4;
+	optional bool enabled = 5;
+}
+
+message CredentialData {
+	optional string key  = 1;
+	optional int64 user_id  = 2;
+	optional bytes deprecated_shared_secret  = 3;
+	optional PasswordHashData deprecated_password_hash = 4;
+	optional int64 project_id  = 5;
+}
+
+/* We use the access id to encode the id */
+message AccessId {
+       optional int64 user_id  = 1;
+       optional bytes padding  = 2;
+}
+
+enum SecretKeyType {
+	ENCRYPTED_WITH_USER_PASSWORD = 1;
+	ENCRYPTED_WITH_FORGOTPASSWORD_PUBKEY = 2;
+	ENCRYPTED_WITH_PROJECT_KEY = 3;
+	ENCRYPTED_WITH_CREDENTIAL = 4;
+}
+
+message SecretKeyData {
+	optional SecretKeyType type = 1;
+	optional bytes ciphertext = 2;
+	optional bytes seed = 3;
+	optional uint32 iterations = 4;
+	optional int32 version = 5;
+	optional string credential_key = 6;
+}
+
+message SecretStoreData {
+	repeated SecretKeyData secret_key = 1;
+}
+

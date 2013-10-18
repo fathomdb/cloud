@@ -1,0 +1,25 @@
+package fathomcloud.protobuf;
+
+option java_package="io.fathom.cloud.protobuf";
+
+import "CloudCommons.proto";
+
+message NetworkData {
+	optional uint64 id = 1;
+	optional string name = 2;
+	optional uint64 project = 3;
+	
+	optional string status = 6;
+	optional bool router_external = 7;
+	optional bool shared = 8;
+	optional bool admin_state_up = 9;
+}
+
+message SubnetData {
+	optional uint64 id = 1;
+	optional string name = 2;
+	optional uint64 project = 3;
+	optional uint64 network = 4;
+	optional string cidr = 5;
+	optional int32 ip_version = 6;
+}

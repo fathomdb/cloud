@@ -1,0 +1,44 @@
+package fathomcloud.protobuf;
+
+option java_package="io.fathom.cloud.protobuf";
+
+import "CloudCommons.proto";
+
+/*
+message LbaasHostData {
+	optional string host = 1;
+	
+	optional ItemStateData state = 10;
+}
+*/
+
+message LbaasMappingData {
+	optional int64 id = 1;
+	optional int64 project_id = 2;
+	
+	optional string system_key = 3;
+
+	//optional string key = 4;
+
+	optional string host = 5;
+
+	optional string ip = 6;
+	optional int32 port = 7;
+	
+	optional string forward_url = 8;
+	
+	optional ItemStateData state = 9;
+}
+
+message LbaasServerData {
+	optional int64 id = 1;
+	optional int64 project_id = 2;
+	
+	optional string system_key = 3;
+
+	// 4 will be the type
+	
+	optional ItemStateData state =5;
+
+	optional string ip = 6;
+}
