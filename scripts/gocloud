@@ -1,0 +1,143 @@
+#!/usr/bin/python -u
+
+from subprocess import check_call
+import os
+import os.path
+import urllib2
+import subprocess
+
+
+def run_command(description, args, stdin='', **kwargs):
+  print description
+
+  proc = subprocess.Popen(args,
+                          stdin=subprocess.PIPE, 
+                          stdout=subprocess.PIPE,
+                          stderr=subprocess.PIPE,
+                          **kwargs)
+  out, err = proc.communicate(input=stdin)
+  retcode = proc.returncode
+  if retcode:
+    print "Calling return error: " + ' '.join(args)
+    print "Output: " + out
+    print "Error: " + err
+    raise CalledProcessError(retcode, args)
+  return out,err
+
+def update_packages():
+  run_command('Updating packages', ["apt-get", "update"])
+
+def upgrade_packages():
+  update_packages()
+  run_command('Upgrading packages', ["apt-get", "upgrade"])
+
+def chmod(action, path):
+  run_command('Chmod on ' + path, ['chmod', action, path])
+
+def write_file(path, contents):
+  if os.path.isfile(path):
+    with open(path, 'r') as f:
+      existing = f.read()
+    if existing == contents:
+      return False
+  print "Writing file: " + path
+  with open(path, 'w') as f:
+    f.write(contents)
+  return True
+
+def append_file(path, contents):
+  with open(path, 'a') as f:
+    f.write(contents)
+
+def has_line(path, line):
+  if os.path.isfile(path):
+    with open(path, 'r') as f:
+      existing = f.read()
+    for l in existing.split('\n'):
+      if line == l:
+        return True
+  return False
+
+def ensure_line(path, line):
+  if has_line(path, line):
+    return False
+  append_file(path, line + '\n')
+  return True
+
+def install_packages(packages):
+  env = os.environ.copy()
+  env['DEBIAN_FRONTEND'] = 'noninteractive'
+  for package in packages:
+    run_command('Installing package: ' + package, ["apt-get", "install", "--yes", package], env=env)
+
+def fetch_url(url):
+  print "Fetching url: " + url
+  response = urllib2.urlopen(url)
+  return response.read()
+
+def check_call_with_stdin(args, stdin):
+  print "Calling: " + ' '.join(args)
+  proc = subprocess.Popen(args, stdin=subprocess.PIPE)
+  out, err = proc.communicate(input=stdin)
+  retcode = proc.returncode
+  if retcode:
+      raise CalledProcessError(retcode, args)
+  return out,err
+
+def add_apt_key(url):
+  print "Adding apt key from: " + url
+  key = fetch_url(url)
+  check_call_with_stdin(['apt-key', 'add', '-'], stdin=key)
+
+def is_mounted(path):
+  mounts = subprocess.check_output(['mount'])
+  for mount in mounts.split('\n'):
+    tokens = mount.split(' ')
+    if tokens[2] == path:
+      return True
+  return False
+
+def ensure_mounted(path):
+  if is_mounted(path):
+    return False
+  check_call(['mount', path])
+  return True
+
+def check_lxc_config():
+  check_call(['lxc-checkconfig'])
+
+def add_system_user(name):
+  check_call(['adduser', '--system', name])
+
+def add_user_to_group(user, group):
+  check_call(['adduser', user, group])
+
+
+add_apt_key('https://apt-fathomdb.s3.amazonaws.com/packaging@fathomdb.com.gpg.key')
+
+write_file('/etc/apt/sources.list.d/fathomdb.list', "deb http://apt-fathomdb.s3.amazonaws.com wheezy main\n")
+
+update_packages()
+
+install_packages(['unzip', 'wget', 'ca-certificates', 'lxc', 'ntpdate', 'sudo'])
+install_packages(['applyd', 'gawker'])
+install_packages(['openjdk-7-jre-headless'])
+
+write_file('/etc/cron.hourly/fathomcloud-ntp', """#!/bin/sh
+ntpdate-debian
+""")
+chmod('+x', '/etc/cron.hourly/fathomcloud-ntp')
+
+
+ensure_line('/etc/fstab', 'none\t/sys/fs/cgroup\tcgroup\tdefaults\t0\t0')
+ensure_mounted('/sys/fs/cgroup')
+
+check_lxc_config()
+
+add_system_user('fathomcloud')
+add_user_to_group('fathomcloud', 'applyd')
+add_user_to_group('fathomcloud', 'gawker')
+
+write_file('/etc/sudoers.d/fathomcloud', 'fathomcloud ALL= (ALL) NOPASSWD: ALL')
+
+
