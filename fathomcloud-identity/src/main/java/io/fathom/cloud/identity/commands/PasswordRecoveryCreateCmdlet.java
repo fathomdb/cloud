@@ -26,6 +26,8 @@ import org.kohsuke.args4j.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fathomdb.io.IoUtils;
+
 public class PasswordRecoveryCreateCmdlet extends Cmdlet {
     public PasswordRecoveryCreateCmdlet() {
         super("id-passwordrecovery-create");
@@ -42,11 +44,15 @@ public class PasswordRecoveryCreateCmdlet extends Cmdlet {
     @Inject
     KeyczarFactory keyczarFactory;
 
-    @Option(name = "-o", usage = "path for private key store", required = true)
+    @Option(name = "-o", usage = "path for private key store", required = false)
     public File path;
 
     @Override
     public void run() throws Exception {
+        if (path == null) {
+            path = IoUtils.resolve("~/passwordrecovery");
+        }
+
         log.info("Checking for existing password-recovery key");
         {
             Crypter crypter = null;
