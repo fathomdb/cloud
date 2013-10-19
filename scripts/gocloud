@@ -1,20 +1,24 @@
 #!/usr/bin/python -u
 
 from subprocess import check_call
+import binascii
+import socket
+import subprocess
 import os
 import os.path
+import time
 import urllib2
-import subprocess
-
 
 def run_command(description, args, stdin='', **kwargs):
   print description
+  #print 'Running command: ' + ' '.join(args)
 
   proc = subprocess.Popen(args,
                           stdin=subprocess.PIPE, 
                           stdout=subprocess.PIPE,
                           stderr=subprocess.PIPE,
                           **kwargs)
+
   out, err = proc.communicate(input=stdin)
   retcode = proc.returncode
   if retcode:
@@ -32,14 +36,19 @@ def upgrade_packages():
   run_command('Upgrading packages', ["apt-get", "upgrade"])
 
 def chmod(action, path):
-  run_command('Chmod on ' + path, ['chmod', action, path])
+  run_command('chmod %s on %s' % (action, path), ['chmod', action, path])
+
+def read_file(path):
+  if not os.path.isfile(path):
+    return None
+  with open(path, 'r') as f:
+    existing = f.read()
+    return existing
 
 def write_file(path, contents):
-  if os.path.isfile(path):
-    with open(path, 'r') as f:
-      existing = f.read()
-    if existing == contents:
-      return False
+  existing = read_file(path)
+  if existing == contents:
+    return False
   print "Writing file: " + path
   with open(path, 'w') as f:
     f.write(contents)
@@ -93,6 +102,8 @@ def is_mounted(path):
   mounts = subprocess.check_output(['mount'])
   for mount in mounts.split('\n'):
     tokens = mount.split(' ')
+    if len(tokens) < 3:
+      continue
     if tokens[2] == path:
       return True
   return False
@@ -104,14 +115,168 @@ def ensure_mounted(path):
   return True
 
 def check_lxc_config():
-  check_call(['lxc-checkconfig'])
+  out, _ = run_command('Checking LXC configuration', ['lxc-checkconfig'])
+  if 'missing' in out:
+    print "LXC not completely configured: " + out
+    raise Exception('LXC not configured completely')
 
-def add_system_user(name):
-  check_call(['adduser', '--system', name])
+def add_system_user(user):
+  run_command('Creating user %s' % (user), ['adduser', '--system', user])
 
 def add_user_to_group(user, group):
-  check_call(['adduser', user, group])
+  run_command('Adding user %s to group %s' % (user, group), ['adduser', user, group])
 
+def run_applyd():
+  run_command('Applying configuration with applyd', ['/usr/sbin/applyd'])
+
+
+def setup_lxc():
+  install_packages(['lxc'])
+  ensure_line('/etc/fstab', 'none\t/sys/fs/cgroup\tcgroup\tdefaults\t0\t0')
+  ensure_mounted('/sys/fs/cgroup')
+  check_lxc_config()
+
+def setup_ntp():
+  install_packages(['ntpdate'])
+  write_file('/etc/cron.hourly/fathomcloud-ntp', """#!/bin/sh
+ntpdate-debian
+""")
+  chmod('+x', '/etc/cron.hourly/fathomcloud-ntp')
+
+
+def setup_user_fathomcloud():
+  add_system_user('fathomcloud')
+  add_user_to_group('fathomcloud', 'applyd')
+  add_user_to_group('fathomcloud', 'gawker')
+
+  write_file('/etc/sudoers.d/fathomcloud', 'fathomcloud ALL= (ALL) NOPASSWD: ALL')
+
+def ifup(name):
+  run_command('Bringing up interface: ' + name, ['ifup', name])
+
+def find_ipv6_cidrs(device):
+  cidrs = []
+  out, _ = run_command('Finding ipv6 address on: ' + device, ['ip', '-6', 'addr', 'show', 'dev', device])
+  for line in out.split('\n'):
+    tokens = line.split()
+    #cidr = ipaddress.ip_network(tokens[1])
+    #if cidr.is_link_local:
+    #  print "Skipping link local: " + cidr
+    #elif cidr.is_multicast:
+    #  print "Skipping multicast: " + cidr
+    #elif cidr.is_private:
+    #  print "Skipping private: " + cidr
+    #elif cidr.is_unspecified:
+    #  print "Skipping unspecified: " + cidr
+    #elif cidr.is_reserved:
+    #  print "Skipping reserved: " + cidr
+    #else:
+    #  cidrs.append(cidr)
+    if len(tokens) < 4:
+      continue
+    if tokens[0] == 'inet6':
+      scope = tokens[3]
+      if scope != 'link':
+        cidrs.append(tokens[1])
+  return cidrs
+
+def IPV6_to_int(ipv6_addr):
+    return int(binascii.hexlify(socket.inet_pton(socket.AF_INET6, ipv6_addr)), 16)
+def int_to_IPV6(i):
+    return socket.inet_ntop(socket.AF_INET6, binascii.unhexlify(hex(i)[2:][:-1]))
+#    return int(hexlify(socket.inet_pton(socket.AF_INET6, ipv6_addr)), 16)
+
+def setup_ipv6(device):
+  cidrs = find_ipv6_cidrs(device)
+  
+  ipv6 = {}
+  for cidr in cidrs:
+    #ipnet = ipaddress.ip_network(cidr)
+
+    tokens = cidr.split('/')
+    addr = tokens[0]
+    mask = int(tokens[1])
+    ip_int = IPV6_to_int(addr)
+    mask_int = 0
+    for i in range(0, mask):
+      mask_int = mask_int * 2
+      mask_int = mask_int | 1
+    for i in range(mask, 128):
+      mask_int = mask_int * 2
+    masked = ip_int & mask_int
+    masked_ip = int_to_IPV6(masked)
+    ipv6['prefix'] = masked_ip
+    ipv6['netmask'] = mask
+
+  return ipv6
+
+
+def to_bridge_ipv6(ipv6):
+  netmask = int(ipv6['netmask'])
+  if (netmask % 16) != 0 or netmask > 96:
+    raise Exception('Cannot build bridge from ipv6: ' + ipv6)
+  netmask = netmask + 16
+  prefix = ipv6['prefix']
+  if not prefix.endswith('::'):
+    raise Exception('Cannot build bridge from ipv6: ' + ipv6)
+  prefix = prefix[:-1] + '1::'
+
+  bridge_ipv6 = {}
+  bridge_ipv6['prefix'] = prefix
+  bridge_ipv6['netmask'] = netmask
+
+  return bridge_ipv6
+
+def configure_network_interface(device, config):
+  existing = read_file('/etc/network/interfaces')
+  keep_lines = []
+  in_section = False
+  for line in existing.split('\n'):
+    if line == '# START ' + device:
+      in_section = True
+      continue
+    elif line == '# END ' + device:
+      in_section = False
+      continue
+    elif in_section:
+      continue
+    else:
+      keep_lines.append(line)
+
+  keep_lines.append('')
+  keep_lines.append('# START ' + device)
+  keep_lines.append(config)
+  keep_lines.append('# END ' + device)
+  keep_lines.append('')
+  
+  config = '\n'.join(keep_lines)
+  write_file('/etc/network/interfaces', config)
+
+def setup_bridge(ipv6):
+  # bridge-utils is needed for the ifup script
+  install_packages(['bridge-utils'])
+
+  address = ipv6['prefix'] + '1'
+  netmask = ipv6['netmask']
+
+  configure_network_interface('virbr0', """
+auto virbr0
+iface virbr0 inet static
+  bridge_ports none
+  address 100.64.0.1
+  netmask 10
+iface virbr0 inet6 static
+  address %s
+  netmask %s
+""" % (address, netmask))
+
+  ifup('virbr0')
+
+def setup_iptables(key, contents):
+  write_file('/etc/apply.d/iptables/' + key, '*filter\n' + contents + '\nCOMMIT\n')
+
+def setup_ip6tables(key, contents):
+  write_file('/etc/apply.d/ip6tables/' + key, '*filter\n' + contents + '\nCOMMIT\n')
 
 add_apt_key('https://apt-fathomdb.s3.amazonaws.com/packaging@fathomdb.com.gpg.key')
 
@@ -119,25 +284,254 @@ write_file('/etc/apt/sources.list.d/fathomdb.list', "deb http://apt-fathomdb.s3.
 
 update_packages()
 
-install_packages(['unzip', 'wget', 'ca-certificates', 'lxc', 'ntpdate', 'sudo'])
+install_packages(['unzip', 'wget', 'ca-certificates', 'sudo'])
 install_packages(['applyd', 'gawker'])
-install_packages(['openjdk-7-jre-headless'])
+# We don't need Java in the host!
+#install_packages(['openjdk-7-jre-headless'])
+install_packages(['btrfs-tools'])
 
-write_file('/etc/cron.hourly/fathomcloud-ntp', """#!/bin/sh
-ntpdate-debian
+setup_lxc()
+
+setup_ntp()
+
+setup_user_fathomcloud()
+
+ipv6 = setup_ipv6('eth0')
+ipv6 = to_bridge_ipv6(ipv6)
+setup_bridge(ipv6)
+
+
+
+setup_iptables('10-defaults', """
+:INPUT DROP
+:FORWARD DROP
+:OUTPUT ACCEPT
 """)
-chmod('+x', '/etc/cron.hourly/fathomcloud-ntp')
+
+setup_ip6tables('10-defaults', """
+:INPUT DROP
+:FORWARD ACCEPT
+:OUTPUT ACCEPT
+""")
+
+setup_iptables('20-allow-dhcp', """
+-A INPUT -p udp -m udp --dport 67:68 --sport 67:68 -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 67:68 --sport 67:68 -j ACCEPT
+""")
 
 
-ensure_line('/etc/fstab', 'none\t/sys/fs/cgroup\tcgroup\tdefaults\t0\t0')
-ensure_mounted('/sys/fs/cgroup')
+setup_iptables('20-allow-established', """
+-A INPUT -m state --state ESTABLISHED -j ACCEPT
+""")
 
-check_lxc_config()
+setup_ip6tables('20-allow-established', """
+-A INPUT -m state --state ESTABLISHED -j ACCEPT
+""")
 
-add_system_user('fathomcloud')
-add_user_to_group('fathomcloud', 'applyd')
-add_user_to_group('fathomcloud', 'gawker')
+setup_iptables('20-allow-loopback', """
+-A INPUT -i lo -j ACCEPT
+""")
 
-write_file('/etc/sudoers.d/fathomcloud', 'fathomcloud ALL= (ALL) NOPASSWD: ALL')
+setup_ip6tables('20-allow-loopback', """
+-A INPUT -i lo -j ACCEPT
+""")
+
+
+setup_iptables('20-allow-icmp', """
+-A INPUT -p icmp -j ACCEPT
+""")
+
+setup_ip6tables('20-allow-icmp', """
+-A INPUT -p icmpv6 -j ACCEPT
+""")
+
+
+setup_iptables('20-allow-ssh', """
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+""")
+
+setup_ip6tables('20-allow-ssh', """
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+""")
+
+
+# TODO: Only when using tunnelling?
+setup_iptables('20-allow-ipv6', """
+-A INPUT -p ipv6 -j ACCEPT
+""")
+
+
+setup_iptables('20-fathomcloud-bridge', """
+-A os-compute-sg-fallback -j DROP
+""")
+
+setup_ip6tables('60-fathomcloud-bridge', """
+-A os-compute-sg-fallback -j DROP
+""")
+
+
+
+setup_iptables('60-fathomcloud-compute-default', """
+-A FORWARD -o virbr0 -j ACCEPT
+-A FORWARD -i virbr0 -j ACCEPT
+COMMIT
+*nat
+:PREROUTING ACCEPT 
+:INPUT ACCEPT 
+:OUTPUT ACCEPT 
+:POSTROUTING ACCEPT 
+-A POSTROUTING -s 100.64.0.0/10 ! -d 100.64.0.0/10 -j MASQUERADE
+""")
+
+setup_ip6tables('60-fathomcloud-compute-default', """
+-A FORWARD -o virbr0 -j ACCEPT
+-A FORWARD -i virbr0 -j ACCEPT
+""")
+
+run_applyd()
+
+write_file('/etc/sysctl.d/fathomcloud.conf', """
+net.ipv6.conf.all.proxy_ndp=1
+
+net.ipv4.ip_forward=1
+net.ipv6.conf.all.forwarding=1
+""")
+
+run_command('Applying sysctl configuration: fathomcloud.conf', ['/sbin/sysctl', '-f', '/etc/sysctl.d/fathomcloud.conf'])
+
+def btrfs_subvolume_exists(path):
+  # TODO: Check is btrfs volume
+  if os.path.ismount(path):
+    return True
+  return False
+
+
+def btrfs_subvolume_create(path):
+  if btrfs_subvolume_exists(path):
+    return
+  run_command('Creating BtrFS volume: ' + path, ['btrfs', 'subvolume', 'create', path])
+
+def chown(user, path, recursive=False):
+  if recursive:
+    run_command('Chown (recursive): %s on %s' % (user, path), ['chown', '-R', user, path])
+  else:
+    run_command('Chown: %s on %s' % (user, path), ['chown', user, path])
+
+def symlink(dest, src):
+  # TODO: Check symlink is correct
+  if os.path.islink(src):
+    return
+  run_command('Symlink: %s -> %s' % (src, dest), ['ln', '-s', dest, src])
+
+def mkdir(path):
+  run_command('mkdir: %s' % (path), ['mkdir', '-p', path])
+
+
+btrfs_subvolume_create('/volumes/persistent/fathomcloud')
+chown('fathomcloud', '/volumes/persistent/fathomcloud')
+symlink('/volumes/persistent/fathomcloud', '/var/fathomcloud')
+
+btrfs_subvolume_create('/volumes/ephemeral/images')
+chown('fathomcloud', '/volumes/ephemeral/images')
+symlink('/volumes/ephemeral/images', '/var/fathomcloud/images')
+
+btrfs_subvolume_create('/volumes/ephemeral/rootfs')
+chown('fathomcloud', '/volumes/ephemeral/rootfs')
+symlink('/volumes/ephemeral/rootfs', '/var/fathomcloud/rootfs')
+
+btrfs_subvolume_create('/volumes/persistent/vms')
+chown('fathomcloud', '/volumes/persistent/vms')
+symlink('/volumes/persistent/vms', '/var/fathomcloud/vms')
+
+chown('fathomcloud:root', '/var/fathomcloud')
+chown('fathomcloud:root', '/var/fathomcloud/', recursive=True)
+
+mkdir('/var/fathomcloud/secrets')
+chown('fathomcloud:root', '/var/fathomcloud/secrets')
+chmod('770', '/var/fathomcloud/secrets')
+
+if not btrfs_subvolume_exists('/var/fathomcloud/images/00000000-0000-c10d-0000-000000000000'):
+  # A bit of a trick here; we create a read-write temporary image; snapshot it read-only; then delete the read-write version
+  btrfs_subvolume_create('/var/fathomcloud/images/temp-1')
+  run_command('Downloading image', ['wget', 'https://fathom-cloud-images.s3.amazonaws.com/images/fathomcloud/image.tgz', '-O', '/tmp/image.tgz'])
+  run_command('Expanding image', ['tar', '--numeric-owner', '-f', '/tmp/image.tgz', '-C', '/var/fathomcloud/images/temp-1', '-xz'])
+  run_command('Deleting image', ['rm', '/tmp/image.tgz'])
+
+  run_command('Snapshotting image', ['btrfs', 'subvolume', 'snapshot', '-r', '/var/fathomcloud/images/temp-1', '/var/fathomcloud/images/00000000-0000-c10d-0000-000000000000'])
+  run_command('Deleting image', ['btrfs', 'subvolume', 'delete', '/var/fathomcloud/images/temp-1']) 
+
+if not btrfs_subvolume_exists('/var/fathomcloud/rootfs/00000000-0000-c10d-0000-000000000000'):
+  run_command('Copying image to root volume', ['btrfs', 'subvolume', 'snapshot', '/var/fathomcloud/images/00000000-0000-c10d-0000-000000000000', '/var/fathomcloud/rootfs/00000000-0000-c10d-0000-000000000000'])
+
+btrfs_subvolume_create('/volumes/ephemeral/00000000-0000-c10d-0000-000000000000')
+btrfs_subvolume_create('/volumes/persistent/00000000-0000-c10d-0000-000000000000')
+
+vmdir='/var/fathomcloud/vms/00000000-0000-c10d-0000-000000000000'
+mkdir(vmdir)
+
+instance_ip = ipv6['prefix'] + 'c10d'
+
+config_lxc = fetch_url('https://fathom-cloud-images.s3.amazonaws.com/images/bootstrap/config.lxc')
+
+config_lxc = config_lxc.replace('IPV6_ADDRESS', instance_ip + '/' + str(ipv6['netmask']))
+config_lxc = config_lxc.replace('IPV6_GATEWAY', ipv6['prefix'] + '1')
+
+write_file(vmdir + '/config.lxc', config_lxc)
+
+write_file('/etc/apply.d/ip6neigh/' + instance_ip,
+'ip -6 neigh add proxy %s dev eth0' % (instance_ip))
+
+rootfs='/var/fathomcloud/rootfs/00000000-0000-c10d-0000-000000000000'
+
+process_definition = fetch_url('https://fathom-cloud-images.s3.amazonaws.com/images/bootstrap/process.json')
+write_file('/etc/gawker/processes/vm-00000000-0000-c10d-0000-000000000000.json', process_definition)
+
+mkdir('/etc/apply.d/tunnel/')
+write_file('/etc/apply.d/tunnel/viptunnel-c10d', 'ip6ip6 remote %s local %s1' % (instance_ip, ipv6['prefix']))
+
+mkdir('/etc/apply.d/route6/')
+
+write_file('/etc/apply.d/route6/fd00::c10d', 'fd00::c10d dev viptunnel-c10d  metric 1024')
+write_file('/etc/apply.d/route6/fd00::feed', 'fd00::feed dev viptunnel-c10d  metric 1024')
+
+# FIXME: Sadly, we can't use sftp if our shell is /bin/false
+run_command('Setting shell for fathomcloud', ['chsh', '-s', '/bin/bash', 'fathomcloud'])
+
+# Apply all the networking changes
+run_applyd()
+
+run_command('Pinging the instance (%s)' % instance_ip, ['ping6', '-c', '2', instance_ip])
+
+#ping6 -c 2 ${IPV6_BRIDGE_PREFIX}c10d
+
+#sudo ssh -i ~fathomcloud/.ssh/id_rsa root@${IPV6_BRIDGE_PREFIX}c10d
+
+# This causes our first instance to bootstrap itself
+#TODO: arg(1) ??
+email=
+vol_dir="/volumes/persistent/00000000-0000-c10d-0000-000000000000"
+
+mkdir(vol_dir)
+write_file(vol_dir + '/fathomcloud/bootstrap', 'email=%s\n' % email)
+
+# Authorize the current user for fathomcloud
+authorized_keys = read_file(os.path.expanduser('~/.ssh/authorized_keys'))
+write_file(vol_dir + '/ssh/authorized_fathomcloud', authorized_keys)
+
+# Authorize the fathomcloud for the current machine
+while True:
+  pub_key = read_file(vol_dir + '/ssh/id_rsa.pub')
+  if pub_key:
+    break
+  print("Waiting for public key to be created")
+  time.sleep(1)
+
+mkdir('/home/fathomcloud/.ssh/')
+chown('fathomcloud', '/home/fathomcloud/.ssh/')
+ensure_line('/home/fathomcloud/.ssh/authorized_keys', pub_key)
+chown('fathomcloud', '/home/fathomcloud/.ssh/authorized_keys')
+chmod('700', '/home/fathomcloud/.ssh/authorized_keys')
+
+print 'alias fat="ssh -p 2222 %s"' % instance_ip
 
 

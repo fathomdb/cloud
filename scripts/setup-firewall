@@ -38,7 +38,7 @@ sudo tee /etc/apply.d/iptables/20-allow-loopback <<EOF
 COMMIT
 EOF
 
-sudo tee /etc/apply.d/iptables/20-allow-ping <<EOF
+sudo tee /etc/apply.d/iptables/20-allow-icmp <<EOF
 *filter
 -A INPUT -p icmp -j ACCEPT
 COMMIT
