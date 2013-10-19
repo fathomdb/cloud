@@ -16,14 +16,14 @@ if [ ! -d /root/.ssh ]; then
   chmod 700 /root/.ssh/
 fi
 
-ATTEMPTS=5
+ATTEMPTS=3
 FAILED=0
 
 # Fetch public key using Metadata service
 # We use the FathomCloud IP, not the EC2 IP
 while [ ! -f /root/.ssh/authorized_keys ]; do
     echo "Fetching the SSH authorized key from metadata service"
-    wget -q -O - http://[fd00::feed]:8080/latest/meta-data/public-keys/0/openssh-key --connect-timeout=5 --read-timeout=5 > /tmp/ssh-key 2>/dev/null
+    wget -q -O - http://[fd00::feed]:8080/latest/meta-data/public-keys/0/openssh-key --connect-timeout=3 --read-timeout=3 --tries=1 > /tmp/ssh-key 2>/dev/null
     if [ $? -eq 0 ]; then
         cat /tmp/ssh-key >> /root/.ssh/authorized_keys
         chmod 0600 /root/.ssh/authorized_keys
