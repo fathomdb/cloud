@@ -21,7 +21,6 @@ import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import com.fathomdb.Configuration;
 import com.fathomdb.extensions.Extensions;
 import com.fathomdb.extensions.HttpConfiguration;
-import com.fathomdb.viewable.ViewableMessageBodyWriter;
 import com.google.inject.Scopes;
 import com.google.inject.binder.AnnotatedBindingBuilder;
 import com.google.inject.persist.PersistFilter;
@@ -131,8 +130,6 @@ public class OpenstackServerServletModule extends JaxrsServletModule {
         //
         // serve("/static/*").with(DefaultServlet.class, params);
         // }
-
-        bind(ViewableMessageBodyWriter.class).asEagerSingleton();
 
         filter("/*").through(TokenAuthFilter.class);
 
