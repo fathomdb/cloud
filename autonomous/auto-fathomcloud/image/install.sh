@@ -44,7 +44,7 @@ unzip /tmp/image/manager.zip -d /opt/manager
 
 cp /tmp/image/run.sh /opt/manager/run.sh
 chmod +x /opt/manager/run.sh
-echo 'cloud:23:respawn:/opt/manager/run.sh' | sudo tee -a /etc/inittab
+echo 'c10d:23:respawn:/opt/manager/run.sh >> /var/log/manager-run.log' | sudo tee -a /etc/inittab
 
 cp /tmp/image/keygen.sh /opt/manager/keygen.sh
 chmod +x /opt/manager/keygen.sh
