@@ -442,7 +442,9 @@ public class ServersResource extends ComputeResourceBase {
         server.name = instance.getName();
 
         server.flavor = new Flavor();
-        server.flavor.id = "1";
+        if (instance.hasFlavor()) {
+            server.flavor.id = "" + instance.getFlavor().getId();
+        }
 
         server.tenant_id = "" + instance.getProjectId();
 
