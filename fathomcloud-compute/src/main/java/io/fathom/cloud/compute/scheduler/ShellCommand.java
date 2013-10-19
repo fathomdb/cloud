@@ -39,7 +39,7 @@ public class ShellCommand {
 
             } else if ('A' <= c && c <= 'Z') {
 
-            } else if ('0' <= c && c <= '0') {
+            } else if ('0' <= c && c <= '9') {
 
             } else {
                 switch (c) {
