@@ -16,7 +16,6 @@ import io.fathom.cloud.ssh.jsch.SshContextImpl;
 import io.fathom.cloud.state.StateStore;
 import io.fathom.cloud.state.ZookeeperStateStore;
 import io.fathom.cloud.state.zookeeper.KeyczarSharedKeystore;
-import io.fathom.cloud.zookeeper.EmbeddedZookeeper;
 import io.fathom.cloud.zookeeper.ExternalZookeeper;
 import io.fathom.cloud.zookeeper.ZookeeperClient;
 import io.fathom.cloud.zookeeper.ZookeeperCluster;
@@ -71,7 +70,8 @@ public class FathomCloudGuiceModule extends AbstractModule {
         // bind(StateStore.class).toInstance(stateStore);
 
         if (configuration.find("zookeeper.embedded.basedir") != null) {
-            bind(ZookeeperCluster.class).to(EmbeddedZookeeper.class).asEagerSingleton();
+            throw new UnsupportedOperationException();
+            // bind(ZookeeperCluster.class).to(EmbeddedZookeeper.class).asEagerSingleton();
         } else {
             bind(ZookeeperCluster.class).to(ExternalZookeeper.class).asEagerSingleton();
         }

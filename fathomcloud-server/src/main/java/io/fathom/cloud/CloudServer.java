@@ -10,7 +10,6 @@ import io.fathom.cloud.persist.ZookeeperPersistModule;
 import io.fathom.cloud.server.FathomCloudGuiceModule;
 import io.fathom.cloud.server.OpenstackServerServletModule;
 import io.fathom.cloud.server.auth.SharedSecretTokenService;
-import io.fathom.cloud.zookeeper.JoinZookeeper;
 import io.fathom.cloud.zookeeper.ZookeeperClient;
 
 import java.io.IOException;
@@ -110,20 +109,16 @@ public class CloudServer {
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         System.setProperty("user.timezone", "UTC");
 
-        if (args.length != 0) {
-            String command = args[0];
-
-            if (command.equals("join")) {
-                try {
-                    JoinZookeeper join = new JoinZookeeper();
-                    join.join(args[1], args[2], args[3]);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    System.exit(1);
-                }
-                System.exit(0);
-            }
-        }
+        /*
+         * Removed until Zookeeper 3.5...
+         * 
+         * if (args.length != 0) { String command = args[0];
+         * 
+         * if (command.equals("join")) { try { JoinZookeeper join = new
+         * JoinZookeeper(); join.join(args[1], args[2], args[3]); } catch
+         * (Exception e) { e.printStackTrace(); System.exit(1); }
+         * System.exit(0); } }
+         */
 
         LogbackHook.attachToRootLogger();
 

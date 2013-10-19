@@ -147,6 +147,12 @@
 			<groupId>org.keyczar</groupId>
 			<artifactId>keyczar</artifactId>
 			<version>0.71f</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>log4j</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
