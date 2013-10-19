@@ -68,6 +68,16 @@ public class Server {
     @XmlElement(name = "OS-EXT-STS:vm_state")
     public String extensionVmState;
 
+    // The latest nova client posts this:
+    // "networks": [{"uuid": "00000000-0000-0000-0000-000000000000"}, {"uuid":
+    // "11111111-1111-1111-1111-111111111111"}]}}'
+
+    public List<ServerNetwork> networks;
+
+    public static class ServerNetwork {
+        public String uuid;
+    }
+
     // Bug 1202415
     // // Not a clue what this is, but horizon pukes if it isn't there
     // public Attributes attrs = new Attributes();
