@@ -8,20 +8,29 @@ chmod 755 /volumes/persistent
 chmod 755 /volumes/ephemeral
 
 mkdir -p /volumes/persistent/fathomcloud
-chown -R fathomcloud /var/persistent/fathomcloud/
-ln -s /volumes/persistent/fathomcloud /var/fathomcloud
+chown -R fathomcloud /volumes/persistent/fathomcloud/
+if [[ ! -f /var/fathomcloud ]]; then
+	ln -s /volumes/persistent/fathomcloud /var/fathomcloud
+fi
 
 mkdir -p /volumes/persistent/zookeeper
-chown -R zk /var/persistent/zookeeper/
-ln -s /volumes/persistent/zookeeper /var/zookeeper
+chown -R zk /volumes/persistent/zookeeper/
+if [[ ! -f /var/zookeeper ]]; then
+	ln -s /volumes/persistent/zookeeper /var/zookeeper
+fi
 
 mkdir -p /volumes/ephemeral/fathomcloud/cache
-ln -s /volumes/ephemeral/fathomcloud/cache /var/fathomcloud/cache
+chown -R fathomcloud /volumes/ephemeral/fathomcloud/cache
+if [[ ! -f /var/fathomcloud/cache ]]; then
+	ln -s /volumes/ephemeral/fathomcloud/cache /var/fathomcloud/cache
+fi
 
 mkdir -p /volumes/persistent/ssh
 chown -R fathomcloud /volumes/persistent/ssh
-chmod 700 /volumes/data/ssh
-ln -s /volumes/persistent/ssh /home/fathomcloud/.ssh
+chmod 700 /volumes/persistent/ssh
+if [[ ! -f /home/fathomcloud/.ssh ]]; then
+	ln -s /volumes/persistent/ssh /home/fathomcloud/.ssh
+fi
 
 
 #================================================
@@ -45,7 +54,6 @@ EOF
 sudo tee /etc/apply.d/vips/fd00::feed <<EOF
 viptunnel fd00::feed/128
 EOF
-
 
 # Apply the tunnel rule and any other configuration rules that may have changed
 sudo /usr/sbin/applyd
