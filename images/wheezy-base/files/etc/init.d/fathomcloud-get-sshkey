@@ -35,7 +35,7 @@ while [ ! -f /root/.ssh/authorized_keys ]; do
             echo "Failed to retrieve SSH public key after $FAILED attempts, quitting"
             break
         fi
-        echo "Could not retrieve SSH public key (attempt #$FAILED/$ATTEMPTS), retrying in 5 seconds..."
+        echo "Could not retrieve SSH public key (attempt #$FAILED/$ATTEMPTS), retrying..."
         sleep 1
     fi
 done
