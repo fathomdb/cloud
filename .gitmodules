@@ -4,3 +4,6 @@
 [submodule "wink"]
 	path = wink
 	url = https://github.com/fathomdb/wink.git
+[submodule "keyczar"]
+	path = keyczar
+	url = https://github.com/fathomdb/keyczar.git
