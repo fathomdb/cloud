@@ -91,6 +91,11 @@ public abstract class Cmdlet {
         stdout.write("\r\n".getBytes(Charsets.UTF_8));
     }
 
+    protected synchronized void printerr(String s) throws IOException {
+        stderr.write(s.getBytes(Charsets.UTF_8));
+        stderr.write("\r\n".getBytes(Charsets.UTF_8));
+    }
+
     protected synchronized void println(String format, Object... args) throws IOException {
         String msg = String.format(format, args);
         println(msg);
