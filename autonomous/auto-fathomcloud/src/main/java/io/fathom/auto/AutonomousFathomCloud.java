@@ -33,6 +33,10 @@ public class AutonomousFathomCloud {
             try {
                 ConfigStoreProvider configStoreProvider = null;
                 if (configFile.exists()) {
+                    // We only want to generate the keys if a bootstrap file is
+                    // present
+                    ensureSshKeys();
+
                     Bootstrap bootstrap = new Bootstrap(configFile);
                     configStoreProvider = bootstrap.bootstrap();
                 } else {
@@ -42,8 +46,8 @@ public class AutonomousFathomCloud {
                 if (configStoreProvider != null) {
                     configStore = ConfigStore.get(configStoreProvider, "fathomcloud");
                 }
+
                 if (configStore != null) {
-                    ensureSshKeys();
                     break;
                 }
             } catch (Exception e) {
