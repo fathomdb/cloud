@@ -5,14 +5,14 @@ set -x
 
 
 if [[ ${IPV6_BRIDGE_PREFIX} == "" ]]; then
-	IPV4=`wget http://169.254.169.254/latest/meta-data/public-ipv4 -q -O -`
-	IPV4_SPACES=`echo $IPV4| tr "." " "`
-	IPV6=`printf "2002:%02x%02x:%02x%02x::1" ${IPV4_SPACES}`
-	IPV6_BRIDGE_PREFIX=`printf "2002:%02x%02x:%02x%02x:1::" ${IPV4_SPACES}`
-	IPV6_BRIDGE_MASK=64
-	LOCAL_IPV4=`wget http://169.254.169.254/latest/meta-data/local-ipv4 -q -O -`
+  IPV4=`wget http://169.254.169.254/latest/meta-data/public-ipv4 -q -O -`
+  IPV4_SPACES=`echo $IPV4| tr "." " "`
+  IPV6=`printf "2002:%02x%02x:%02x%02x::1" ${IPV4_SPACES}`
+  IPV6_BRIDGE_PREFIX=`printf "2002:%02x%02x:%02x%02x:1::" ${IPV4_SPACES}`
+  IPV6_BRIDGE_MASK=64
+  LOCAL_IPV4=`wget http://169.254.169.254/latest/meta-data/local-ipv4 -q -O -`
 
-	IPV6_BRIDGE="${IPV6_BRIDGE_PREFIX}1/${IPV6_BRIDGE_MASK}"
+  IPV6_BRIDGE="${IPV6_BRIDGE_PREFIX}1/${IPV6_BRIDGE_MASK}"
 fi
 
 
