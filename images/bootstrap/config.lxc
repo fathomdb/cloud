@@ -25,7 +25,7 @@ lxc.mount.entry = /volumes/persistent/00000000-0000-c10d-0000-000000000000 /var/
 lxc.pts = 1024
 
 # disable the main console
-lxc.console = none
+lxc.console = /var/fathomcloud/vms/00000000-0000-c10d-0000-000000000000/console.log
 
 # no controlling tty at all
 lxc.tty = 1
