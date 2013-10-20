@@ -374,10 +374,10 @@ setup_iptables('20-fathomcloud-bridge', """
 -A FORWARD -i virbr0 -j ACCEPT
 COMMIT
 *nat
-:PREROUTING ACCEPT 
-:INPUT ACCEPT 
-:OUTPUT ACCEPT 
-:POSTROUTING ACCEPT 
+:PREROUTING ACCEPT
+:INPUT ACCEPT
+:OUTPUT ACCEPT
+:POSTROUTING ACCEPT
 -A POSTROUTING -s 100.64.0.0/10 ! -d 100.64.0.0/10 -j MASQUERADE
 """)
 
@@ -386,8 +386,6 @@ setup_ip6tables('60-fathomcloud-bridge', """
 -A FORWARD -o virbr0 -j ACCEPT
 -A FORWARD -i virbr0 -j ACCEPT
 """)
-
-
 
 setup_iptables('60-fathomcloud-compute-default', """
 -A os-compute-sg-fallback -j DROP
@@ -479,6 +477,21 @@ vmdir='/var/fathomcloud/vms/00000000-0000-c10d-0000-000000000000'
 mkdir(vmdir)
 
 instance_ip = ipv6['prefix'] + 'c10d'
+
+setup_ip6tables('50-os-compute-c10d', """
+-A os-compute-local -d %s -j os-compute-inst-c10d
+-A os-compute-inst-c10d -m state --state INVALID -j DROP
+-A os-compute-inst-c10d -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A os-compute-inst-c10d -p tcp -m tcp --dport 8443 -j ACCEPT
+-A os-compute-inst-c10d -j os-compute-sg-fallback
+""" % instance_ip)
+
+setup_iptables('50-os-compute-c10d', """
+-A os-compute-local -d %s -j os-compute-inst-c10d
+-A os-compute-inst-c10d -m state --state INVALID -j DROP
+-A os-compute-inst-c10d -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A os-compute-inst-c10d -j os-compute-sg-fallback
+""" % '100.64.0.16')
 
 config_lxc = fetch_url('https://fathom-cloud-images.s3.amazonaws.com/images/bootstrap/config.lxc')
 
