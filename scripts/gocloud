@@ -6,8 +6,15 @@ import socket
 import subprocess
 import os
 import os.path
+import sys
 import time
 import urllib2
+
+if len(sys.argv) < 2:
+  sys.stderr.write('Usage: %s <email>' % sys.argv[0])
+  sys.exit(1)
+
+email=sys.argv[1]
 
 def run_command(description, args, stdin='', **kwargs):
   print description
@@ -25,7 +32,7 @@ def run_command(description, args, stdin='', **kwargs):
     print "Calling return error: " + ' '.join(args)
     print "Output: " + out
     print "Error: " + err
-    raise CalledProcessError(retcode, args)
+    raise subprocess.CalledProcessError(retcode, args)
   return out,err
 
 def update_packages():
@@ -362,16 +369,6 @@ setup_iptables('20-allow-ipv6', """
 
 
 setup_iptables('20-fathomcloud-bridge', """
--A os-compute-sg-fallback -j DROP
-""")
-
-setup_ip6tables('60-fathomcloud-bridge', """
--A os-compute-sg-fallback -j DROP
-""")
-
-
-
-setup_iptables('60-fathomcloud-compute-default', """
 -A FORWARD -o virbr0 -j ACCEPT
 -A FORWARD -i virbr0 -j ACCEPT
 COMMIT
@@ -383,9 +380,19 @@ COMMIT
 -A POSTROUTING -s 100.64.0.0/10 ! -d 100.64.0.0/10 -j MASQUERADE
 """)
 
-setup_ip6tables('60-fathomcloud-compute-default', """
+setup_ip6tables('60-fathomcloud-bridge', """
 -A FORWARD -o virbr0 -j ACCEPT
 -A FORWARD -i virbr0 -j ACCEPT
+""")
+
+
+
+setup_iptables('60-fathomcloud-compute-default', """
+-A os-compute-sg-fallback -j DROP
+""")
+
+setup_ip6tables('60-fathomcloud-compute-default', """
+-A os-compute-sg-fallback -j DROP
 """)
 
 run_applyd()
@@ -507,8 +514,6 @@ run_command('Pinging the instance (%s)' % instance_ip, ['ping6', '-c', '2', inst
 #sudo ssh -i ~fathomcloud/.ssh/id_rsa root@${IPV6_BRIDGE_PREFIX}c10d
 
 # This causes our first instance to bootstrap itself
-#TODO: arg(1) ??
-email=
 vol_dir="/volumes/persistent/00000000-0000-c10d-0000-000000000000"
 
 mkdir(vol_dir)
@@ -518,7 +523,7 @@ write_file(vol_dir + '/fathomcloud/bootstrap', 'email=%s\n' % email)
 authorized_keys = read_file(os.path.expanduser('~/.ssh/authorized_keys'))
 write_file(vol_dir + '/ssh/authorized_fathomcloud', authorized_keys)
 
-# Authorize the fathomcloud for the current machine
+# Authorize the fathomcloud user for the current machine
 while True:
   pub_key = read_file(vol_dir + '/ssh/id_rsa.pub')
   if pub_key:
