@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -x
+
 # Create mountpoints for volumes
 mkdir -p /volumes/ephemeral/
 mkdir -p /volumes/persistent/
