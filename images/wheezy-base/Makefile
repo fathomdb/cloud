@@ -35,6 +35,10 @@ image.tgz:
 	cp files/etc/init.d/fathomcloud-* rootfs/etc/init.d/
 	chmod +x rootfs/etc/init.d/fathomcloud-*
 	chroot rootfs/ insserv -d fathomcloud-get-sshkey
+	# Use an install.sh script
+	cp install.sh rootfs/tmp/install.sh
+	chmod +x rootfs/tmp/install.sh
+	chroot rootfs/ /tmp/install.sh
 	# Finishing the image
 	chroot rootfs/ apt-get upgrade
 	chroot rootfs/ apt-get clean
