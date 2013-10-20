@@ -39,6 +39,7 @@ image.tgz:
 	cp install.sh rootfs/tmp/install.sh
 	chmod +x rootfs/tmp/install.sh
 	chroot rootfs/ /tmp/install.sh
+	rm rootfs/tmp/install.sh
 	# Finishing the image
 	chroot rootfs/ apt-get upgrade
 	chroot rootfs/ apt-get clean
