@@ -52,6 +52,7 @@ EOF
 
 sudo tee /etc/apply.d/iptables/20-fathomcloud-bridge <<EOF
 *filter
+-A FORWARD -j os-compute-local
 -A FORWARD -o virbr0 -j ACCEPT
 -A FORWARD -i virbr0 -j ACCEPT
 COMMIT
@@ -96,6 +97,7 @@ EOF
 
 sudo tee /etc/apply.d/ip6tables/20-fathomcloud-bridge <<EOF
 *filter
+-A FORWARD -j os-compute-local
 -A FORWARD -o virbr0 -j ACCEPT
 -A FORWARD -i virbr0 -j ACCEPT
 COMMIT

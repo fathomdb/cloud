@@ -369,6 +369,7 @@ setup_iptables('20-allow-ipv6', """
 
 
 setup_iptables('20-fathomcloud-bridge', """
+-A FORWARD -j os-compute-local
 -A FORWARD -o virbr0 -j ACCEPT
 -A FORWARD -i virbr0 -j ACCEPT
 COMMIT
@@ -381,6 +382,7 @@ COMMIT
 """)
 
 setup_ip6tables('60-fathomcloud-bridge', """
+-A FORWARD -j os-compute-local
 -A FORWARD -o virbr0 -j ACCEPT
 -A FORWARD -i virbr0 -j ACCEPT
 """)
