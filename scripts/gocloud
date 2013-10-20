@@ -483,6 +483,7 @@ setup_ip6tables('50-os-compute-c10d', """
 -A os-compute-inst-c10d -m state --state INVALID -j DROP
 -A os-compute-inst-c10d -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A os-compute-inst-c10d -p tcp -m tcp --dport 8443 -j ACCEPT
+-A os-compute-inst-c10d -p tcp -m tcp --dport 2222 -j ACCEPT
 -A os-compute-inst-c10d -j os-compute-sg-fallback
 """ % instance_ip)
 
