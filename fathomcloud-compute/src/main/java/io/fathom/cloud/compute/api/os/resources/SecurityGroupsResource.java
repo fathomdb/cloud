@@ -35,7 +35,7 @@ public class SecurityGroupsResource extends ComputeResourceBase {
         response.securityGroups = Lists.newArrayList();
 
         for (SecurityGroupData data : securityGroups.list(getProject())) {
-            SecurityGroup model = toModel(data, false);
+            SecurityGroup model = toModel(data, true);
             response.securityGroups.add(model);
         }
 
