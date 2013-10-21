@@ -1,6 +1,8 @@
 package io.fathom.cloud.compute.commands;
 
+import io.fathom.cloud.commands.TypedCmdlet;
 import io.fathom.cloud.compute.services.ComputeSecrets;
+import io.fathom.cloud.compute.services.NetworkMap;
 import io.fathom.cloud.protobuf.CloudCommons.SecretData;
 import io.fathom.cloud.protobuf.CloudModel.HostGroupData;
 import io.fathom.cloud.protobuf.CloudModel.HostGroupSecretData;
@@ -12,7 +14,7 @@ import org.kohsuke.args4j.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HostGroupCreateCmdlet extends NetworkMapCmdlet {
+public class HostGroupCreateCmdlet extends TypedCmdlet {
     private static final Logger log = LoggerFactory.getLogger(HostGroupCreateCmdlet.class);
 
     @Option(name = "-label", usage = "label", required = false)
@@ -37,6 +39,9 @@ public class HostGroupCreateCmdlet extends NetworkMapCmdlet {
     @Inject
     ComputeSecrets computeSecrets;
 
+    @Inject
+    NetworkMap networkMap;
+
     public HostGroupCreateCmdlet() {
         super("hostgroup-create");
     }
@@ -53,13 +58,13 @@ public class HostGroupCreateCmdlet extends NetworkMapCmdlet {
         // throw new IllegalArgumentException("Must allocate at least a /120");
         // }
 
-        if (findHostGroup(key) != null) {
+        if (networkMap.findHostGroupByKey(key) != null) {
             throw new IllegalArgumentException("Host group already exists");
         }
 
         HostGroupData parent = null;
         if (parentKey != null) {
-            parent = findHostGroup(parentKey);
+            parent = networkMap.findHostGroupByKey(parentKey);
             if (parent == null) {
                 throw new IllegalArgumentException("Specified parent not found");
             }

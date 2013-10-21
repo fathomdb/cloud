@@ -1,14 +1,17 @@
 package io.fathom.cloud.compute.commands;
 
+import io.fathom.cloud.commands.TypedCmdlet;
 import io.fathom.cloud.compute.services.NetworkMap;
 import io.fathom.cloud.protobuf.CloudModel.HostGroupData;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HostGroupListCmdlet extends NetworkMapCmdlet {
+public class HostGroupListCmdlet extends TypedCmdlet {
     private static final Logger log = LoggerFactory.getLogger(HostGroupListCmdlet.class);
 
     @Inject
@@ -19,10 +22,7 @@ public class HostGroupListCmdlet extends NetworkMapCmdlet {
     }
 
     @Override
-    protected HostGroupData run0() throws Exception {
-        for (HostGroupData host : networkMap.listHostGroups()) {
-            println(host.toString());
-        }
-        return null;
+    protected List<HostGroupData> run0() throws Exception {
+        return networkMap.listHostGroups();
     }
 }

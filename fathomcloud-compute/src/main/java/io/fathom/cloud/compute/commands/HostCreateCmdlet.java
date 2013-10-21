@@ -1,5 +1,6 @@
 package io.fathom.cloud.compute.commands;
 
+import io.fathom.cloud.commands.TypedCmdlet;
 import io.fathom.cloud.compute.networks.IpRange;
 import io.fathom.cloud.compute.services.NetworkMap;
 import io.fathom.cloud.protobuf.CloudModel.HostData;
@@ -11,7 +12,7 @@ import org.kohsuke.args4j.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HostCreateCmdlet extends NetworkMapCmdlet {
+public class HostCreateCmdlet extends TypedCmdlet {
     private static final Logger log = LoggerFactory.getLogger(HostCreateCmdlet.class);
 
     @Option(name = "-parent", usage = "parent key", required = true)
@@ -67,7 +68,7 @@ public class HostCreateCmdlet extends NetworkMapCmdlet {
         // }
         // }
 
-        HostGroupData parent = findHostGroup(parentKey);
+        HostGroupData parent = networkMap.findHostGroupByKey(parentKey);
         if (parent == null) {
             throw new IllegalArgumentException("Specified parent not found");
         }

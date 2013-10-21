@@ -1,13 +1,17 @@
 package io.fathom.cloud.compute.commands;
 
+import io.fathom.cloud.commands.TypedCmdlet;
 import io.fathom.cloud.compute.networks.IpRange;
+import io.fathom.cloud.compute.services.NetworkMap;
 import io.fathom.cloud.protobuf.CloudModel.HostData;
+
+import javax.inject.Inject;
 
 import org.kohsuke.args4j.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HostUpdateCmdlet extends NetworkMapCmdlet {
+public class HostUpdateCmdlet extends TypedCmdlet {
     private static final Logger log = LoggerFactory.getLogger(HostUpdateCmdlet.class);
 
     @Option(name = "-label", usage = "label", required = false)
@@ -18,6 +22,9 @@ public class HostUpdateCmdlet extends NetworkMapCmdlet {
 
     @Option(name = "-net", usage = "network interface", required = false)
     public String networkDevice;
+
+    @Inject
+    NetworkMap networkMap;
 
     public HostUpdateCmdlet() {
         super("host-update");

@@ -1,5 +1,6 @@
 package io.fathom.cloud.compute.commands;
 
+import io.fathom.cloud.commands.TypedCmdlet;
 import io.fathom.cloud.compute.services.IpPools;
 import io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolData;
 
@@ -11,7 +12,7 @@ import org.kohsuke.args4j.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class VipPoolDeleteCmdlet extends NetworkMapCmdlet {
+public class VipPoolDeleteCmdlet extends TypedCmdlet {
     private static final Logger log = LoggerFactory.getLogger(VipPoolDeleteCmdlet.class);
 
     @Inject

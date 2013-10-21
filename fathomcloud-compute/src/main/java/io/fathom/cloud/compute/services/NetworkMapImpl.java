@@ -82,4 +82,14 @@ public class NetworkMapImpl implements NetworkMap {
         return null;
     }
 
+    @Override
+    public HostGroupData findHostGroupByKey(String findKey) throws CloudException {
+        for (HostGroupData hostGroup : listHostGroups()) {
+            if (findKey.equals(hostGroup.getKey())) {
+                return hostGroup;
+            }
+        }
+        return null;
+    }
+
 }

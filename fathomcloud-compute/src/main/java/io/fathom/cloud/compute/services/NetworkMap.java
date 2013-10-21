@@ -12,7 +12,9 @@ public interface NetworkMap {
 
     List<HostGroupData> listHostGroups() throws CloudException;
 
-    HostGroupData findHostGroup(long key) throws CloudException;
+    HostGroupData findHostGroup(long id) throws CloudException;
+
+    HostGroupData findHostGroupByKey(String parentKey) throws CloudException;
 
     HostData createHost(HostData.Builder b) throws CloudException;
 
