@@ -26,6 +26,9 @@ public class VipPoolCreateCmdlet extends TypedCmdlet {
     @Option(name = "-type", usage = "type")
     public String type = "ethernet";
 
+    @Option(name = "-hosts", usage = "host group key")
+    public String hostGroupKey;
+
     @Inject
     IpPools ipPools;
 
@@ -69,9 +72,17 @@ public class VipPoolCreateCmdlet extends TypedCmdlet {
             }
         }
 
+        if (hostGroupKey != null) {
+            HostGroupData hostGroup = networkMap.findHostGroupByKey(hostGroupKey);
+            if (hostGroup == null) {
+                throw new IllegalArgumentException("Host group is not found");
+            }
+
+            b.setHostGroupId(hostGroup.getId());
+        }
+
         VirtualIpPoolData created = ipPools.createVipPool(b);
 
         return created;
     }
-
 }
