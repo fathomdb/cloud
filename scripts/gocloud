@@ -80,10 +80,16 @@ def ensure_line(path, line):
   append_file(path, line + '\n')
   return True
 
+def package_is_installed(package):
+  out, _ = run_command('Checking package: ' + package, ['dpkg-query', '-s', package])
+  return 'Status: install ok installed' in out
+
 def install_packages(packages):
   env = os.environ.copy()
   env['DEBIAN_FRONTEND'] = 'noninteractive'
   for package in packages:
+    if package_is_installed(package):
+      continue
     run_command('Installing package: ' + package, ["apt-get", "install", "--yes", package], env=env)
 
 def fetch_url(url):
