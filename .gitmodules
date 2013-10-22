@@ -7,3 +7,6 @@
 [submodule "keyczar"]
 	path = keyczar
 	url = https://github.com/fathomdb/keyczar.git
+[submodule "scripts/sshvpn"]
+	path = scripts/sshvpn
+	url = https://github.com/fathomdb/sshvpn.git
