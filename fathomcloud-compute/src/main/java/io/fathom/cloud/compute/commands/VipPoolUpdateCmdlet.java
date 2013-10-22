@@ -13,8 +13,8 @@ import org.kohsuke.args4j.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class VipPoolDeleteCmdlet extends TypedCmdlet {
-    private static final Logger log = LoggerFactory.getLogger(VipPoolDeleteCmdlet.class);
+public class VipPoolUpdateCmdlet extends TypedCmdlet {
+    private static final Logger log = LoggerFactory.getLogger(VipPoolUpdateCmdlet.class);
 
     @Option(name = "-id", usage = "id", required = true)
     public String id;
@@ -25,8 +25,8 @@ public class VipPoolDeleteCmdlet extends TypedCmdlet {
     @Inject
     IpPools ipPools;
 
-    public VipPoolDeleteCmdlet() {
-        super("vip-pool-delete");
+    public VipPoolUpdateCmdlet() {
+        super("vip-pool-update");
     }
 
     @Override
@@ -39,8 +39,14 @@ public class VipPoolDeleteCmdlet extends TypedCmdlet {
             throw new IllegalArgumentException("Cannot find pool with id: " + poolId);
         }
 
-        ipPools.deleteVirtualIpPool(pool);
+        VirtualIpPoolData.Builder b = VirtualIpPoolData.newBuilder(pool);
 
-        return null;
+        if (cidr != null) {
+            b.clearCidr();
+            b.addAllCidr(cidr);
+        }
+
+        VirtualIpPoolData created = ipPools.createVipPool(b);
+        return created;
     }
 }

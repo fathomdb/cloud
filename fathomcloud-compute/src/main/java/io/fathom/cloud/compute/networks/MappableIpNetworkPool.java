@@ -6,9 +6,7 @@ import io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolData;
 import io.fathom.cloud.server.model.Project;
 
 import java.net.InetAddress;
-import java.util.List;
 
-import com.google.common.collect.Lists;
 import com.google.common.net.InetAddresses;
 
 /**
@@ -47,10 +45,17 @@ public class MappableIpNetworkPool extends NetworkPoolBase {
 
     protected final VirtualIpPoolData poolData;
     private final NetworkPools networkPools;
+    private final AddressPool addressPool;
 
     MappableIpNetworkPool(NetworkPools networkPools, VirtualIpPoolData data) {
         this.networkPools = networkPools;
         this.poolData = data;
+
+        this.addressPool = new AddressPool();
+        for (String cidr : data.getCidrList()) {
+            IpRange ipRange = IpRange.parse(cidr);
+            this.addressPool.add(ipRange, getExclusions(ipRange));
+        }
     }
 
     @Override
@@ -63,12 +68,12 @@ public class MappableIpNetworkPool extends NetworkPoolBase {
     }
 
     @Override
-    protected Allocation markIpAllocated0(Project project, InetAddress ip) throws CloudException {
+    protected Allocation reserveIp0(Project project, InetAddress ip) throws CloudException {
         VirtualIpData.Builder addr = VirtualIpData.newBuilder();
         addr.setIp(InetAddresses.toAddrString(ip));
         addr.setProjectId(project.getId());
 
-        VirtualIpData allocated = networkPools.networkStateStore.markIpAllocated(this, addr);
+        VirtualIpData allocated = networkPools.networkStateStore.reserveIp(this, addr);
         return new Allocation(allocated);
     }
 
@@ -77,34 +82,43 @@ public class MappableIpNetworkPool extends NetworkPoolBase {
     }
 
     @Override
-    protected IpRange getIpRange() {
-        if (!poolData.hasCidr()) {
-            throw new IllegalStateException();
-        }
-        return IpRange.parse(poolData.getCidr());
-    }
-
-    @Override
     protected InetAddress getGateway() {
         return null;
     }
 
     @Override
-    protected List<InetAddress> getAllocatedIps() throws CloudException {
-        List<InetAddress> ret = Lists.newArrayList();
+    protected boolean isReserved(InetAddress ip) throws CloudException {
         for (VirtualIpData i : networkPools.repository.getAllocatedVips(poolData.getId()).list()) {
-            ret.add(InetAddresses.forString(i.getIp()));
+            InetAddress addr = InetAddresses.forString(i.getIp());
+            if (addr.equals(ip)) {
+                return true;
+            }
         }
-        return ret;
+        return false;
     }
 
+    // @Override
+    // protected List<InetAddress> getAllocatedIps() throws CloudException {
+    // List<InetAddress> ret = Lists.newArrayList();
+    // for (VirtualIpData i :
+    // networkPools.repository.getAllocatedVips(poolData.getId()).list()) {
+    // ret.add(InetAddresses.forString(i.getIp()));
+    // }
+    // return ret;
+    // }
+
     @Override
-    public void markIpNotAllocated(VirtualIp vip) throws CloudException {
+    public void releaseIpReservation(VirtualIp vip) throws CloudException {
         releaseIp(vip.getData());
     }
 
     public void releaseIp(VirtualIpData data) throws CloudException {
-        networkPools.networkStateStore.releaseIp(MappableIpNetworkPool.this, data);
+        networkPools.networkStateStore.releaseIpReservation(MappableIpNetworkPool.this, data);
+    }
+
+    @Override
+    public AddressPool getAddressPool() {
+        return addressPool;
     }
 
 }

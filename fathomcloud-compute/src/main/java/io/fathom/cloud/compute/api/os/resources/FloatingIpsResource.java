@@ -24,6 +24,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response.Status;
 
 import com.fathomdb.utils.Hex;
+import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.net.InetAddresses;
@@ -187,8 +188,8 @@ public class FloatingIpsResource extends ComputeResourceBase {
     public static String getLabel(VirtualIpPoolData pool) {
         String name = pool.getLabel();
         if (Strings.isNullOrEmpty(name)) {
-            if (pool.hasCidr()) {
-                name = "CIDR " + pool.getCidr();
+            if (pool.getCidrCount() != 0) {
+                name = "CIDR " + Joiner.on(",").join(pool.getCidrList());
             } else if (pool.hasType()) {
                 switch (pool.getType()) {
                 case AMAZON_EC2:

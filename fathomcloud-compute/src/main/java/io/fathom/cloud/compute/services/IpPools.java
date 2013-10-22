@@ -175,7 +175,7 @@ public class IpPools {
         }
 
         NetworkPool pool = networkPools.buildPool(vip.getPoolData());
-        pool.markIpNotAllocated(vip);
+        pool.releaseIpReservation(vip);
     }
 
     public VirtualIpPoolData findVirtualIpPool(Project project, long poolId) throws CloudException {
@@ -190,14 +190,14 @@ public class IpPools {
 
     public VirtualIpPoolData createVipPool(Builder b) throws CloudException {
         if (b.getType() == VirtualIpPoolType.LAYER_3) {
-            if (!b.hasCidr()) {
+            if (b.getCidrCount() == 0) {
                 throw new IllegalArgumentException();
             }
         }
 
         if (b.getType() == VirtualIpPoolType.AMAZON_EC2) {
-            if (b.hasCidr()) {
-                throw new IllegalArgumentException();
+            if (b.getCidrCount() == 0) {
+                log.warn("Building EC2 IP block with no addresses: {}", b);
             }
         }
 

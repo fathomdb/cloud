@@ -8,6 +8,8 @@ import io.fathom.cloud.protobuf.CloudModel.HostGroupData;
 import io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolData;
 import io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolType;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.kohsuke.args4j.Option;
@@ -21,7 +23,7 @@ public class VipPoolCreateCmdlet extends TypedCmdlet {
     public String label;
 
     @Option(name = "-cidr", usage = "cidr")
-    public String cidr;
+    public List<String> cidr;
 
     @Option(name = "-type", usage = "type")
     public String type = "ethernet";
@@ -60,11 +62,13 @@ public class VipPoolCreateCmdlet extends TypedCmdlet {
                 throw new IllegalArgumentException("CIDR is required for Ethernet-based virtual-IP pools");
             }
 
-            IpRange range = IpRange.parse(cidr);
-            // if (!range.isIpv4()) {
-            // throw new IllegalArgumentException("Only IPV4 is supported");
-            // }
-            b.setCidr(cidr);
+            for (String cidr : this.cidr) {
+                IpRange range = IpRange.parse(cidr);
+                // if (!range.isIpv4()) {
+                // throw new IllegalArgumentException("Only IPV4 is supported");
+                // }
+            }
+            b.addAllCidr(cidr);
         }
         if (b.getType() == VirtualIpPoolType.AMAZON_EC2) {
             if (cidr != null) {

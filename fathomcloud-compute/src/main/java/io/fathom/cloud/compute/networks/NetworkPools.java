@@ -74,15 +74,9 @@ public class NetworkPools {
             // that one first
             // TODO: We should actually let the smallest network generate the
             // random, and then continue
-            byte[] rand = new byte[16];
+            long rand;
             synchronized (random) {
-                random.nextBytes(rand);
-
-                // IPs ending in 0, while usually valid, definitely cause
-                // confusion
-                if (rand[15] == 0) {
-                    rand[15] = 1;
-                }
+                rand = random.nextLong();
             }
 
             boolean ok = true;
@@ -103,7 +97,7 @@ public class NetworkPools {
             for (int i = 0; i < pools.size(); i++) {
                 NetworkPool pool = pools.get(i);
 
-                NetworkPoolAllocation alloc = pool.markIpAllocated(project, ips.get(i));
+                NetworkPoolAllocation alloc = pool.reserveIp(project, ips.get(i));
                 if (alloc == null) {
                     for (NetworkPoolAllocation free : allocated) {
                         try {

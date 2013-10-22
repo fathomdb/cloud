@@ -22,7 +22,7 @@ public class NetworkStateStore extends RepositoryBase {
     @Inject
     ComputeRepository respository;
 
-    public NetworkAddressData markIpAllocated(HostNetworkPool pool, NetworkAddressData.Builder builder)
+    public NetworkAddressData reserveIp(HostNetworkPool pool, NetworkAddressData.Builder builder)
             throws CloudException {
         try {
             return respository.getHostIps(pool.getHostId(), pool.getNetworkKey()).create(builder);
@@ -32,7 +32,7 @@ public class NetworkStateStore extends RepositoryBase {
         }
     }
 
-    public VirtualIpData markIpAllocated(MappableIpNetworkPool pool, VirtualIpData.Builder builder) throws CloudException {
+    public VirtualIpData reserveIp(MappableIpNetworkPool pool, VirtualIpData.Builder builder) throws CloudException {
         try {
             return respository.getAllocatedVips(pool.getPoolId()).create(builder);
         } catch (DuplicateValueException e) {
@@ -41,11 +41,11 @@ public class NetworkStateStore extends RepositoryBase {
         }
     }
 
-    public void releaseIp(HostNetworkPool pool, NetworkAddressData address) throws CloudException {
+    public void releaseIpReservation(HostNetworkPool pool, NetworkAddressData address) throws CloudException {
         respository.getHostIps(pool.getHostId(), pool.getNetworkKey()).delete(address.getIp());
     }
 
-    public void releaseIp(MappableIpNetworkPool pool, VirtualIpData address) throws CloudException {
+    public void releaseIpReservation(MappableIpNetworkPool pool, VirtualIpData address) throws CloudException {
         respository.getAllocatedVips(pool.getPoolId()).delete(address.getIp());
     }
 

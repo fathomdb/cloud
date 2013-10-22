@@ -4,15 +4,13 @@ import io.fathom.cloud.CloudException;
 import io.fathom.cloud.server.model.Project;
 
 import java.net.InetAddress;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.common.net.InetAddresses;
 
 public abstract class NetworkPoolBase implements NetworkPool {
 
@@ -20,31 +18,39 @@ public abstract class NetworkPoolBase implements NetworkPool {
 
     public abstract String getNetworkKey();
 
-    protected abstract NetworkPoolAllocation markIpAllocated0(Project project, InetAddress ip) throws CloudException;
+    protected abstract NetworkPoolAllocation reserveIp0(Project project, InetAddress ip) throws CloudException;
 
     protected abstract InetAddress getGateway();
 
-    protected abstract List<InetAddress> getAllocatedIps() throws CloudException;
+    protected abstract AddressPool getAddressPool();
 
-    protected Set<String> getAddressesInUse() throws CloudException {
-        Set<String> reserved = Sets.newHashSet();
+    @Override
+    public InetAddress checkIpAvailable(long seed) throws CloudException {
+        AddressPool addressPool = getAddressPool();
 
-        for (InetAddress ip : getSystemReservedAddresses()) {
-            reserved.add(InetAddresses.toAddrString(ip));
+        InetAddress address = addressPool.convertSeedToIp(seed);
+        if (address == null) {
+            return null;
         }
 
-        for (InetAddress ip : getAllocatedIps()) {
-            reserved.add(InetAddresses.toAddrString(ip));
+        if (isReserved(address)) {
+            log.info("Chose system-excluded address; forcing retry");
+            return null;
         }
 
-        return reserved;
+        return address;
     }
 
-    protected List<InetAddress> getSystemReservedAddresses() {
-        IpRange ipRange = getIpRange();
+    protected List<InetAddress> getExclusions(IpRange ipRange) {
+        // Check for single IPs; we assume if we only have one IP that it's not
+        // excluded e.g. EC2 floating ips
+        if (ipRange.isIpv4() && ipRange.getNetmaskLength() == 32) {
+            return Collections.emptyList();
+        } else if (ipRange.isIpv6() && ipRange.getNetmaskLength() == 128) {
+            return Collections.emptyList();
+        }
 
         // TODO: Anything else reserved? Broadcast address? Configurable?
-
         byte[] mask = ipRange.getNetmaskBytes();
         byte[] prefix = ipRange.getAddress().getAddress();
 
@@ -91,53 +97,15 @@ public abstract class NetworkPoolBase implements NetworkPool {
         return reserved;
     }
 
-    protected abstract IpRange getIpRange();
-
     @Override
-    public InetAddress checkIpAvailable(byte[] seed) throws CloudException {
-        InetAddress address = convertSeedToIp(seed);
-
-        Set<String> reserved = getAddressesInUse();
-
-        if (reserved.contains(InetAddresses.toAddrString(address))) {
+    public NetworkPoolAllocation reserveIp(Project project, InetAddress ip) throws CloudException {
+        if (isReserved(ip)) {
             return null;
         }
 
-        return address;
-    }
-
-    protected InetAddress convertSeedToIp(byte[] seed) {
-        IpRange ipRange = getIpRange();
-
-        byte[] mask = ipRange.getNetmaskBytes();
-        byte[] prefix = ipRange.getAddress().getAddress();
-        byte[] ip = new byte[mask.length];
-        System.arraycopy(seed, seed.length - ip.length, ip, 0, ip.length);
-
-        // Apply netmask
-        for (int i = 0; i < mask.length; i++) {
-            ip[i] &= ~mask[i];
-            ip[i] |= (prefix[i] & mask[i]);
-        }
-
-        // if (ip.length == 16) {
-        // // We always allocate a /112 for IPv6
-        // ip[14] = 0;
-        // ip[15] = 0;
-        // }
-
-        InetAddress address = NetworkPools.toAddress(ip);
-        return address;
-    }
-
-    @Override
-    public NetworkPoolAllocation markIpAllocated(Project project, InetAddress ip) throws CloudException {
-        Set<String> reserved = getAddressesInUse();
-        if (reserved.contains(InetAddresses.toAddrString(ip))) {
-            return null;
-        }
-
-        NetworkPoolAllocation created = markIpAllocated0(project, ip);
+        NetworkPoolAllocation created = reserveIp0(project, ip);
         return created;
     }
+
+    protected abstract boolean isReserved(InetAddress ip) throws CloudException;
 }

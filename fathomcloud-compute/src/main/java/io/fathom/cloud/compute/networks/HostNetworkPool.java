@@ -8,9 +8,7 @@ import io.fathom.cloud.protobuf.CloudModel.NetworkAddressData;
 import io.fathom.cloud.server.model.Project;
 
 import java.net.InetAddress;
-import java.util.List;
 
-import com.google.common.collect.Lists;
 import com.google.common.net.InetAddresses;
 
 /**
@@ -33,7 +31,7 @@ public class HostNetworkPool extends NetworkPoolBase {
 
         @Override
         public void releaseIp() throws CloudException {
-            networkPools.networkStateStore.releaseIp(HostNetworkPool.this, data);
+            networkPools.networkStateStore.releaseIpReservation(HostNetworkPool.this, data);
         }
 
         @Override
@@ -46,12 +44,16 @@ public class HostNetworkPool extends NetworkPoolBase {
     private final SchedulerHostNetwork network;
     private final NetworkPools networkPools;
     private final InstanceData instance;
+    private final AddressPool addressPool;
 
     HostNetworkPool(NetworkPools networkPools, SchedulerHost host, SchedulerHostNetwork network, InstanceData instance) {
         this.networkPools = networkPools;
         this.host = host;
         this.network = network;
         this.instance = instance;
+
+        this.addressPool = new AddressPool();
+        this.addressPool.add(network.getIpRange(), getExclusions(network.getIpRange()));
     }
 
     public long getHostId() {
@@ -64,11 +66,6 @@ public class HostNetworkPool extends NetworkPoolBase {
     }
 
     @Override
-    public IpRange getIpRange() {
-        return network.getIpRange();
-    }
-
-    @Override
     public InetAddress getGateway() {
         return network.getGateway();
     }
@@ -78,8 +75,8 @@ public class HostNetworkPool extends NetworkPoolBase {
     }
 
     @Override
-    protected NetworkPoolAllocation markIpAllocated0(Project project, InetAddress ip) throws CloudException {
-        IpRange ipRange = getIpRange();
+    protected NetworkPoolAllocation reserveIp0(Project project, InetAddress ip) throws CloudException {
+        IpRange ipRange = network.getIpRange();
 
         NetworkAddressData.Builder addr = NetworkAddressData.newBuilder();
         addr.setIp(InetAddresses.toAddrString(ip));
@@ -91,21 +88,39 @@ public class HostNetworkPool extends NetworkPoolBase {
         addr.setProjectId(instance.getProjectId());
         addr.setInstanceId(instance.getId());
 
-        NetworkAddressData allocated = networkPools.networkStateStore.markIpAllocated(this, addr);
+        NetworkAddressData allocated = networkPools.networkStateStore.reserveIp(this, addr);
         return new Allocation(allocated);
     }
 
     @Override
-    public List<InetAddress> getAllocatedIps() throws CloudException {
-        List<InetAddress> ret = Lists.newArrayList();
+    protected boolean isReserved(InetAddress ip) throws CloudException {
         for (NetworkAddressData i : networkPools.repository.getHostIps(host.getId(), getNetworkKey()).list()) {
-            ret.add(InetAddresses.forString(i.getIp()));
+            InetAddress addr = InetAddresses.forString(i.getIp());
+            if (addr.equals(ip)) {
+                return true;
+            }
         }
-        return ret;
+        return false;
+    }
+
+    // @Override
+    // public List<InetAddress> getAllocatedIps() throws CloudException {
+    // List<InetAddress> ret = Lists.newArrayList();
+    // for (NetworkAddressData i :
+    // networkPools.repository.getHostIps(host.getId(), getNetworkKey()).list())
+    // {
+    // ret.add(InetAddresses.forString(i.getIp()));
+    // }
+    // return ret;
+    // }
+
+    @Override
+    public void releaseIpReservation(VirtualIp vip) throws CloudException {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public void markIpNotAllocated(VirtualIp vip) throws CloudException {
-        throw new UnsupportedOperationException();
+    protected AddressPool getAddressPool() {
+        return addressPool;
     }
 }

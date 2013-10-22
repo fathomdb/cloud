@@ -10647,23 +10647,14 @@ public final class CloudModel {
     boolean hasLabel();
     String getLabel();
     
-    // optional string cidr = 3;
-    boolean hasCidr();
-    String getCidr();
+    // repeated string cidr = 3;
+    java.util.List<String> getCidrList();
+    int getCidrCount();
+    String getCidr(int index);
     
     // optional int64 host_group_id = 4;
     boolean hasHostGroupId();
     long getHostGroupId();
-    
-    // repeated .fathomcloud.protobuf.VirtualIpData ip = 5;
-    java.util.List<io.fathom.cloud.protobuf.CloudModel.VirtualIpData> 
-        getIpList();
-    io.fathom.cloud.protobuf.CloudModel.VirtualIpData getIp(int index);
-    int getIpCount();
-    java.util.List<? extends io.fathom.cloud.protobuf.CloudModel.VirtualIpDataOrBuilder> 
-        getIpOrBuilderList();
-    io.fathom.cloud.protobuf.CloudModel.VirtualIpDataOrBuilder getIpOrBuilder(
-        int index);
     
     // optional .fathomcloud.protobuf.VirtualIpPoolType type = 6 [default = LAYER_3];
     boolean hasType();
@@ -10740,74 +10731,35 @@ public final class CloudModel {
       }
     }
     
-    // optional string cidr = 3;
+    // repeated string cidr = 3;
     public static final int CIDR_FIELD_NUMBER = 3;
-    private java.lang.Object cidr_;
-    public boolean hasCidr() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    private com.google.protobuf.LazyStringList cidr_;
+    public java.util.List<String>
+        getCidrList() {
+      return cidr_;
     }
-    public String getCidr() {
-      java.lang.Object ref = cidr_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          cidr_ = s;
-        }
-        return s;
-      }
+    public int getCidrCount() {
+      return cidr_.size();
     }
-    private com.google.protobuf.ByteString getCidrBytes() {
-      java.lang.Object ref = cidr_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        cidr_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public String getCidr(int index) {
+      return cidr_.get(index);
     }
     
     // optional int64 host_group_id = 4;
     public static final int HOST_GROUP_ID_FIELD_NUMBER = 4;
     private long hostGroupId_;
     public boolean hasHostGroupId() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     public long getHostGroupId() {
       return hostGroupId_;
-    }
-    
-    // repeated .fathomcloud.protobuf.VirtualIpData ip = 5;
-    public static final int IP_FIELD_NUMBER = 5;
-    private java.util.List<io.fathom.cloud.protobuf.CloudModel.VirtualIpData> ip_;
-    public java.util.List<io.fathom.cloud.protobuf.CloudModel.VirtualIpData> getIpList() {
-      return ip_;
-    }
-    public java.util.List<? extends io.fathom.cloud.protobuf.CloudModel.VirtualIpDataOrBuilder> 
-        getIpOrBuilderList() {
-      return ip_;
-    }
-    public int getIpCount() {
-      return ip_.size();
-    }
-    public io.fathom.cloud.protobuf.CloudModel.VirtualIpData getIp(int index) {
-      return ip_.get(index);
-    }
-    public io.fathom.cloud.protobuf.CloudModel.VirtualIpDataOrBuilder getIpOrBuilder(
-        int index) {
-      return ip_.get(index);
     }
     
     // optional .fathomcloud.protobuf.VirtualIpPoolType type = 6 [default = LAYER_3];
     public static final int TYPE_FIELD_NUMBER = 6;
     private io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolType type_;
     public boolean hasType() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     public io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolType getType() {
       return type_;
@@ -10816,9 +10768,8 @@ public final class CloudModel {
     private void initFields() {
       id_ = 0L;
       label_ = "";
-      cidr_ = "";
+      cidr_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       hostGroupId_ = 0L;
-      ip_ = java.util.Collections.emptyList();
       type_ = io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolType.LAYER_3;
     }
     private byte memoizedIsInitialized = -1;
@@ -10839,16 +10790,13 @@ public final class CloudModel {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getLabelBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getCidrBytes());
+      for (int i = 0; i < cidr_.size(); i++) {
+        output.writeBytes(3, cidr_.getByteString(i));
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt64(4, hostGroupId_);
       }
-      for (int i = 0; i < ip_.size(); i++) {
-        output.writeMessage(5, ip_.get(i));
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeEnum(6, type_.getNumber());
       }
       getUnknownFields().writeTo(output);
@@ -10868,19 +10816,20 @@ public final class CloudModel {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getLabelBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getCidrBytes());
+      {
+        int dataSize = 0;
+        for (int i = 0; i < cidr_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(cidr_.getByteString(i));
+        }
+        size += dataSize;
+        size += 1 * getCidrList().size();
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(4, hostGroupId_);
       }
-      for (int i = 0; i < ip_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, ip_.get(i));
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(6, type_.getNumber());
       }
@@ -11000,7 +10949,6 @@ public final class CloudModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getIpFieldBuilder();
         }
       }
       private static Builder create() {
@@ -11013,18 +10961,12 @@ public final class CloudModel {
         bitField0_ = (bitField0_ & ~0x00000001);
         label_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        cidr_ = "";
+        cidr_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
         hostGroupId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
-        if (ipBuilder_ == null) {
-          ip_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
-        } else {
-          ipBuilder_.clear();
-        }
         type_ = io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolType.LAYER_3;
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       
@@ -11071,25 +11013,18 @@ public final class CloudModel {
           to_bitField0_ |= 0x00000002;
         }
         result.label_ = label_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          cidr_ = new com.google.protobuf.UnmodifiableLazyStringList(
+              cidr_);
+          bitField0_ = (bitField0_ & ~0x00000004);
         }
         result.cidr_ = cidr_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
+          to_bitField0_ |= 0x00000004;
         }
         result.hostGroupId_ = hostGroupId_;
-        if (ipBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
-            ip_ = java.util.Collections.unmodifiableList(ip_);
-            bitField0_ = (bitField0_ & ~0x00000010);
-          }
-          result.ip_ = ip_;
-        } else {
-          result.ip_ = ipBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000010;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000008;
         }
         result.type_ = type_;
         result.bitField0_ = to_bitField0_;
@@ -11114,37 +11049,18 @@ public final class CloudModel {
         if (other.hasLabel()) {
           setLabel(other.getLabel());
         }
-        if (other.hasCidr()) {
-          setCidr(other.getCidr());
+        if (!other.cidr_.isEmpty()) {
+          if (cidr_.isEmpty()) {
+            cidr_ = other.cidr_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureCidrIsMutable();
+            cidr_.addAll(other.cidr_);
+          }
+          onChanged();
         }
         if (other.hasHostGroupId()) {
           setHostGroupId(other.getHostGroupId());
-        }
-        if (ipBuilder_ == null) {
-          if (!other.ip_.isEmpty()) {
-            if (ip_.isEmpty()) {
-              ip_ = other.ip_;
-              bitField0_ = (bitField0_ & ~0x00000010);
-            } else {
-              ensureIpIsMutable();
-              ip_.addAll(other.ip_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.ip_.isEmpty()) {
-            if (ipBuilder_.isEmpty()) {
-              ipBuilder_.dispose();
-              ipBuilder_ = null;
-              ip_ = other.ip_;
-              bitField0_ = (bitField0_ & ~0x00000010);
-              ipBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getIpFieldBuilder() : null;
-            } else {
-              ipBuilder_.addAllMessages(other.ip_);
-            }
-          }
         }
         if (other.hasType()) {
           setType(other.getType());
@@ -11191,19 +11107,13 @@ public final class CloudModel {
               break;
             }
             case 26: {
-              bitField0_ |= 0x00000004;
-              cidr_ = input.readBytes();
+              ensureCidrIsMutable();
+              cidr_.add(input.readBytes());
               break;
             }
             case 32: {
               bitField0_ |= 0x00000008;
               hostGroupId_ = input.readInt64();
-              break;
-            }
-            case 42: {
-              io.fathom.cloud.protobuf.CloudModel.VirtualIpData.Builder subBuilder = io.fathom.cloud.protobuf.CloudModel.VirtualIpData.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addIp(subBuilder.buildPartial());
               break;
             }
             case 48: {
@@ -11212,7 +11122,7 @@ public final class CloudModel {
               if (value == null) {
                 unknownFields.mergeVarintField(6, rawValue);
               } else {
-                bitField0_ |= 0x00000020;
+                bitField0_ |= 0x00000010;
                 type_ = value;
               }
               break;
@@ -11280,39 +11190,59 @@ public final class CloudModel {
         onChanged();
       }
       
-      // optional string cidr = 3;
-      private java.lang.Object cidr_ = "";
-      public boolean hasCidr() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+      // repeated string cidr = 3;
+      private com.google.protobuf.LazyStringList cidr_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureCidrIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          cidr_ = new com.google.protobuf.LazyStringArrayList(cidr_);
+          bitField0_ |= 0x00000004;
+         }
       }
-      public String getCidr() {
-        java.lang.Object ref = cidr_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          cidr_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
+      public java.util.List<String>
+          getCidrList() {
+        return java.util.Collections.unmodifiableList(cidr_);
       }
-      public Builder setCidr(String value) {
+      public int getCidrCount() {
+        return cidr_.size();
+      }
+      public String getCidr(int index) {
+        return cidr_.get(index);
+      }
+      public Builder setCidr(
+          int index, String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
-        cidr_ = value;
+  ensureCidrIsMutable();
+        cidr_.set(index, value);
+        onChanged();
+        return this;
+      }
+      public Builder addCidr(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureCidrIsMutable();
+        cidr_.add(value);
+        onChanged();
+        return this;
+      }
+      public Builder addAllCidr(
+          java.lang.Iterable<String> values) {
+        ensureCidrIsMutable();
+        super.addAll(values, cidr_);
         onChanged();
         return this;
       }
       public Builder clearCidr() {
+        cidr_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
-        cidr_ = getDefaultInstance().getCidr();
         onChanged();
         return this;
       }
-      void setCidr(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000004;
-        cidr_ = value;
+      void addCidr(com.google.protobuf.ByteString value) {
+        ensureCidrIsMutable();
+        cidr_.add(value);
         onChanged();
       }
       
@@ -11337,196 +11267,10 @@ public final class CloudModel {
         return this;
       }
       
-      // repeated .fathomcloud.protobuf.VirtualIpData ip = 5;
-      private java.util.List<io.fathom.cloud.protobuf.CloudModel.VirtualIpData> ip_ =
-        java.util.Collections.emptyList();
-      private void ensureIpIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
-          ip_ = new java.util.ArrayList<io.fathom.cloud.protobuf.CloudModel.VirtualIpData>(ip_);
-          bitField0_ |= 0x00000010;
-         }
-      }
-      
-      private com.google.protobuf.RepeatedFieldBuilder<
-          io.fathom.cloud.protobuf.CloudModel.VirtualIpData, io.fathom.cloud.protobuf.CloudModel.VirtualIpData.Builder, io.fathom.cloud.protobuf.CloudModel.VirtualIpDataOrBuilder> ipBuilder_;
-      
-      public java.util.List<io.fathom.cloud.protobuf.CloudModel.VirtualIpData> getIpList() {
-        if (ipBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(ip_);
-        } else {
-          return ipBuilder_.getMessageList();
-        }
-      }
-      public int getIpCount() {
-        if (ipBuilder_ == null) {
-          return ip_.size();
-        } else {
-          return ipBuilder_.getCount();
-        }
-      }
-      public io.fathom.cloud.protobuf.CloudModel.VirtualIpData getIp(int index) {
-        if (ipBuilder_ == null) {
-          return ip_.get(index);
-        } else {
-          return ipBuilder_.getMessage(index);
-        }
-      }
-      public Builder setIp(
-          int index, io.fathom.cloud.protobuf.CloudModel.VirtualIpData value) {
-        if (ipBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureIpIsMutable();
-          ip_.set(index, value);
-          onChanged();
-        } else {
-          ipBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      public Builder setIp(
-          int index, io.fathom.cloud.protobuf.CloudModel.VirtualIpData.Builder builderForValue) {
-        if (ipBuilder_ == null) {
-          ensureIpIsMutable();
-          ip_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          ipBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      public Builder addIp(io.fathom.cloud.protobuf.CloudModel.VirtualIpData value) {
-        if (ipBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureIpIsMutable();
-          ip_.add(value);
-          onChanged();
-        } else {
-          ipBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      public Builder addIp(
-          int index, io.fathom.cloud.protobuf.CloudModel.VirtualIpData value) {
-        if (ipBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureIpIsMutable();
-          ip_.add(index, value);
-          onChanged();
-        } else {
-          ipBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      public Builder addIp(
-          io.fathom.cloud.protobuf.CloudModel.VirtualIpData.Builder builderForValue) {
-        if (ipBuilder_ == null) {
-          ensureIpIsMutable();
-          ip_.add(builderForValue.build());
-          onChanged();
-        } else {
-          ipBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      public Builder addIp(
-          int index, io.fathom.cloud.protobuf.CloudModel.VirtualIpData.Builder builderForValue) {
-        if (ipBuilder_ == null) {
-          ensureIpIsMutable();
-          ip_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          ipBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      public Builder addAllIp(
-          java.lang.Iterable<? extends io.fathom.cloud.protobuf.CloudModel.VirtualIpData> values) {
-        if (ipBuilder_ == null) {
-          ensureIpIsMutable();
-          super.addAll(values, ip_);
-          onChanged();
-        } else {
-          ipBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      public Builder clearIp() {
-        if (ipBuilder_ == null) {
-          ip_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
-          onChanged();
-        } else {
-          ipBuilder_.clear();
-        }
-        return this;
-      }
-      public Builder removeIp(int index) {
-        if (ipBuilder_ == null) {
-          ensureIpIsMutable();
-          ip_.remove(index);
-          onChanged();
-        } else {
-          ipBuilder_.remove(index);
-        }
-        return this;
-      }
-      public io.fathom.cloud.protobuf.CloudModel.VirtualIpData.Builder getIpBuilder(
-          int index) {
-        return getIpFieldBuilder().getBuilder(index);
-      }
-      public io.fathom.cloud.protobuf.CloudModel.VirtualIpDataOrBuilder getIpOrBuilder(
-          int index) {
-        if (ipBuilder_ == null) {
-          return ip_.get(index);  } else {
-          return ipBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      public java.util.List<? extends io.fathom.cloud.protobuf.CloudModel.VirtualIpDataOrBuilder> 
-           getIpOrBuilderList() {
-        if (ipBuilder_ != null) {
-          return ipBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(ip_);
-        }
-      }
-      public io.fathom.cloud.protobuf.CloudModel.VirtualIpData.Builder addIpBuilder() {
-        return getIpFieldBuilder().addBuilder(
-            io.fathom.cloud.protobuf.CloudModel.VirtualIpData.getDefaultInstance());
-      }
-      public io.fathom.cloud.protobuf.CloudModel.VirtualIpData.Builder addIpBuilder(
-          int index) {
-        return getIpFieldBuilder().addBuilder(
-            index, io.fathom.cloud.protobuf.CloudModel.VirtualIpData.getDefaultInstance());
-      }
-      public java.util.List<io.fathom.cloud.protobuf.CloudModel.VirtualIpData.Builder> 
-           getIpBuilderList() {
-        return getIpFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          io.fathom.cloud.protobuf.CloudModel.VirtualIpData, io.fathom.cloud.protobuf.CloudModel.VirtualIpData.Builder, io.fathom.cloud.protobuf.CloudModel.VirtualIpDataOrBuilder> 
-          getIpFieldBuilder() {
-        if (ipBuilder_ == null) {
-          ipBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              io.fathom.cloud.protobuf.CloudModel.VirtualIpData, io.fathom.cloud.protobuf.CloudModel.VirtualIpData.Builder, io.fathom.cloud.protobuf.CloudModel.VirtualIpDataOrBuilder>(
-                  ip_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
-                  getParentForChildren(),
-                  isClean());
-          ip_ = null;
-        }
-        return ipBuilder_;
-      }
-      
       // optional .fathomcloud.protobuf.VirtualIpPoolType type = 6 [default = LAYER_3];
       private io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolType type_ = io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolType.LAYER_3;
       public boolean hasType() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       public io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolType getType() {
         return type_;
@@ -11535,13 +11279,13 @@ public final class CloudModel {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000010;
         type_ = value;
         onChanged();
         return this;
       }
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000010);
         type_ = io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolType.LAYER_3;
         onChanged();
         return this;
@@ -12192,21 +11936,20 @@ public final class CloudModel {
       "a\022\n\n\002id\030\001 \001(\003\022\022\n\nhost_group\030\002 \001(\003\022\r\n\005lab" +
       "el\030\003 \001(\t\022\014\n\004cidr\030\004 \001(\t\022\017\n\007gateway\030\005 \001(\t\022",
       "\026\n\016network_device\030\006 \001(\t\022\023\n\013provider_id\030\010" +
-      " \001(\t\"\304\001\n\021VirtualIpPoolData\022\n\n\002id\030\001 \001(\003\022\r" +
-      "\n\005label\030\002 \001(\t\022\014\n\004cidr\030\003 \001(\t\022\025\n\rhost_grou" +
-      "p_id\030\004 \001(\003\022/\n\002ip\030\005 \003(\0132#.fathomcloud.pro" +
-      "tobuf.VirtualIpData\022>\n\004type\030\006 \001(\0162\'.fath" +
-      "omcloud.protobuf.VirtualIpPoolType:\007LAYE" +
-      "R_3\"D\n\rVirtualIpData\022\n\n\002ip\030\001 \001(\t\022\022\n\nproj" +
-      "ect_id\030\002 \001(\003\022\023\n\013instance_id\030\003 \001(\003*g\n\rIns" +
-      "tanceState\022\013\n\007PENDING\020\000\022\013\n\007RUNNING\020\001\022\021\n\r" +
-      "SHUTTING_DOWN\020\002\022\016\n\nTERMINATED\020\003\022\014\n\010STOPP",
-      "ING\020\004\022\013\n\007STOPPED\020\005*\'\n\tProtocols\022\010\n\004ICMP\020" +
-      "\001\022\007\n\003TCP\020\006\022\007\n\003UDP\020\021*H\n\rHostGroupType\022\027\n\023" +
-      "HOST_GROUP_TYPE_RAW\020\001\022\036\n\032HOST_GROUP_TYPE" +
-      "_AMAZON_EC2\020\002*0\n\021VirtualIpPoolType\022\013\n\007LA" +
-      "YER_3\020\001\022\016\n\nAMAZON_EC2\020\002B\032\n\030io.fathom.clo" +
-      "ud.protobuf"
+      " \001(\t\"\223\001\n\021VirtualIpPoolData\022\n\n\002id\030\001 \001(\003\022\r" +
+      "\n\005label\030\002 \001(\t\022\014\n\004cidr\030\003 \003(\t\022\025\n\rhost_grou" +
+      "p_id\030\004 \001(\003\022>\n\004type\030\006 \001(\0162\'.fathomcloud.p" +
+      "rotobuf.VirtualIpPoolType:\007LAYER_3\"D\n\rVi" +
+      "rtualIpData\022\n\n\002ip\030\001 \001(\t\022\022\n\nproject_id\030\002 " +
+      "\001(\003\022\023\n\013instance_id\030\003 \001(\003*g\n\rInstanceStat" +
+      "e\022\013\n\007PENDING\020\000\022\013\n\007RUNNING\020\001\022\021\n\rSHUTTING_" +
+      "DOWN\020\002\022\016\n\nTERMINATED\020\003\022\014\n\010STOPPING\020\004\022\013\n\007" +
+      "STOPPED\020\005*\'\n\tProtocols\022\010\n\004ICMP\020\001\022\007\n\003TCP\020",
+      "\006\022\007\n\003UDP\020\021*H\n\rHostGroupType\022\027\n\023HOST_GROU" +
+      "P_TYPE_RAW\020\001\022\036\n\032HOST_GROUP_TYPE_AMAZON_E" +
+      "C2\020\002*0\n\021VirtualIpPoolType\022\013\n\007LAYER_3\020\001\022\016" +
+      "\n\nAMAZON_EC2\020\002B\032\n\030io.fathom.cloud.protob" +
+      "uf"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12338,7 +12081,7 @@ public final class CloudModel {
           internal_static_fathomcloud_protobuf_VirtualIpPoolData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_VirtualIpPoolData_descriptor,
-              new java.lang.String[] { "Id", "Label", "Cidr", "HostGroupId", "Ip", "Type", },
+              new java.lang.String[] { "Id", "Label", "Cidr", "HostGroupId", "Type", },
               io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolData.class,
               io.fathom.cloud.protobuf.CloudModel.VirtualIpPoolData.Builder.class);
           internal_static_fathomcloud_protobuf_VirtualIpData_descriptor =

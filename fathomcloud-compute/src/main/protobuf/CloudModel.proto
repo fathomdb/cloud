@@ -176,10 +176,8 @@ enum VirtualIpPoolType {
 message VirtualIpPoolData {
 	optional int64 id = 1;
 	optional string label = 2;
-	optional string cidr = 3;
+	repeated string cidr = 3;
 	optional int64 host_group_id = 4;
-	
-	repeated VirtualIpData ip = 5;
 	
 	optional VirtualIpPoolType type = 6 [default = LAYER_3];
 }

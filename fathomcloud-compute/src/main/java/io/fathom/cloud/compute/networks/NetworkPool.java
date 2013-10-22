@@ -6,9 +6,9 @@ import io.fathom.cloud.server.model.Project;
 import java.net.InetAddress;
 
 public interface NetworkPool {
-    InetAddress checkIpAvailable(byte[] seed) throws CloudException;
+    InetAddress checkIpAvailable(long seed) throws CloudException;
 
-    NetworkPoolAllocation markIpAllocated(Project project, InetAddress ip) throws CloudException;
+    NetworkPoolAllocation reserveIp(Project project, InetAddress ip) throws CloudException;
 
-    void markIpNotAllocated(VirtualIp vip) throws CloudException;
+    void releaseIpReservation(VirtualIp vip) throws CloudException;
 }
