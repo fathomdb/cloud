@@ -23,7 +23,8 @@ DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y make p
 cd /opt
 git clone -b stable/havana https://github.com/openstack/horizon.git
 cd horizon
-python tools/install_venv.py
+#TODO: It would be better to use a proxy that worked with python virtualenv tools
+http_proxy="" python tools/install_venv.py
 mkdir -p /var/horizon
 
 mkdir -p /opt/manager

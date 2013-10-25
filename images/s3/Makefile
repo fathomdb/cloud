@@ -16,6 +16,8 @@ sync:
 	# OpenStack Horizon image
 	mkdir -p ./fathom-cloud-images/images/openstack-horizon/
 	cp ../openstack-horizon/image.tgz ./fathom-cloud-images/images/openstack-horizon/image.tgz
+	cp ../openstack-horizon/manifest.json ./fathom-cloud-images/images/openstack-horizon/manifest.json
+	./expand-manifest.sh ./fathom-cloud-images/images/openstack-horizon/manifest.json ./fathom-cloud-images/images/openstack-horizon/image.tgz
 	# Upload to S3
 	s3cmd mb s3://fathom-cloud-images/
 	s3cmd setacl --acl-public s3://fathom-cloud-images/
