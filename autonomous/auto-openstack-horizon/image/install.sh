@@ -3,15 +3,25 @@
 set -e
 set -x
 
+
+# Fix hostname
+echo "horizon" > /etc/hostname
+echo -e "127.0.0.1\thorizon" >> /etc/hosts
+
+# Set up volume paths
+mkdir -p /volumes/ephemeral
+mkdir -p /volumes/persistent
+
 apt-get update
 apt-get upgrade -y
+
 DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y unzip git
 DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y openjdk-7-jre-headless
 DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y ca-certificates
 DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y make python python-setuptools python-dev gcc libxml2-dev libxslt-dev
 
 cd /opt
-git clone https://github.com/openstack/horizon.git
+git clone -b stable/havana https://github.com/openstack/horizon.git
 cd horizon
 python tools/install_venv.py
 mkdir -p /var/horizon
@@ -47,6 +57,3 @@ rm -rf ~/haproxy
 
 apt-get autoremove -y
 apt-get clean
-
-
-
