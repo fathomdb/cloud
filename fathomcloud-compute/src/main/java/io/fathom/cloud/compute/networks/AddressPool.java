@@ -68,12 +68,22 @@ class AddressPool {
             byte[] seedBytes = buffer.array();
 
             byte[] ip = new byte[mask.length];
-            System.arraycopy(seedBytes, seedBytes.length - ip.length, ip, 0, ip.length);
+
+            // We try to consistently copy:
+            // we copy the end of the seed into the end of the IP
+            // the front of the IP will likely be replaced by the mask
+            // This way the IPv4 + the IPv6 should be similar (same tail)
+            int n = Math.min(ip.length, seedBytes.length);
+            System.arraycopy(seedBytes, seedBytes.length - n, ip, ip.length - n, n);
 
             // Apply netmask
             for (int i = 0; i < mask.length; i++) {
                 ip[i] &= ~mask[i];
                 ip[i] |= (prefix[i] & mask[i]);
+            }
+
+            if ((mask.length + seedBytes.length) < ip.length) {
+                log.warn("Mask + seed still did not cover full IP range: " + range);
             }
 
             // if (ip.length == 16) {
