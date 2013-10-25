@@ -59,7 +59,7 @@ public class ImageImportsImpl implements ImageImports {
 
         metadata.put(ImageMetadata.KEY_IMAGE_SOURCE, imageUri.toString());
 
-        log.info("Downloading image {}", imageUri);
+        log.info("Downloading image {}", imageMetadata.image);
 
         // TODO: It would be nice to avoid re-downloading the same image.
         // But... the metadata may be different. Punt for now!
