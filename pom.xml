@@ -24,9 +24,6 @@
 		<module>fathomcloud-lbaas</module>
 		<module>fathomcloud-server</module>
 		<module>fathomdb-shared</module>
-		<module>wink/wink-common</module>
-		<module>wink/wink-server</module>
-		<module>wink/wink-guice-server</module>
 	</modules>
 
 	<properties>
