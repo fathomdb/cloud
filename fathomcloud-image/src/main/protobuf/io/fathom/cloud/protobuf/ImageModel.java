@@ -8,26 +8,113 @@ public final class ImageModel {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code fathomcloud.protobuf.ImageState}
+   */
   public enum ImageState
       implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>QUEUED = 1;</code>
+     *
+     * <pre>
+     * The image identifier has been reserved for an image in the Glance registry. No image data has been uploaded to Glance and the image size was not explicitly set to zero on creation.
+     * </pre>
+     */
     QUEUED(0, 1),
+    /**
+     * <code>SAVING = 2;</code>
+     *
+     * <pre>
+     * Denotes that an image’s raw data is currently being uploaded to Glance. When an image is registered with a call to POST /images and there is an x-image-meta-location header present, that image will never be in the saving status (as the image data is already available in some other location).
+     * </pre>
+     */
     SAVING(1, 2),
+    /**
+     * <code>ACTIVE = 3;</code>
+     *
+     * <pre>
+     * Denotes an image that is fully available in Glance. This occurs when the image data is uploaded, or the image size is explicitly set to zero on creation.
+     * </pre>
+     */
     ACTIVE(2, 3),
+    /**
+     * <code>KILLED = 4;</code>
+     *
+     * <pre>
+     * Denotes that an error occurred during the uploading of an image’s data, and that the image is not readable.
+     * </pre>
+     */
     KILLED(3, 4),
+    /**
+     * <code>DELETED = 5;</code>
+     *
+     * <pre>
+     *Glance has retained the information about the image, but it is no longer available to use. An image in this state will be removed automatically at a later date.
+     * </pre>
+     */
     DELETED(4, 5),
+    /**
+     * <code>PENDING_DELETE = 6;</code>
+     *
+     * <pre>
+     *This is similiar to deleted, however, Glance has not yet removed the image data. An image in this state is recoverable.
+     * </pre>
+     */
     PENDING_DELETE(5, 6),
     ;
-    
+
+    /**
+     * <code>QUEUED = 1;</code>
+     *
+     * <pre>
+     * The image identifier has been reserved for an image in the Glance registry. No image data has been uploaded to Glance and the image size was not explicitly set to zero on creation.
+     * </pre>
+     */
     public static final int QUEUED_VALUE = 1;
+    /**
+     * <code>SAVING = 2;</code>
+     *
+     * <pre>
+     * Denotes that an image’s raw data is currently being uploaded to Glance. When an image is registered with a call to POST /images and there is an x-image-meta-location header present, that image will never be in the saving status (as the image data is already available in some other location).
+     * </pre>
+     */
     public static final int SAVING_VALUE = 2;
+    /**
+     * <code>ACTIVE = 3;</code>
+     *
+     * <pre>
+     * Denotes an image that is fully available in Glance. This occurs when the image data is uploaded, or the image size is explicitly set to zero on creation.
+     * </pre>
+     */
     public static final int ACTIVE_VALUE = 3;
+    /**
+     * <code>KILLED = 4;</code>
+     *
+     * <pre>
+     * Denotes that an error occurred during the uploading of an image’s data, and that the image is not readable.
+     * </pre>
+     */
     public static final int KILLED_VALUE = 4;
+    /**
+     * <code>DELETED = 5;</code>
+     *
+     * <pre>
+     *Glance has retained the information about the image, but it is no longer available to use. An image in this state will be removed automatically at a later date.
+     * </pre>
+     */
     public static final int DELETED_VALUE = 5;
+    /**
+     * <code>PENDING_DELETE = 6;</code>
+     *
+     * <pre>
+     *This is similiar to deleted, however, Glance has not yet removed the image data. An image in this state is recoverable.
+     * </pre>
+     */
     public static final int PENDING_DELETE_VALUE = 6;
-    
-    
+
+
     public final int getNumber() { return value; }
-    
+
     public static ImageState valueOf(int value) {
       switch (value) {
         case 1: return QUEUED;
@@ -39,7 +126,7 @@ public final class ImageModel {
         default: return null;
       }
     }
-    
+
     public static com.google.protobuf.Internal.EnumLiteMap<ImageState>
         internalGetValueMap() {
       return internalValueMap;
@@ -51,7 +138,7 @@ public final class ImageModel {
               return ImageState.valueOf(number);
             }
           };
-    
+
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -64,11 +151,9 @@ public final class ImageModel {
         getDescriptor() {
       return io.fathom.cloud.protobuf.ImageModel.getDescriptor().getEnumTypes().get(0);
     }
-    
-    private static final ImageState[] VALUES = {
-      QUEUED, SAVING, ACTIVE, KILLED, DELETED, PENDING_DELETE, 
-    };
-    
+
+    private static final ImageState[] VALUES = values();
+
     public static ImageState valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -77,86 +162,175 @@ public final class ImageModel {
       }
       return VALUES[desc.getIndex()];
     }
-    
+
     private final int index;
     private final int value;
-    
+
     private ImageState(int index, int value) {
       this.index = index;
       this.value = value;
     }
-    
+
     // @@protoc_insertion_point(enum_scope:fathomcloud.protobuf.ImageState)
   }
-  
+
   public interface ImageLocationOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional string stored = 1;
+    /**
+     * <code>optional string stored = 1;</code>
+     */
     boolean hasStored();
-    String getStored();
+    /**
+     * <code>optional string stored = 1;</code>
+     */
+    java.lang.String getStored();
+    /**
+     * <code>optional string stored = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getStoredBytes();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.ImageLocation}
+   */
   public static final class ImageLocation extends
       com.google.protobuf.GeneratedMessage
       implements ImageLocationOrBuilder {
     // Use ImageLocation.newBuilder() to construct.
-    private ImageLocation(Builder builder) {
+    private ImageLocation(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private ImageLocation(boolean noInit) {}
-    
+    private ImageLocation(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final ImageLocation defaultInstance;
     public static ImageLocation getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public ImageLocation getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ImageLocation(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              stored_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageLocation_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageLocation_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageLocation_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.ImageModel.ImageLocation.class, io.fathom.cloud.protobuf.ImageModel.ImageLocation.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<ImageLocation> PARSER =
+        new com.google.protobuf.AbstractParser<ImageLocation>() {
+      public ImageLocation parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ImageLocation(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ImageLocation> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional string stored = 1;
     public static final int STORED_FIELD_NUMBER = 1;
     private java.lang.Object stored_;
+    /**
+     * <code>optional string stored = 1;</code>
+     */
     public boolean hasStored() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public String getStored() {
+    /**
+     * <code>optional string stored = 1;</code>
+     */
+    public java.lang.String getStored() {
       java.lang.Object ref = stored_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           stored_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getStoredBytes() {
+    /**
+     * <code>optional string stored = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStoredBytes() {
       java.lang.Object ref = stored_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         stored_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     private void initFields() {
       stored_ = "";
     }
@@ -164,11 +338,11 @@ public final class ImageModel {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -177,12 +351,12 @@ public final class ImageModel {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -192,94 +366,83 @@ public final class ImageModel {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.ImageModel.ImageLocation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageLocation parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageLocation parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageLocation parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageLocation parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageLocation parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageLocation parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageLocation parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageLocation parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageLocation parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.ImageModel.ImageLocation prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.ImageLocation}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.ImageModel.ImageLocationOrBuilder {
@@ -287,18 +450,21 @@ public final class ImageModel {
           getDescriptor() {
         return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageLocation_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageLocation_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageLocation_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.ImageModel.ImageLocation.class, io.fathom.cloud.protobuf.ImageModel.ImageLocation.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.ImageModel.ImageLocation.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -309,27 +475,27 @@ public final class ImageModel {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         stored_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.ImageModel.ImageLocation.getDescriptor();
+        return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageLocation_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.ImageModel.ImageLocation getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.ImageModel.ImageLocation.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.ImageModel.ImageLocation build() {
         io.fathom.cloud.protobuf.ImageModel.ImageLocation result = buildPartial();
         if (!result.isInitialized()) {
@@ -337,17 +503,7 @@ public final class ImageModel {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.ImageModel.ImageLocation buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.ImageModel.ImageLocation result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.ImageModel.ImageLocation buildPartial() {
         io.fathom.cloud.protobuf.ImageModel.ImageLocation result = new io.fathom.cloud.protobuf.ImageModel.ImageLocation(this);
         int from_bitField0_ = bitField0_;
@@ -360,7 +516,7 @@ public final class ImageModel {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.ImageModel.ImageLocation) {
           return mergeFrom((io.fathom.cloud.protobuf.ImageModel.ImageLocation)other);
@@ -369,70 +525,84 @@ public final class ImageModel {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.ImageModel.ImageLocation other) {
         if (other == io.fathom.cloud.protobuf.ImageModel.ImageLocation.getDefaultInstance()) return this;
         if (other.hasStored()) {
-          setStored(other.getStored());
+          bitField0_ |= 0x00000001;
+          stored_ = other.stored_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              stored_ = input.readBytes();
-              break;
-            }
+        io.fathom.cloud.protobuf.ImageModel.ImageLocation parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.ImageModel.ImageLocation) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional string stored = 1;
       private java.lang.Object stored_ = "";
+      /**
+       * <code>optional string stored = 1;</code>
+       */
       public boolean hasStored() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public String getStored() {
+      /**
+       * <code>optional string stored = 1;</code>
+       */
+      public java.lang.String getStored() {
         java.lang.Object ref = stored_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           stored_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setStored(String value) {
+      /**
+       * <code>optional string stored = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStoredBytes() {
+        java.lang.Object ref = stored_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          stored_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string stored = 1;</code>
+       */
+      public Builder setStored(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -441,364 +611,814 @@ public final class ImageModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string stored = 1;</code>
+       */
       public Builder clearStored() {
         bitField0_ = (bitField0_ & ~0x00000001);
         stored_ = getDefaultInstance().getStored();
         onChanged();
         return this;
       }
-      void setStored(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
+      /**
+       * <code>optional string stored = 1;</code>
+       */
+      public Builder setStoredBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         stored_ = value;
         onChanged();
+        return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.ImageLocation)
     }
-    
+
     static {
       defaultInstance = new ImageLocation(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.ImageLocation)
   }
-  
+
   public interface ImageDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional int64 id = 1;
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     boolean hasId();
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     long getId();
-    
+
     // optional bool is_public = 2;
+    /**
+     * <code>optional bool is_public = 2;</code>
+     */
     boolean hasIsPublic();
+    /**
+     * <code>optional bool is_public = 2;</code>
+     */
     boolean getIsPublic();
-    
+
     // optional string name = 3;
+    /**
+     * <code>optional string name = 3;</code>
+     */
     boolean hasName();
-    String getName();
-    
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
     // optional string disk_format = 4;
+    /**
+     * <code>optional string disk_format = 4;</code>
+     */
     boolean hasDiskFormat();
-    String getDiskFormat();
-    
+    /**
+     * <code>optional string disk_format = 4;</code>
+     */
+    java.lang.String getDiskFormat();
+    /**
+     * <code>optional string disk_format = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getDiskFormatBytes();
+
     // optional string container_format = 5;
+    /**
+     * <code>optional string container_format = 5;</code>
+     */
     boolean hasContainerFormat();
-    String getContainerFormat();
-    
+    /**
+     * <code>optional string container_format = 5;</code>
+     */
+    java.lang.String getContainerFormat();
+    /**
+     * <code>optional string container_format = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getContainerFormatBytes();
+
     // repeated string tag = 6;
-    java.util.List<String> getTagList();
+    /**
+     * <code>repeated string tag = 6;</code>
+     */
+    java.util.List<java.lang.String>
+    getTagList();
+    /**
+     * <code>repeated string tag = 6;</code>
+     */
     int getTagCount();
-    String getTag(int index);
-    
+    /**
+     * <code>repeated string tag = 6;</code>
+     */
+    java.lang.String getTag(int index);
+    /**
+     * <code>repeated string tag = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getTagBytes(int index);
+
     // optional .fathomcloud.protobuf.ImageLocation location = 7;
+    /**
+     * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+     */
     boolean hasLocation();
+    /**
+     * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+     */
     io.fathom.cloud.protobuf.ImageModel.ImageLocation getLocation();
+    /**
+     * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+     */
     io.fathom.cloud.protobuf.ImageModel.ImageLocationOrBuilder getLocationOrBuilder();
-    
+
     // optional .fathomcloud.protobuf.ImageState image_state = 8;
+    /**
+     * <code>optional .fathomcloud.protobuf.ImageState image_state = 8;</code>
+     */
     boolean hasImageState();
+    /**
+     * <code>optional .fathomcloud.protobuf.ImageState image_state = 8;</code>
+     */
     io.fathom.cloud.protobuf.ImageModel.ImageState getImageState();
-    
+
     // optional uint64 created_at = 9;
+    /**
+     * <code>optional uint64 created_at = 9;</code>
+     */
     boolean hasCreatedAt();
+    /**
+     * <code>optional uint64 created_at = 9;</code>
+     */
     long getCreatedAt();
-    
+
     // optional uint64 updated_at = 10;
+    /**
+     * <code>optional uint64 updated_at = 10;</code>
+     */
     boolean hasUpdatedAt();
+    /**
+     * <code>optional uint64 updated_at = 10;</code>
+     */
     long getUpdatedAt();
-    
+
     // optional uint64 deleted_at = 15;
+    /**
+     * <code>optional uint64 deleted_at = 15;</code>
+     */
     boolean hasDeletedAt();
+    /**
+     * <code>optional uint64 deleted_at = 15;</code>
+     */
     long getDeletedAt();
-    
+
     // optional uint64 owner_project = 11;
+    /**
+     * <code>optional uint64 owner_project = 11;</code>
+     */
     boolean hasOwnerProject();
+    /**
+     * <code>optional uint64 owner_project = 11;</code>
+     */
     long getOwnerProject();
-    
+
     // optional uint64 image_size = 12;
+    /**
+     * <code>optional uint64 image_size = 12;</code>
+     *
+     * <pre>
+     * A little redundant, but useful for remote images
+     * </pre>
+     */
     boolean hasImageSize();
+    /**
+     * <code>optional uint64 image_size = 12;</code>
+     *
+     * <pre>
+     * A little redundant, but useful for remote images
+     * </pre>
+     */
     long getImageSize();
-    
+
     // optional bytes image_checksum = 13;
+    /**
+     * <code>optional bytes image_checksum = 13;</code>
+     */
     boolean hasImageChecksum();
+    /**
+     * <code>optional bytes image_checksum = 13;</code>
+     */
     com.google.protobuf.ByteString getImageChecksum();
-    
+
     // optional .fathomcloud.protobuf.Attributes attributes = 14;
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+     */
     boolean hasAttributes();
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.Attributes getAttributes();
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder getAttributesOrBuilder();
-    
+
     // optional bool is_protected = 16;
+    /**
+     * <code>optional bool is_protected = 16;</code>
+     */
     boolean hasIsProtected();
+    /**
+     * <code>optional bool is_protected = 16;</code>
+     */
     boolean getIsProtected();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.ImageData}
+   */
   public static final class ImageData extends
       com.google.protobuf.GeneratedMessage
       implements ImageDataOrBuilder {
     // Use ImageData.newBuilder() to construct.
-    private ImageData(Builder builder) {
+    private ImageData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private ImageData(boolean noInit) {}
-    
+    private ImageData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final ImageData defaultInstance;
     public static ImageData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public ImageData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ImageData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              isPublic_ = input.readBool();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              name_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              diskFormat_ = input.readBytes();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              containerFormat_ = input.readBytes();
+              break;
+            }
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                tag_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              tag_.add(input.readBytes());
+              break;
+            }
+            case 58: {
+              io.fathom.cloud.protobuf.ImageModel.ImageLocation.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = location_.toBuilder();
+              }
+              location_ = input.readMessage(io.fathom.cloud.protobuf.ImageModel.ImageLocation.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(location_);
+                location_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
+            case 64: {
+              int rawValue = input.readEnum();
+              io.fathom.cloud.protobuf.ImageModel.ImageState value = io.fathom.cloud.protobuf.ImageModel.ImageState.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(8, rawValue);
+              } else {
+                bitField0_ |= 0x00000040;
+                imageState_ = value;
+              }
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000080;
+              createdAt_ = input.readUInt64();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000100;
+              updatedAt_ = input.readUInt64();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000400;
+              ownerProject_ = input.readUInt64();
+              break;
+            }
+            case 96: {
+              bitField0_ |= 0x00000800;
+              imageSize_ = input.readUInt64();
+              break;
+            }
+            case 106: {
+              bitField0_ |= 0x00001000;
+              imageChecksum_ = input.readBytes();
+              break;
+            }
+            case 114: {
+              io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder subBuilder = null;
+              if (((bitField0_ & 0x00002000) == 0x00002000)) {
+                subBuilder = attributes_.toBuilder();
+              }
+              attributes_ = input.readMessage(io.fathom.cloud.protobuf.CloudCommons.Attributes.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attributes_);
+                attributes_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00002000;
+              break;
+            }
+            case 120: {
+              bitField0_ |= 0x00000200;
+              deletedAt_ = input.readUInt64();
+              break;
+            }
+            case 128: {
+              bitField0_ |= 0x00004000;
+              isProtected_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          tag_ = new com.google.protobuf.UnmodifiableLazyStringList(tag_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.ImageModel.ImageData.class, io.fathom.cloud.protobuf.ImageModel.ImageData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<ImageData> PARSER =
+        new com.google.protobuf.AbstractParser<ImageData>() {
+      public ImageData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ImageData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ImageData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional int64 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private long id_;
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     public long getId() {
       return id_;
     }
-    
+
     // optional bool is_public = 2;
     public static final int IS_PUBLIC_FIELD_NUMBER = 2;
     private boolean isPublic_;
+    /**
+     * <code>optional bool is_public = 2;</code>
+     */
     public boolean hasIsPublic() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional bool is_public = 2;</code>
+     */
     public boolean getIsPublic() {
       return isPublic_;
     }
-    
+
     // optional string name = 3;
     public static final int NAME_FIELD_NUMBER = 3;
     private java.lang.Object name_;
+    /**
+     * <code>optional string name = 3;</code>
+     */
     public boolean hasName() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public String getName() {
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    public java.lang.String getName() {
       java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           name_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getNameBytes() {
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
       java.lang.Object ref = name_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional string disk_format = 4;
     public static final int DISK_FORMAT_FIELD_NUMBER = 4;
     private java.lang.Object diskFormat_;
+    /**
+     * <code>optional string disk_format = 4;</code>
+     */
     public boolean hasDiskFormat() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    public String getDiskFormat() {
+    /**
+     * <code>optional string disk_format = 4;</code>
+     */
+    public java.lang.String getDiskFormat() {
       java.lang.Object ref = diskFormat_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           diskFormat_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getDiskFormatBytes() {
+    /**
+     * <code>optional string disk_format = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDiskFormatBytes() {
       java.lang.Object ref = diskFormat_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         diskFormat_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional string container_format = 5;
     public static final int CONTAINER_FORMAT_FIELD_NUMBER = 5;
     private java.lang.Object containerFormat_;
+    /**
+     * <code>optional string container_format = 5;</code>
+     */
     public boolean hasContainerFormat() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
-    public String getContainerFormat() {
+    /**
+     * <code>optional string container_format = 5;</code>
+     */
+    public java.lang.String getContainerFormat() {
       java.lang.Object ref = containerFormat_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           containerFormat_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getContainerFormatBytes() {
+    /**
+     * <code>optional string container_format = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getContainerFormatBytes() {
       java.lang.Object ref = containerFormat_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         containerFormat_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // repeated string tag = 6;
     public static final int TAG_FIELD_NUMBER = 6;
     private com.google.protobuf.LazyStringList tag_;
-    public java.util.List<String>
+    /**
+     * <code>repeated string tag = 6;</code>
+     */
+    public java.util.List<java.lang.String>
         getTagList() {
       return tag_;
     }
+    /**
+     * <code>repeated string tag = 6;</code>
+     */
     public int getTagCount() {
       return tag_.size();
     }
-    public String getTag(int index) {
+    /**
+     * <code>repeated string tag = 6;</code>
+     */
+    public java.lang.String getTag(int index) {
       return tag_.get(index);
     }
-    
+    /**
+     * <code>repeated string tag = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTagBytes(int index) {
+      return tag_.getByteString(index);
+    }
+
     // optional .fathomcloud.protobuf.ImageLocation location = 7;
     public static final int LOCATION_FIELD_NUMBER = 7;
     private io.fathom.cloud.protobuf.ImageModel.ImageLocation location_;
+    /**
+     * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+     */
     public boolean hasLocation() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+     */
     public io.fathom.cloud.protobuf.ImageModel.ImageLocation getLocation() {
       return location_;
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+     */
     public io.fathom.cloud.protobuf.ImageModel.ImageLocationOrBuilder getLocationOrBuilder() {
       return location_;
     }
-    
+
     // optional .fathomcloud.protobuf.ImageState image_state = 8;
     public static final int IMAGE_STATE_FIELD_NUMBER = 8;
     private io.fathom.cloud.protobuf.ImageModel.ImageState imageState_;
+    /**
+     * <code>optional .fathomcloud.protobuf.ImageState image_state = 8;</code>
+     */
     public boolean hasImageState() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.ImageState image_state = 8;</code>
+     */
     public io.fathom.cloud.protobuf.ImageModel.ImageState getImageState() {
       return imageState_;
     }
-    
+
     // optional uint64 created_at = 9;
     public static final int CREATED_AT_FIELD_NUMBER = 9;
     private long createdAt_;
+    /**
+     * <code>optional uint64 created_at = 9;</code>
+     */
     public boolean hasCreatedAt() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
+    /**
+     * <code>optional uint64 created_at = 9;</code>
+     */
     public long getCreatedAt() {
       return createdAt_;
     }
-    
+
     // optional uint64 updated_at = 10;
     public static final int UPDATED_AT_FIELD_NUMBER = 10;
     private long updatedAt_;
+    /**
+     * <code>optional uint64 updated_at = 10;</code>
+     */
     public boolean hasUpdatedAt() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
+    /**
+     * <code>optional uint64 updated_at = 10;</code>
+     */
     public long getUpdatedAt() {
       return updatedAt_;
     }
-    
+
     // optional uint64 deleted_at = 15;
     public static final int DELETED_AT_FIELD_NUMBER = 15;
     private long deletedAt_;
+    /**
+     * <code>optional uint64 deleted_at = 15;</code>
+     */
     public boolean hasDeletedAt() {
       return ((bitField0_ & 0x00000200) == 0x00000200);
     }
+    /**
+     * <code>optional uint64 deleted_at = 15;</code>
+     */
     public long getDeletedAt() {
       return deletedAt_;
     }
-    
+
     // optional uint64 owner_project = 11;
     public static final int OWNER_PROJECT_FIELD_NUMBER = 11;
     private long ownerProject_;
+    /**
+     * <code>optional uint64 owner_project = 11;</code>
+     */
     public boolean hasOwnerProject() {
       return ((bitField0_ & 0x00000400) == 0x00000400);
     }
+    /**
+     * <code>optional uint64 owner_project = 11;</code>
+     */
     public long getOwnerProject() {
       return ownerProject_;
     }
-    
+
     // optional uint64 image_size = 12;
     public static final int IMAGE_SIZE_FIELD_NUMBER = 12;
     private long imageSize_;
+    /**
+     * <code>optional uint64 image_size = 12;</code>
+     *
+     * <pre>
+     * A little redundant, but useful for remote images
+     * </pre>
+     */
     public boolean hasImageSize() {
       return ((bitField0_ & 0x00000800) == 0x00000800);
     }
+    /**
+     * <code>optional uint64 image_size = 12;</code>
+     *
+     * <pre>
+     * A little redundant, but useful for remote images
+     * </pre>
+     */
     public long getImageSize() {
       return imageSize_;
     }
-    
+
     // optional bytes image_checksum = 13;
     public static final int IMAGE_CHECKSUM_FIELD_NUMBER = 13;
     private com.google.protobuf.ByteString imageChecksum_;
+    /**
+     * <code>optional bytes image_checksum = 13;</code>
+     */
     public boolean hasImageChecksum() {
       return ((bitField0_ & 0x00001000) == 0x00001000);
     }
+    /**
+     * <code>optional bytes image_checksum = 13;</code>
+     */
     public com.google.protobuf.ByteString getImageChecksum() {
       return imageChecksum_;
     }
-    
+
     // optional .fathomcloud.protobuf.Attributes attributes = 14;
     public static final int ATTRIBUTES_FIELD_NUMBER = 14;
     private io.fathom.cloud.protobuf.CloudCommons.Attributes attributes_;
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+     */
     public boolean hasAttributes() {
       return ((bitField0_ & 0x00002000) == 0x00002000);
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.Attributes getAttributes() {
       return attributes_;
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder getAttributesOrBuilder() {
       return attributes_;
     }
-    
+
     // optional bool is_protected = 16;
     public static final int IS_PROTECTED_FIELD_NUMBER = 16;
     private boolean isProtected_;
+    /**
+     * <code>optional bool is_protected = 16;</code>
+     */
     public boolean hasIsProtected() {
       return ((bitField0_ & 0x00004000) == 0x00004000);
     }
+    /**
+     * <code>optional bool is_protected = 16;</code>
+     */
     public boolean getIsProtected() {
       return isProtected_;
     }
-    
+
     private void initFields() {
       id_ = 0L;
       isPublic_ = false;
@@ -821,11 +1441,11 @@ public final class ImageModel {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -879,12 +1499,12 @@ public final class ImageModel {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -959,94 +1579,83 @@ public final class ImageModel {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.ImageModel.ImageData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.ImageModel.ImageData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.ImageModel.ImageData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.ImageData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.ImageModel.ImageDataOrBuilder {
@@ -1054,18 +1663,21 @@ public final class ImageModel {
           getDescriptor() {
         return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.ImageModel.ImageData.class, io.fathom.cloud.protobuf.ImageModel.ImageData.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.ImageModel.ImageData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1078,7 +1690,7 @@ public final class ImageModel {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         id_ = 0L;
@@ -1123,20 +1735,20 @@ public final class ImageModel {
         bitField0_ = (bitField0_ & ~0x00008000);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.ImageModel.ImageData.getDescriptor();
+        return io.fathom.cloud.protobuf.ImageModel.internal_static_fathomcloud_protobuf_ImageData_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.ImageModel.ImageData getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.ImageModel.ImageData.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.ImageModel.ImageData build() {
         io.fathom.cloud.protobuf.ImageModel.ImageData result = buildPartial();
         if (!result.isInitialized()) {
@@ -1144,17 +1756,7 @@ public final class ImageModel {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.ImageModel.ImageData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.ImageModel.ImageData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.ImageModel.ImageData buildPartial() {
         io.fathom.cloud.protobuf.ImageModel.ImageData result = new io.fathom.cloud.protobuf.ImageModel.ImageData(this);
         int from_bitField0_ = bitField0_;
@@ -1237,7 +1839,7 @@ public final class ImageModel {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.ImageModel.ImageData) {
           return mergeFrom((io.fathom.cloud.protobuf.ImageModel.ImageData)other);
@@ -1246,7 +1848,7 @@ public final class ImageModel {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.ImageModel.ImageData other) {
         if (other == io.fathom.cloud.protobuf.ImageModel.ImageData.getDefaultInstance()) return this;
         if (other.hasId()) {
@@ -1256,13 +1858,19 @@ public final class ImageModel {
           setIsPublic(other.getIsPublic());
         }
         if (other.hasName()) {
-          setName(other.getName());
+          bitField0_ |= 0x00000004;
+          name_ = other.name_;
+          onChanged();
         }
         if (other.hasDiskFormat()) {
-          setDiskFormat(other.getDiskFormat());
+          bitField0_ |= 0x00000008;
+          diskFormat_ = other.diskFormat_;
+          onChanged();
         }
         if (other.hasContainerFormat()) {
-          setContainerFormat(other.getContainerFormat());
+          bitField0_ |= 0x00000010;
+          containerFormat_ = other.containerFormat_;
+          onChanged();
         }
         if (!other.tag_.isEmpty()) {
           if (tag_.isEmpty()) {
@@ -1307,192 +1915,139 @@ public final class ImageModel {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              id_ = input.readInt64();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              isPublic_ = input.readBool();
-              break;
-            }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              name_ = input.readBytes();
-              break;
-            }
-            case 34: {
-              bitField0_ |= 0x00000008;
-              diskFormat_ = input.readBytes();
-              break;
-            }
-            case 42: {
-              bitField0_ |= 0x00000010;
-              containerFormat_ = input.readBytes();
-              break;
-            }
-            case 50: {
-              ensureTagIsMutable();
-              tag_.add(input.readBytes());
-              break;
-            }
-            case 58: {
-              io.fathom.cloud.protobuf.ImageModel.ImageLocation.Builder subBuilder = io.fathom.cloud.protobuf.ImageModel.ImageLocation.newBuilder();
-              if (hasLocation()) {
-                subBuilder.mergeFrom(getLocation());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setLocation(subBuilder.buildPartial());
-              break;
-            }
-            case 64: {
-              int rawValue = input.readEnum();
-              io.fathom.cloud.protobuf.ImageModel.ImageState value = io.fathom.cloud.protobuf.ImageModel.ImageState.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(8, rawValue);
-              } else {
-                bitField0_ |= 0x00000080;
-                imageState_ = value;
-              }
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000100;
-              createdAt_ = input.readUInt64();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000200;
-              updatedAt_ = input.readUInt64();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000800;
-              ownerProject_ = input.readUInt64();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00001000;
-              imageSize_ = input.readUInt64();
-              break;
-            }
-            case 106: {
-              bitField0_ |= 0x00002000;
-              imageChecksum_ = input.readBytes();
-              break;
-            }
-            case 114: {
-              io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder subBuilder = io.fathom.cloud.protobuf.CloudCommons.Attributes.newBuilder();
-              if (hasAttributes()) {
-                subBuilder.mergeFrom(getAttributes());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setAttributes(subBuilder.buildPartial());
-              break;
-            }
-            case 120: {
-              bitField0_ |= 0x00000400;
-              deletedAt_ = input.readUInt64();
-              break;
-            }
-            case 128: {
-              bitField0_ |= 0x00008000;
-              isProtected_ = input.readBool();
-              break;
-            }
+        io.fathom.cloud.protobuf.ImageModel.ImageData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.ImageModel.ImageData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional int64 id = 1;
       private long id_ ;
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public long getId() {
         return id_;
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public Builder setId(long value) {
         bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional bool is_public = 2;
       private boolean isPublic_ ;
+      /**
+       * <code>optional bool is_public = 2;</code>
+       */
       public boolean hasIsPublic() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional bool is_public = 2;</code>
+       */
       public boolean getIsPublic() {
         return isPublic_;
       }
+      /**
+       * <code>optional bool is_public = 2;</code>
+       */
       public Builder setIsPublic(boolean value) {
         bitField0_ |= 0x00000002;
         isPublic_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bool is_public = 2;</code>
+       */
       public Builder clearIsPublic() {
         bitField0_ = (bitField0_ & ~0x00000002);
         isPublic_ = false;
         onChanged();
         return this;
       }
-      
+
       // optional string name = 3;
       private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 3;</code>
+       */
       public boolean hasName() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      public String getName() {
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public java.lang.String getName() {
         java.lang.Object ref = name_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           name_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setName(String value) {
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1501,34 +2056,72 @@ public final class ImageModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string name = 3;</code>
+       */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000004);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
-      void setName(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000004;
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
         name_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional string disk_format = 4;
       private java.lang.Object diskFormat_ = "";
+      /**
+       * <code>optional string disk_format = 4;</code>
+       */
       public boolean hasDiskFormat() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      public String getDiskFormat() {
+      /**
+       * <code>optional string disk_format = 4;</code>
+       */
+      public java.lang.String getDiskFormat() {
         java.lang.Object ref = diskFormat_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           diskFormat_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setDiskFormat(String value) {
+      /**
+       * <code>optional string disk_format = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDiskFormatBytes() {
+        java.lang.Object ref = diskFormat_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          diskFormat_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string disk_format = 4;</code>
+       */
+      public Builder setDiskFormat(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1537,34 +2130,72 @@ public final class ImageModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string disk_format = 4;</code>
+       */
       public Builder clearDiskFormat() {
         bitField0_ = (bitField0_ & ~0x00000008);
         diskFormat_ = getDefaultInstance().getDiskFormat();
         onChanged();
         return this;
       }
-      void setDiskFormat(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000008;
+      /**
+       * <code>optional string disk_format = 4;</code>
+       */
+      public Builder setDiskFormatBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
         diskFormat_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional string container_format = 5;
       private java.lang.Object containerFormat_ = "";
+      /**
+       * <code>optional string container_format = 5;</code>
+       */
       public boolean hasContainerFormat() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      public String getContainerFormat() {
+      /**
+       * <code>optional string container_format = 5;</code>
+       */
+      public java.lang.String getContainerFormat() {
         java.lang.Object ref = containerFormat_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           containerFormat_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setContainerFormat(String value) {
+      /**
+       * <code>optional string container_format = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getContainerFormatBytes() {
+        java.lang.Object ref = containerFormat_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          containerFormat_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string container_format = 5;</code>
+       */
+      public Builder setContainerFormat(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1573,18 +2204,29 @@ public final class ImageModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string container_format = 5;</code>
+       */
       public Builder clearContainerFormat() {
         bitField0_ = (bitField0_ & ~0x00000010);
         containerFormat_ = getDefaultInstance().getContainerFormat();
         onChanged();
         return this;
       }
-      void setContainerFormat(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000010;
+      /**
+       * <code>optional string container_format = 5;</code>
+       */
+      public Builder setContainerFormatBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
         containerFormat_ = value;
         onChanged();
+        return this;
       }
-      
+
       // repeated string tag = 6;
       private com.google.protobuf.LazyStringList tag_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureTagIsMutable() {
@@ -1593,18 +2235,37 @@ public final class ImageModel {
           bitField0_ |= 0x00000020;
          }
       }
-      public java.util.List<String>
+      /**
+       * <code>repeated string tag = 6;</code>
+       */
+      public java.util.List<java.lang.String>
           getTagList() {
         return java.util.Collections.unmodifiableList(tag_);
       }
+      /**
+       * <code>repeated string tag = 6;</code>
+       */
       public int getTagCount() {
         return tag_.size();
       }
-      public String getTag(int index) {
+      /**
+       * <code>repeated string tag = 6;</code>
+       */
+      public java.lang.String getTag(int index) {
         return tag_.get(index);
       }
+      /**
+       * <code>repeated string tag = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTagBytes(int index) {
+        return tag_.getByteString(index);
+      }
+      /**
+       * <code>repeated string tag = 6;</code>
+       */
       public Builder setTag(
-          int index, String value) {
+          int index, java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1613,7 +2274,11 @@ public final class ImageModel {
         onChanged();
         return this;
       }
-      public Builder addTag(String value) {
+      /**
+       * <code>repeated string tag = 6;</code>
+       */
+      public Builder addTag(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1622,32 +2287,52 @@ public final class ImageModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated string tag = 6;</code>
+       */
       public Builder addAllTag(
-          java.lang.Iterable<String> values) {
+          java.lang.Iterable<java.lang.String> values) {
         ensureTagIsMutable();
         super.addAll(values, tag_);
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated string tag = 6;</code>
+       */
       public Builder clearTag() {
         tag_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
-      void addTag(com.google.protobuf.ByteString value) {
-        ensureTagIsMutable();
+      /**
+       * <code>repeated string tag = 6;</code>
+       */
+      public Builder addTagBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureTagIsMutable();
         tag_.add(value);
         onChanged();
+        return this;
       }
-      
+
       // optional .fathomcloud.protobuf.ImageLocation location = 7;
       private io.fathom.cloud.protobuf.ImageModel.ImageLocation location_ = io.fathom.cloud.protobuf.ImageModel.ImageLocation.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.ImageModel.ImageLocation, io.fathom.cloud.protobuf.ImageModel.ImageLocation.Builder, io.fathom.cloud.protobuf.ImageModel.ImageLocationOrBuilder> locationBuilder_;
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+       */
       public boolean hasLocation() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+       */
       public io.fathom.cloud.protobuf.ImageModel.ImageLocation getLocation() {
         if (locationBuilder_ == null) {
           return location_;
@@ -1655,6 +2340,9 @@ public final class ImageModel {
           return locationBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+       */
       public Builder setLocation(io.fathom.cloud.protobuf.ImageModel.ImageLocation value) {
         if (locationBuilder_ == null) {
           if (value == null) {
@@ -1668,6 +2356,9 @@ public final class ImageModel {
         bitField0_ |= 0x00000040;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+       */
       public Builder setLocation(
           io.fathom.cloud.protobuf.ImageModel.ImageLocation.Builder builderForValue) {
         if (locationBuilder_ == null) {
@@ -1679,6 +2370,9 @@ public final class ImageModel {
         bitField0_ |= 0x00000040;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+       */
       public Builder mergeLocation(io.fathom.cloud.protobuf.ImageModel.ImageLocation value) {
         if (locationBuilder_ == null) {
           if (((bitField0_ & 0x00000040) == 0x00000040) &&
@@ -1695,6 +2389,9 @@ public final class ImageModel {
         bitField0_ |= 0x00000040;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+       */
       public Builder clearLocation() {
         if (locationBuilder_ == null) {
           location_ = io.fathom.cloud.protobuf.ImageModel.ImageLocation.getDefaultInstance();
@@ -1705,11 +2402,17 @@ public final class ImageModel {
         bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+       */
       public io.fathom.cloud.protobuf.ImageModel.ImageLocation.Builder getLocationBuilder() {
         bitField0_ |= 0x00000040;
         onChanged();
         return getLocationFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+       */
       public io.fathom.cloud.protobuf.ImageModel.ImageLocationOrBuilder getLocationOrBuilder() {
         if (locationBuilder_ != null) {
           return locationBuilder_.getMessageOrBuilder();
@@ -1717,6 +2420,9 @@ public final class ImageModel {
           return location_;
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageLocation location = 7;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.ImageModel.ImageLocation, io.fathom.cloud.protobuf.ImageModel.ImageLocation.Builder, io.fathom.cloud.protobuf.ImageModel.ImageLocationOrBuilder> 
           getLocationFieldBuilder() {
@@ -1730,15 +2436,24 @@ public final class ImageModel {
         }
         return locationBuilder_;
       }
-      
+
       // optional .fathomcloud.protobuf.ImageState image_state = 8;
       private io.fathom.cloud.protobuf.ImageModel.ImageState imageState_ = io.fathom.cloud.protobuf.ImageModel.ImageState.QUEUED;
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageState image_state = 8;</code>
+       */
       public boolean hasImageState() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageState image_state = 8;</code>
+       */
       public io.fathom.cloud.protobuf.ImageModel.ImageState getImageState() {
         return imageState_;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageState image_state = 8;</code>
+       */
       public Builder setImageState(io.fathom.cloud.protobuf.ImageModel.ImageState value) {
         if (value == null) {
           throw new NullPointerException();
@@ -1748,126 +2463,214 @@ public final class ImageModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.ImageState image_state = 8;</code>
+       */
       public Builder clearImageState() {
         bitField0_ = (bitField0_ & ~0x00000080);
         imageState_ = io.fathom.cloud.protobuf.ImageModel.ImageState.QUEUED;
         onChanged();
         return this;
       }
-      
+
       // optional uint64 created_at = 9;
       private long createdAt_ ;
+      /**
+       * <code>optional uint64 created_at = 9;</code>
+       */
       public boolean hasCreatedAt() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
+      /**
+       * <code>optional uint64 created_at = 9;</code>
+       */
       public long getCreatedAt() {
         return createdAt_;
       }
+      /**
+       * <code>optional uint64 created_at = 9;</code>
+       */
       public Builder setCreatedAt(long value) {
         bitField0_ |= 0x00000100;
         createdAt_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 created_at = 9;</code>
+       */
       public Builder clearCreatedAt() {
         bitField0_ = (bitField0_ & ~0x00000100);
         createdAt_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional uint64 updated_at = 10;
       private long updatedAt_ ;
+      /**
+       * <code>optional uint64 updated_at = 10;</code>
+       */
       public boolean hasUpdatedAt() {
         return ((bitField0_ & 0x00000200) == 0x00000200);
       }
+      /**
+       * <code>optional uint64 updated_at = 10;</code>
+       */
       public long getUpdatedAt() {
         return updatedAt_;
       }
+      /**
+       * <code>optional uint64 updated_at = 10;</code>
+       */
       public Builder setUpdatedAt(long value) {
         bitField0_ |= 0x00000200;
         updatedAt_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 updated_at = 10;</code>
+       */
       public Builder clearUpdatedAt() {
         bitField0_ = (bitField0_ & ~0x00000200);
         updatedAt_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional uint64 deleted_at = 15;
       private long deletedAt_ ;
+      /**
+       * <code>optional uint64 deleted_at = 15;</code>
+       */
       public boolean hasDeletedAt() {
         return ((bitField0_ & 0x00000400) == 0x00000400);
       }
+      /**
+       * <code>optional uint64 deleted_at = 15;</code>
+       */
       public long getDeletedAt() {
         return deletedAt_;
       }
+      /**
+       * <code>optional uint64 deleted_at = 15;</code>
+       */
       public Builder setDeletedAt(long value) {
         bitField0_ |= 0x00000400;
         deletedAt_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 deleted_at = 15;</code>
+       */
       public Builder clearDeletedAt() {
         bitField0_ = (bitField0_ & ~0x00000400);
         deletedAt_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional uint64 owner_project = 11;
       private long ownerProject_ ;
+      /**
+       * <code>optional uint64 owner_project = 11;</code>
+       */
       public boolean hasOwnerProject() {
         return ((bitField0_ & 0x00000800) == 0x00000800);
       }
+      /**
+       * <code>optional uint64 owner_project = 11;</code>
+       */
       public long getOwnerProject() {
         return ownerProject_;
       }
+      /**
+       * <code>optional uint64 owner_project = 11;</code>
+       */
       public Builder setOwnerProject(long value) {
         bitField0_ |= 0x00000800;
         ownerProject_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 owner_project = 11;</code>
+       */
       public Builder clearOwnerProject() {
         bitField0_ = (bitField0_ & ~0x00000800);
         ownerProject_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional uint64 image_size = 12;
       private long imageSize_ ;
+      /**
+       * <code>optional uint64 image_size = 12;</code>
+       *
+       * <pre>
+       * A little redundant, but useful for remote images
+       * </pre>
+       */
       public boolean hasImageSize() {
         return ((bitField0_ & 0x00001000) == 0x00001000);
       }
+      /**
+       * <code>optional uint64 image_size = 12;</code>
+       *
+       * <pre>
+       * A little redundant, but useful for remote images
+       * </pre>
+       */
       public long getImageSize() {
         return imageSize_;
       }
+      /**
+       * <code>optional uint64 image_size = 12;</code>
+       *
+       * <pre>
+       * A little redundant, but useful for remote images
+       * </pre>
+       */
       public Builder setImageSize(long value) {
         bitField0_ |= 0x00001000;
         imageSize_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 image_size = 12;</code>
+       *
+       * <pre>
+       * A little redundant, but useful for remote images
+       * </pre>
+       */
       public Builder clearImageSize() {
         bitField0_ = (bitField0_ & ~0x00001000);
         imageSize_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional bytes image_checksum = 13;
       private com.google.protobuf.ByteString imageChecksum_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes image_checksum = 13;</code>
+       */
       public boolean hasImageChecksum() {
         return ((bitField0_ & 0x00002000) == 0x00002000);
       }
+      /**
+       * <code>optional bytes image_checksum = 13;</code>
+       */
       public com.google.protobuf.ByteString getImageChecksum() {
         return imageChecksum_;
       }
+      /**
+       * <code>optional bytes image_checksum = 13;</code>
+       */
       public Builder setImageChecksum(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -1877,20 +2680,29 @@ public final class ImageModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bytes image_checksum = 13;</code>
+       */
       public Builder clearImageChecksum() {
         bitField0_ = (bitField0_ & ~0x00002000);
         imageChecksum_ = getDefaultInstance().getImageChecksum();
         onChanged();
         return this;
       }
-      
+
       // optional .fathomcloud.protobuf.Attributes attributes = 14;
       private io.fathom.cloud.protobuf.CloudCommons.Attributes attributes_ = io.fathom.cloud.protobuf.CloudCommons.Attributes.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.CloudCommons.Attributes, io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder, io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder> attributesBuilder_;
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+       */
       public boolean hasAttributes() {
         return ((bitField0_ & 0x00004000) == 0x00004000);
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.Attributes getAttributes() {
         if (attributesBuilder_ == null) {
           return attributes_;
@@ -1898,6 +2710,9 @@ public final class ImageModel {
           return attributesBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+       */
       public Builder setAttributes(io.fathom.cloud.protobuf.CloudCommons.Attributes value) {
         if (attributesBuilder_ == null) {
           if (value == null) {
@@ -1911,6 +2726,9 @@ public final class ImageModel {
         bitField0_ |= 0x00004000;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+       */
       public Builder setAttributes(
           io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder builderForValue) {
         if (attributesBuilder_ == null) {
@@ -1922,6 +2740,9 @@ public final class ImageModel {
         bitField0_ |= 0x00004000;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+       */
       public Builder mergeAttributes(io.fathom.cloud.protobuf.CloudCommons.Attributes value) {
         if (attributesBuilder_ == null) {
           if (((bitField0_ & 0x00004000) == 0x00004000) &&
@@ -1938,6 +2759,9 @@ public final class ImageModel {
         bitField0_ |= 0x00004000;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+       */
       public Builder clearAttributes() {
         if (attributesBuilder_ == null) {
           attributes_ = io.fathom.cloud.protobuf.CloudCommons.Attributes.getDefaultInstance();
@@ -1948,11 +2772,17 @@ public final class ImageModel {
         bitField0_ = (bitField0_ & ~0x00004000);
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder getAttributesBuilder() {
         bitField0_ |= 0x00004000;
         onChanged();
         return getAttributesFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder getAttributesOrBuilder() {
         if (attributesBuilder_ != null) {
           return attributesBuilder_.getMessageOrBuilder();
@@ -1960,6 +2790,9 @@ public final class ImageModel {
           return attributes_;
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 14;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.CloudCommons.Attributes, io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder, io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder> 
           getAttributesFieldBuilder() {
@@ -1973,39 +2806,51 @@ public final class ImageModel {
         }
         return attributesBuilder_;
       }
-      
+
       // optional bool is_protected = 16;
       private boolean isProtected_ ;
+      /**
+       * <code>optional bool is_protected = 16;</code>
+       */
       public boolean hasIsProtected() {
         return ((bitField0_ & 0x00008000) == 0x00008000);
       }
+      /**
+       * <code>optional bool is_protected = 16;</code>
+       */
       public boolean getIsProtected() {
         return isProtected_;
       }
+      /**
+       * <code>optional bool is_protected = 16;</code>
+       */
       public Builder setIsProtected(boolean value) {
         bitField0_ |= 0x00008000;
         isProtected_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bool is_protected = 16;</code>
+       */
       public Builder clearIsProtected() {
         bitField0_ = (bitField0_ & ~0x00008000);
         isProtected_ = false;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.ImageData)
     }
-    
+
     static {
       defaultInstance = new ImageData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.ImageData)
   }
-  
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_fathomcloud_protobuf_ImageLocation_descriptor;
   private static
@@ -2016,7 +2861,7 @@ public final class ImageModel {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_fathomcloud_protobuf_ImageData_fieldAccessorTable;
-  
+
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -2053,17 +2898,13 @@ public final class ImageModel {
           internal_static_fathomcloud_protobuf_ImageLocation_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_ImageLocation_descriptor,
-              new java.lang.String[] { "Stored", },
-              io.fathom.cloud.protobuf.ImageModel.ImageLocation.class,
-              io.fathom.cloud.protobuf.ImageModel.ImageLocation.Builder.class);
+              new java.lang.String[] { "Stored", });
           internal_static_fathomcloud_protobuf_ImageData_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_fathomcloud_protobuf_ImageData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_ImageData_descriptor,
-              new java.lang.String[] { "Id", "IsPublic", "Name", "DiskFormat", "ContainerFormat", "Tag", "Location", "ImageState", "CreatedAt", "UpdatedAt", "DeletedAt", "OwnerProject", "ImageSize", "ImageChecksum", "Attributes", "IsProtected", },
-              io.fathom.cloud.protobuf.ImageModel.ImageData.class,
-              io.fathom.cloud.protobuf.ImageModel.ImageData.Builder.class);
+              new java.lang.String[] { "Id", "IsPublic", "Name", "DiskFormat", "ContainerFormat", "Tag", "Location", "ImageState", "CreatedAt", "UpdatedAt", "DeletedAt", "OwnerProject", "ImageSize", "ImageChecksum", "Attributes", "IsProtected", });
           return null;
         }
       };
@@ -2073,6 +2914,6 @@ public final class ImageModel {
           io.fathom.cloud.protobuf.CloudCommons.getDescriptor(),
         }, assigner);
   }
-  
+
   // @@protoc_insertion_point(outer_class_scope)
 }
