@@ -10,6 +10,5 @@ public class ApiVersions {
     public static class VersionList {
         @XmlElement(name = "version")
         public List<ApiVersion> versions;
-
     }
 }

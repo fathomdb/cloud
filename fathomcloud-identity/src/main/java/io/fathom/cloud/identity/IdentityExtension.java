@@ -1,6 +1,6 @@
 package io.fathom.cloud.identity;
 
-import io.fathom.cloud.identity.api.os.model.v3.BrokenClientsFilter;
+import io.fathom.cloud.identity.api.os.resources.BrokenClientsFilter;
 import io.fathom.cloud.identity.api.os.resources.CredentialsResource;
 import io.fathom.cloud.identity.api.os.resources.DomainsResource;
 import io.fathom.cloud.identity.api.os.resources.GroupsResource;

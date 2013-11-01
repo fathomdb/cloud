@@ -9,10 +9,10 @@ public class V2Endpoint {
     @XmlAttribute
     public String region;
 
-    @XmlAttribute
+    @XmlAttribute(name = "publicURL")
     public String publicURL;
 
-    @XmlAttribute
+    @XmlAttribute(name = "internalURL")
     public String internalURL;
 
     public V2EndpointVersion version;
