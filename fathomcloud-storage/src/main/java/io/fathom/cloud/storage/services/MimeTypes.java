@@ -1,37 +1,38 @@
-package io.fathom.cloud.storage.api.os.resources;
+package io.fathom.cloud.storage.services;
 
-import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Map;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Maps;
-import com.google.common.io.Files;
+import com.google.common.io.CharSource;
+import com.google.common.io.CharStreams;
 import com.google.common.io.LineProcessor;
+import com.google.common.io.Resources;
 
 public class MimeTypes {
     public static final MimeTypes INSTANCE;
 
     static {
-        File path = new File("/etc/mime.types");
         try {
-            INSTANCE = new MimeTypes(path);
-        } catch (IOException e) {
-            throw new IllegalStateException("Unable to read " + path);
+            URL resource = Resources.getResource(MimeTypes.class, "/mime.types");
+            INSTANCE = new MimeTypes(Resources.asCharSource(resource, Charsets.UTF_8));
+        } catch (Exception e) {
+            throw new IllegalStateException("Unable to read mime.types resource", e);
         }
-
     }
 
-    private MimeTypes(File path) throws IOException {
-        parse(path);
+    private MimeTypes(CharSource source) throws IOException {
+        parse(source);
     }
 
     final Map<String, String> extensionToMimeType = Maps.newHashMap();
 
-    private void parse(File path) throws IOException {
-        Files.readLines(path, Charsets.UTF_8, new LineProcessor<Integer>() {
+    private void parse(CharSource source) throws IOException {
+        CharStreams.readLines(source, new LineProcessor<Integer>() {
 
             int count = 0;
 
