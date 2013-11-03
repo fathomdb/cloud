@@ -61,7 +61,7 @@ public class LocalMachineInfo {
 
     public String getMachineKey() {
         if (machineKey == null) {
-            File keyPath = configuration.lookupFile("machine.uniquekey.file", "/var/openstack/machineid");
+            File keyPath = configuration.lookupFile("machine.uniquekey.file", "machineid");
 
             if (!keyPath.exists()) {
                 String value = new MachineSignature().generateKey();
