@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fathomdb.utils.Hex;
-import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
@@ -56,18 +55,19 @@ public class MachineSignature {
             // }
         }
 
-        String hostname;
-        try {
-            hostname = Files.toString(new File("/etc/hostname"), Charsets.UTF_8);
-        } catch (IOException e) {
-            throw new IllegalStateException("Unable to read /etc/hostname", e);
-        }
+        String hostname = LocalMachineInfo.getHostname();
         hostname = hostname.trim();
         material.add("hostname:" + hostname);
 
         // TODO: Any more for the mix??
 
-        material.add(computeFileHash("/proc/cpuinfo"));
+        File cpuinfoFile = new File("/proc/cpuinfo");
+        if (cpuinfoFile.exists()) {
+            material.add(computeFileHash(cpuinfoFile));
+        } else {
+            log.info("/proc/cpuinfo file not found; won't include in machine signature");
+        }
+
         Collections.sort(material);
 
         Hasher hasher = Hashing.md5().newHasher();
@@ -79,9 +79,9 @@ public class MachineSignature {
         return hostname + "_" + hasher.hash().toString();
     }
 
-    private String computeFileHash(String path) {
+    private String computeFileHash(File path) {
         try {
-            byte[] contents = Files.toByteArray(new File(path));
+            byte[] contents = Files.toByteArray(path);
             String hash = Hashing.md5().hashBytes(contents).toString();
 
             return "filehash:" + path + ":" + hash;

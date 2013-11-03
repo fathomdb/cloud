@@ -12,6 +12,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fathomdb.Configuration;
 import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
@@ -19,6 +22,7 @@ import com.google.common.io.Files;
 
 @Singleton
 public class LocalMachineInfo {
+    private static final Logger log = LoggerFactory.getLogger(LocalMachineInfo.class);
 
     @Inject
     Configuration configuration;
@@ -81,4 +85,42 @@ public class LocalMachineInfo {
         return machineKey;
     }
 
+    public static String getHostname() {
+        String hostname = null;
+
+        File hostnameFile = new File("/etc/hostname");
+        if (hostnameFile.exists()) {
+            try {
+                hostname = Files.toString(hostnameFile, Charsets.UTF_8);
+            } catch (IOException e) {
+                log.warn("Unable to read /etc/hostname", e);
+            }
+            if (hostname != null) {
+                hostname = hostname.trim();
+                if (hostname.isEmpty()) {
+                    hostname = null;
+                }
+            }
+        }
+
+        try {
+            hostname = InetAddress.getLocalHost().getHostName();
+        } catch (Exception e) {
+            log.warn("Error resolving hostname", e);
+        }
+
+        if (hostname != null) {
+            hostname = hostname.trim();
+            if (hostname.isEmpty()) {
+                hostname = null;
+            }
+        }
+
+        if (hostname == null) {
+            throw new IllegalStateException("Unable to fetch hostname");
+        }
+
+        return hostname;
+
+    }
 }
