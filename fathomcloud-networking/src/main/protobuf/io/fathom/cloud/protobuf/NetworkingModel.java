@@ -10,526 +10,135 @@ public final class NetworkingModel {
   }
   public interface NetworkDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional uint64 id = 1;
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
     boolean hasId();
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
     long getId();
-    
+
     // optional string name = 2;
+    /**
+     * <code>optional string name = 2;</code>
+     */
     boolean hasName();
-    String getName();
-    
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
     // optional uint64 project = 3;
+    /**
+     * <code>optional uint64 project = 3;</code>
+     */
     boolean hasProject();
+    /**
+     * <code>optional uint64 project = 3;</code>
+     */
     long getProject();
-    
+
     // optional string status = 6;
+    /**
+     * <code>optional string status = 6;</code>
+     */
     boolean hasStatus();
-    String getStatus();
-    
+    /**
+     * <code>optional string status = 6;</code>
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>optional string status = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+
     // optional bool router_external = 7;
+    /**
+     * <code>optional bool router_external = 7;</code>
+     */
     boolean hasRouterExternal();
+    /**
+     * <code>optional bool router_external = 7;</code>
+     */
     boolean getRouterExternal();
-    
+
     // optional bool shared = 8;
+    /**
+     * <code>optional bool shared = 8;</code>
+     */
     boolean hasShared();
+    /**
+     * <code>optional bool shared = 8;</code>
+     */
     boolean getShared();
-    
+
     // optional bool admin_state_up = 9;
+    /**
+     * <code>optional bool admin_state_up = 9;</code>
+     */
     boolean hasAdminStateUp();
+    /**
+     * <code>optional bool admin_state_up = 9;</code>
+     */
     boolean getAdminStateUp();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.NetworkData}
+   */
   public static final class NetworkData extends
       com.google.protobuf.GeneratedMessage
       implements NetworkDataOrBuilder {
     // Use NetworkData.newBuilder() to construct.
-    private NetworkData(Builder builder) {
+    private NetworkData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private NetworkData(boolean noInit) {}
-    
+    private NetworkData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final NetworkData defaultInstance;
     public static NetworkData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public NetworkData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_NetworkData_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_NetworkData_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // optional uint64 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private long id_;
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public long getId() {
-      return id_;
-    }
-    
-    // optional string name = 2;
-    public static final int NAME_FIELD_NUMBER = 2;
-    private java.lang.Object name_;
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          name_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // optional uint64 project = 3;
-    public static final int PROJECT_FIELD_NUMBER = 3;
-    private long project_;
-    public boolean hasProject() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public long getProject() {
-      return project_;
-    }
-    
-    // optional string status = 6;
-    public static final int STATUS_FIELD_NUMBER = 6;
-    private java.lang.Object status_;
-    public boolean hasStatus() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    public String getStatus() {
-      java.lang.Object ref = status_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          status_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getStatusBytes() {
-      java.lang.Object ref = status_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        status_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // optional bool router_external = 7;
-    public static final int ROUTER_EXTERNAL_FIELD_NUMBER = 7;
-    private boolean routerExternal_;
-    public boolean hasRouterExternal() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    public boolean getRouterExternal() {
-      return routerExternal_;
-    }
-    
-    // optional bool shared = 8;
-    public static final int SHARED_FIELD_NUMBER = 8;
-    private boolean shared_;
-    public boolean hasShared() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    public boolean getShared() {
-      return shared_;
-    }
-    
-    // optional bool admin_state_up = 9;
-    public static final int ADMIN_STATE_UP_FIELD_NUMBER = 9;
-    private boolean adminStateUp_;
-    public boolean hasAdminStateUp() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    public boolean getAdminStateUp() {
-      return adminStateUp_;
-    }
-    
-    private void initFields() {
-      id_ = 0L;
-      name_ = "";
-      project_ = 0L;
-      status_ = "";
-      routerExternal_ = false;
-      shared_ = false;
-      adminStateUp_ = false;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, id_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt64(3, project_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(6, getStatusBytes());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBool(7, routerExternal_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeBool(8, shared_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeBool(9, adminStateUp_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, id_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(3, project_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getStatusBytes());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(7, routerExternal_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(8, shared_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(9, adminStateUp_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
     }
-    
-    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
+    private NetworkData(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(io.fathom.cloud.protobuf.NetworkingModel.NetworkData prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements io.fathom.cloud.protobuf.NetworkingModel.NetworkDataOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_NetworkData_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_NetworkData_fieldAccessorTable;
-      }
-      
-      // Construct using io.fathom.cloud.protobuf.NetworkingModel.NetworkData.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        id_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        project_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        status_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
-        routerExternal_ = false;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        shared_ = false;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        adminStateUp_ = false;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return io.fathom.cloud.protobuf.NetworkingModel.NetworkData.getDescriptor();
-      }
-      
-      public io.fathom.cloud.protobuf.NetworkingModel.NetworkData getDefaultInstanceForType() {
-        return io.fathom.cloud.protobuf.NetworkingModel.NetworkData.getDefaultInstance();
-      }
-      
-      public io.fathom.cloud.protobuf.NetworkingModel.NetworkData build() {
-        io.fathom.cloud.protobuf.NetworkingModel.NetworkData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private io.fathom.cloud.protobuf.NetworkingModel.NetworkData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.NetworkingModel.NetworkData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public io.fathom.cloud.protobuf.NetworkingModel.NetworkData buildPartial() {
-        io.fathom.cloud.protobuf.NetworkingModel.NetworkData result = new io.fathom.cloud.protobuf.NetworkingModel.NetworkData(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.name_ = name_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.project_ = project_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.status_ = status_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.routerExternal_ = routerExternal_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.shared_ = shared_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.adminStateUp_ = adminStateUp_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof io.fathom.cloud.protobuf.NetworkingModel.NetworkData) {
-          return mergeFrom((io.fathom.cloud.protobuf.NetworkingModel.NetworkData)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(io.fathom.cloud.protobuf.NetworkingModel.NetworkData other) {
-        if (other == io.fathom.cloud.protobuf.NetworkingModel.NetworkData.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          setId(other.getId());
-        }
-        if (other.hasName()) {
-          setName(other.getName());
-        }
-        if (other.hasProject()) {
-          setProject(other.getProject());
-        }
-        if (other.hasStatus()) {
-          setStatus(other.getStatus());
-        }
-        if (other.hasRouterExternal()) {
-          setRouterExternal(other.getRouterExternal());
-        }
-        if (other.hasShared()) {
-          setShared(other.getShared());
-        }
-        if (other.hasAdminStateUp()) {
-          setAdminStateUp(other.getAdminStateUp());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -570,375 +179,228 @@ public final class NetworkingModel {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
-      private int bitField0_;
-      
-      // optional uint64 id = 1;
-      private long id_ ;
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public long getId() {
-        return id_;
-      }
-      public Builder setId(long value) {
-        bitField0_ |= 0x00000001;
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // optional string name = 2;
-      private java.lang.Object name_ = "";
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      public Builder setName(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      void setName(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000002;
-        name_ = value;
-        onChanged();
-      }
-      
-      // optional uint64 project = 3;
-      private long project_ ;
-      public boolean hasProject() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public long getProject() {
-        return project_;
-      }
-      public Builder setProject(long value) {
-        bitField0_ |= 0x00000004;
-        project_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearProject() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        project_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // optional string status = 6;
-      private java.lang.Object status_ = "";
-      public boolean hasStatus() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      public String getStatus() {
-        java.lang.Object ref = status_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          status_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      public Builder setStatus(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearStatus() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        status_ = getDefaultInstance().getStatus();
-        onChanged();
-        return this;
-      }
-      void setStatus(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000008;
-        status_ = value;
-        onChanged();
-      }
-      
-      // optional bool router_external = 7;
-      private boolean routerExternal_ ;
-      public boolean hasRouterExternal() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      public boolean getRouterExternal() {
-        return routerExternal_;
-      }
-      public Builder setRouterExternal(boolean value) {
-        bitField0_ |= 0x00000010;
-        routerExternal_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearRouterExternal() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        routerExternal_ = false;
-        onChanged();
-        return this;
-      }
-      
-      // optional bool shared = 8;
-      private boolean shared_ ;
-      public boolean hasShared() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      public boolean getShared() {
-        return shared_;
-      }
-      public Builder setShared(boolean value) {
-        bitField0_ |= 0x00000020;
-        shared_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearShared() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        shared_ = false;
-        onChanged();
-        return this;
-      }
-      
-      // optional bool admin_state_up = 9;
-      private boolean adminStateUp_ ;
-      public boolean hasAdminStateUp() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      public boolean getAdminStateUp() {
-        return adminStateUp_;
-      }
-      public Builder setAdminStateUp(boolean value) {
-        bitField0_ |= 0x00000040;
-        adminStateUp_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearAdminStateUp() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        adminStateUp_ = false;
-        onChanged();
-        return this;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.NetworkData)
     }
-    
-    static {
-      defaultInstance = new NetworkData(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.NetworkData)
-  }
-  
-  public interface SubnetDataOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // optional uint64 id = 1;
-    boolean hasId();
-    long getId();
-    
-    // optional string name = 2;
-    boolean hasName();
-    String getName();
-    
-    // optional uint64 project = 3;
-    boolean hasProject();
-    long getProject();
-    
-    // optional uint64 network = 4;
-    boolean hasNetwork();
-    long getNetwork();
-    
-    // optional string cidr = 5;
-    boolean hasCidr();
-    String getCidr();
-    
-    // optional int32 ip_version = 6;
-    boolean hasIpVersion();
-    int getIpVersion();
-  }
-  public static final class SubnetData extends
-      com.google.protobuf.GeneratedMessage
-      implements SubnetDataOrBuilder {
-    // Use SubnetData.newBuilder() to construct.
-    private SubnetData(Builder builder) {
-      super(builder);
-    }
-    private SubnetData(boolean noInit) {}
-    
-    private static final SubnetData defaultInstance;
-    public static SubnetData getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public SubnetData getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_SubnetData_descriptor;
+      return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_NetworkData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_SubnetData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_NetworkData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.NetworkingModel.NetworkData.class, io.fathom.cloud.protobuf.NetworkingModel.NetworkData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<NetworkData> PARSER =
+        new com.google.protobuf.AbstractParser<NetworkData>() {
+      public NetworkData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new NetworkData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NetworkData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional uint64 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private long id_;
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
     public long getId() {
       return id_;
     }
-    
+
     // optional string name = 2;
     public static final int NAME_FIELD_NUMBER = 2;
     private java.lang.Object name_;
+    /**
+     * <code>optional string name = 2;</code>
+     */
     public boolean hasName() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    public String getName() {
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public java.lang.String getName() {
       java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           name_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getNameBytes() {
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
       java.lang.Object ref = name_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional uint64 project = 3;
     public static final int PROJECT_FIELD_NUMBER = 3;
     private long project_;
+    /**
+     * <code>optional uint64 project = 3;</code>
+     */
     public boolean hasProject() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
+    /**
+     * <code>optional uint64 project = 3;</code>
+     */
     public long getProject() {
       return project_;
     }
-    
-    // optional uint64 network = 4;
-    public static final int NETWORK_FIELD_NUMBER = 4;
-    private long network_;
-    public boolean hasNetwork() {
+
+    // optional string status = 6;
+    public static final int STATUS_FIELD_NUMBER = 6;
+    private java.lang.Object status_;
+    /**
+     * <code>optional string status = 6;</code>
+     */
+    public boolean hasStatus() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    public long getNetwork() {
-      return network_;
-    }
-    
-    // optional string cidr = 5;
-    public static final int CIDR_FIELD_NUMBER = 5;
-    private java.lang.Object cidr_;
-    public boolean hasCidr() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    public String getCidr() {
-      java.lang.Object ref = cidr_;
-      if (ref instanceof String) {
-        return (String) ref;
+    /**
+     * <code>optional string status = 6;</code>
+     */
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          cidr_ = s;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          status_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getCidrBytes() {
-      java.lang.Object ref = cidr_;
-      if (ref instanceof String) {
+    /**
+     * <code>optional string status = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        cidr_ = b;
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
-    // optional int32 ip_version = 6;
-    public static final int IP_VERSION_FIELD_NUMBER = 6;
-    private int ipVersion_;
-    public boolean hasIpVersion() {
+
+    // optional bool router_external = 7;
+    public static final int ROUTER_EXTERNAL_FIELD_NUMBER = 7;
+    private boolean routerExternal_;
+    /**
+     * <code>optional bool router_external = 7;</code>
+     */
+    public boolean hasRouterExternal() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional bool router_external = 7;</code>
+     */
+    public boolean getRouterExternal() {
+      return routerExternal_;
+    }
+
+    // optional bool shared = 8;
+    public static final int SHARED_FIELD_NUMBER = 8;
+    private boolean shared_;
+    /**
+     * <code>optional bool shared = 8;</code>
+     */
+    public boolean hasShared() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
-    public int getIpVersion() {
-      return ipVersion_;
+    /**
+     * <code>optional bool shared = 8;</code>
+     */
+    public boolean getShared() {
+      return shared_;
     }
-    
+
+    // optional bool admin_state_up = 9;
+    public static final int ADMIN_STATE_UP_FIELD_NUMBER = 9;
+    private boolean adminStateUp_;
+    /**
+     * <code>optional bool admin_state_up = 9;</code>
+     */
+    public boolean hasAdminStateUp() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional bool admin_state_up = 9;</code>
+     */
+    public boolean getAdminStateUp() {
+      return adminStateUp_;
+    }
+
     private void initFields() {
       id_ = 0L;
       name_ = "";
       project_ = 0L;
-      network_ = 0L;
-      cidr_ = "";
-      ipVersion_ = 0;
+      status_ = "";
+      routerExternal_ = false;
+      shared_ = false;
+      adminStateUp_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -952,22 +414,25 @@ public final class NetworkingModel {
         output.writeUInt64(3, project_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeUInt64(4, network_);
+        output.writeBytes(6, getStatusBytes());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getCidrBytes());
+        output.writeBool(7, routerExternal_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, ipVersion_);
+        output.writeBool(8, shared_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBool(9, adminStateUp_);
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -983,127 +448,123 @@ public final class NetworkingModel {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(4, network_);
+          .computeBytesSize(6, getStatusBytes());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getCidrBytes());
+          .computeBoolSize(7, routerExternal_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, ipVersion_);
+          .computeBoolSize(8, shared_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(9, adminStateUp_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
-    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+
+    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
-    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(byte[] data)
+    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
-    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(java.io.InputStream input)
+    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
-    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseDelimitedFrom(java.io.InputStream input)
+    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
-    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseDelimitedFrom(
+    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
-    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+    public static io.fathom.cloud.protobuf.NetworkingModel.NetworkData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(io.fathom.cloud.protobuf.NetworkingModel.SubnetData prototype) {
+    public static Builder newBuilder(io.fathom.cloud.protobuf.NetworkingModel.NetworkData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.NetworkData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements io.fathom.cloud.protobuf.NetworkingModel.SubnetDataOrBuilder {
+       implements io.fathom.cloud.protobuf.NetworkingModel.NetworkDataOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_SubnetData_descriptor;
+        return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_NetworkData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_SubnetData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_NetworkData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.NetworkingModel.NetworkData.class, io.fathom.cloud.protobuf.NetworkingModel.NetworkData.Builder.class);
       }
-      
-      // Construct using io.fathom.cloud.protobuf.NetworkingModel.SubnetData.newBuilder()
+
+      // Construct using io.fathom.cloud.protobuf.NetworkingModel.NetworkData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1114,7 +575,7 @@ public final class NetworkingModel {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         id_ = 0L;
@@ -1123,48 +584,40 @@ public final class NetworkingModel {
         bitField0_ = (bitField0_ & ~0x00000002);
         project_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
-        network_ = 0L;
+        status_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
-        cidr_ = "";
+        routerExternal_ = false;
         bitField0_ = (bitField0_ & ~0x00000010);
-        ipVersion_ = 0;
+        shared_ = false;
         bitField0_ = (bitField0_ & ~0x00000020);
+        adminStateUp_ = false;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.NetworkingModel.SubnetData.getDescriptor();
+        return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_NetworkData_descriptor;
       }
-      
-      public io.fathom.cloud.protobuf.NetworkingModel.SubnetData getDefaultInstanceForType() {
-        return io.fathom.cloud.protobuf.NetworkingModel.SubnetData.getDefaultInstance();
+
+      public io.fathom.cloud.protobuf.NetworkingModel.NetworkData getDefaultInstanceForType() {
+        return io.fathom.cloud.protobuf.NetworkingModel.NetworkData.getDefaultInstance();
       }
-      
-      public io.fathom.cloud.protobuf.NetworkingModel.SubnetData build() {
-        io.fathom.cloud.protobuf.NetworkingModel.SubnetData result = buildPartial();
+
+      public io.fathom.cloud.protobuf.NetworkingModel.NetworkData build() {
+        io.fathom.cloud.protobuf.NetworkingModel.NetworkData result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.NetworkingModel.SubnetData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.NetworkingModel.SubnetData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public io.fathom.cloud.protobuf.NetworkingModel.SubnetData buildPartial() {
-        io.fathom.cloud.protobuf.NetworkingModel.SubnetData result = new io.fathom.cloud.protobuf.NetworkingModel.SubnetData(this);
+
+      public io.fathom.cloud.protobuf.NetworkingModel.NetworkData buildPartial() {
+        io.fathom.cloud.protobuf.NetworkingModel.NetworkData result = new io.fathom.cloud.protobuf.NetworkingModel.NetworkData(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1182,77 +635,532 @@ public final class NetworkingModel {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.network_ = network_;
+        result.status_ = status_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.cidr_ = cidr_;
+        result.routerExternal_ = routerExternal_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.ipVersion_ = ipVersion_;
+        result.shared_ = shared_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.adminStateUp_ = adminStateUp_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof io.fathom.cloud.protobuf.NetworkingModel.SubnetData) {
-          return mergeFrom((io.fathom.cloud.protobuf.NetworkingModel.SubnetData)other);
+        if (other instanceof io.fathom.cloud.protobuf.NetworkingModel.NetworkData) {
+          return mergeFrom((io.fathom.cloud.protobuf.NetworkingModel.NetworkData)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
-      
-      public Builder mergeFrom(io.fathom.cloud.protobuf.NetworkingModel.SubnetData other) {
-        if (other == io.fathom.cloud.protobuf.NetworkingModel.SubnetData.getDefaultInstance()) return this;
+
+      public Builder mergeFrom(io.fathom.cloud.protobuf.NetworkingModel.NetworkData other) {
+        if (other == io.fathom.cloud.protobuf.NetworkingModel.NetworkData.getDefaultInstance()) return this;
         if (other.hasId()) {
           setId(other.getId());
         }
         if (other.hasName()) {
-          setName(other.getName());
+          bitField0_ |= 0x00000002;
+          name_ = other.name_;
+          onChanged();
         }
         if (other.hasProject()) {
           setProject(other.getProject());
         }
-        if (other.hasNetwork()) {
-          setNetwork(other.getNetwork());
+        if (other.hasStatus()) {
+          bitField0_ |= 0x00000008;
+          status_ = other.status_;
+          onChanged();
         }
-        if (other.hasCidr()) {
-          setCidr(other.getCidr());
+        if (other.hasRouterExternal()) {
+          setRouterExternal(other.getRouterExternal());
         }
-        if (other.hasIpVersion()) {
-          setIpVersion(other.getIpVersion());
+        if (other.hasShared()) {
+          setShared(other.getShared());
+        }
+        if (other.hasAdminStateUp()) {
+          setAdminStateUp(other.getAdminStateUp());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        io.fathom.cloud.protobuf.NetworkingModel.NetworkData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.NetworkingModel.NetworkData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional uint64 id = 1;
+      private long id_ ;
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
+      public long getId() {
+        return id_;
+      }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
+      public Builder setId(long value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional string name = 2;
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional uint64 project = 3;
+      private long project_ ;
+      /**
+       * <code>optional uint64 project = 3;</code>
+       */
+      public boolean hasProject() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional uint64 project = 3;</code>
+       */
+      public long getProject() {
+        return project_;
+      }
+      /**
+       * <code>optional uint64 project = 3;</code>
+       */
+      public Builder setProject(long value) {
+        bitField0_ |= 0x00000004;
+        project_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 project = 3;</code>
+       */
+      public Builder clearProject() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        project_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional string status = 6;
+      private java.lang.Object status_ = "";
+      /**
+       * <code>optional string status = 6;</code>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string status = 6;</code>
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string status = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string status = 6;</code>
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string status = 6;</code>
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        status_ = getDefaultInstance().getStatus();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string status = 6;</code>
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional bool router_external = 7;
+      private boolean routerExternal_ ;
+      /**
+       * <code>optional bool router_external = 7;</code>
+       */
+      public boolean hasRouterExternal() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional bool router_external = 7;</code>
+       */
+      public boolean getRouterExternal() {
+        return routerExternal_;
+      }
+      /**
+       * <code>optional bool router_external = 7;</code>
+       */
+      public Builder setRouterExternal(boolean value) {
+        bitField0_ |= 0x00000010;
+        routerExternal_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool router_external = 7;</code>
+       */
+      public Builder clearRouterExternal() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        routerExternal_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool shared = 8;
+      private boolean shared_ ;
+      /**
+       * <code>optional bool shared = 8;</code>
+       */
+      public boolean hasShared() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional bool shared = 8;</code>
+       */
+      public boolean getShared() {
+        return shared_;
+      }
+      /**
+       * <code>optional bool shared = 8;</code>
+       */
+      public Builder setShared(boolean value) {
+        bitField0_ |= 0x00000020;
+        shared_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool shared = 8;</code>
+       */
+      public Builder clearShared() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        shared_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool admin_state_up = 9;
+      private boolean adminStateUp_ ;
+      /**
+       * <code>optional bool admin_state_up = 9;</code>
+       */
+      public boolean hasAdminStateUp() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional bool admin_state_up = 9;</code>
+       */
+      public boolean getAdminStateUp() {
+        return adminStateUp_;
+      }
+      /**
+       * <code>optional bool admin_state_up = 9;</code>
+       */
+      public Builder setAdminStateUp(boolean value) {
+        bitField0_ |= 0x00000040;
+        adminStateUp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool admin_state_up = 9;</code>
+       */
+      public Builder clearAdminStateUp() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        adminStateUp_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.NetworkData)
+    }
+
+    static {
+      defaultInstance = new NetworkData(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.NetworkData)
+  }
+
+  public interface SubnetDataOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional uint64 id = 1;
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
+    long getId();
+
+    // optional string name = 2;
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    boolean hasName();
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    // optional uint64 project = 3;
+    /**
+     * <code>optional uint64 project = 3;</code>
+     */
+    boolean hasProject();
+    /**
+     * <code>optional uint64 project = 3;</code>
+     */
+    long getProject();
+
+    // optional uint64 network = 4;
+    /**
+     * <code>optional uint64 network = 4;</code>
+     */
+    boolean hasNetwork();
+    /**
+     * <code>optional uint64 network = 4;</code>
+     */
+    long getNetwork();
+
+    // optional string cidr = 5;
+    /**
+     * <code>optional string cidr = 5;</code>
+     */
+    boolean hasCidr();
+    /**
+     * <code>optional string cidr = 5;</code>
+     */
+    java.lang.String getCidr();
+    /**
+     * <code>optional string cidr = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getCidrBytes();
+
+    // optional int32 ip_version = 6;
+    /**
+     * <code>optional int32 ip_version = 6;</code>
+     */
+    boolean hasIpVersion();
+    /**
+     * <code>optional int32 ip_version = 6;</code>
+     */
+    int getIpVersion();
+  }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.SubnetData}
+   */
+  public static final class SubnetData extends
+      com.google.protobuf.GeneratedMessage
+      implements SubnetDataOrBuilder {
+    // Use SubnetData.newBuilder() to construct.
+    private SubnetData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SubnetData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SubnetData defaultInstance;
+    public static SubnetData getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SubnetData getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SubnetData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -1288,47 +1196,586 @@ public final class NetworkingModel {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_SubnetData_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_SubnetData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.NetworkingModel.SubnetData.class, io.fathom.cloud.protobuf.NetworkingModel.SubnetData.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SubnetData> PARSER =
+        new com.google.protobuf.AbstractParser<SubnetData>() {
+      public SubnetData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SubnetData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SubnetData> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional uint64 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private long id_;
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
+    public long getId() {
+      return id_;
+    }
+
+    // optional string name = 2;
+    public static final int NAME_FIELD_NUMBER = 2;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional uint64 project = 3;
+    public static final int PROJECT_FIELD_NUMBER = 3;
+    private long project_;
+    /**
+     * <code>optional uint64 project = 3;</code>
+     */
+    public boolean hasProject() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional uint64 project = 3;</code>
+     */
+    public long getProject() {
+      return project_;
+    }
+
+    // optional uint64 network = 4;
+    public static final int NETWORK_FIELD_NUMBER = 4;
+    private long network_;
+    /**
+     * <code>optional uint64 network = 4;</code>
+     */
+    public boolean hasNetwork() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional uint64 network = 4;</code>
+     */
+    public long getNetwork() {
+      return network_;
+    }
+
+    // optional string cidr = 5;
+    public static final int CIDR_FIELD_NUMBER = 5;
+    private java.lang.Object cidr_;
+    /**
+     * <code>optional string cidr = 5;</code>
+     */
+    public boolean hasCidr() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string cidr = 5;</code>
+     */
+    public java.lang.String getCidr() {
+      java.lang.Object ref = cidr_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          cidr_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string cidr = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCidrBytes() {
+      java.lang.Object ref = cidr_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cidr_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional int32 ip_version = 6;
+    public static final int IP_VERSION_FIELD_NUMBER = 6;
+    private int ipVersion_;
+    /**
+     * <code>optional int32 ip_version = 6;</code>
+     */
+    public boolean hasIpVersion() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 ip_version = 6;</code>
+     */
+    public int getIpVersion() {
+      return ipVersion_;
+    }
+
+    private void initFields() {
+      id_ = 0L;
+      name_ = "";
+      project_ = 0L;
+      network_ = 0L;
+      cidr_ = "";
+      ipVersion_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt64(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt64(3, project_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt64(4, network_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getCidrBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, ipVersion_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(3, project_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(4, network_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getCidrBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, ipVersion_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static io.fathom.cloud.protobuf.NetworkingModel.SubnetData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(io.fathom.cloud.protobuf.NetworkingModel.SubnetData prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.SubnetData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements io.fathom.cloud.protobuf.NetworkingModel.SubnetDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_SubnetData_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_SubnetData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.NetworkingModel.SubnetData.class, io.fathom.cloud.protobuf.NetworkingModel.SubnetData.Builder.class);
+      }
+
+      // Construct using io.fathom.cloud.protobuf.NetworkingModel.SubnetData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        project_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        network_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        cidr_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        ipVersion_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.fathom.cloud.protobuf.NetworkingModel.internal_static_fathomcloud_protobuf_SubnetData_descriptor;
+      }
+
+      public io.fathom.cloud.protobuf.NetworkingModel.SubnetData getDefaultInstanceForType() {
+        return io.fathom.cloud.protobuf.NetworkingModel.SubnetData.getDefaultInstance();
+      }
+
+      public io.fathom.cloud.protobuf.NetworkingModel.SubnetData build() {
+        io.fathom.cloud.protobuf.NetworkingModel.SubnetData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public io.fathom.cloud.protobuf.NetworkingModel.SubnetData buildPartial() {
+        io.fathom.cloud.protobuf.NetworkingModel.SubnetData result = new io.fathom.cloud.protobuf.NetworkingModel.SubnetData(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.project_ = project_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.network_ = network_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.cidr_ = cidr_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.ipVersion_ = ipVersion_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.fathom.cloud.protobuf.NetworkingModel.SubnetData) {
+          return mergeFrom((io.fathom.cloud.protobuf.NetworkingModel.SubnetData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.fathom.cloud.protobuf.NetworkingModel.SubnetData other) {
+        if (other == io.fathom.cloud.protobuf.NetworkingModel.SubnetData.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasName()) {
+          bitField0_ |= 0x00000002;
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.hasProject()) {
+          setProject(other.getProject());
+        }
+        if (other.hasNetwork()) {
+          setNetwork(other.getNetwork());
+        }
+        if (other.hasCidr()) {
+          bitField0_ |= 0x00000010;
+          cidr_ = other.cidr_;
+          onChanged();
+        }
+        if (other.hasIpVersion()) {
+          setIpVersion(other.getIpVersion());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.fathom.cloud.protobuf.NetworkingModel.SubnetData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.NetworkingModel.SubnetData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
+
       // optional uint64 id = 1;
       private long id_ ;
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public long getId() {
         return id_;
       }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public Builder setId(long value) {
         bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional string name = 2;
       private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 2;</code>
+       */
       public boolean hasName() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      public String getName() {
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public java.lang.String getName() {
         java.lang.Object ref = name_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           name_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setName(String value) {
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1337,76 +1784,138 @@ public final class NetworkingModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string name = 2;</code>
+       */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000002);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
-      void setName(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000002;
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
         name_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional uint64 project = 3;
       private long project_ ;
+      /**
+       * <code>optional uint64 project = 3;</code>
+       */
       public boolean hasProject() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional uint64 project = 3;</code>
+       */
       public long getProject() {
         return project_;
       }
+      /**
+       * <code>optional uint64 project = 3;</code>
+       */
       public Builder setProject(long value) {
         bitField0_ |= 0x00000004;
         project_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 project = 3;</code>
+       */
       public Builder clearProject() {
         bitField0_ = (bitField0_ & ~0x00000004);
         project_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional uint64 network = 4;
       private long network_ ;
+      /**
+       * <code>optional uint64 network = 4;</code>
+       */
       public boolean hasNetwork() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
+      /**
+       * <code>optional uint64 network = 4;</code>
+       */
       public long getNetwork() {
         return network_;
       }
+      /**
+       * <code>optional uint64 network = 4;</code>
+       */
       public Builder setNetwork(long value) {
         bitField0_ |= 0x00000008;
         network_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 network = 4;</code>
+       */
       public Builder clearNetwork() {
         bitField0_ = (bitField0_ & ~0x00000008);
         network_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional string cidr = 5;
       private java.lang.Object cidr_ = "";
+      /**
+       * <code>optional string cidr = 5;</code>
+       */
       public boolean hasCidr() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      public String getCidr() {
+      /**
+       * <code>optional string cidr = 5;</code>
+       */
+      public java.lang.String getCidr() {
         java.lang.Object ref = cidr_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           cidr_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setCidr(String value) {
+      /**
+       * <code>optional string cidr = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCidrBytes() {
+        java.lang.Object ref = cidr_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cidr_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string cidr = 5;</code>
+       */
+      public Builder setCidr(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1415,50 +1924,73 @@ public final class NetworkingModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string cidr = 5;</code>
+       */
       public Builder clearCidr() {
         bitField0_ = (bitField0_ & ~0x00000010);
         cidr_ = getDefaultInstance().getCidr();
         onChanged();
         return this;
       }
-      void setCidr(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000010;
+      /**
+       * <code>optional string cidr = 5;</code>
+       */
+      public Builder setCidrBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
         cidr_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional int32 ip_version = 6;
       private int ipVersion_ ;
+      /**
+       * <code>optional int32 ip_version = 6;</code>
+       */
       public boolean hasIpVersion() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
+      /**
+       * <code>optional int32 ip_version = 6;</code>
+       */
       public int getIpVersion() {
         return ipVersion_;
       }
+      /**
+       * <code>optional int32 ip_version = 6;</code>
+       */
       public Builder setIpVersion(int value) {
         bitField0_ |= 0x00000020;
         ipVersion_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int32 ip_version = 6;</code>
+       */
       public Builder clearIpVersion() {
         bitField0_ = (bitField0_ & ~0x00000020);
         ipVersion_ = 0;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.SubnetData)
     }
-    
+
     static {
       defaultInstance = new SubnetData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.SubnetData)
   }
-  
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_fathomcloud_protobuf_NetworkData_descriptor;
   private static
@@ -1469,7 +2001,7 @@ public final class NetworkingModel {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_fathomcloud_protobuf_SubnetData_fieldAccessorTable;
-  
+
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -1498,17 +2030,13 @@ public final class NetworkingModel {
           internal_static_fathomcloud_protobuf_NetworkData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_NetworkData_descriptor,
-              new java.lang.String[] { "Id", "Name", "Project", "Status", "RouterExternal", "Shared", "AdminStateUp", },
-              io.fathom.cloud.protobuf.NetworkingModel.NetworkData.class,
-              io.fathom.cloud.protobuf.NetworkingModel.NetworkData.Builder.class);
+              new java.lang.String[] { "Id", "Name", "Project", "Status", "RouterExternal", "Shared", "AdminStateUp", });
           internal_static_fathomcloud_protobuf_SubnetData_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_fathomcloud_protobuf_SubnetData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_SubnetData_descriptor,
-              new java.lang.String[] { "Id", "Name", "Project", "Network", "Cidr", "IpVersion", },
-              io.fathom.cloud.protobuf.NetworkingModel.SubnetData.class,
-              io.fathom.cloud.protobuf.NetworkingModel.SubnetData.Builder.class);
+              new java.lang.String[] { "Id", "Name", "Project", "Network", "Cidr", "IpVersion", });
           return null;
         }
       };
@@ -1518,6 +2046,6 @@ public final class NetworkingModel {
           io.fathom.cloud.protobuf.CloudCommons.getDescriptor(),
         }, assigner);
   }
-  
+
   // @@protoc_insertion_point(outer_class_scope)
 }

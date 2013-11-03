@@ -10,72 +10,161 @@ public final class FileModel {
   }
   public interface BucketAttributesOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional string acl_read = 1;
+    /**
+     * <code>optional string acl_read = 1;</code>
+     */
     boolean hasAclRead();
-    String getAclRead();
+    /**
+     * <code>optional string acl_read = 1;</code>
+     */
+    java.lang.String getAclRead();
+    /**
+     * <code>optional string acl_read = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getAclReadBytes();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.BucketAttributes}
+   */
   public static final class BucketAttributes extends
       com.google.protobuf.GeneratedMessage
       implements BucketAttributesOrBuilder {
     // Use BucketAttributes.newBuilder() to construct.
-    private BucketAttributes(Builder builder) {
+    private BucketAttributes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private BucketAttributes(boolean noInit) {}
-    
+    private BucketAttributes(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final BucketAttributes defaultInstance;
     public static BucketAttributes getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public BucketAttributes getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private BucketAttributes(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              aclRead_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketAttributes_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketAttributes_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketAttributes_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.FileModel.BucketAttributes.class, io.fathom.cloud.protobuf.FileModel.BucketAttributes.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<BucketAttributes> PARSER =
+        new com.google.protobuf.AbstractParser<BucketAttributes>() {
+      public BucketAttributes parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new BucketAttributes(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<BucketAttributes> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional string acl_read = 1;
     public static final int ACL_READ_FIELD_NUMBER = 1;
     private java.lang.Object aclRead_;
+    /**
+     * <code>optional string acl_read = 1;</code>
+     */
     public boolean hasAclRead() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public String getAclRead() {
+    /**
+     * <code>optional string acl_read = 1;</code>
+     */
+    public java.lang.String getAclRead() {
       java.lang.Object ref = aclRead_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           aclRead_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getAclReadBytes() {
+    /**
+     * <code>optional string acl_read = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAclReadBytes() {
       java.lang.Object ref = aclRead_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         aclRead_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     private void initFields() {
       aclRead_ = "";
     }
@@ -83,11 +172,11 @@ public final class FileModel {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -96,12 +185,12 @@ public final class FileModel {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -111,94 +200,83 @@ public final class FileModel {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.FileModel.BucketAttributes parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketAttributes parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketAttributes parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketAttributes parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketAttributes parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketAttributes parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketAttributes parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketAttributes parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketAttributes parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketAttributes parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.FileModel.BucketAttributes prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.BucketAttributes}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.FileModel.BucketAttributesOrBuilder {
@@ -206,18 +284,21 @@ public final class FileModel {
           getDescriptor() {
         return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketAttributes_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketAttributes_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketAttributes_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.FileModel.BucketAttributes.class, io.fathom.cloud.protobuf.FileModel.BucketAttributes.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.FileModel.BucketAttributes.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -228,27 +309,27 @@ public final class FileModel {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         aclRead_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.FileModel.BucketAttributes.getDescriptor();
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketAttributes_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.FileModel.BucketAttributes getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.FileModel.BucketAttributes.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.FileModel.BucketAttributes build() {
         io.fathom.cloud.protobuf.FileModel.BucketAttributes result = buildPartial();
         if (!result.isInitialized()) {
@@ -256,17 +337,7 @@ public final class FileModel {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.FileModel.BucketAttributes buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.FileModel.BucketAttributes result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.FileModel.BucketAttributes buildPartial() {
         io.fathom.cloud.protobuf.FileModel.BucketAttributes result = new io.fathom.cloud.protobuf.FileModel.BucketAttributes(this);
         int from_bitField0_ = bitField0_;
@@ -279,7 +350,7 @@ public final class FileModel {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.FileModel.BucketAttributes) {
           return mergeFrom((io.fathom.cloud.protobuf.FileModel.BucketAttributes)other);
@@ -288,70 +359,84 @@ public final class FileModel {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.FileModel.BucketAttributes other) {
         if (other == io.fathom.cloud.protobuf.FileModel.BucketAttributes.getDefaultInstance()) return this;
         if (other.hasAclRead()) {
-          setAclRead(other.getAclRead());
+          bitField0_ |= 0x00000001;
+          aclRead_ = other.aclRead_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              aclRead_ = input.readBytes();
-              break;
-            }
+        io.fathom.cloud.protobuf.FileModel.BucketAttributes parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.FileModel.BucketAttributes) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional string acl_read = 1;
       private java.lang.Object aclRead_ = "";
+      /**
+       * <code>optional string acl_read = 1;</code>
+       */
       public boolean hasAclRead() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public String getAclRead() {
+      /**
+       * <code>optional string acl_read = 1;</code>
+       */
+      public java.lang.String getAclRead() {
         java.lang.Object ref = aclRead_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           aclRead_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setAclRead(String value) {
+      /**
+       * <code>optional string acl_read = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAclReadBytes() {
+        java.lang.Object ref = aclRead_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          aclRead_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string acl_read = 1;</code>
+       */
+      public Builder setAclRead(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -360,161 +445,357 @@ public final class FileModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string acl_read = 1;</code>
+       */
       public Builder clearAclRead() {
         bitField0_ = (bitField0_ & ~0x00000001);
         aclRead_ = getDefaultInstance().getAclRead();
         onChanged();
         return this;
       }
-      void setAclRead(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
+      /**
+       * <code>optional string acl_read = 1;</code>
+       */
+      public Builder setAclReadBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         aclRead_ = value;
         onChanged();
+        return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.BucketAttributes)
     }
-    
+
     static {
       defaultInstance = new BucketAttributes(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.BucketAttributes)
   }
-  
+
   public interface BucketDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional string key = 1;
+    /**
+     * <code>optional string key = 1;</code>
+     */
     boolean hasKey();
-    String getKey();
-    
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    java.lang.String getKey();
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getKeyBytes();
+
     // optional uint64 root_id = 2;
+    /**
+     * <code>optional uint64 root_id = 2;</code>
+     */
     boolean hasRootId();
+    /**
+     * <code>optional uint64 root_id = 2;</code>
+     */
     long getRootId();
-    
+
     // optional uint64 created_at = 3;
+    /**
+     * <code>optional uint64 created_at = 3;</code>
+     */
     boolean hasCreatedAt();
+    /**
+     * <code>optional uint64 created_at = 3;</code>
+     */
     long getCreatedAt();
-    
+
     // optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;
+    /**
+     * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+     */
     boolean hasBucketAttributes();
+    /**
+     * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+     */
     io.fathom.cloud.protobuf.FileModel.BucketAttributes getBucketAttributes();
+    /**
+     * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+     */
     io.fathom.cloud.protobuf.FileModel.BucketAttributesOrBuilder getBucketAttributesOrBuilder();
-    
+
     // optional .fathomcloud.protobuf.Attributes attributes = 9;
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     boolean hasAttributes();
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.Attributes getAttributes();
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder getAttributesOrBuilder();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.BucketData}
+   */
   public static final class BucketData extends
       com.google.protobuf.GeneratedMessage
       implements BucketDataOrBuilder {
     // Use BucketData.newBuilder() to construct.
-    private BucketData(Builder builder) {
+    private BucketData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private BucketData(boolean noInit) {}
-    
+    private BucketData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final BucketData defaultInstance;
     public static BucketData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public BucketData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private BucketData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              key_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              rootId_ = input.readUInt64();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              createdAt_ = input.readUInt64();
+              break;
+            }
+            case 66: {
+              io.fathom.cloud.protobuf.FileModel.BucketAttributes.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = bucketAttributes_.toBuilder();
+              }
+              bucketAttributes_ = input.readMessage(io.fathom.cloud.protobuf.FileModel.BucketAttributes.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(bucketAttributes_);
+                bucketAttributes_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+            case 74: {
+              io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                subBuilder = attributes_.toBuilder();
+              }
+              attributes_ = input.readMessage(io.fathom.cloud.protobuf.CloudCommons.Attributes.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attributes_);
+                attributes_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.FileModel.BucketData.class, io.fathom.cloud.protobuf.FileModel.BucketData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<BucketData> PARSER =
+        new com.google.protobuf.AbstractParser<BucketData>() {
+      public BucketData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new BucketData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<BucketData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional string key = 1;
     public static final int KEY_FIELD_NUMBER = 1;
     private java.lang.Object key_;
+    /**
+     * <code>optional string key = 1;</code>
+     */
     public boolean hasKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public String getKey() {
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    public java.lang.String getKey() {
       java.lang.Object ref = key_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           key_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getKeyBytes() {
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
       java.lang.Object ref = key_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         key_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional uint64 root_id = 2;
     public static final int ROOT_ID_FIELD_NUMBER = 2;
     private long rootId_;
+    /**
+     * <code>optional uint64 root_id = 2;</code>
+     */
     public boolean hasRootId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional uint64 root_id = 2;</code>
+     */
     public long getRootId() {
       return rootId_;
     }
-    
+
     // optional uint64 created_at = 3;
     public static final int CREATED_AT_FIELD_NUMBER = 3;
     private long createdAt_;
+    /**
+     * <code>optional uint64 created_at = 3;</code>
+     */
     public boolean hasCreatedAt() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
+    /**
+     * <code>optional uint64 created_at = 3;</code>
+     */
     public long getCreatedAt() {
       return createdAt_;
     }
-    
+
     // optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;
     public static final int BUCKET_ATTRIBUTES_FIELD_NUMBER = 8;
     private io.fathom.cloud.protobuf.FileModel.BucketAttributes bucketAttributes_;
+    /**
+     * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+     */
     public boolean hasBucketAttributes() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+     */
     public io.fathom.cloud.protobuf.FileModel.BucketAttributes getBucketAttributes() {
       return bucketAttributes_;
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+     */
     public io.fathom.cloud.protobuf.FileModel.BucketAttributesOrBuilder getBucketAttributesOrBuilder() {
       return bucketAttributes_;
     }
-    
+
     // optional .fathomcloud.protobuf.Attributes attributes = 9;
     public static final int ATTRIBUTES_FIELD_NUMBER = 9;
     private io.fathom.cloud.protobuf.CloudCommons.Attributes attributes_;
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     public boolean hasAttributes() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.Attributes getAttributes() {
       return attributes_;
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder getAttributesOrBuilder() {
       return attributes_;
     }
-    
+
     private void initFields() {
       key_ = "";
       rootId_ = 0L;
@@ -526,11 +807,11 @@ public final class FileModel {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -551,12 +832,12 @@ public final class FileModel {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -582,94 +863,83 @@ public final class FileModel {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.FileModel.BucketData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.BucketData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.FileModel.BucketData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.BucketData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.FileModel.BucketDataOrBuilder {
@@ -677,18 +947,21 @@ public final class FileModel {
           getDescriptor() {
         return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.FileModel.BucketData.class, io.fathom.cloud.protobuf.FileModel.BucketData.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.FileModel.BucketData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -701,7 +974,7 @@ public final class FileModel {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         key_ = "";
@@ -724,20 +997,20 @@ public final class FileModel {
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.FileModel.BucketData.getDescriptor();
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_BucketData_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.FileModel.BucketData getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.FileModel.BucketData.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.FileModel.BucketData build() {
         io.fathom.cloud.protobuf.FileModel.BucketData result = buildPartial();
         if (!result.isInitialized()) {
@@ -745,17 +1018,7 @@ public final class FileModel {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.FileModel.BucketData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.FileModel.BucketData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.FileModel.BucketData buildPartial() {
         io.fathom.cloud.protobuf.FileModel.BucketData result = new io.fathom.cloud.protobuf.FileModel.BucketData(this);
         int from_bitField0_ = bitField0_;
@@ -792,7 +1055,7 @@ public final class FileModel {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.FileModel.BucketData) {
           return mergeFrom((io.fathom.cloud.protobuf.FileModel.BucketData)other);
@@ -801,11 +1064,13 @@ public final class FileModel {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.FileModel.BucketData other) {
         if (other == io.fathom.cloud.protobuf.FileModel.BucketData.getDefaultInstance()) return this;
         if (other.hasKey()) {
-          setKey(other.getKey());
+          bitField0_ |= 0x00000001;
+          key_ = other.key_;
+          onChanged();
         }
         if (other.hasRootId()) {
           setRootId(other.getRootId());
@@ -822,89 +1087,73 @@ public final class FileModel {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              key_ = input.readBytes();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              rootId_ = input.readUInt64();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              createdAt_ = input.readUInt64();
-              break;
-            }
-            case 66: {
-              io.fathom.cloud.protobuf.FileModel.BucketAttributes.Builder subBuilder = io.fathom.cloud.protobuf.FileModel.BucketAttributes.newBuilder();
-              if (hasBucketAttributes()) {
-                subBuilder.mergeFrom(getBucketAttributes());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setBucketAttributes(subBuilder.buildPartial());
-              break;
-            }
-            case 74: {
-              io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder subBuilder = io.fathom.cloud.protobuf.CloudCommons.Attributes.newBuilder();
-              if (hasAttributes()) {
-                subBuilder.mergeFrom(getAttributes());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setAttributes(subBuilder.buildPartial());
-              break;
-            }
+        io.fathom.cloud.protobuf.FileModel.BucketData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.FileModel.BucketData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional string key = 1;
       private java.lang.Object key_ = "";
+      /**
+       * <code>optional string key = 1;</code>
+       */
       public boolean hasKey() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public String getKey() {
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public java.lang.String getKey() {
         java.lang.Object ref = key_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           key_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setKey(String value) {
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getKeyBytes() {
+        java.lang.Object ref = key_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          key_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public Builder setKey(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -913,67 +1162,108 @@ public final class FileModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string key = 1;</code>
+       */
       public Builder clearKey() {
         bitField0_ = (bitField0_ & ~0x00000001);
         key_ = getDefaultInstance().getKey();
         onChanged();
         return this;
       }
-      void setKey(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         key_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional uint64 root_id = 2;
       private long rootId_ ;
+      /**
+       * <code>optional uint64 root_id = 2;</code>
+       */
       public boolean hasRootId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional uint64 root_id = 2;</code>
+       */
       public long getRootId() {
         return rootId_;
       }
+      /**
+       * <code>optional uint64 root_id = 2;</code>
+       */
       public Builder setRootId(long value) {
         bitField0_ |= 0x00000002;
         rootId_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 root_id = 2;</code>
+       */
       public Builder clearRootId() {
         bitField0_ = (bitField0_ & ~0x00000002);
         rootId_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional uint64 created_at = 3;
       private long createdAt_ ;
+      /**
+       * <code>optional uint64 created_at = 3;</code>
+       */
       public boolean hasCreatedAt() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional uint64 created_at = 3;</code>
+       */
       public long getCreatedAt() {
         return createdAt_;
       }
+      /**
+       * <code>optional uint64 created_at = 3;</code>
+       */
       public Builder setCreatedAt(long value) {
         bitField0_ |= 0x00000004;
         createdAt_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 created_at = 3;</code>
+       */
       public Builder clearCreatedAt() {
         bitField0_ = (bitField0_ & ~0x00000004);
         createdAt_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;
       private io.fathom.cloud.protobuf.FileModel.BucketAttributes bucketAttributes_ = io.fathom.cloud.protobuf.FileModel.BucketAttributes.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.FileModel.BucketAttributes, io.fathom.cloud.protobuf.FileModel.BucketAttributes.Builder, io.fathom.cloud.protobuf.FileModel.BucketAttributesOrBuilder> bucketAttributesBuilder_;
+      /**
+       * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+       */
       public boolean hasBucketAttributes() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.BucketAttributes getBucketAttributes() {
         if (bucketAttributesBuilder_ == null) {
           return bucketAttributes_;
@@ -981,6 +1271,9 @@ public final class FileModel {
           return bucketAttributesBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+       */
       public Builder setBucketAttributes(io.fathom.cloud.protobuf.FileModel.BucketAttributes value) {
         if (bucketAttributesBuilder_ == null) {
           if (value == null) {
@@ -994,6 +1287,9 @@ public final class FileModel {
         bitField0_ |= 0x00000008;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+       */
       public Builder setBucketAttributes(
           io.fathom.cloud.protobuf.FileModel.BucketAttributes.Builder builderForValue) {
         if (bucketAttributesBuilder_ == null) {
@@ -1005,6 +1301,9 @@ public final class FileModel {
         bitField0_ |= 0x00000008;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+       */
       public Builder mergeBucketAttributes(io.fathom.cloud.protobuf.FileModel.BucketAttributes value) {
         if (bucketAttributesBuilder_ == null) {
           if (((bitField0_ & 0x00000008) == 0x00000008) &&
@@ -1021,6 +1320,9 @@ public final class FileModel {
         bitField0_ |= 0x00000008;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+       */
       public Builder clearBucketAttributes() {
         if (bucketAttributesBuilder_ == null) {
           bucketAttributes_ = io.fathom.cloud.protobuf.FileModel.BucketAttributes.getDefaultInstance();
@@ -1031,11 +1333,17 @@ public final class FileModel {
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.BucketAttributes.Builder getBucketAttributesBuilder() {
         bitField0_ |= 0x00000008;
         onChanged();
         return getBucketAttributesFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.BucketAttributesOrBuilder getBucketAttributesOrBuilder() {
         if (bucketAttributesBuilder_ != null) {
           return bucketAttributesBuilder_.getMessageOrBuilder();
@@ -1043,6 +1351,9 @@ public final class FileModel {
           return bucketAttributes_;
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.BucketAttributes bucket_attributes = 8;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.FileModel.BucketAttributes, io.fathom.cloud.protobuf.FileModel.BucketAttributes.Builder, io.fathom.cloud.protobuf.FileModel.BucketAttributesOrBuilder> 
           getBucketAttributesFieldBuilder() {
@@ -1056,14 +1367,20 @@ public final class FileModel {
         }
         return bucketAttributesBuilder_;
       }
-      
+
       // optional .fathomcloud.protobuf.Attributes attributes = 9;
       private io.fathom.cloud.protobuf.CloudCommons.Attributes attributes_ = io.fathom.cloud.protobuf.CloudCommons.Attributes.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.CloudCommons.Attributes, io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder, io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder> attributesBuilder_;
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public boolean hasAttributes() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.Attributes getAttributes() {
         if (attributesBuilder_ == null) {
           return attributes_;
@@ -1071,6 +1388,9 @@ public final class FileModel {
           return attributesBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public Builder setAttributes(io.fathom.cloud.protobuf.CloudCommons.Attributes value) {
         if (attributesBuilder_ == null) {
           if (value == null) {
@@ -1084,6 +1404,9 @@ public final class FileModel {
         bitField0_ |= 0x00000010;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public Builder setAttributes(
           io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder builderForValue) {
         if (attributesBuilder_ == null) {
@@ -1095,6 +1418,9 @@ public final class FileModel {
         bitField0_ |= 0x00000010;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public Builder mergeAttributes(io.fathom.cloud.protobuf.CloudCommons.Attributes value) {
         if (attributesBuilder_ == null) {
           if (((bitField0_ & 0x00000010) == 0x00000010) &&
@@ -1111,6 +1437,9 @@ public final class FileModel {
         bitField0_ |= 0x00000010;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public Builder clearAttributes() {
         if (attributesBuilder_ == null) {
           attributes_ = io.fathom.cloud.protobuf.CloudCommons.Attributes.getDefaultInstance();
@@ -1121,11 +1450,17 @@ public final class FileModel {
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder getAttributesBuilder() {
         bitField0_ |= 0x00000010;
         onChanged();
         return getAttributesFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder getAttributesOrBuilder() {
         if (attributesBuilder_ != null) {
           return attributesBuilder_.getMessageOrBuilder();
@@ -1133,6 +1468,9 @@ public final class FileModel {
           return attributes_;
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.CloudCommons.Attributes, io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder, io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder> 
           getAttributesFieldBuilder() {
@@ -1146,227 +1484,483 @@ public final class FileModel {
         }
         return attributesBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.BucketData)
     }
-    
+
     static {
       defaultInstance = new BucketData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.BucketData)
   }
-  
+
   public interface FileDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional string key = 1;
+    /**
+     * <code>optional string key = 1;</code>
+     */
     boolean hasKey();
-    String getKey();
-    
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    java.lang.String getKey();
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getKeyBytes();
+
     // optional uint64 length = 3;
+    /**
+     * <code>optional uint64 length = 3;</code>
+     */
     boolean hasLength();
+    /**
+     * <code>optional uint64 length = 3;</code>
+     */
     long getLength();
-    
+
     // optional bytes hash = 4;
+    /**
+     * <code>optional bytes hash = 4;</code>
+     */
     boolean hasHash();
+    /**
+     * <code>optional bytes hash = 4;</code>
+     */
     com.google.protobuf.ByteString getHash();
-    
+
     // optional string content_type = 5;
+    /**
+     * <code>optional string content_type = 5;</code>
+     */
     boolean hasContentType();
-    String getContentType();
-    
+    /**
+     * <code>optional string content_type = 5;</code>
+     */
+    java.lang.String getContentType();
+    /**
+     * <code>optional string content_type = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getContentTypeBytes();
+
     // optional int64 last_modified = 6;
+    /**
+     * <code>optional int64 last_modified = 6;</code>
+     */
     boolean hasLastModified();
+    /**
+     * <code>optional int64 last_modified = 6;</code>
+     */
     long getLastModified();
-    
+
     // repeated .fathomcloud.protobuf.FileRange ranges = 7;
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+     */
     java.util.List<io.fathom.cloud.protobuf.FileModel.FileRange> 
         getRangesList();
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+     */
     io.fathom.cloud.protobuf.FileModel.FileRange getRanges(int index);
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+     */
     int getRangesCount();
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+     */
     java.util.List<? extends io.fathom.cloud.protobuf.FileModel.FileRangeOrBuilder> 
         getRangesOrBuilderList();
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+     */
     io.fathom.cloud.protobuf.FileModel.FileRangeOrBuilder getRangesOrBuilder(
         int index);
-    
+
     // optional bytes hash_resume = 8;
+    /**
+     * <code>optional bytes hash_resume = 8;</code>
+     */
     boolean hasHashResume();
+    /**
+     * <code>optional bytes hash_resume = 8;</code>
+     */
     com.google.protobuf.ByteString getHashResume();
-    
+
     // optional .fathomcloud.protobuf.Attributes attributes = 9;
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     boolean hasAttributes();
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.Attributes getAttributes();
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder getAttributesOrBuilder();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.FileData}
+   */
   public static final class FileData extends
       com.google.protobuf.GeneratedMessage
       implements FileDataOrBuilder {
     // Use FileData.newBuilder() to construct.
-    private FileData(Builder builder) {
+    private FileData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private FileData(boolean noInit) {}
-    
+    private FileData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final FileData defaultInstance;
     public static FileData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public FileData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FileData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              key_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000002;
+              length_ = input.readUInt64();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000004;
+              hash_ = input.readBytes();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000008;
+              contentType_ = input.readBytes();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000010;
+              lastModified_ = input.readInt64();
+              break;
+            }
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                ranges_ = new java.util.ArrayList<io.fathom.cloud.protobuf.FileModel.FileRange>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              ranges_.add(input.readMessage(io.fathom.cloud.protobuf.FileModel.FileRange.PARSER, extensionRegistry));
+              break;
+            }
+            case 66: {
+              bitField0_ |= 0x00000020;
+              hashResume_ = input.readBytes();
+              break;
+            }
+            case 74: {
+              io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                subBuilder = attributes_.toBuilder();
+              }
+              attributes_ = input.readMessage(io.fathom.cloud.protobuf.CloudCommons.Attributes.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attributes_);
+                attributes_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000040;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          ranges_ = java.util.Collections.unmodifiableList(ranges_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.FileModel.FileData.class, io.fathom.cloud.protobuf.FileModel.FileData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<FileData> PARSER =
+        new com.google.protobuf.AbstractParser<FileData>() {
+      public FileData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FileData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FileData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional string key = 1;
     public static final int KEY_FIELD_NUMBER = 1;
     private java.lang.Object key_;
+    /**
+     * <code>optional string key = 1;</code>
+     */
     public boolean hasKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public String getKey() {
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    public java.lang.String getKey() {
       java.lang.Object ref = key_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           key_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getKeyBytes() {
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
       java.lang.Object ref = key_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         key_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional uint64 length = 3;
     public static final int LENGTH_FIELD_NUMBER = 3;
     private long length_;
+    /**
+     * <code>optional uint64 length = 3;</code>
+     */
     public boolean hasLength() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional uint64 length = 3;</code>
+     */
     public long getLength() {
       return length_;
     }
-    
+
     // optional bytes hash = 4;
     public static final int HASH_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString hash_;
+    /**
+     * <code>optional bytes hash = 4;</code>
+     */
     public boolean hasHash() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
+    /**
+     * <code>optional bytes hash = 4;</code>
+     */
     public com.google.protobuf.ByteString getHash() {
       return hash_;
     }
-    
+
     // optional string content_type = 5;
     public static final int CONTENT_TYPE_FIELD_NUMBER = 5;
     private java.lang.Object contentType_;
+    /**
+     * <code>optional string content_type = 5;</code>
+     */
     public boolean hasContentType() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    public String getContentType() {
+    /**
+     * <code>optional string content_type = 5;</code>
+     */
+    public java.lang.String getContentType() {
       java.lang.Object ref = contentType_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           contentType_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getContentTypeBytes() {
+    /**
+     * <code>optional string content_type = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getContentTypeBytes() {
       java.lang.Object ref = contentType_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         contentType_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional int64 last_modified = 6;
     public static final int LAST_MODIFIED_FIELD_NUMBER = 6;
     private long lastModified_;
+    /**
+     * <code>optional int64 last_modified = 6;</code>
+     */
     public boolean hasLastModified() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
+    /**
+     * <code>optional int64 last_modified = 6;</code>
+     */
     public long getLastModified() {
       return lastModified_;
     }
-    
+
     // repeated .fathomcloud.protobuf.FileRange ranges = 7;
     public static final int RANGES_FIELD_NUMBER = 7;
     private java.util.List<io.fathom.cloud.protobuf.FileModel.FileRange> ranges_;
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+     */
     public java.util.List<io.fathom.cloud.protobuf.FileModel.FileRange> getRangesList() {
       return ranges_;
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+     */
     public java.util.List<? extends io.fathom.cloud.protobuf.FileModel.FileRangeOrBuilder> 
         getRangesOrBuilderList() {
       return ranges_;
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+     */
     public int getRangesCount() {
       return ranges_.size();
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+     */
     public io.fathom.cloud.protobuf.FileModel.FileRange getRanges(int index) {
       return ranges_.get(index);
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+     */
     public io.fathom.cloud.protobuf.FileModel.FileRangeOrBuilder getRangesOrBuilder(
         int index) {
       return ranges_.get(index);
     }
-    
+
     // optional bytes hash_resume = 8;
     public static final int HASH_RESUME_FIELD_NUMBER = 8;
     private com.google.protobuf.ByteString hashResume_;
+    /**
+     * <code>optional bytes hash_resume = 8;</code>
+     */
     public boolean hasHashResume() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
+    /**
+     * <code>optional bytes hash_resume = 8;</code>
+     */
     public com.google.protobuf.ByteString getHashResume() {
       return hashResume_;
     }
-    
+
     // optional .fathomcloud.protobuf.Attributes attributes = 9;
     public static final int ATTRIBUTES_FIELD_NUMBER = 9;
     private io.fathom.cloud.protobuf.CloudCommons.Attributes attributes_;
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     public boolean hasAttributes() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.Attributes getAttributes() {
       return attributes_;
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder getAttributesOrBuilder() {
       return attributes_;
     }
-    
+
     private void initFields() {
       key_ = "";
       length_ = 0L;
@@ -1381,11 +1975,11 @@ public final class FileModel {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -1415,12 +2009,12 @@ public final class FileModel {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1458,94 +2052,83 @@ public final class FileModel {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.FileModel.FileData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.FileModel.FileData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.FileData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.FileModel.FileData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.FileData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.FileData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.FileData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.FileData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.FileData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.FileData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.FileModel.FileData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.FileData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.FileModel.FileDataOrBuilder {
@@ -1553,18 +2136,21 @@ public final class FileModel {
           getDescriptor() {
         return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.FileModel.FileData.class, io.fathom.cloud.protobuf.FileModel.FileData.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.FileModel.FileData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1577,7 +2163,7 @@ public final class FileModel {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         key_ = "";
@@ -1606,20 +2192,20 @@ public final class FileModel {
         bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.FileModel.FileData.getDescriptor();
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileData_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.FileModel.FileData getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.FileModel.FileData.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.FileModel.FileData build() {
         io.fathom.cloud.protobuf.FileModel.FileData result = buildPartial();
         if (!result.isInitialized()) {
@@ -1627,17 +2213,7 @@ public final class FileModel {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.FileModel.FileData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.FileModel.FileData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.FileModel.FileData buildPartial() {
         io.fathom.cloud.protobuf.FileModel.FileData result = new io.fathom.cloud.protobuf.FileModel.FileData(this);
         int from_bitField0_ = bitField0_;
@@ -1687,7 +2263,7 @@ public final class FileModel {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.FileModel.FileData) {
           return mergeFrom((io.fathom.cloud.protobuf.FileModel.FileData)other);
@@ -1696,11 +2272,13 @@ public final class FileModel {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.FileModel.FileData other) {
         if (other == io.fathom.cloud.protobuf.FileModel.FileData.getDefaultInstance()) return this;
         if (other.hasKey()) {
-          setKey(other.getKey());
+          bitField0_ |= 0x00000001;
+          key_ = other.key_;
+          onChanged();
         }
         if (other.hasLength()) {
           setLength(other.getLength());
@@ -1709,7 +2287,9 @@ public final class FileModel {
           setHash(other.getHash());
         }
         if (other.hasContentType()) {
-          setContentType(other.getContentType());
+          bitField0_ |= 0x00000008;
+          contentType_ = other.contentType_;
+          onChanged();
         }
         if (other.hasLastModified()) {
           setLastModified(other.getLastModified());
@@ -1749,101 +2329,73 @@ public final class FileModel {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              key_ = input.readBytes();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000002;
-              length_ = input.readUInt64();
-              break;
-            }
-            case 34: {
-              bitField0_ |= 0x00000004;
-              hash_ = input.readBytes();
-              break;
-            }
-            case 42: {
-              bitField0_ |= 0x00000008;
-              contentType_ = input.readBytes();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000010;
-              lastModified_ = input.readInt64();
-              break;
-            }
-            case 58: {
-              io.fathom.cloud.protobuf.FileModel.FileRange.Builder subBuilder = io.fathom.cloud.protobuf.FileModel.FileRange.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addRanges(subBuilder.buildPartial());
-              break;
-            }
-            case 66: {
-              bitField0_ |= 0x00000040;
-              hashResume_ = input.readBytes();
-              break;
-            }
-            case 74: {
-              io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder subBuilder = io.fathom.cloud.protobuf.CloudCommons.Attributes.newBuilder();
-              if (hasAttributes()) {
-                subBuilder.mergeFrom(getAttributes());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setAttributes(subBuilder.buildPartial());
-              break;
-            }
+        io.fathom.cloud.protobuf.FileModel.FileData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.FileModel.FileData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional string key = 1;
       private java.lang.Object key_ = "";
+      /**
+       * <code>optional string key = 1;</code>
+       */
       public boolean hasKey() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public String getKey() {
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public java.lang.String getKey() {
         java.lang.Object ref = key_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           key_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setKey(String value) {
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getKeyBytes() {
+        java.lang.Object ref = key_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          key_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public Builder setKey(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1852,47 +2404,79 @@ public final class FileModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string key = 1;</code>
+       */
       public Builder clearKey() {
         bitField0_ = (bitField0_ & ~0x00000001);
         key_ = getDefaultInstance().getKey();
         onChanged();
         return this;
       }
-      void setKey(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         key_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional uint64 length = 3;
       private long length_ ;
+      /**
+       * <code>optional uint64 length = 3;</code>
+       */
       public boolean hasLength() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional uint64 length = 3;</code>
+       */
       public long getLength() {
         return length_;
       }
+      /**
+       * <code>optional uint64 length = 3;</code>
+       */
       public Builder setLength(long value) {
         bitField0_ |= 0x00000002;
         length_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 length = 3;</code>
+       */
       public Builder clearLength() {
         bitField0_ = (bitField0_ & ~0x00000002);
         length_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional bytes hash = 4;
       private com.google.protobuf.ByteString hash_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes hash = 4;</code>
+       */
       public boolean hasHash() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional bytes hash = 4;</code>
+       */
       public com.google.protobuf.ByteString getHash() {
         return hash_;
       }
+      /**
+       * <code>optional bytes hash = 4;</code>
+       */
       public Builder setHash(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -1902,29 +2486,59 @@ public final class FileModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bytes hash = 4;</code>
+       */
       public Builder clearHash() {
         bitField0_ = (bitField0_ & ~0x00000004);
         hash_ = getDefaultInstance().getHash();
         onChanged();
         return this;
       }
-      
+
       // optional string content_type = 5;
       private java.lang.Object contentType_ = "";
+      /**
+       * <code>optional string content_type = 5;</code>
+       */
       public boolean hasContentType() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      public String getContentType() {
+      /**
+       * <code>optional string content_type = 5;</code>
+       */
+      public java.lang.String getContentType() {
         java.lang.Object ref = contentType_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           contentType_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setContentType(String value) {
+      /**
+       * <code>optional string content_type = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getContentTypeBytes() {
+        java.lang.Object ref = contentType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          contentType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string content_type = 5;</code>
+       */
+      public Builder setContentType(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1933,39 +2547,62 @@ public final class FileModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string content_type = 5;</code>
+       */
       public Builder clearContentType() {
         bitField0_ = (bitField0_ & ~0x00000008);
         contentType_ = getDefaultInstance().getContentType();
         onChanged();
         return this;
       }
-      void setContentType(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000008;
+      /**
+       * <code>optional string content_type = 5;</code>
+       */
+      public Builder setContentTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
         contentType_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional int64 last_modified = 6;
       private long lastModified_ ;
+      /**
+       * <code>optional int64 last_modified = 6;</code>
+       */
       public boolean hasLastModified() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
+      /**
+       * <code>optional int64 last_modified = 6;</code>
+       */
       public long getLastModified() {
         return lastModified_;
       }
+      /**
+       * <code>optional int64 last_modified = 6;</code>
+       */
       public Builder setLastModified(long value) {
         bitField0_ |= 0x00000010;
         lastModified_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 last_modified = 6;</code>
+       */
       public Builder clearLastModified() {
         bitField0_ = (bitField0_ & ~0x00000010);
         lastModified_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // repeated .fathomcloud.protobuf.FileRange ranges = 7;
       private java.util.List<io.fathom.cloud.protobuf.FileModel.FileRange> ranges_ =
         java.util.Collections.emptyList();
@@ -1975,10 +2612,13 @@ public final class FileModel {
           bitField0_ |= 0x00000020;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           io.fathom.cloud.protobuf.FileModel.FileRange, io.fathom.cloud.protobuf.FileModel.FileRange.Builder, io.fathom.cloud.protobuf.FileModel.FileRangeOrBuilder> rangesBuilder_;
-      
+
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public java.util.List<io.fathom.cloud.protobuf.FileModel.FileRange> getRangesList() {
         if (rangesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(ranges_);
@@ -1986,6 +2626,9 @@ public final class FileModel {
           return rangesBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public int getRangesCount() {
         if (rangesBuilder_ == null) {
           return ranges_.size();
@@ -1993,6 +2636,9 @@ public final class FileModel {
           return rangesBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.FileRange getRanges(int index) {
         if (rangesBuilder_ == null) {
           return ranges_.get(index);
@@ -2000,6 +2646,9 @@ public final class FileModel {
           return rangesBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public Builder setRanges(
           int index, io.fathom.cloud.protobuf.FileModel.FileRange value) {
         if (rangesBuilder_ == null) {
@@ -2014,6 +2663,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public Builder setRanges(
           int index, io.fathom.cloud.protobuf.FileModel.FileRange.Builder builderForValue) {
         if (rangesBuilder_ == null) {
@@ -2025,6 +2677,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public Builder addRanges(io.fathom.cloud.protobuf.FileModel.FileRange value) {
         if (rangesBuilder_ == null) {
           if (value == null) {
@@ -2038,6 +2693,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public Builder addRanges(
           int index, io.fathom.cloud.protobuf.FileModel.FileRange value) {
         if (rangesBuilder_ == null) {
@@ -2052,6 +2710,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public Builder addRanges(
           io.fathom.cloud.protobuf.FileModel.FileRange.Builder builderForValue) {
         if (rangesBuilder_ == null) {
@@ -2063,6 +2724,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public Builder addRanges(
           int index, io.fathom.cloud.protobuf.FileModel.FileRange.Builder builderForValue) {
         if (rangesBuilder_ == null) {
@@ -2074,6 +2738,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public Builder addAllRanges(
           java.lang.Iterable<? extends io.fathom.cloud.protobuf.FileModel.FileRange> values) {
         if (rangesBuilder_ == null) {
@@ -2085,6 +2752,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public Builder clearRanges() {
         if (rangesBuilder_ == null) {
           ranges_ = java.util.Collections.emptyList();
@@ -2095,6 +2765,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public Builder removeRanges(int index) {
         if (rangesBuilder_ == null) {
           ensureRangesIsMutable();
@@ -2105,10 +2778,16 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.FileRange.Builder getRangesBuilder(
           int index) {
         return getRangesFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.FileRangeOrBuilder getRangesOrBuilder(
           int index) {
         if (rangesBuilder_ == null) {
@@ -2116,6 +2795,9 @@ public final class FileModel {
           return rangesBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public java.util.List<? extends io.fathom.cloud.protobuf.FileModel.FileRangeOrBuilder> 
            getRangesOrBuilderList() {
         if (rangesBuilder_ != null) {
@@ -2124,15 +2806,24 @@ public final class FileModel {
           return java.util.Collections.unmodifiableList(ranges_);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.FileRange.Builder addRangesBuilder() {
         return getRangesFieldBuilder().addBuilder(
             io.fathom.cloud.protobuf.FileModel.FileRange.getDefaultInstance());
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.FileRange.Builder addRangesBuilder(
           int index) {
         return getRangesFieldBuilder().addBuilder(
             index, io.fathom.cloud.protobuf.FileModel.FileRange.getDefaultInstance());
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileRange ranges = 7;</code>
+       */
       public java.util.List<io.fathom.cloud.protobuf.FileModel.FileRange.Builder> 
            getRangesBuilderList() {
         return getRangesFieldBuilder().getBuilderList();
@@ -2151,15 +2842,24 @@ public final class FileModel {
         }
         return rangesBuilder_;
       }
-      
+
       // optional bytes hash_resume = 8;
       private com.google.protobuf.ByteString hashResume_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes hash_resume = 8;</code>
+       */
       public boolean hasHashResume() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
+      /**
+       * <code>optional bytes hash_resume = 8;</code>
+       */
       public com.google.protobuf.ByteString getHashResume() {
         return hashResume_;
       }
+      /**
+       * <code>optional bytes hash_resume = 8;</code>
+       */
       public Builder setHashResume(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -2169,20 +2869,29 @@ public final class FileModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bytes hash_resume = 8;</code>
+       */
       public Builder clearHashResume() {
         bitField0_ = (bitField0_ & ~0x00000040);
         hashResume_ = getDefaultInstance().getHashResume();
         onChanged();
         return this;
       }
-      
+
       // optional .fathomcloud.protobuf.Attributes attributes = 9;
       private io.fathom.cloud.protobuf.CloudCommons.Attributes attributes_ = io.fathom.cloud.protobuf.CloudCommons.Attributes.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.CloudCommons.Attributes, io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder, io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder> attributesBuilder_;
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public boolean hasAttributes() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.Attributes getAttributes() {
         if (attributesBuilder_ == null) {
           return attributes_;
@@ -2190,6 +2899,9 @@ public final class FileModel {
           return attributesBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public Builder setAttributes(io.fathom.cloud.protobuf.CloudCommons.Attributes value) {
         if (attributesBuilder_ == null) {
           if (value == null) {
@@ -2203,6 +2915,9 @@ public final class FileModel {
         bitField0_ |= 0x00000080;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public Builder setAttributes(
           io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder builderForValue) {
         if (attributesBuilder_ == null) {
@@ -2214,6 +2929,9 @@ public final class FileModel {
         bitField0_ |= 0x00000080;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public Builder mergeAttributes(io.fathom.cloud.protobuf.CloudCommons.Attributes value) {
         if (attributesBuilder_ == null) {
           if (((bitField0_ & 0x00000080) == 0x00000080) &&
@@ -2230,6 +2948,9 @@ public final class FileModel {
         bitField0_ |= 0x00000080;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public Builder clearAttributes() {
         if (attributesBuilder_ == null) {
           attributes_ = io.fathom.cloud.protobuf.CloudCommons.Attributes.getDefaultInstance();
@@ -2240,11 +2961,17 @@ public final class FileModel {
         bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder getAttributesBuilder() {
         bitField0_ |= 0x00000080;
         onChanged();
         return getAttributesFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder getAttributesOrBuilder() {
         if (attributesBuilder_ != null) {
           return attributesBuilder_.getMessageOrBuilder();
@@ -2252,6 +2979,9 @@ public final class FileModel {
           return attributes_;
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.Attributes attributes = 9;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.CloudCommons.Attributes, io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder, io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder> 
           getAttributesFieldBuilder() {
@@ -2265,372 +2995,99 @@ public final class FileModel {
         }
         return attributesBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.FileData)
     }
-    
+
     static {
       defaultInstance = new FileData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.FileData)
   }
-  
+
   public interface FileRangeOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional uint64 start = 1;
+    /**
+     * <code>optional uint64 start = 1;</code>
+     */
     boolean hasStart();
+    /**
+     * <code>optional uint64 start = 1;</code>
+     */
     long getStart();
-    
+
     // optional uint64 end = 2;
+    /**
+     * <code>optional uint64 end = 2;</code>
+     */
     boolean hasEnd();
+    /**
+     * <code>optional uint64 end = 2;</code>
+     */
     long getEnd();
-    
+
     // optional bytes content_key = 3;
+    /**
+     * <code>optional bytes content_key = 3;</code>
+     */
     boolean hasContentKey();
+    /**
+     * <code>optional bytes content_key = 3;</code>
+     */
     com.google.protobuf.ByteString getContentKey();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.FileRange}
+   */
   public static final class FileRange extends
       com.google.protobuf.GeneratedMessage
       implements FileRangeOrBuilder {
     // Use FileRange.newBuilder() to construct.
-    private FileRange(Builder builder) {
+    private FileRange(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private FileRange(boolean noInit) {}
-    
+    private FileRange(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final FileRange defaultInstance;
     public static FileRange getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public FileRange getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileRange_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileRange_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // optional uint64 start = 1;
-    public static final int START_FIELD_NUMBER = 1;
-    private long start_;
-    public boolean hasStart() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public long getStart() {
-      return start_;
-    }
-    
-    // optional uint64 end = 2;
-    public static final int END_FIELD_NUMBER = 2;
-    private long end_;
-    public boolean hasEnd() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public long getEnd() {
-      return end_;
-    }
-    
-    // optional bytes content_key = 3;
-    public static final int CONTENT_KEY_FIELD_NUMBER = 3;
-    private com.google.protobuf.ByteString contentKey_;
-    public boolean hasContentKey() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public com.google.protobuf.ByteString getContentKey() {
-      return contentKey_;
-    }
-    
-    private void initFields() {
-      start_ = 0L;
-      end_ = 0L;
-      contentKey_ = com.google.protobuf.ByteString.EMPTY;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, start_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt64(2, end_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, contentKey_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, start_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(2, end_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, contentKey_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
     }
-    
-    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.FileModel.FileRange parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static io.fathom.cloud.protobuf.FileModel.FileRange parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
+    private FileRange(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(io.fathom.cloud.protobuf.FileModel.FileRange prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements io.fathom.cloud.protobuf.FileModel.FileRangeOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileRange_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileRange_fieldAccessorTable;
-      }
-      
-      // Construct using io.fathom.cloud.protobuf.FileModel.FileRange.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        start_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        end_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        contentKey_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return io.fathom.cloud.protobuf.FileModel.FileRange.getDescriptor();
-      }
-      
-      public io.fathom.cloud.protobuf.FileModel.FileRange getDefaultInstanceForType() {
-        return io.fathom.cloud.protobuf.FileModel.FileRange.getDefaultInstance();
-      }
-      
-      public io.fathom.cloud.protobuf.FileModel.FileRange build() {
-        io.fathom.cloud.protobuf.FileModel.FileRange result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private io.fathom.cloud.protobuf.FileModel.FileRange buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.FileModel.FileRange result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public io.fathom.cloud.protobuf.FileModel.FileRange buildPartial() {
-        io.fathom.cloud.protobuf.FileModel.FileRange result = new io.fathom.cloud.protobuf.FileModel.FileRange(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.start_ = start_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.end_ = end_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.contentKey_ = contentKey_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof io.fathom.cloud.protobuf.FileModel.FileRange) {
-          return mergeFrom((io.fathom.cloud.protobuf.FileModel.FileRange)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(io.fathom.cloud.protobuf.FileModel.FileRange other) {
-        if (other == io.fathom.cloud.protobuf.FileModel.FileRange.getDefaultInstance()) return this;
-        if (other.hasStart()) {
-          setStart(other.getStart());
-        }
-        if (other.hasEnd()) {
-          setEnd(other.getEnd());
-        }
-        if (other.hasContentKey()) {
-          setContentKey(other.getContentKey());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -2651,60 +3108,436 @@ public final class FileModel {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileRange_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileRange_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.FileModel.FileRange.class, io.fathom.cloud.protobuf.FileModel.FileRange.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<FileRange> PARSER =
+        new com.google.protobuf.AbstractParser<FileRange>() {
+      public FileRange parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FileRange(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FileRange> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional uint64 start = 1;
+    public static final int START_FIELD_NUMBER = 1;
+    private long start_;
+    /**
+     * <code>optional uint64 start = 1;</code>
+     */
+    public boolean hasStart() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional uint64 start = 1;</code>
+     */
+    public long getStart() {
+      return start_;
+    }
+
+    // optional uint64 end = 2;
+    public static final int END_FIELD_NUMBER = 2;
+    private long end_;
+    /**
+     * <code>optional uint64 end = 2;</code>
+     */
+    public boolean hasEnd() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional uint64 end = 2;</code>
+     */
+    public long getEnd() {
+      return end_;
+    }
+
+    // optional bytes content_key = 3;
+    public static final int CONTENT_KEY_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString contentKey_;
+    /**
+     * <code>optional bytes content_key = 3;</code>
+     */
+    public boolean hasContentKey() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional bytes content_key = 3;</code>
+     */
+    public com.google.protobuf.ByteString getContentKey() {
+      return contentKey_;
+    }
+
+    private void initFields() {
+      start_ = 0L;
+      end_ = 0L;
+      contentKey_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt64(1, start_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt64(2, end_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, contentKey_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(1, start_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(2, end_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, contentKey_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.FileModel.FileRange parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static io.fathom.cloud.protobuf.FileModel.FileRange parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static io.fathom.cloud.protobuf.FileModel.FileRange parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(io.fathom.cloud.protobuf.FileModel.FileRange prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.FileRange}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements io.fathom.cloud.protobuf.FileModel.FileRangeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileRange_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileRange_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.FileModel.FileRange.class, io.fathom.cloud.protobuf.FileModel.FileRange.Builder.class);
+      }
+
+      // Construct using io.fathom.cloud.protobuf.FileModel.FileRange.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        start_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        end_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        contentKey_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_FileRange_descriptor;
+      }
+
+      public io.fathom.cloud.protobuf.FileModel.FileRange getDefaultInstanceForType() {
+        return io.fathom.cloud.protobuf.FileModel.FileRange.getDefaultInstance();
+      }
+
+      public io.fathom.cloud.protobuf.FileModel.FileRange build() {
+        io.fathom.cloud.protobuf.FileModel.FileRange result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public io.fathom.cloud.protobuf.FileModel.FileRange buildPartial() {
+        io.fathom.cloud.protobuf.FileModel.FileRange result = new io.fathom.cloud.protobuf.FileModel.FileRange(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.start_ = start_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.end_ = end_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.contentKey_ = contentKey_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.fathom.cloud.protobuf.FileModel.FileRange) {
+          return mergeFrom((io.fathom.cloud.protobuf.FileModel.FileRange)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.fathom.cloud.protobuf.FileModel.FileRange other) {
+        if (other == io.fathom.cloud.protobuf.FileModel.FileRange.getDefaultInstance()) return this;
+        if (other.hasStart()) {
+          setStart(other.getStart());
+        }
+        if (other.hasEnd()) {
+          setEnd(other.getEnd());
+        }
+        if (other.hasContentKey()) {
+          setContentKey(other.getContentKey());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.fathom.cloud.protobuf.FileModel.FileRange parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.FileModel.FileRange) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
+
       // optional uint64 start = 1;
       private long start_ ;
+      /**
+       * <code>optional uint64 start = 1;</code>
+       */
       public boolean hasStart() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional uint64 start = 1;</code>
+       */
       public long getStart() {
         return start_;
       }
+      /**
+       * <code>optional uint64 start = 1;</code>
+       */
       public Builder setStart(long value) {
         bitField0_ |= 0x00000001;
         start_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 start = 1;</code>
+       */
       public Builder clearStart() {
         bitField0_ = (bitField0_ & ~0x00000001);
         start_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional uint64 end = 2;
       private long end_ ;
+      /**
+       * <code>optional uint64 end = 2;</code>
+       */
       public boolean hasEnd() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional uint64 end = 2;</code>
+       */
       public long getEnd() {
         return end_;
       }
+      /**
+       * <code>optional uint64 end = 2;</code>
+       */
       public Builder setEnd(long value) {
         bitField0_ |= 0x00000002;
         end_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 end = 2;</code>
+       */
       public Builder clearEnd() {
         bitField0_ = (bitField0_ & ~0x00000002);
         end_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional bytes content_key = 3;
       private com.google.protobuf.ByteString contentKey_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes content_key = 3;</code>
+       */
       public boolean hasContentKey() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional bytes content_key = 3;</code>
+       */
       public com.google.protobuf.ByteString getContentKey() {
         return contentKey_;
       }
+      /**
+       * <code>optional bytes content_key = 3;</code>
+       */
       public Builder setContentKey(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -2714,101 +3547,224 @@ public final class FileModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bytes content_key = 3;</code>
+       */
       public Builder clearContentKey() {
         bitField0_ = (bitField0_ & ~0x00000004);
         contentKey_ = getDefaultInstance().getContentKey();
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.FileRange)
     }
-    
+
     static {
       defaultInstance = new FileRange(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.FileRange)
   }
-  
+
   public interface DirectoryDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional uint64 id = 1;
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
     boolean hasId();
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
     long getId();
-    
+
     // repeated .fathomcloud.protobuf.FileData files = 2;
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+     */
     java.util.List<io.fathom.cloud.protobuf.FileModel.FileData> 
         getFilesList();
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+     */
     io.fathom.cloud.protobuf.FileModel.FileData getFiles(int index);
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+     */
     int getFilesCount();
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+     */
     java.util.List<? extends io.fathom.cloud.protobuf.FileModel.FileDataOrBuilder> 
         getFilesOrBuilderList();
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+     */
     io.fathom.cloud.protobuf.FileModel.FileDataOrBuilder getFilesOrBuilder(
         int index);
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.DirectoryData}
+   */
   public static final class DirectoryData extends
       com.google.protobuf.GeneratedMessage
       implements DirectoryDataOrBuilder {
     // Use DirectoryData.newBuilder() to construct.
-    private DirectoryData(Builder builder) {
+    private DirectoryData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private DirectoryData(boolean noInit) {}
-    
+    private DirectoryData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final DirectoryData defaultInstance;
     public static DirectoryData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public DirectoryData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DirectoryData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readUInt64();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                files_ = new java.util.ArrayList<io.fathom.cloud.protobuf.FileModel.FileData>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              files_.add(input.readMessage(io.fathom.cloud.protobuf.FileModel.FileData.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          files_ = java.util.Collections.unmodifiableList(files_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_DirectoryData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_DirectoryData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_DirectoryData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.FileModel.DirectoryData.class, io.fathom.cloud.protobuf.FileModel.DirectoryData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<DirectoryData> PARSER =
+        new com.google.protobuf.AbstractParser<DirectoryData>() {
+      public DirectoryData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DirectoryData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DirectoryData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional uint64 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private long id_;
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
     public long getId() {
       return id_;
     }
-    
+
     // repeated .fathomcloud.protobuf.FileData files = 2;
     public static final int FILES_FIELD_NUMBER = 2;
     private java.util.List<io.fathom.cloud.protobuf.FileModel.FileData> files_;
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+     */
     public java.util.List<io.fathom.cloud.protobuf.FileModel.FileData> getFilesList() {
       return files_;
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+     */
     public java.util.List<? extends io.fathom.cloud.protobuf.FileModel.FileDataOrBuilder> 
         getFilesOrBuilderList() {
       return files_;
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+     */
     public int getFilesCount() {
       return files_.size();
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+     */
     public io.fathom.cloud.protobuf.FileModel.FileData getFiles(int index) {
       return files_.get(index);
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+     */
     public io.fathom.cloud.protobuf.FileModel.FileDataOrBuilder getFilesOrBuilder(
         int index) {
       return files_.get(index);
     }
-    
+
     private void initFields() {
       id_ = 0L;
       files_ = java.util.Collections.emptyList();
@@ -2817,11 +3773,11 @@ public final class FileModel {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -2833,12 +3789,12 @@ public final class FileModel {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -2852,94 +3808,83 @@ public final class FileModel {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.FileModel.DirectoryData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.FileModel.DirectoryData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.DirectoryData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.FileModel.DirectoryData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.DirectoryData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.DirectoryData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.DirectoryData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.DirectoryData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.DirectoryData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.DirectoryData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.FileModel.DirectoryData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.DirectoryData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.FileModel.DirectoryDataOrBuilder {
@@ -2947,18 +3892,21 @@ public final class FileModel {
           getDescriptor() {
         return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_DirectoryData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_DirectoryData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_DirectoryData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.FileModel.DirectoryData.class, io.fathom.cloud.protobuf.FileModel.DirectoryData.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.FileModel.DirectoryData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -2970,7 +3918,7 @@ public final class FileModel {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         id_ = 0L;
@@ -2983,20 +3931,20 @@ public final class FileModel {
         }
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.FileModel.DirectoryData.getDescriptor();
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_DirectoryData_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.FileModel.DirectoryData getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.FileModel.DirectoryData.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.FileModel.DirectoryData build() {
         io.fathom.cloud.protobuf.FileModel.DirectoryData result = buildPartial();
         if (!result.isInitialized()) {
@@ -3004,17 +3952,7 @@ public final class FileModel {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.FileModel.DirectoryData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.FileModel.DirectoryData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.FileModel.DirectoryData buildPartial() {
         io.fathom.cloud.protobuf.FileModel.DirectoryData result = new io.fathom.cloud.protobuf.FileModel.DirectoryData(this);
         int from_bitField0_ = bitField0_;
@@ -3036,7 +3974,7 @@ public final class FileModel {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.FileModel.DirectoryData) {
           return mergeFrom((io.fathom.cloud.protobuf.FileModel.DirectoryData)other);
@@ -3045,7 +3983,7 @@ public final class FileModel {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.FileModel.DirectoryData other) {
         if (other == io.fathom.cloud.protobuf.FileModel.DirectoryData.getDefaultInstance()) return this;
         if (other.hasId()) {
@@ -3080,72 +4018,63 @@ public final class FileModel {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              id_ = input.readUInt64();
-              break;
-            }
-            case 18: {
-              io.fathom.cloud.protobuf.FileModel.FileData.Builder subBuilder = io.fathom.cloud.protobuf.FileModel.FileData.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addFiles(subBuilder.buildPartial());
-              break;
-            }
+        io.fathom.cloud.protobuf.FileModel.DirectoryData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.FileModel.DirectoryData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional uint64 id = 1;
       private long id_ ;
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public long getId() {
         return id_;
       }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public Builder setId(long value) {
         bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // repeated .fathomcloud.protobuf.FileData files = 2;
       private java.util.List<io.fathom.cloud.protobuf.FileModel.FileData> files_ =
         java.util.Collections.emptyList();
@@ -3155,10 +4084,13 @@ public final class FileModel {
           bitField0_ |= 0x00000002;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           io.fathom.cloud.protobuf.FileModel.FileData, io.fathom.cloud.protobuf.FileModel.FileData.Builder, io.fathom.cloud.protobuf.FileModel.FileDataOrBuilder> filesBuilder_;
-      
+
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public java.util.List<io.fathom.cloud.protobuf.FileModel.FileData> getFilesList() {
         if (filesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(files_);
@@ -3166,6 +4098,9 @@ public final class FileModel {
           return filesBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public int getFilesCount() {
         if (filesBuilder_ == null) {
           return files_.size();
@@ -3173,6 +4108,9 @@ public final class FileModel {
           return filesBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.FileData getFiles(int index) {
         if (filesBuilder_ == null) {
           return files_.get(index);
@@ -3180,6 +4118,9 @@ public final class FileModel {
           return filesBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public Builder setFiles(
           int index, io.fathom.cloud.protobuf.FileModel.FileData value) {
         if (filesBuilder_ == null) {
@@ -3194,6 +4135,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public Builder setFiles(
           int index, io.fathom.cloud.protobuf.FileModel.FileData.Builder builderForValue) {
         if (filesBuilder_ == null) {
@@ -3205,6 +4149,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public Builder addFiles(io.fathom.cloud.protobuf.FileModel.FileData value) {
         if (filesBuilder_ == null) {
           if (value == null) {
@@ -3218,6 +4165,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public Builder addFiles(
           int index, io.fathom.cloud.protobuf.FileModel.FileData value) {
         if (filesBuilder_ == null) {
@@ -3232,6 +4182,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public Builder addFiles(
           io.fathom.cloud.protobuf.FileModel.FileData.Builder builderForValue) {
         if (filesBuilder_ == null) {
@@ -3243,6 +4196,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public Builder addFiles(
           int index, io.fathom.cloud.protobuf.FileModel.FileData.Builder builderForValue) {
         if (filesBuilder_ == null) {
@@ -3254,6 +4210,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public Builder addAllFiles(
           java.lang.Iterable<? extends io.fathom.cloud.protobuf.FileModel.FileData> values) {
         if (filesBuilder_ == null) {
@@ -3265,6 +4224,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public Builder clearFiles() {
         if (filesBuilder_ == null) {
           files_ = java.util.Collections.emptyList();
@@ -3275,6 +4237,9 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public Builder removeFiles(int index) {
         if (filesBuilder_ == null) {
           ensureFilesIsMutable();
@@ -3285,10 +4250,16 @@ public final class FileModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.FileData.Builder getFilesBuilder(
           int index) {
         return getFilesFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.FileDataOrBuilder getFilesOrBuilder(
           int index) {
         if (filesBuilder_ == null) {
@@ -3296,6 +4267,9 @@ public final class FileModel {
           return filesBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public java.util.List<? extends io.fathom.cloud.protobuf.FileModel.FileDataOrBuilder> 
            getFilesOrBuilderList() {
         if (filesBuilder_ != null) {
@@ -3304,15 +4278,24 @@ public final class FileModel {
           return java.util.Collections.unmodifiableList(files_);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.FileData.Builder addFilesBuilder() {
         return getFilesFieldBuilder().addBuilder(
             io.fathom.cloud.protobuf.FileModel.FileData.getDefaultInstance());
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public io.fathom.cloud.protobuf.FileModel.FileData.Builder addFilesBuilder(
           int index) {
         return getFilesFieldBuilder().addBuilder(
             index, io.fathom.cloud.protobuf.FileModel.FileData.getDefaultInstance());
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FileData files = 2;</code>
+       */
       public java.util.List<io.fathom.cloud.protobuf.FileModel.FileData.Builder> 
            getFilesBuilderList() {
         return getFilesFieldBuilder().getBuilderList();
@@ -3331,64 +4314,143 @@ public final class FileModel {
         }
         return filesBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.DirectoryData)
     }
-    
+
     static {
       defaultInstance = new DirectoryData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.DirectoryData)
   }
-  
+
   public interface ChunkDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional uint64 offset = 1;
+    /**
+     * <code>optional uint64 offset = 1;</code>
+     */
     boolean hasOffset();
+    /**
+     * <code>optional uint64 offset = 1;</code>
+     */
     long getOffset();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.ChunkData}
+   */
   public static final class ChunkData extends
       com.google.protobuf.GeneratedMessage
       implements ChunkDataOrBuilder {
     // Use ChunkData.newBuilder() to construct.
-    private ChunkData(Builder builder) {
+    private ChunkData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private ChunkData(boolean noInit) {}
-    
+    private ChunkData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final ChunkData defaultInstance;
     public static ChunkData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public ChunkData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChunkData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              offset_ = input.readUInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_ChunkData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_ChunkData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_ChunkData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.FileModel.ChunkData.class, io.fathom.cloud.protobuf.FileModel.ChunkData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<ChunkData> PARSER =
+        new com.google.protobuf.AbstractParser<ChunkData>() {
+      public ChunkData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChunkData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChunkData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional uint64 offset = 1;
     public static final int OFFSET_FIELD_NUMBER = 1;
     private long offset_;
+    /**
+     * <code>optional uint64 offset = 1;</code>
+     */
     public boolean hasOffset() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>optional uint64 offset = 1;</code>
+     */
     public long getOffset() {
       return offset_;
     }
-    
+
     private void initFields() {
       offset_ = 0L;
     }
@@ -3396,11 +4458,11 @@ public final class FileModel {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -3409,12 +4471,12 @@ public final class FileModel {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3424,94 +4486,83 @@ public final class FileModel {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.FileModel.ChunkData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.FileModel.ChunkData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.ChunkData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.FileModel.ChunkData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.ChunkData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.ChunkData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.ChunkData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.ChunkData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.FileModel.ChunkData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.FileModel.ChunkData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.FileModel.ChunkData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.ChunkData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.FileModel.ChunkDataOrBuilder {
@@ -3519,18 +4570,21 @@ public final class FileModel {
           getDescriptor() {
         return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_ChunkData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_ChunkData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_ChunkData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.FileModel.ChunkData.class, io.fathom.cloud.protobuf.FileModel.ChunkData.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.FileModel.ChunkData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -3541,27 +4595,27 @@ public final class FileModel {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         offset_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.FileModel.ChunkData.getDescriptor();
+        return io.fathom.cloud.protobuf.FileModel.internal_static_fathomcloud_protobuf_ChunkData_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.FileModel.ChunkData getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.FileModel.ChunkData.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.FileModel.ChunkData build() {
         io.fathom.cloud.protobuf.FileModel.ChunkData result = buildPartial();
         if (!result.isInitialized()) {
@@ -3569,17 +4623,7 @@ public final class FileModel {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.FileModel.ChunkData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.FileModel.ChunkData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.FileModel.ChunkData buildPartial() {
         io.fathom.cloud.protobuf.FileModel.ChunkData result = new io.fathom.cloud.protobuf.FileModel.ChunkData(this);
         int from_bitField0_ = bitField0_;
@@ -3592,7 +4636,7 @@ public final class FileModel {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.FileModel.ChunkData) {
           return mergeFrom((io.fathom.cloud.protobuf.FileModel.ChunkData)other);
@@ -3601,7 +4645,7 @@ public final class FileModel {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.FileModel.ChunkData other) {
         if (other == io.fathom.cloud.protobuf.FileModel.ChunkData.getDefaultInstance()) return this;
         if (other.hasOffset()) {
@@ -3610,77 +4654,74 @@ public final class FileModel {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              offset_ = input.readUInt64();
-              break;
-            }
+        io.fathom.cloud.protobuf.FileModel.ChunkData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.FileModel.ChunkData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional uint64 offset = 1;
       private long offset_ ;
+      /**
+       * <code>optional uint64 offset = 1;</code>
+       */
       public boolean hasOffset() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional uint64 offset = 1;</code>
+       */
       public long getOffset() {
         return offset_;
       }
+      /**
+       * <code>optional uint64 offset = 1;</code>
+       */
       public Builder setOffset(long value) {
         bitField0_ |= 0x00000001;
         offset_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 offset = 1;</code>
+       */
       public Builder clearOffset() {
         bitField0_ = (bitField0_ & ~0x00000001);
         offset_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.ChunkData)
     }
-    
+
     static {
       defaultInstance = new ChunkData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.ChunkData)
   }
-  
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_fathomcloud_protobuf_BucketAttributes_descriptor;
   private static
@@ -3711,7 +4752,7 @@ public final class FileModel {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_fathomcloud_protobuf_ChunkData_fieldAccessorTable;
-  
+
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -3749,49 +4790,37 @@ public final class FileModel {
           internal_static_fathomcloud_protobuf_BucketAttributes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_BucketAttributes_descriptor,
-              new java.lang.String[] { "AclRead", },
-              io.fathom.cloud.protobuf.FileModel.BucketAttributes.class,
-              io.fathom.cloud.protobuf.FileModel.BucketAttributes.Builder.class);
+              new java.lang.String[] { "AclRead", });
           internal_static_fathomcloud_protobuf_BucketData_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_fathomcloud_protobuf_BucketData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_BucketData_descriptor,
-              new java.lang.String[] { "Key", "RootId", "CreatedAt", "BucketAttributes", "Attributes", },
-              io.fathom.cloud.protobuf.FileModel.BucketData.class,
-              io.fathom.cloud.protobuf.FileModel.BucketData.Builder.class);
+              new java.lang.String[] { "Key", "RootId", "CreatedAt", "BucketAttributes", "Attributes", });
           internal_static_fathomcloud_protobuf_FileData_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_fathomcloud_protobuf_FileData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_FileData_descriptor,
-              new java.lang.String[] { "Key", "Length", "Hash", "ContentType", "LastModified", "Ranges", "HashResume", "Attributes", },
-              io.fathom.cloud.protobuf.FileModel.FileData.class,
-              io.fathom.cloud.protobuf.FileModel.FileData.Builder.class);
+              new java.lang.String[] { "Key", "Length", "Hash", "ContentType", "LastModified", "Ranges", "HashResume", "Attributes", });
           internal_static_fathomcloud_protobuf_FileRange_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_fathomcloud_protobuf_FileRange_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_FileRange_descriptor,
-              new java.lang.String[] { "Start", "End", "ContentKey", },
-              io.fathom.cloud.protobuf.FileModel.FileRange.class,
-              io.fathom.cloud.protobuf.FileModel.FileRange.Builder.class);
+              new java.lang.String[] { "Start", "End", "ContentKey", });
           internal_static_fathomcloud_protobuf_DirectoryData_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_fathomcloud_protobuf_DirectoryData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_DirectoryData_descriptor,
-              new java.lang.String[] { "Id", "Files", },
-              io.fathom.cloud.protobuf.FileModel.DirectoryData.class,
-              io.fathom.cloud.protobuf.FileModel.DirectoryData.Builder.class);
+              new java.lang.String[] { "Id", "Files", });
           internal_static_fathomcloud_protobuf_ChunkData_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_fathomcloud_protobuf_ChunkData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_ChunkData_descriptor,
-              new java.lang.String[] { "Offset", },
-              io.fathom.cloud.protobuf.FileModel.ChunkData.class,
-              io.fathom.cloud.protobuf.FileModel.ChunkData.Builder.class);
+              new java.lang.String[] { "Offset", });
           return null;
         }
       };
@@ -3801,6 +4830,6 @@ public final class FileModel {
           io.fathom.cloud.protobuf.CloudCommons.getDescriptor(),
         }, assigner);
   }
-  
+
   // @@protoc_insertion_point(outer_class_scope)
 }

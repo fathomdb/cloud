@@ -10,86 +10,192 @@ public final class SecretsModel {
   }
   public interface SecretRecordItemDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional string key = 1;
+    /**
+     * <code>optional string key = 1;</code>
+     */
     boolean hasKey();
-    String getKey();
-    
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    java.lang.String getKey();
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getKeyBytes();
+
     // optional bytes ciphertext = 2;
+    /**
+     * <code>optional bytes ciphertext = 2;</code>
+     */
     boolean hasCiphertext();
+    /**
+     * <code>optional bytes ciphertext = 2;</code>
+     */
     com.google.protobuf.ByteString getCiphertext();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.SecretRecordItemData}
+   */
   public static final class SecretRecordItemData extends
       com.google.protobuf.GeneratedMessage
       implements SecretRecordItemDataOrBuilder {
     // Use SecretRecordItemData.newBuilder() to construct.
-    private SecretRecordItemData(Builder builder) {
+    private SecretRecordItemData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private SecretRecordItemData(boolean noInit) {}
-    
+    private SecretRecordItemData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final SecretRecordItemData defaultInstance;
     public static SecretRecordItemData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public SecretRecordItemData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SecretRecordItemData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              key_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              ciphertext_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordItemData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordItemData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordItemData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.class, io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<SecretRecordItemData> PARSER =
+        new com.google.protobuf.AbstractParser<SecretRecordItemData>() {
+      public SecretRecordItemData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SecretRecordItemData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SecretRecordItemData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional string key = 1;
     public static final int KEY_FIELD_NUMBER = 1;
     private java.lang.Object key_;
+    /**
+     * <code>optional string key = 1;</code>
+     */
     public boolean hasKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public String getKey() {
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    public java.lang.String getKey() {
       java.lang.Object ref = key_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           key_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getKeyBytes() {
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
       java.lang.Object ref = key_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         key_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional bytes ciphertext = 2;
     public static final int CIPHERTEXT_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString ciphertext_;
+    /**
+     * <code>optional bytes ciphertext = 2;</code>
+     */
     public boolean hasCiphertext() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional bytes ciphertext = 2;</code>
+     */
     public com.google.protobuf.ByteString getCiphertext() {
       return ciphertext_;
     }
-    
+
     private void initFields() {
       key_ = "";
       ciphertext_ = com.google.protobuf.ByteString.EMPTY;
@@ -98,11 +204,11 @@ public final class SecretsModel {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -114,12 +220,12 @@ public final class SecretsModel {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -133,94 +239,83 @@ public final class SecretsModel {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.SecretRecordItemData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemDataOrBuilder {
@@ -228,18 +323,21 @@ public final class SecretsModel {
           getDescriptor() {
         return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordItemData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordItemData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordItemData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.class, io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -250,7 +348,7 @@ public final class SecretsModel {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         key_ = "";
@@ -259,20 +357,20 @@ public final class SecretsModel {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.getDescriptor();
+        return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordItemData_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData build() {
         io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData result = buildPartial();
         if (!result.isInitialized()) {
@@ -280,17 +378,7 @@ public final class SecretsModel {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData buildPartial() {
         io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData result = new io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData(this);
         int from_bitField0_ = bitField0_;
@@ -307,7 +395,7 @@ public final class SecretsModel {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData) {
           return mergeFrom((io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData)other);
@@ -316,11 +404,13 @@ public final class SecretsModel {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData other) {
         if (other == io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.getDefaultInstance()) return this;
         if (other.hasKey()) {
-          setKey(other.getKey());
+          bitField0_ |= 0x00000001;
+          key_ = other.key_;
+          onChanged();
         }
         if (other.hasCiphertext()) {
           setCiphertext(other.getCiphertext());
@@ -328,66 +418,73 @@ public final class SecretsModel {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              key_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              ciphertext_ = input.readBytes();
-              break;
-            }
+        io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional string key = 1;
       private java.lang.Object key_ = "";
+      /**
+       * <code>optional string key = 1;</code>
+       */
       public boolean hasKey() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public String getKey() {
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public java.lang.String getKey() {
         java.lang.Object ref = key_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           key_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setKey(String value) {
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getKeyBytes() {
+        java.lang.Object ref = key_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          key_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public Builder setKey(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -396,26 +493,46 @@ public final class SecretsModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string key = 1;</code>
+       */
       public Builder clearKey() {
         bitField0_ = (bitField0_ & ~0x00000001);
         key_ = getDefaultInstance().getKey();
         onChanged();
         return this;
       }
-      void setKey(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         key_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional bytes ciphertext = 2;
       private com.google.protobuf.ByteString ciphertext_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes ciphertext = 2;</code>
+       */
       public boolean hasCiphertext() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional bytes ciphertext = 2;</code>
+       */
       public com.google.protobuf.ByteString getCiphertext() {
         return ciphertext_;
       }
+      /**
+       * <code>optional bytes ciphertext = 2;</code>
+       */
       public Builder setCiphertext(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -425,223 +542,444 @@ public final class SecretsModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bytes ciphertext = 2;</code>
+       */
       public Builder clearCiphertext() {
         bitField0_ = (bitField0_ & ~0x00000002);
         ciphertext_ = getDefaultInstance().getCiphertext();
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.SecretRecordItemData)
     }
-    
+
     static {
       defaultInstance = new SecretRecordItemData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.SecretRecordItemData)
   }
-  
+
   public interface SecretRecordDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional int64 id = 1;
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     boolean hasId();
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     long getId();
-    
+
     // repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;
+    /**
+     * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+     */
     java.util.List<io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData> 
         getItemList();
+    /**
+     * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+     */
     io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData getItem(int index);
+    /**
+     * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+     */
     int getItemCount();
+    /**
+     * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+     */
     java.util.List<? extends io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemDataOrBuilder> 
         getItemOrBuilderList();
+    /**
+     * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+     */
     io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemDataOrBuilder getItemOrBuilder(
         int index);
-    
+
     // optional string name = 3;
+    /**
+     * <code>optional string name = 3;</code>
+     */
     boolean hasName();
-    String getName();
-    
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
     // optional string algorithm = 4;
+    /**
+     * <code>optional string algorithm = 4;</code>
+     */
     boolean hasAlgorithm();
-    String getAlgorithm();
-    
+    /**
+     * <code>optional string algorithm = 4;</code>
+     */
+    java.lang.String getAlgorithm();
+    /**
+     * <code>optional string algorithm = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getAlgorithmBytes();
+
     // optional int32 key_size = 5;
+    /**
+     * <code>optional int32 key_size = 5;</code>
+     */
     boolean hasKeySize();
+    /**
+     * <code>optional int32 key_size = 5;</code>
+     */
     int getKeySize();
-    
+
     // optional string subject = 6;
+    /**
+     * <code>optional string subject = 6;</code>
+     */
     boolean hasSubject();
-    String getSubject();
+    /**
+     * <code>optional string subject = 6;</code>
+     */
+    java.lang.String getSubject();
+    /**
+     * <code>optional string subject = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getSubjectBytes();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.SecretRecordData}
+   */
   public static final class SecretRecordData extends
       com.google.protobuf.GeneratedMessage
       implements SecretRecordDataOrBuilder {
     // Use SecretRecordData.newBuilder() to construct.
-    private SecretRecordData(Builder builder) {
+    private SecretRecordData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private SecretRecordData(boolean noInit) {}
-    
+    private SecretRecordData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final SecretRecordData defaultInstance;
     public static SecretRecordData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public SecretRecordData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SecretRecordData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt64();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                item_ = new java.util.ArrayList<io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              item_.add(input.readMessage(io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.PARSER, extensionRegistry));
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000002;
+              name_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000004;
+              algorithm_ = input.readBytes();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000008;
+              keySize_ = input.readInt32();
+              break;
+            }
+            case 50: {
+              bitField0_ |= 0x00000010;
+              subject_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          item_ = java.util.Collections.unmodifiableList(item_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.SecretsModel.SecretRecordData.class, io.fathom.cloud.protobuf.SecretsModel.SecretRecordData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<SecretRecordData> PARSER =
+        new com.google.protobuf.AbstractParser<SecretRecordData>() {
+      public SecretRecordData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SecretRecordData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SecretRecordData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional int64 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private long id_;
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     public long getId() {
       return id_;
     }
-    
+
     // repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;
     public static final int ITEM_FIELD_NUMBER = 2;
     private java.util.List<io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData> item_;
+    /**
+     * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+     */
     public java.util.List<io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData> getItemList() {
       return item_;
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+     */
     public java.util.List<? extends io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemDataOrBuilder> 
         getItemOrBuilderList() {
       return item_;
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+     */
     public int getItemCount() {
       return item_.size();
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+     */
     public io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData getItem(int index) {
       return item_.get(index);
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+     */
     public io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemDataOrBuilder getItemOrBuilder(
         int index) {
       return item_.get(index);
     }
-    
+
     // optional string name = 3;
     public static final int NAME_FIELD_NUMBER = 3;
     private java.lang.Object name_;
+    /**
+     * <code>optional string name = 3;</code>
+     */
     public boolean hasName() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    public String getName() {
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    public java.lang.String getName() {
       java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           name_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getNameBytes() {
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
       java.lang.Object ref = name_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional string algorithm = 4;
     public static final int ALGORITHM_FIELD_NUMBER = 4;
     private java.lang.Object algorithm_;
+    /**
+     * <code>optional string algorithm = 4;</code>
+     */
     public boolean hasAlgorithm() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public String getAlgorithm() {
+    /**
+     * <code>optional string algorithm = 4;</code>
+     */
+    public java.lang.String getAlgorithm() {
       java.lang.Object ref = algorithm_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           algorithm_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getAlgorithmBytes() {
+    /**
+     * <code>optional string algorithm = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAlgorithmBytes() {
       java.lang.Object ref = algorithm_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         algorithm_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional int32 key_size = 5;
     public static final int KEY_SIZE_FIELD_NUMBER = 5;
     private int keySize_;
+    /**
+     * <code>optional int32 key_size = 5;</code>
+     */
     public boolean hasKeySize() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
+    /**
+     * <code>optional int32 key_size = 5;</code>
+     */
     public int getKeySize() {
       return keySize_;
     }
-    
+
     // optional string subject = 6;
     public static final int SUBJECT_FIELD_NUMBER = 6;
     private java.lang.Object subject_;
+    /**
+     * <code>optional string subject = 6;</code>
+     */
     public boolean hasSubject() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
-    public String getSubject() {
+    /**
+     * <code>optional string subject = 6;</code>
+     */
+    public java.lang.String getSubject() {
       java.lang.Object ref = subject_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           subject_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getSubjectBytes() {
+    /**
+     * <code>optional string subject = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSubjectBytes() {
       java.lang.Object ref = subject_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         subject_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     private void initFields() {
       id_ = 0L;
       item_ = java.util.Collections.emptyList();
@@ -654,11 +992,11 @@ public final class SecretsModel {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -682,12 +1020,12 @@ public final class SecretsModel {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -717,94 +1055,83 @@ public final class SecretsModel {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.SecretsModel.SecretRecordData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.SecretsModel.SecretRecordData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.SecretRecordData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.SecretsModel.SecretRecordDataOrBuilder {
@@ -812,18 +1139,21 @@ public final class SecretsModel {
           getDescriptor() {
         return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.SecretsModel.SecretRecordData.class, io.fathom.cloud.protobuf.SecretsModel.SecretRecordData.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.SecretsModel.SecretRecordData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -835,7 +1165,7 @@ public final class SecretsModel {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         id_ = 0L;
@@ -856,20 +1186,20 @@ public final class SecretsModel {
         bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.SecretsModel.SecretRecordData.getDescriptor();
+        return io.fathom.cloud.protobuf.SecretsModel.internal_static_fathomcloud_protobuf_SecretRecordData_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.SecretsModel.SecretRecordData getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.SecretsModel.SecretRecordData.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.SecretsModel.SecretRecordData build() {
         io.fathom.cloud.protobuf.SecretsModel.SecretRecordData result = buildPartial();
         if (!result.isInitialized()) {
@@ -877,17 +1207,7 @@ public final class SecretsModel {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.SecretsModel.SecretRecordData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.SecretsModel.SecretRecordData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.SecretsModel.SecretRecordData buildPartial() {
         io.fathom.cloud.protobuf.SecretsModel.SecretRecordData result = new io.fathom.cloud.protobuf.SecretsModel.SecretRecordData(this);
         int from_bitField0_ = bitField0_;
@@ -925,7 +1245,7 @@ public final class SecretsModel {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.SecretsModel.SecretRecordData) {
           return mergeFrom((io.fathom.cloud.protobuf.SecretsModel.SecretRecordData)other);
@@ -934,7 +1254,7 @@ public final class SecretsModel {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.SecretsModel.SecretRecordData other) {
         if (other == io.fathom.cloud.protobuf.SecretsModel.SecretRecordData.getDefaultInstance()) return this;
         if (other.hasId()) {
@@ -967,106 +1287,83 @@ public final class SecretsModel {
           }
         }
         if (other.hasName()) {
-          setName(other.getName());
+          bitField0_ |= 0x00000004;
+          name_ = other.name_;
+          onChanged();
         }
         if (other.hasAlgorithm()) {
-          setAlgorithm(other.getAlgorithm());
+          bitField0_ |= 0x00000008;
+          algorithm_ = other.algorithm_;
+          onChanged();
         }
         if (other.hasKeySize()) {
           setKeySize(other.getKeySize());
         }
         if (other.hasSubject()) {
-          setSubject(other.getSubject());
+          bitField0_ |= 0x00000020;
+          subject_ = other.subject_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              id_ = input.readInt64();
-              break;
-            }
-            case 18: {
-              io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder subBuilder = io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addItem(subBuilder.buildPartial());
-              break;
-            }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              name_ = input.readBytes();
-              break;
-            }
-            case 34: {
-              bitField0_ |= 0x00000008;
-              algorithm_ = input.readBytes();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              keySize_ = input.readInt32();
-              break;
-            }
-            case 50: {
-              bitField0_ |= 0x00000020;
-              subject_ = input.readBytes();
-              break;
-            }
+        io.fathom.cloud.protobuf.SecretsModel.SecretRecordData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.SecretsModel.SecretRecordData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional int64 id = 1;
       private long id_ ;
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public long getId() {
         return id_;
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public Builder setId(long value) {
         bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;
       private java.util.List<io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData> item_ =
         java.util.Collections.emptyList();
@@ -1076,10 +1373,13 @@ public final class SecretsModel {
           bitField0_ |= 0x00000002;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData, io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder, io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemDataOrBuilder> itemBuilder_;
-      
+
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public java.util.List<io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData> getItemList() {
         if (itemBuilder_ == null) {
           return java.util.Collections.unmodifiableList(item_);
@@ -1087,6 +1387,9 @@ public final class SecretsModel {
           return itemBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public int getItemCount() {
         if (itemBuilder_ == null) {
           return item_.size();
@@ -1094,6 +1397,9 @@ public final class SecretsModel {
           return itemBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData getItem(int index) {
         if (itemBuilder_ == null) {
           return item_.get(index);
@@ -1101,6 +1407,9 @@ public final class SecretsModel {
           return itemBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public Builder setItem(
           int index, io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData value) {
         if (itemBuilder_ == null) {
@@ -1115,6 +1424,9 @@ public final class SecretsModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public Builder setItem(
           int index, io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder builderForValue) {
         if (itemBuilder_ == null) {
@@ -1126,6 +1438,9 @@ public final class SecretsModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public Builder addItem(io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData value) {
         if (itemBuilder_ == null) {
           if (value == null) {
@@ -1139,6 +1454,9 @@ public final class SecretsModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public Builder addItem(
           int index, io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData value) {
         if (itemBuilder_ == null) {
@@ -1153,6 +1471,9 @@ public final class SecretsModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public Builder addItem(
           io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder builderForValue) {
         if (itemBuilder_ == null) {
@@ -1164,6 +1485,9 @@ public final class SecretsModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public Builder addItem(
           int index, io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder builderForValue) {
         if (itemBuilder_ == null) {
@@ -1175,6 +1499,9 @@ public final class SecretsModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public Builder addAllItem(
           java.lang.Iterable<? extends io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData> values) {
         if (itemBuilder_ == null) {
@@ -1186,6 +1513,9 @@ public final class SecretsModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public Builder clearItem() {
         if (itemBuilder_ == null) {
           item_ = java.util.Collections.emptyList();
@@ -1196,6 +1526,9 @@ public final class SecretsModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public Builder removeItem(int index) {
         if (itemBuilder_ == null) {
           ensureItemIsMutable();
@@ -1206,10 +1539,16 @@ public final class SecretsModel {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder getItemBuilder(
           int index) {
         return getItemFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemDataOrBuilder getItemOrBuilder(
           int index) {
         if (itemBuilder_ == null) {
@@ -1217,6 +1556,9 @@ public final class SecretsModel {
           return itemBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public java.util.List<? extends io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemDataOrBuilder> 
            getItemOrBuilderList() {
         if (itemBuilder_ != null) {
@@ -1225,15 +1567,24 @@ public final class SecretsModel {
           return java.util.Collections.unmodifiableList(item_);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder addItemBuilder() {
         return getItemFieldBuilder().addBuilder(
             io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.getDefaultInstance());
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder addItemBuilder(
           int index) {
         return getItemFieldBuilder().addBuilder(
             index, io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.getDefaultInstance());
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.SecretRecordItemData item = 2;</code>
+       */
       public java.util.List<io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder> 
            getItemBuilderList() {
         return getItemFieldBuilder().getBuilderList();
@@ -1252,23 +1603,50 @@ public final class SecretsModel {
         }
         return itemBuilder_;
       }
-      
+
       // optional string name = 3;
       private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 3;</code>
+       */
       public boolean hasName() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      public String getName() {
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public java.lang.String getName() {
         java.lang.Object ref = name_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           name_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setName(String value) {
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1277,34 +1655,72 @@ public final class SecretsModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string name = 3;</code>
+       */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000004);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
-      void setName(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000004;
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
         name_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional string algorithm = 4;
       private java.lang.Object algorithm_ = "";
+      /**
+       * <code>optional string algorithm = 4;</code>
+       */
       public boolean hasAlgorithm() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      public String getAlgorithm() {
+      /**
+       * <code>optional string algorithm = 4;</code>
+       */
+      public java.lang.String getAlgorithm() {
         java.lang.Object ref = algorithm_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           algorithm_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setAlgorithm(String value) {
+      /**
+       * <code>optional string algorithm = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAlgorithmBytes() {
+        java.lang.Object ref = algorithm_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          algorithm_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string algorithm = 4;</code>
+       */
+      public Builder setAlgorithm(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1313,55 +1729,105 @@ public final class SecretsModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string algorithm = 4;</code>
+       */
       public Builder clearAlgorithm() {
         bitField0_ = (bitField0_ & ~0x00000008);
         algorithm_ = getDefaultInstance().getAlgorithm();
         onChanged();
         return this;
       }
-      void setAlgorithm(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000008;
+      /**
+       * <code>optional string algorithm = 4;</code>
+       */
+      public Builder setAlgorithmBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
         algorithm_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional int32 key_size = 5;
       private int keySize_ ;
+      /**
+       * <code>optional int32 key_size = 5;</code>
+       */
       public boolean hasKeySize() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
+      /**
+       * <code>optional int32 key_size = 5;</code>
+       */
       public int getKeySize() {
         return keySize_;
       }
+      /**
+       * <code>optional int32 key_size = 5;</code>
+       */
       public Builder setKeySize(int value) {
         bitField0_ |= 0x00000010;
         keySize_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int32 key_size = 5;</code>
+       */
       public Builder clearKeySize() {
         bitField0_ = (bitField0_ & ~0x00000010);
         keySize_ = 0;
         onChanged();
         return this;
       }
-      
+
       // optional string subject = 6;
       private java.lang.Object subject_ = "";
+      /**
+       * <code>optional string subject = 6;</code>
+       */
       public boolean hasSubject() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      public String getSubject() {
+      /**
+       * <code>optional string subject = 6;</code>
+       */
+      public java.lang.String getSubject() {
         java.lang.Object ref = subject_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           subject_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setSubject(String value) {
+      /**
+       * <code>optional string subject = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSubjectBytes() {
+        java.lang.Object ref = subject_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          subject_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string subject = 6;</code>
+       */
+      public Builder setSubject(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1370,29 +1836,40 @@ public final class SecretsModel {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string subject = 6;</code>
+       */
       public Builder clearSubject() {
         bitField0_ = (bitField0_ & ~0x00000020);
         subject_ = getDefaultInstance().getSubject();
         onChanged();
         return this;
       }
-      void setSubject(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000020;
+      /**
+       * <code>optional string subject = 6;</code>
+       */
+      public Builder setSubjectBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
         subject_ = value;
         onChanged();
+        return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.SecretRecordData)
     }
-    
+
     static {
       defaultInstance = new SecretRecordData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.SecretRecordData)
   }
-  
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_fathomcloud_protobuf_SecretRecordItemData_descriptor;
   private static
@@ -1403,7 +1880,7 @@ public final class SecretsModel {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_fathomcloud_protobuf_SecretRecordData_fieldAccessorTable;
-  
+
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -1431,17 +1908,13 @@ public final class SecretsModel {
           internal_static_fathomcloud_protobuf_SecretRecordItemData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_SecretRecordItemData_descriptor,
-              new java.lang.String[] { "Key", "Ciphertext", },
-              io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.class,
-              io.fathom.cloud.protobuf.SecretsModel.SecretRecordItemData.Builder.class);
+              new java.lang.String[] { "Key", "Ciphertext", });
           internal_static_fathomcloud_protobuf_SecretRecordData_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_fathomcloud_protobuf_SecretRecordData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_SecretRecordData_descriptor,
-              new java.lang.String[] { "Id", "Item", "Name", "Algorithm", "KeySize", "Subject", },
-              io.fathom.cloud.protobuf.SecretsModel.SecretRecordData.class,
-              io.fathom.cloud.protobuf.SecretsModel.SecretRecordData.Builder.class);
+              new java.lang.String[] { "Id", "Item", "Name", "Algorithm", "KeySize", "Subject", });
           return null;
         }
       };
@@ -1451,6 +1924,6 @@ public final class SecretsModel {
           io.fathom.cloud.protobuf.CloudCommons.getDescriptor(),
         }, assigner);
   }
-  
+
   // @@protoc_insertion_point(outer_class_scope)
 }

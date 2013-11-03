@@ -8,18 +8,33 @@ public final class CloudCommons {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code fathomcloud.protobuf.EncryptedWith}
+   */
   public enum EncryptedWith
       implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>SECRET_KEY = 1;</code>
+     */
     SECRET_KEY(0, 1),
+    /**
+     * <code>PUBLIC_KEY = 2;</code>
+     */
     PUBLIC_KEY(1, 2),
     ;
-    
+
+    /**
+     * <code>SECRET_KEY = 1;</code>
+     */
     public static final int SECRET_KEY_VALUE = 1;
+    /**
+     * <code>PUBLIC_KEY = 2;</code>
+     */
     public static final int PUBLIC_KEY_VALUE = 2;
-    
-    
+
+
     public final int getNumber() { return value; }
-    
+
     public static EncryptedWith valueOf(int value) {
       switch (value) {
         case 1: return SECRET_KEY;
@@ -27,7 +42,7 @@ public final class CloudCommons {
         default: return null;
       }
     }
-    
+
     public static com.google.protobuf.Internal.EnumLiteMap<EncryptedWith>
         internalGetValueMap() {
       return internalValueMap;
@@ -39,7 +54,7 @@ public final class CloudCommons {
               return EncryptedWith.valueOf(number);
             }
           };
-    
+
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -52,11 +67,9 @@ public final class CloudCommons {
         getDescriptor() {
       return io.fathom.cloud.protobuf.CloudCommons.getDescriptor().getEnumTypes().get(0);
     }
-    
-    private static final EncryptedWith[] VALUES = {
-      SECRET_KEY, PUBLIC_KEY, 
-    };
-    
+
+    private static final EncryptedWith[] VALUES = values();
+
     public static EncryptedWith valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -65,32 +78,53 @@ public final class CloudCommons {
       }
       return VALUES[desc.getIndex()];
     }
-    
+
     private final int index;
     private final int value;
-    
+
     private EncryptedWith(int index, int value) {
       this.index = index;
       this.value = value;
     }
-    
+
     // @@protoc_insertion_point(enum_scope:fathomcloud.protobuf.EncryptedWith)
   }
-  
+
+  /**
+   * Protobuf enum {@code fathomcloud.protobuf.TokenScope}
+   */
   public enum TokenScope
       implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>Unscoped = 1;</code>
+     */
     Unscoped(0, 1),
+    /**
+     * <code>Project = 2;</code>
+     */
     Project(1, 2),
+    /**
+     * <code>Domain = 3;</code>
+     */
     Domain(2, 3),
     ;
-    
+
+    /**
+     * <code>Unscoped = 1;</code>
+     */
     public static final int Unscoped_VALUE = 1;
+    /**
+     * <code>Project = 2;</code>
+     */
     public static final int Project_VALUE = 2;
+    /**
+     * <code>Domain = 3;</code>
+     */
     public static final int Domain_VALUE = 3;
-    
-    
+
+
     public final int getNumber() { return value; }
-    
+
     public static TokenScope valueOf(int value) {
       switch (value) {
         case 1: return Unscoped;
@@ -99,7 +133,7 @@ public final class CloudCommons {
         default: return null;
       }
     }
-    
+
     public static com.google.protobuf.Internal.EnumLiteMap<TokenScope>
         internalGetValueMap() {
       return internalValueMap;
@@ -111,7 +145,7 @@ public final class CloudCommons {
               return TokenScope.valueOf(number);
             }
           };
-    
+
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -124,11 +158,9 @@ public final class CloudCommons {
         getDescriptor() {
       return io.fathom.cloud.protobuf.CloudCommons.getDescriptor().getEnumTypes().get(1);
     }
-    
-    private static final TokenScope[] VALUES = {
-      Unscoped, Project, Domain, 
-    };
-    
+
+    private static final TokenScope[] VALUES = values();
+
     public static TokenScope valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -137,35 +169,44 @@ public final class CloudCommons {
       }
       return VALUES[desc.getIndex()];
     }
-    
+
     private final int index;
     private final int value;
-    
+
     private TokenScope(int index, int value) {
       this.index = index;
       this.value = value;
     }
-    
+
     // @@protoc_insertion_point(enum_scope:fathomcloud.protobuf.TokenScope)
   }
-  
+
+  /**
+   * Protobuf enum {@code fathomcloud.protobuf.NodeType}
+   */
   public enum NodeType
       implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>STORAGE = 1;</code>
+     */
     STORAGE(0, 1),
     ;
-    
+
+    /**
+     * <code>STORAGE = 1;</code>
+     */
     public static final int STORAGE_VALUE = 1;
-    
-    
+
+
     public final int getNumber() { return value; }
-    
+
     public static NodeType valueOf(int value) {
       switch (value) {
         case 1: return STORAGE;
         default: return null;
       }
     }
-    
+
     public static com.google.protobuf.Internal.EnumLiteMap<NodeType>
         internalGetValueMap() {
       return internalValueMap;
@@ -177,7 +218,7 @@ public final class CloudCommons {
               return NodeType.valueOf(number);
             }
           };
-    
+
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -190,11 +231,9 @@ public final class CloudCommons {
         getDescriptor() {
       return io.fathom.cloud.protobuf.CloudCommons.getDescriptor().getEnumTypes().get(2);
     }
-    
-    private static final NodeType[] VALUES = {
-      STORAGE, 
-    };
-    
+
+    private static final NodeType[] VALUES = values();
+
     public static NodeType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -203,372 +242,99 @@ public final class CloudCommons {
       }
       return VALUES[desc.getIndex()];
     }
-    
+
     private final int index;
     private final int value;
-    
+
     private NodeType(int index, int value) {
       this.index = index;
       this.value = value;
     }
-    
+
     // @@protoc_insertion_point(enum_scope:fathomcloud.protobuf.NodeType)
   }
-  
+
   public interface ItemStateDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional uint64 created_at = 1;
+    /**
+     * <code>optional uint64 created_at = 1;</code>
+     */
     boolean hasCreatedAt();
+    /**
+     * <code>optional uint64 created_at = 1;</code>
+     */
     long getCreatedAt();
-    
+
     // optional uint64 updated_at = 2;
+    /**
+     * <code>optional uint64 updated_at = 2;</code>
+     */
     boolean hasUpdatedAt();
+    /**
+     * <code>optional uint64 updated_at = 2;</code>
+     */
     long getUpdatedAt();
-    
+
     // optional uint64 deleted_at = 3;
+    /**
+     * <code>optional uint64 deleted_at = 3;</code>
+     */
     boolean hasDeletedAt();
+    /**
+     * <code>optional uint64 deleted_at = 3;</code>
+     */
     long getDeletedAt();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.ItemStateData}
+   */
   public static final class ItemStateData extends
       com.google.protobuf.GeneratedMessage
       implements ItemStateDataOrBuilder {
     // Use ItemStateData.newBuilder() to construct.
-    private ItemStateData(Builder builder) {
+    private ItemStateData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private ItemStateData(boolean noInit) {}
-    
+    private ItemStateData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final ItemStateData defaultInstance;
     public static ItemStateData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public ItemStateData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_ItemStateData_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_ItemStateData_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // optional uint64 created_at = 1;
-    public static final int CREATED_AT_FIELD_NUMBER = 1;
-    private long createdAt_;
-    public boolean hasCreatedAt() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public long getCreatedAt() {
-      return createdAt_;
-    }
-    
-    // optional uint64 updated_at = 2;
-    public static final int UPDATED_AT_FIELD_NUMBER = 2;
-    private long updatedAt_;
-    public boolean hasUpdatedAt() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public long getUpdatedAt() {
-      return updatedAt_;
-    }
-    
-    // optional uint64 deleted_at = 3;
-    public static final int DELETED_AT_FIELD_NUMBER = 3;
-    private long deletedAt_;
-    public boolean hasDeletedAt() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public long getDeletedAt() {
-      return deletedAt_;
-    }
-    
-    private void initFields() {
-      createdAt_ = 0L;
-      updatedAt_ = 0L;
-      deletedAt_ = 0L;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, createdAt_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt64(2, updatedAt_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt64(3, deletedAt_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, createdAt_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(2, updatedAt_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(3, deletedAt_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
     }
-    
-    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
+    private ItemStateData(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.ItemStateData prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements io.fathom.cloud.protobuf.CloudCommons.ItemStateDataOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_ItemStateData_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_ItemStateData_fieldAccessorTable;
-      }
-      
-      // Construct using io.fathom.cloud.protobuf.CloudCommons.ItemStateData.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        createdAt_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        updatedAt_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        deletedAt_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.ItemStateData.getDescriptor();
-      }
-      
-      public io.fathom.cloud.protobuf.CloudCommons.ItemStateData getDefaultInstanceForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.ItemStateData.getDefaultInstance();
-      }
-      
-      public io.fathom.cloud.protobuf.CloudCommons.ItemStateData build() {
-        io.fathom.cloud.protobuf.CloudCommons.ItemStateData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private io.fathom.cloud.protobuf.CloudCommons.ItemStateData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.CloudCommons.ItemStateData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public io.fathom.cloud.protobuf.CloudCommons.ItemStateData buildPartial() {
-        io.fathom.cloud.protobuf.CloudCommons.ItemStateData result = new io.fathom.cloud.protobuf.CloudCommons.ItemStateData(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.createdAt_ = createdAt_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.updatedAt_ = updatedAt_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.deletedAt_ = deletedAt_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof io.fathom.cloud.protobuf.CloudCommons.ItemStateData) {
-          return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.ItemStateData)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.ItemStateData other) {
-        if (other == io.fathom.cloud.protobuf.CloudCommons.ItemStateData.getDefaultInstance()) return this;
-        if (other.hasCreatedAt()) {
-          setCreatedAt(other.getCreatedAt());
-        }
-        if (other.hasUpdatedAt()) {
-          setUpdatedAt(other.getUpdatedAt());
-        }
-        if (other.hasDeletedAt()) {
-          setDeletedAt(other.getDeletedAt());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -589,338 +355,242 @@ public final class CloudCommons {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
-      private int bitField0_;
-      
-      // optional uint64 created_at = 1;
-      private long createdAt_ ;
-      public boolean hasCreatedAt() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public long getCreatedAt() {
-        return createdAt_;
-      }
-      public Builder setCreatedAt(long value) {
-        bitField0_ |= 0x00000001;
-        createdAt_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearCreatedAt() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        createdAt_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // optional uint64 updated_at = 2;
-      private long updatedAt_ ;
-      public boolean hasUpdatedAt() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public long getUpdatedAt() {
-        return updatedAt_;
-      }
-      public Builder setUpdatedAt(long value) {
-        bitField0_ |= 0x00000002;
-        updatedAt_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearUpdatedAt() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        updatedAt_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // optional uint64 deleted_at = 3;
-      private long deletedAt_ ;
-      public boolean hasDeletedAt() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public long getDeletedAt() {
-        return deletedAt_;
-      }
-      public Builder setDeletedAt(long value) {
-        bitField0_ |= 0x00000004;
-        deletedAt_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearDeletedAt() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        deletedAt_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.ItemStateData)
     }
-    
-    static {
-      defaultInstance = new ItemStateData(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.ItemStateData)
-  }
-  
-  public interface SecretDataOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;
-    boolean hasEncryptedWith();
-    io.fathom.cloud.protobuf.CloudCommons.EncryptedWith getEncryptedWith();
-    
-    // optional bytes ciphertext = 2;
-    boolean hasCiphertext();
-    com.google.protobuf.ByteString getCiphertext();
-    
-    // optional int32 version = 3;
-    boolean hasVersion();
-    int getVersion();
-    
-    // optional bytes hash_iv = 4;
-    boolean hasHashIv();
-    com.google.protobuf.ByteString getHashIv();
-  }
-  public static final class SecretData extends
-      com.google.protobuf.GeneratedMessage
-      implements SecretDataOrBuilder {
-    // Use SecretData.newBuilder() to construct.
-    private SecretData(Builder builder) {
-      super(builder);
-    }
-    private SecretData(boolean noInit) {}
-    
-    private static final SecretData defaultInstance;
-    public static SecretData getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public SecretData getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_SecretData_descriptor;
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_ItemStateData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_SecretData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_ItemStateData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.CloudCommons.ItemStateData.class, io.fathom.cloud.protobuf.CloudCommons.ItemStateData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<ItemStateData> PARSER =
+        new com.google.protobuf.AbstractParser<ItemStateData>() {
+      public ItemStateData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ItemStateData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ItemStateData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
-    // optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;
-    public static final int ENCRYPTED_WITH_FIELD_NUMBER = 1;
-    private io.fathom.cloud.protobuf.CloudCommons.EncryptedWith encryptedWith_;
-    public boolean hasEncryptedWith() {
+    // optional uint64 created_at = 1;
+    public static final int CREATED_AT_FIELD_NUMBER = 1;
+    private long createdAt_;
+    /**
+     * <code>optional uint64 created_at = 1;</code>
+     */
+    public boolean hasCreatedAt() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public io.fathom.cloud.protobuf.CloudCommons.EncryptedWith getEncryptedWith() {
-      return encryptedWith_;
+    /**
+     * <code>optional uint64 created_at = 1;</code>
+     */
+    public long getCreatedAt() {
+      return createdAt_;
     }
-    
-    // optional bytes ciphertext = 2;
-    public static final int CIPHERTEXT_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString ciphertext_;
-    public boolean hasCiphertext() {
+
+    // optional uint64 updated_at = 2;
+    public static final int UPDATED_AT_FIELD_NUMBER = 2;
+    private long updatedAt_;
+    /**
+     * <code>optional uint64 updated_at = 2;</code>
+     */
+    public boolean hasUpdatedAt() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    public com.google.protobuf.ByteString getCiphertext() {
-      return ciphertext_;
+    /**
+     * <code>optional uint64 updated_at = 2;</code>
+     */
+    public long getUpdatedAt() {
+      return updatedAt_;
     }
-    
-    // optional int32 version = 3;
-    public static final int VERSION_FIELD_NUMBER = 3;
-    private int version_;
-    public boolean hasVersion() {
+
+    // optional uint64 deleted_at = 3;
+    public static final int DELETED_AT_FIELD_NUMBER = 3;
+    private long deletedAt_;
+    /**
+     * <code>optional uint64 deleted_at = 3;</code>
+     */
+    public boolean hasDeletedAt() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public int getVersion() {
-      return version_;
+    /**
+     * <code>optional uint64 deleted_at = 3;</code>
+     */
+    public long getDeletedAt() {
+      return deletedAt_;
     }
-    
-    // optional bytes hash_iv = 4;
-    public static final int HASH_IV_FIELD_NUMBER = 4;
-    private com.google.protobuf.ByteString hashIv_;
-    public boolean hasHashIv() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    public com.google.protobuf.ByteString getHashIv() {
-      return hashIv_;
-    }
-    
+
     private void initFields() {
-      encryptedWith_ = io.fathom.cloud.protobuf.CloudCommons.EncryptedWith.SECRET_KEY;
-      ciphertext_ = com.google.protobuf.ByteString.EMPTY;
-      version_ = 0;
-      hashIv_ = com.google.protobuf.ByteString.EMPTY;
+      createdAt_ = 0L;
+      updatedAt_ = 0L;
+      deletedAt_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, encryptedWith_.getNumber());
+        output.writeUInt64(1, createdAt_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, ciphertext_);
+        output.writeUInt64(2, updatedAt_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, version_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, hashIv_);
+        output.writeUInt64(3, deletedAt_);
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, encryptedWith_.getNumber());
+          .computeUInt64Size(1, createdAt_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, ciphertext_);
+          .computeUInt64Size(2, updatedAt_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, version_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, hashIv_);
+          .computeUInt64Size(3, deletedAt_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
-    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
+
+    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(byte[] data)
+    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(java.io.InputStream input)
+    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseDelimitedFrom(java.io.InputStream input)
+    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseDelimitedFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.ItemStateData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.SecretData prototype) {
+    public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.ItemStateData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.ItemStateData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements io.fathom.cloud.protobuf.CloudCommons.SecretDataOrBuilder {
+       implements io.fathom.cloud.protobuf.CloudCommons.ItemStateDataOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_SecretData_descriptor;
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_ItemStateData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_SecretData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_ItemStateData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.CloudCommons.ItemStateData.class, io.fathom.cloud.protobuf.CloudCommons.ItemStateData.Builder.class);
       }
-      
-      // Construct using io.fathom.cloud.protobuf.CloudCommons.SecretData.newBuilder()
+
+      // Construct using io.fathom.cloud.protobuf.CloudCommons.ItemStateData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -931,127 +601,308 @@ public final class CloudCommons {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
-        encryptedWith_ = io.fathom.cloud.protobuf.CloudCommons.EncryptedWith.SECRET_KEY;
+        createdAt_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        ciphertext_ = com.google.protobuf.ByteString.EMPTY;
+        updatedAt_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
-        version_ = 0;
+        deletedAt_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
-        hashIv_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.SecretData.getDescriptor();
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_ItemStateData_descriptor;
       }
-      
-      public io.fathom.cloud.protobuf.CloudCommons.SecretData getDefaultInstanceForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.SecretData.getDefaultInstance();
+
+      public io.fathom.cloud.protobuf.CloudCommons.ItemStateData getDefaultInstanceForType() {
+        return io.fathom.cloud.protobuf.CloudCommons.ItemStateData.getDefaultInstance();
       }
-      
-      public io.fathom.cloud.protobuf.CloudCommons.SecretData build() {
-        io.fathom.cloud.protobuf.CloudCommons.SecretData result = buildPartial();
+
+      public io.fathom.cloud.protobuf.CloudCommons.ItemStateData build() {
+        io.fathom.cloud.protobuf.CloudCommons.ItemStateData result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.CloudCommons.SecretData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.CloudCommons.SecretData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public io.fathom.cloud.protobuf.CloudCommons.SecretData buildPartial() {
-        io.fathom.cloud.protobuf.CloudCommons.SecretData result = new io.fathom.cloud.protobuf.CloudCommons.SecretData(this);
+
+      public io.fathom.cloud.protobuf.CloudCommons.ItemStateData buildPartial() {
+        io.fathom.cloud.protobuf.CloudCommons.ItemStateData result = new io.fathom.cloud.protobuf.CloudCommons.ItemStateData(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.encryptedWith_ = encryptedWith_;
+        result.createdAt_ = createdAt_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.ciphertext_ = ciphertext_;
+        result.updatedAt_ = updatedAt_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.version_ = version_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.hashIv_ = hashIv_;
+        result.deletedAt_ = deletedAt_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof io.fathom.cloud.protobuf.CloudCommons.SecretData) {
-          return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.SecretData)other);
+        if (other instanceof io.fathom.cloud.protobuf.CloudCommons.ItemStateData) {
+          return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.ItemStateData)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
-      
-      public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.SecretData other) {
-        if (other == io.fathom.cloud.protobuf.CloudCommons.SecretData.getDefaultInstance()) return this;
-        if (other.hasEncryptedWith()) {
-          setEncryptedWith(other.getEncryptedWith());
+
+      public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.ItemStateData other) {
+        if (other == io.fathom.cloud.protobuf.CloudCommons.ItemStateData.getDefaultInstance()) return this;
+        if (other.hasCreatedAt()) {
+          setCreatedAt(other.getCreatedAt());
         }
-        if (other.hasCiphertext()) {
-          setCiphertext(other.getCiphertext());
+        if (other.hasUpdatedAt()) {
+          setUpdatedAt(other.getUpdatedAt());
         }
-        if (other.hasVersion()) {
-          setVersion(other.getVersion());
-        }
-        if (other.hasHashIv()) {
-          setHashIv(other.getHashIv());
+        if (other.hasDeletedAt()) {
+          setDeletedAt(other.getDeletedAt());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        io.fathom.cloud.protobuf.CloudCommons.ItemStateData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.CloudCommons.ItemStateData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional uint64 created_at = 1;
+      private long createdAt_ ;
+      /**
+       * <code>optional uint64 created_at = 1;</code>
+       */
+      public boolean hasCreatedAt() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional uint64 created_at = 1;</code>
+       */
+      public long getCreatedAt() {
+        return createdAt_;
+      }
+      /**
+       * <code>optional uint64 created_at = 1;</code>
+       */
+      public Builder setCreatedAt(long value) {
+        bitField0_ |= 0x00000001;
+        createdAt_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 created_at = 1;</code>
+       */
+      public Builder clearCreatedAt() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        createdAt_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional uint64 updated_at = 2;
+      private long updatedAt_ ;
+      /**
+       * <code>optional uint64 updated_at = 2;</code>
+       */
+      public boolean hasUpdatedAt() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional uint64 updated_at = 2;</code>
+       */
+      public long getUpdatedAt() {
+        return updatedAt_;
+      }
+      /**
+       * <code>optional uint64 updated_at = 2;</code>
+       */
+      public Builder setUpdatedAt(long value) {
+        bitField0_ |= 0x00000002;
+        updatedAt_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 updated_at = 2;</code>
+       */
+      public Builder clearUpdatedAt() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        updatedAt_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional uint64 deleted_at = 3;
+      private long deletedAt_ ;
+      /**
+       * <code>optional uint64 deleted_at = 3;</code>
+       */
+      public boolean hasDeletedAt() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional uint64 deleted_at = 3;</code>
+       */
+      public long getDeletedAt() {
+        return deletedAt_;
+      }
+      /**
+       * <code>optional uint64 deleted_at = 3;</code>
+       */
+      public Builder setDeletedAt(long value) {
+        bitField0_ |= 0x00000004;
+        deletedAt_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 deleted_at = 3;</code>
+       */
+      public Builder clearDeletedAt() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        deletedAt_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.ItemStateData)
+    }
+
+    static {
+      defaultInstance = new ItemStateData(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.ItemStateData)
+  }
+
+  public interface SecretDataOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;
+    /**
+     * <code>optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;</code>
+     */
+    boolean hasEncryptedWith();
+    /**
+     * <code>optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;</code>
+     */
+    io.fathom.cloud.protobuf.CloudCommons.EncryptedWith getEncryptedWith();
+
+    // optional bytes ciphertext = 2;
+    /**
+     * <code>optional bytes ciphertext = 2;</code>
+     */
+    boolean hasCiphertext();
+    /**
+     * <code>optional bytes ciphertext = 2;</code>
+     */
+    com.google.protobuf.ByteString getCiphertext();
+
+    // optional int32 version = 3;
+    /**
+     * <code>optional int32 version = 3;</code>
+     */
+    boolean hasVersion();
+    /**
+     * <code>optional int32 version = 3;</code>
+     */
+    int getVersion();
+
+    // optional bytes hash_iv = 4;
+    /**
+     * <code>optional bytes hash_iv = 4;</code>
+     */
+    boolean hasHashIv();
+    /**
+     * <code>optional bytes hash_iv = 4;</code>
+     */
+    com.google.protobuf.ByteString getHashIv();
+  }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.SecretData}
+   */
+  public static final class SecretData extends
+      com.google.protobuf.GeneratedMessage
+      implements SecretDataOrBuilder {
+    // Use SecretData.newBuilder() to construct.
+    private SecretData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SecretData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SecretData defaultInstance;
+    public static SecretData getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SecretData getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SecretData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -1083,346 +934,266 @@ public final class CloudCommons {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
-      private int bitField0_;
-      
-      // optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;
-      private io.fathom.cloud.protobuf.CloudCommons.EncryptedWith encryptedWith_ = io.fathom.cloud.protobuf.CloudCommons.EncryptedWith.SECRET_KEY;
-      public boolean hasEncryptedWith() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public io.fathom.cloud.protobuf.CloudCommons.EncryptedWith getEncryptedWith() {
-        return encryptedWith_;
-      }
-      public Builder setEncryptedWith(io.fathom.cloud.protobuf.CloudCommons.EncryptedWith value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000001;
-        encryptedWith_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearEncryptedWith() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        encryptedWith_ = io.fathom.cloud.protobuf.CloudCommons.EncryptedWith.SECRET_KEY;
-        onChanged();
-        return this;
-      }
-      
-      // optional bytes ciphertext = 2;
-      private com.google.protobuf.ByteString ciphertext_ = com.google.protobuf.ByteString.EMPTY;
-      public boolean hasCiphertext() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public com.google.protobuf.ByteString getCiphertext() {
-        return ciphertext_;
-      }
-      public Builder setCiphertext(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        ciphertext_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearCiphertext() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        ciphertext_ = getDefaultInstance().getCiphertext();
-        onChanged();
-        return this;
-      }
-      
-      // optional int32 version = 3;
-      private int version_ ;
-      public boolean hasVersion() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public int getVersion() {
-        return version_;
-      }
-      public Builder setVersion(int value) {
-        bitField0_ |= 0x00000004;
-        version_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearVersion() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        version_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // optional bytes hash_iv = 4;
-      private com.google.protobuf.ByteString hashIv_ = com.google.protobuf.ByteString.EMPTY;
-      public boolean hasHashIv() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      public com.google.protobuf.ByteString getHashIv() {
-        return hashIv_;
-      }
-      public Builder setHashIv(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        hashIv_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearHashIv() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        hashIv_ = getDefaultInstance().getHashIv();
-        onChanged();
-        return this;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.SecretData)
     }
-    
-    static {
-      defaultInstance = new SecretData(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.SecretData)
-  }
-  
-  public interface PasswordHashDataOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // optional bytes data = 1;
-    boolean hasData();
-    com.google.protobuf.ByteString getData();
-    
-    // optional bytes salt = 2;
-    boolean hasSalt();
-    com.google.protobuf.ByteString getSalt();
-    
-    // optional int32 rounds = 3;
-    boolean hasRounds();
-    int getRounds();
-  }
-  public static final class PasswordHashData extends
-      com.google.protobuf.GeneratedMessage
-      implements PasswordHashDataOrBuilder {
-    // Use PasswordHashData.newBuilder() to construct.
-    private PasswordHashData(Builder builder) {
-      super(builder);
-    }
-    private PasswordHashData(boolean noInit) {}
-    
-    private static final PasswordHashData defaultInstance;
-    public static PasswordHashData getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public PasswordHashData getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PasswordHashData_descriptor;
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_SecretData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PasswordHashData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_SecretData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.CloudCommons.SecretData.class, io.fathom.cloud.protobuf.CloudCommons.SecretData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<SecretData> PARSER =
+        new com.google.protobuf.AbstractParser<SecretData>() {
+      public SecretData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SecretData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SecretData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
-    // optional bytes data = 1;
-    public static final int DATA_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString data_;
-    public boolean hasData() {
+    // optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;
+    public static final int ENCRYPTED_WITH_FIELD_NUMBER = 1;
+    private io.fathom.cloud.protobuf.CloudCommons.EncryptedWith encryptedWith_;
+    /**
+     * <code>optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;</code>
+     */
+    public boolean hasEncryptedWith() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public com.google.protobuf.ByteString getData() {
-      return data_;
+    /**
+     * <code>optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;</code>
+     */
+    public io.fathom.cloud.protobuf.CloudCommons.EncryptedWith getEncryptedWith() {
+      return encryptedWith_;
     }
-    
-    // optional bytes salt = 2;
-    public static final int SALT_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString salt_;
-    public boolean hasSalt() {
+
+    // optional bytes ciphertext = 2;
+    public static final int CIPHERTEXT_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString ciphertext_;
+    /**
+     * <code>optional bytes ciphertext = 2;</code>
+     */
+    public boolean hasCiphertext() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    public com.google.protobuf.ByteString getSalt() {
-      return salt_;
+    /**
+     * <code>optional bytes ciphertext = 2;</code>
+     */
+    public com.google.protobuf.ByteString getCiphertext() {
+      return ciphertext_;
     }
-    
-    // optional int32 rounds = 3;
-    public static final int ROUNDS_FIELD_NUMBER = 3;
-    private int rounds_;
-    public boolean hasRounds() {
+
+    // optional int32 version = 3;
+    public static final int VERSION_FIELD_NUMBER = 3;
+    private int version_;
+    /**
+     * <code>optional int32 version = 3;</code>
+     */
+    public boolean hasVersion() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public int getRounds() {
-      return rounds_;
+    /**
+     * <code>optional int32 version = 3;</code>
+     */
+    public int getVersion() {
+      return version_;
     }
-    
+
+    // optional bytes hash_iv = 4;
+    public static final int HASH_IV_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString hashIv_;
+    /**
+     * <code>optional bytes hash_iv = 4;</code>
+     */
+    public boolean hasHashIv() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional bytes hash_iv = 4;</code>
+     */
+    public com.google.protobuf.ByteString getHashIv() {
+      return hashIv_;
+    }
+
     private void initFields() {
-      data_ = com.google.protobuf.ByteString.EMPTY;
-      salt_ = com.google.protobuf.ByteString.EMPTY;
-      rounds_ = 0;
+      encryptedWith_ = io.fathom.cloud.protobuf.CloudCommons.EncryptedWith.SECRET_KEY;
+      ciphertext_ = com.google.protobuf.ByteString.EMPTY;
+      version_ = 0;
+      hashIv_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, data_);
+        output.writeEnum(1, encryptedWith_.getNumber());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, salt_);
+        output.writeBytes(2, ciphertext_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, rounds_);
+        output.writeInt32(3, version_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, hashIv_);
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, data_);
+          .computeEnumSize(1, encryptedWith_.getNumber());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, salt_);
+          .computeBytesSize(2, ciphertext_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, rounds_);
+          .computeInt32Size(3, version_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, hashIv_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
-    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+
+    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(byte[] data)
+    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(java.io.InputStream input)
+    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseDelimitedFrom(java.io.InputStream input)
+    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseDelimitedFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
-    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+    public static io.fathom.cloud.protobuf.CloudCommons.SecretData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.PasswordHashData prototype) {
+    public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.SecretData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.SecretData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements io.fathom.cloud.protobuf.CloudCommons.PasswordHashDataOrBuilder {
+       implements io.fathom.cloud.protobuf.CloudCommons.SecretDataOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PasswordHashData_descriptor;
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_SecretData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PasswordHashData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_SecretData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.CloudCommons.SecretData.class, io.fathom.cloud.protobuf.CloudCommons.SecretData.Builder.class);
       }
-      
-      // Construct using io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.newBuilder()
+
+      // Construct using io.fathom.cloud.protobuf.CloudCommons.SecretData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1433,118 +1204,349 @@ public final class CloudCommons {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
-        data_ = com.google.protobuf.ByteString.EMPTY;
+        encryptedWith_ = io.fathom.cloud.protobuf.CloudCommons.EncryptedWith.SECRET_KEY;
         bitField0_ = (bitField0_ & ~0x00000001);
-        salt_ = com.google.protobuf.ByteString.EMPTY;
+        ciphertext_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
-        rounds_ = 0;
+        version_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
+        hashIv_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.getDescriptor();
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_SecretData_descriptor;
       }
-      
-      public io.fathom.cloud.protobuf.CloudCommons.PasswordHashData getDefaultInstanceForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.getDefaultInstance();
+
+      public io.fathom.cloud.protobuf.CloudCommons.SecretData getDefaultInstanceForType() {
+        return io.fathom.cloud.protobuf.CloudCommons.SecretData.getDefaultInstance();
       }
-      
-      public io.fathom.cloud.protobuf.CloudCommons.PasswordHashData build() {
-        io.fathom.cloud.protobuf.CloudCommons.PasswordHashData result = buildPartial();
+
+      public io.fathom.cloud.protobuf.CloudCommons.SecretData build() {
+        io.fathom.cloud.protobuf.CloudCommons.SecretData result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.CloudCommons.PasswordHashData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.CloudCommons.PasswordHashData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public io.fathom.cloud.protobuf.CloudCommons.PasswordHashData buildPartial() {
-        io.fathom.cloud.protobuf.CloudCommons.PasswordHashData result = new io.fathom.cloud.protobuf.CloudCommons.PasswordHashData(this);
+
+      public io.fathom.cloud.protobuf.CloudCommons.SecretData buildPartial() {
+        io.fathom.cloud.protobuf.CloudCommons.SecretData result = new io.fathom.cloud.protobuf.CloudCommons.SecretData(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.data_ = data_;
+        result.encryptedWith_ = encryptedWith_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.salt_ = salt_;
+        result.ciphertext_ = ciphertext_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.rounds_ = rounds_;
+        result.version_ = version_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.hashIv_ = hashIv_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof io.fathom.cloud.protobuf.CloudCommons.PasswordHashData) {
-          return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.PasswordHashData)other);
+        if (other instanceof io.fathom.cloud.protobuf.CloudCommons.SecretData) {
+          return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.SecretData)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
-      
-      public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.PasswordHashData other) {
-        if (other == io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.getDefaultInstance()) return this;
-        if (other.hasData()) {
-          setData(other.getData());
+
+      public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.SecretData other) {
+        if (other == io.fathom.cloud.protobuf.CloudCommons.SecretData.getDefaultInstance()) return this;
+        if (other.hasEncryptedWith()) {
+          setEncryptedWith(other.getEncryptedWith());
         }
-        if (other.hasSalt()) {
-          setSalt(other.getSalt());
+        if (other.hasCiphertext()) {
+          setCiphertext(other.getCiphertext());
         }
-        if (other.hasRounds()) {
-          setRounds(other.getRounds());
+        if (other.hasVersion()) {
+          setVersion(other.getVersion());
+        }
+        if (other.hasHashIv()) {
+          setHashIv(other.getHashIv());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        io.fathom.cloud.protobuf.CloudCommons.SecretData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.CloudCommons.SecretData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;
+      private io.fathom.cloud.protobuf.CloudCommons.EncryptedWith encryptedWith_ = io.fathom.cloud.protobuf.CloudCommons.EncryptedWith.SECRET_KEY;
+      /**
+       * <code>optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;</code>
+       */
+      public boolean hasEncryptedWith() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;</code>
+       */
+      public io.fathom.cloud.protobuf.CloudCommons.EncryptedWith getEncryptedWith() {
+        return encryptedWith_;
+      }
+      /**
+       * <code>optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;</code>
+       */
+      public Builder setEncryptedWith(io.fathom.cloud.protobuf.CloudCommons.EncryptedWith value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        encryptedWith_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .fathomcloud.protobuf.EncryptedWith encrypted_with = 1;</code>
+       */
+      public Builder clearEncryptedWith() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        encryptedWith_ = io.fathom.cloud.protobuf.CloudCommons.EncryptedWith.SECRET_KEY;
+        onChanged();
+        return this;
+      }
+
+      // optional bytes ciphertext = 2;
+      private com.google.protobuf.ByteString ciphertext_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes ciphertext = 2;</code>
+       */
+      public boolean hasCiphertext() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional bytes ciphertext = 2;</code>
+       */
+      public com.google.protobuf.ByteString getCiphertext() {
+        return ciphertext_;
+      }
+      /**
+       * <code>optional bytes ciphertext = 2;</code>
+       */
+      public Builder setCiphertext(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        ciphertext_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes ciphertext = 2;</code>
+       */
+      public Builder clearCiphertext() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        ciphertext_ = getDefaultInstance().getCiphertext();
+        onChanged();
+        return this;
+      }
+
+      // optional int32 version = 3;
+      private int version_ ;
+      /**
+       * <code>optional int32 version = 3;</code>
+       */
+      public boolean hasVersion() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 version = 3;</code>
+       */
+      public int getVersion() {
+        return version_;
+      }
+      /**
+       * <code>optional int32 version = 3;</code>
+       */
+      public Builder setVersion(int value) {
+        bitField0_ |= 0x00000004;
+        version_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 version = 3;</code>
+       */
+      public Builder clearVersion() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        version_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional bytes hash_iv = 4;
+      private com.google.protobuf.ByteString hashIv_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes hash_iv = 4;</code>
+       */
+      public boolean hasHashIv() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional bytes hash_iv = 4;</code>
+       */
+      public com.google.protobuf.ByteString getHashIv() {
+        return hashIv_;
+      }
+      /**
+       * <code>optional bytes hash_iv = 4;</code>
+       */
+      public Builder setHashIv(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        hashIv_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes hash_iv = 4;</code>
+       */
+      public Builder clearHashIv() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        hashIv_ = getDefaultInstance().getHashIv();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.SecretData)
+    }
+
+    static {
+      defaultInstance = new SecretData(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.SecretData)
+  }
+
+  public interface PasswordHashDataOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional bytes data = 1;
+    /**
+     * <code>optional bytes data = 1;</code>
+     */
+    boolean hasData();
+    /**
+     * <code>optional bytes data = 1;</code>
+     */
+    com.google.protobuf.ByteString getData();
+
+    // optional bytes salt = 2;
+    /**
+     * <code>optional bytes salt = 2;</code>
+     */
+    boolean hasSalt();
+    /**
+     * <code>optional bytes salt = 2;</code>
+     */
+    com.google.protobuf.ByteString getSalt();
+
+    // optional int32 rounds = 3;
+    /**
+     * <code>optional int32 rounds = 3;</code>
+     */
+    boolean hasRounds();
+    /**
+     * <code>optional int32 rounds = 3;</code>
+     */
+    int getRounds();
+  }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.PasswordHashData}
+   */
+  public static final class PasswordHashData extends
+      com.google.protobuf.GeneratedMessage
+      implements PasswordHashDataOrBuilder {
+    // Use PasswordHashData.newBuilder() to construct.
+    private PasswordHashData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PasswordHashData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PasswordHashData defaultInstance;
+    public static PasswordHashData getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PasswordHashData getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PasswordHashData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -1565,18 +1567,370 @@ public final class CloudCommons {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PasswordHashData_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PasswordHashData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.class, io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PasswordHashData> PARSER =
+        new com.google.protobuf.AbstractParser<PasswordHashData>() {
+      public PasswordHashData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PasswordHashData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PasswordHashData> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional bytes data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString data_;
+    /**
+     * <code>optional bytes data = 1;</code>
+     */
+    public boolean hasData() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional bytes data = 1;</code>
+     */
+    public com.google.protobuf.ByteString getData() {
+      return data_;
+    }
+
+    // optional bytes salt = 2;
+    public static final int SALT_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString salt_;
+    /**
+     * <code>optional bytes salt = 2;</code>
+     */
+    public boolean hasSalt() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional bytes salt = 2;</code>
+     */
+    public com.google.protobuf.ByteString getSalt() {
+      return salt_;
+    }
+
+    // optional int32 rounds = 3;
+    public static final int ROUNDS_FIELD_NUMBER = 3;
+    private int rounds_;
+    /**
+     * <code>optional int32 rounds = 3;</code>
+     */
+    public boolean hasRounds() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 rounds = 3;</code>
+     */
+    public int getRounds() {
+      return rounds_;
+    }
+
+    private void initFields() {
+      data_ = com.google.protobuf.ByteString.EMPTY;
+      salt_ = com.google.protobuf.ByteString.EMPTY;
+      rounds_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, data_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, salt_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, rounds_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, data_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, salt_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, rounds_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.PasswordHashData prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.PasswordHashData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements io.fathom.cloud.protobuf.CloudCommons.PasswordHashDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PasswordHashData_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PasswordHashData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.class, io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.Builder.class);
+      }
+
+      // Construct using io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        data_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        salt_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        rounds_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PasswordHashData_descriptor;
+      }
+
+      public io.fathom.cloud.protobuf.CloudCommons.PasswordHashData getDefaultInstanceForType() {
+        return io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.getDefaultInstance();
+      }
+
+      public io.fathom.cloud.protobuf.CloudCommons.PasswordHashData build() {
+        io.fathom.cloud.protobuf.CloudCommons.PasswordHashData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public io.fathom.cloud.protobuf.CloudCommons.PasswordHashData buildPartial() {
+        io.fathom.cloud.protobuf.CloudCommons.PasswordHashData result = new io.fathom.cloud.protobuf.CloudCommons.PasswordHashData(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.data_ = data_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.salt_ = salt_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.rounds_ = rounds_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.fathom.cloud.protobuf.CloudCommons.PasswordHashData) {
+          return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.PasswordHashData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.PasswordHashData other) {
+        if (other == io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.getDefaultInstance()) return this;
+        if (other.hasData()) {
+          setData(other.getData());
+        }
+        if (other.hasSalt()) {
+          setSalt(other.getSalt());
+        }
+        if (other.hasRounds()) {
+          setRounds(other.getRounds());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.fathom.cloud.protobuf.CloudCommons.PasswordHashData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.CloudCommons.PasswordHashData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
+
       // optional bytes data = 1;
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes data = 1;</code>
+       */
       public boolean hasData() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional bytes data = 1;</code>
+       */
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
+      /**
+       * <code>optional bytes data = 1;</code>
+       */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -1586,21 +1940,33 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bytes data = 1;</code>
+       */
       public Builder clearData() {
         bitField0_ = (bitField0_ & ~0x00000001);
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
       }
-      
+
       // optional bytes salt = 2;
       private com.google.protobuf.ByteString salt_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes salt = 2;</code>
+       */
       public boolean hasSalt() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional bytes salt = 2;</code>
+       */
       public com.google.protobuf.ByteString getSalt() {
         return salt_;
       }
+      /**
+       * <code>optional bytes salt = 2;</code>
+       */
       public Builder setSalt(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -1610,149 +1976,280 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bytes salt = 2;</code>
+       */
       public Builder clearSalt() {
         bitField0_ = (bitField0_ & ~0x00000002);
         salt_ = getDefaultInstance().getSalt();
         onChanged();
         return this;
       }
-      
+
       // optional int32 rounds = 3;
       private int rounds_ ;
+      /**
+       * <code>optional int32 rounds = 3;</code>
+       */
       public boolean hasRounds() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional int32 rounds = 3;</code>
+       */
       public int getRounds() {
         return rounds_;
       }
+      /**
+       * <code>optional int32 rounds = 3;</code>
+       */
       public Builder setRounds(int value) {
         bitField0_ |= 0x00000004;
         rounds_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int32 rounds = 3;</code>
+       */
       public Builder clearRounds() {
         bitField0_ = (bitField0_ & ~0x00000004);
         rounds_ = 0;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.PasswordHashData)
     }
-    
+
     static {
       defaultInstance = new PasswordHashData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.PasswordHashData)
   }
-  
+
   public interface KeyValueDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional string key = 1;
+    /**
+     * <code>optional string key = 1;</code>
+     */
     boolean hasKey();
-    String getKey();
-    
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    java.lang.String getKey();
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getKeyBytes();
+
     // optional string value = 2;
+    /**
+     * <code>optional string value = 2;</code>
+     */
     boolean hasValue();
-    String getValue();
+    /**
+     * <code>optional string value = 2;</code>
+     */
+    java.lang.String getValue();
+    /**
+     * <code>optional string value = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getValueBytes();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.KeyValueData}
+   */
   public static final class KeyValueData extends
       com.google.protobuf.GeneratedMessage
       implements KeyValueDataOrBuilder {
     // Use KeyValueData.newBuilder() to construct.
-    private KeyValueData(Builder builder) {
+    private KeyValueData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private KeyValueData(boolean noInit) {}
-    
+    private KeyValueData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final KeyValueData defaultInstance;
     public static KeyValueData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public KeyValueData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private KeyValueData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              key_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              value_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_KeyValueData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_KeyValueData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_KeyValueData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.CloudCommons.KeyValueData.class, io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<KeyValueData> PARSER =
+        new com.google.protobuf.AbstractParser<KeyValueData>() {
+      public KeyValueData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new KeyValueData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<KeyValueData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional string key = 1;
     public static final int KEY_FIELD_NUMBER = 1;
     private java.lang.Object key_;
+    /**
+     * <code>optional string key = 1;</code>
+     */
     public boolean hasKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public String getKey() {
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    public java.lang.String getKey() {
       java.lang.Object ref = key_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           key_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getKeyBytes() {
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
       java.lang.Object ref = key_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         key_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional string value = 2;
     public static final int VALUE_FIELD_NUMBER = 2;
     private java.lang.Object value_;
+    /**
+     * <code>optional string value = 2;</code>
+     */
     public boolean hasValue() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    public String getValue() {
+    /**
+     * <code>optional string value = 2;</code>
+     */
+    public java.lang.String getValue() {
       java.lang.Object ref = value_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           value_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getValueBytes() {
+    /**
+     * <code>optional string value = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getValueBytes() {
       java.lang.Object ref = value_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         value_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     private void initFields() {
       key_ = "";
       value_ = "";
@@ -1761,11 +2258,11 @@ public final class CloudCommons {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -1777,12 +2274,12 @@ public final class CloudCommons {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1796,94 +2293,83 @@ public final class CloudCommons {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.CloudCommons.KeyValueData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.KeyValueData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.KeyValueData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.KeyValueData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.KeyValueData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.KeyValueData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.KeyValueData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.KeyValueData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.KeyValueData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.KeyValueData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.KeyValueData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.KeyValueData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.CloudCommons.KeyValueDataOrBuilder {
@@ -1891,18 +2377,21 @@ public final class CloudCommons {
           getDescriptor() {
         return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_KeyValueData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_KeyValueData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_KeyValueData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.CloudCommons.KeyValueData.class, io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.CloudCommons.KeyValueData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1913,7 +2402,7 @@ public final class CloudCommons {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         key_ = "";
@@ -1922,20 +2411,20 @@ public final class CloudCommons {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.KeyValueData.getDescriptor();
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_KeyValueData_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.KeyValueData getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.CloudCommons.KeyValueData.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.KeyValueData build() {
         io.fathom.cloud.protobuf.CloudCommons.KeyValueData result = buildPartial();
         if (!result.isInitialized()) {
@@ -1943,17 +2432,7 @@ public final class CloudCommons {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.CloudCommons.KeyValueData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.CloudCommons.KeyValueData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.KeyValueData buildPartial() {
         io.fathom.cloud.protobuf.CloudCommons.KeyValueData result = new io.fathom.cloud.protobuf.CloudCommons.KeyValueData(this);
         int from_bitField0_ = bitField0_;
@@ -1970,7 +2449,7 @@ public final class CloudCommons {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.CloudCommons.KeyValueData) {
           return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.KeyValueData)other);
@@ -1979,78 +2458,89 @@ public final class CloudCommons {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.KeyValueData other) {
         if (other == io.fathom.cloud.protobuf.CloudCommons.KeyValueData.getDefaultInstance()) return this;
         if (other.hasKey()) {
-          setKey(other.getKey());
+          bitField0_ |= 0x00000001;
+          key_ = other.key_;
+          onChanged();
         }
         if (other.hasValue()) {
-          setValue(other.getValue());
+          bitField0_ |= 0x00000002;
+          value_ = other.value_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              key_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              value_ = input.readBytes();
-              break;
-            }
+        io.fathom.cloud.protobuf.CloudCommons.KeyValueData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.CloudCommons.KeyValueData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional string key = 1;
       private java.lang.Object key_ = "";
+      /**
+       * <code>optional string key = 1;</code>
+       */
       public boolean hasKey() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public String getKey() {
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public java.lang.String getKey() {
         java.lang.Object ref = key_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           key_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setKey(String value) {
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getKeyBytes() {
+        java.lang.Object ref = key_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          key_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public Builder setKey(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2059,34 +2549,72 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string key = 1;</code>
+       */
       public Builder clearKey() {
         bitField0_ = (bitField0_ & ~0x00000001);
         key_ = getDefaultInstance().getKey();
         onChanged();
         return this;
       }
-      void setKey(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         key_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional string value = 2;
       private java.lang.Object value_ = "";
+      /**
+       * <code>optional string value = 2;</code>
+       */
       public boolean hasValue() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      public String getValue() {
+      /**
+       * <code>optional string value = 2;</code>
+       */
+      public java.lang.String getValue() {
         java.lang.Object ref = value_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           value_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setValue(String value) {
+      /**
+       * <code>optional string value = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getValueBytes() {
+        java.lang.Object ref = value_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          value_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string value = 2;</code>
+       */
+      public Builder setValue(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2095,91 +2623,205 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string value = 2;</code>
+       */
       public Builder clearValue() {
         bitField0_ = (bitField0_ & ~0x00000002);
         value_ = getDefaultInstance().getValue();
         onChanged();
         return this;
       }
-      void setValue(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000002;
+      /**
+       * <code>optional string value = 2;</code>
+       */
+      public Builder setValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
         value_ = value;
         onChanged();
+        return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.KeyValueData)
     }
-    
+
     static {
       defaultInstance = new KeyValueData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.KeyValueData)
   }
-  
+
   public interface AttributesOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;
+    /**
+     * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+     */
     java.util.List<io.fathom.cloud.protobuf.CloudCommons.KeyValueData> 
         getUserAttributesList();
+    /**
+     * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.KeyValueData getUserAttributes(int index);
+    /**
+     * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+     */
     int getUserAttributesCount();
+    /**
+     * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+     */
     java.util.List<? extends io.fathom.cloud.protobuf.CloudCommons.KeyValueDataOrBuilder> 
         getUserAttributesOrBuilderList();
+    /**
+     * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.KeyValueDataOrBuilder getUserAttributesOrBuilder(
         int index);
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.Attributes}
+   */
   public static final class Attributes extends
       com.google.protobuf.GeneratedMessage
       implements AttributesOrBuilder {
     // Use Attributes.newBuilder() to construct.
-    private Attributes(Builder builder) {
+    private Attributes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Attributes(boolean noInit) {}
-    
+    private Attributes(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final Attributes defaultInstance;
     public static Attributes getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public Attributes getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Attributes(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                userAttributes_ = new java.util.ArrayList<io.fathom.cloud.protobuf.CloudCommons.KeyValueData>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              userAttributes_.add(input.readMessage(io.fathom.cloud.protobuf.CloudCommons.KeyValueData.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          userAttributes_ = java.util.Collections.unmodifiableList(userAttributes_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Attributes_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Attributes_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Attributes_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.CloudCommons.Attributes.class, io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<Attributes> PARSER =
+        new com.google.protobuf.AbstractParser<Attributes>() {
+      public Attributes parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Attributes(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Attributes> getParserForType() {
+      return PARSER;
+    }
+
     // repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;
     public static final int USER_ATTRIBUTES_FIELD_NUMBER = 1;
     private java.util.List<io.fathom.cloud.protobuf.CloudCommons.KeyValueData> userAttributes_;
+    /**
+     * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+     */
     public java.util.List<io.fathom.cloud.protobuf.CloudCommons.KeyValueData> getUserAttributesList() {
       return userAttributes_;
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+     */
     public java.util.List<? extends io.fathom.cloud.protobuf.CloudCommons.KeyValueDataOrBuilder> 
         getUserAttributesOrBuilderList() {
       return userAttributes_;
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+     */
     public int getUserAttributesCount() {
       return userAttributes_.size();
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.KeyValueData getUserAttributes(int index) {
       return userAttributes_.get(index);
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.KeyValueDataOrBuilder getUserAttributesOrBuilder(
         int index) {
       return userAttributes_.get(index);
     }
-    
+
     private void initFields() {
       userAttributes_ = java.util.Collections.emptyList();
     }
@@ -2187,11 +2829,11 @@ public final class CloudCommons {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -2200,12 +2842,12 @@ public final class CloudCommons {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       for (int i = 0; i < userAttributes_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -2215,94 +2857,83 @@ public final class CloudCommons {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.CloudCommons.Attributes parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Attributes parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Attributes parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Attributes parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Attributes parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Attributes parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Attributes parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Attributes parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Attributes parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Attributes parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.Attributes prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.Attributes}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.CloudCommons.AttributesOrBuilder {
@@ -2310,18 +2941,21 @@ public final class CloudCommons {
           getDescriptor() {
         return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Attributes_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Attributes_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Attributes_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.CloudCommons.Attributes.class, io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.CloudCommons.Attributes.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -2333,7 +2967,7 @@ public final class CloudCommons {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         if (userAttributesBuilder_ == null) {
@@ -2344,20 +2978,20 @@ public final class CloudCommons {
         }
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.Attributes.getDescriptor();
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Attributes_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.Attributes getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.CloudCommons.Attributes.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.Attributes build() {
         io.fathom.cloud.protobuf.CloudCommons.Attributes result = buildPartial();
         if (!result.isInitialized()) {
@@ -2365,17 +2999,7 @@ public final class CloudCommons {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.CloudCommons.Attributes buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.CloudCommons.Attributes result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.Attributes buildPartial() {
         io.fathom.cloud.protobuf.CloudCommons.Attributes result = new io.fathom.cloud.protobuf.CloudCommons.Attributes(this);
         int from_bitField0_ = bitField0_;
@@ -2391,7 +3015,7 @@ public final class CloudCommons {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.CloudCommons.Attributes) {
           return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.Attributes)other);
@@ -2400,7 +3024,7 @@ public final class CloudCommons {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.Attributes other) {
         if (other == io.fathom.cloud.protobuf.CloudCommons.Attributes.getDefaultInstance()) return this;
         if (userAttributesBuilder_ == null) {
@@ -2432,46 +3056,30 @@ public final class CloudCommons {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder subBuilder = io.fathom.cloud.protobuf.CloudCommons.KeyValueData.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addUserAttributes(subBuilder.buildPartial());
-              break;
-            }
+        io.fathom.cloud.protobuf.CloudCommons.Attributes parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.CloudCommons.Attributes) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;
       private java.util.List<io.fathom.cloud.protobuf.CloudCommons.KeyValueData> userAttributes_ =
         java.util.Collections.emptyList();
@@ -2481,10 +3089,13 @@ public final class CloudCommons {
           bitField0_ |= 0x00000001;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           io.fathom.cloud.protobuf.CloudCommons.KeyValueData, io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder, io.fathom.cloud.protobuf.CloudCommons.KeyValueDataOrBuilder> userAttributesBuilder_;
-      
+
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public java.util.List<io.fathom.cloud.protobuf.CloudCommons.KeyValueData> getUserAttributesList() {
         if (userAttributesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(userAttributes_);
@@ -2492,6 +3103,9 @@ public final class CloudCommons {
           return userAttributesBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public int getUserAttributesCount() {
         if (userAttributesBuilder_ == null) {
           return userAttributes_.size();
@@ -2499,6 +3113,9 @@ public final class CloudCommons {
           return userAttributesBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.KeyValueData getUserAttributes(int index) {
         if (userAttributesBuilder_ == null) {
           return userAttributes_.get(index);
@@ -2506,6 +3123,9 @@ public final class CloudCommons {
           return userAttributesBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public Builder setUserAttributes(
           int index, io.fathom.cloud.protobuf.CloudCommons.KeyValueData value) {
         if (userAttributesBuilder_ == null) {
@@ -2520,6 +3140,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public Builder setUserAttributes(
           int index, io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder builderForValue) {
         if (userAttributesBuilder_ == null) {
@@ -2531,6 +3154,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public Builder addUserAttributes(io.fathom.cloud.protobuf.CloudCommons.KeyValueData value) {
         if (userAttributesBuilder_ == null) {
           if (value == null) {
@@ -2544,6 +3170,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public Builder addUserAttributes(
           int index, io.fathom.cloud.protobuf.CloudCommons.KeyValueData value) {
         if (userAttributesBuilder_ == null) {
@@ -2558,6 +3187,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public Builder addUserAttributes(
           io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder builderForValue) {
         if (userAttributesBuilder_ == null) {
@@ -2569,6 +3201,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public Builder addUserAttributes(
           int index, io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder builderForValue) {
         if (userAttributesBuilder_ == null) {
@@ -2580,6 +3215,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public Builder addAllUserAttributes(
           java.lang.Iterable<? extends io.fathom.cloud.protobuf.CloudCommons.KeyValueData> values) {
         if (userAttributesBuilder_ == null) {
@@ -2591,6 +3229,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public Builder clearUserAttributes() {
         if (userAttributesBuilder_ == null) {
           userAttributes_ = java.util.Collections.emptyList();
@@ -2601,6 +3242,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public Builder removeUserAttributes(int index) {
         if (userAttributesBuilder_ == null) {
           ensureUserAttributesIsMutable();
@@ -2611,10 +3255,16 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder getUserAttributesBuilder(
           int index) {
         return getUserAttributesFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.KeyValueDataOrBuilder getUserAttributesOrBuilder(
           int index) {
         if (userAttributesBuilder_ == null) {
@@ -2622,6 +3272,9 @@ public final class CloudCommons {
           return userAttributesBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public java.util.List<? extends io.fathom.cloud.protobuf.CloudCommons.KeyValueDataOrBuilder> 
            getUserAttributesOrBuilderList() {
         if (userAttributesBuilder_ != null) {
@@ -2630,15 +3283,24 @@ public final class CloudCommons {
           return java.util.Collections.unmodifiableList(userAttributes_);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder addUserAttributesBuilder() {
         return getUserAttributesFieldBuilder().addBuilder(
             io.fathom.cloud.protobuf.CloudCommons.KeyValueData.getDefaultInstance());
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder addUserAttributesBuilder(
           int index) {
         return getUserAttributesFieldBuilder().addBuilder(
             index, io.fathom.cloud.protobuf.CloudCommons.KeyValueData.getDefaultInstance());
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.KeyValueData user_attributes = 1;</code>
+       */
       public java.util.List<io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder> 
            getUserAttributesBuilderList() {
         return getUserAttributesFieldBuilder().getBuilderList();
@@ -2657,200 +3319,512 @@ public final class CloudCommons {
         }
         return userAttributesBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.Attributes)
     }
-    
+
     static {
       defaultInstance = new Attributes(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.Attributes)
   }
-  
+
   public interface TokenInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional int64 user_id = 1;
+    /**
+     * <code>optional int64 user_id = 1;</code>
+     */
     boolean hasUserId();
+    /**
+     * <code>optional int64 user_id = 1;</code>
+     */
     long getUserId();
-    
+
     // optional int64 expiration = 2;
+    /**
+     * <code>optional int64 expiration = 2;</code>
+     */
     boolean hasExpiration();
+    /**
+     * <code>optional int64 expiration = 2;</code>
+     */
     long getExpiration();
-    
+
     // optional int64 project_id = 3;
+    /**
+     * <code>optional int64 project_id = 3;</code>
+     */
     boolean hasProjectId();
+    /**
+     * <code>optional int64 project_id = 3;</code>
+     */
     long getProjectId();
-    
+
     // optional int64 domain_id = 4;
+    /**
+     * <code>optional int64 domain_id = 4;</code>
+     */
     boolean hasDomainId();
+    /**
+     * <code>optional int64 domain_id = 4;</code>
+     */
     long getDomainId();
-    
+
     // optional bytes token_secret = 5;
+    /**
+     * <code>optional bytes token_secret = 5;</code>
+     */
     boolean hasTokenSecret();
+    /**
+     * <code>optional bytes token_secret = 5;</code>
+     */
     com.google.protobuf.ByteString getTokenSecret();
-    
+
     // optional .fathomcloud.protobuf.TokenScope token_scope = 6;
+    /**
+     * <code>optional .fathomcloud.protobuf.TokenScope token_scope = 6;</code>
+     */
     boolean hasTokenScope();
+    /**
+     * <code>optional .fathomcloud.protobuf.TokenScope token_scope = 6;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.TokenScope getTokenScope();
-    
+
     // repeated int64 roles = 7;
+    /**
+     * <code>repeated int64 roles = 7;</code>
+     */
     java.util.List<java.lang.Long> getRolesList();
+    /**
+     * <code>repeated int64 roles = 7;</code>
+     */
     int getRolesCount();
+    /**
+     * <code>repeated int64 roles = 7;</code>
+     */
     long getRoles(int index);
-    
+
     // repeated int64 domain_roles = 8;
+    /**
+     * <code>repeated int64 domain_roles = 8;</code>
+     *
+     * <pre>
+     * This lets us use a project token where we really should use a domain token 
+     * </pre>
+     */
     java.util.List<java.lang.Long> getDomainRolesList();
+    /**
+     * <code>repeated int64 domain_roles = 8;</code>
+     *
+     * <pre>
+     * This lets us use a project token where we really should use a domain token 
+     * </pre>
+     */
     int getDomainRolesCount();
+    /**
+     * <code>repeated int64 domain_roles = 8;</code>
+     *
+     * <pre>
+     * This lets us use a project token where we really should use a domain token 
+     * </pre>
+     */
     long getDomainRoles(int index);
-    
+
     // optional bool service_token = 9;
+    /**
+     * <code>optional bool service_token = 9;</code>
+     */
     boolean hasServiceToken();
+    /**
+     * <code>optional bool service_token = 9;</code>
+     */
     boolean getServiceToken();
-    
+
     // optional int64 instance_id = 10;
+    /**
+     * <code>optional int64 instance_id = 10;</code>
+     */
     boolean hasInstanceId();
+    /**
+     * <code>optional int64 instance_id = 10;</code>
+     */
     long getInstanceId();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.TokenInfo}
+   */
   public static final class TokenInfo extends
       com.google.protobuf.GeneratedMessage
       implements TokenInfoOrBuilder {
     // Use TokenInfo.newBuilder() to construct.
-    private TokenInfo(Builder builder) {
+    private TokenInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private TokenInfo(boolean noInit) {}
-    
+    private TokenInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final TokenInfo defaultInstance;
     public static TokenInfo getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public TokenInfo getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TokenInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              userId_ = input.readInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              expiration_ = input.readInt64();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              projectId_ = input.readInt64();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              domainId_ = input.readInt64();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              tokenSecret_ = input.readBytes();
+              break;
+            }
+            case 48: {
+              int rawValue = input.readEnum();
+              io.fathom.cloud.protobuf.CloudCommons.TokenScope value = io.fathom.cloud.protobuf.CloudCommons.TokenScope.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(6, rawValue);
+              } else {
+                bitField0_ |= 0x00000020;
+                tokenScope_ = value;
+              }
+              break;
+            }
+            case 56: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                roles_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              roles_.add(input.readInt64());
+              break;
+            }
+            case 58: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040) && input.getBytesUntilLimit() > 0) {
+                roles_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                roles_.add(input.readInt64());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 64: {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                domainRoles_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              domainRoles_.add(input.readInt64());
+              break;
+            }
+            case 66: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080) && input.getBytesUntilLimit() > 0) {
+                domainRoles_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                domainRoles_.add(input.readInt64());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000040;
+              serviceToken_ = input.readBool();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000080;
+              instanceId_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          roles_ = java.util.Collections.unmodifiableList(roles_);
+        }
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          domainRoles_ = java.util.Collections.unmodifiableList(domainRoles_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_TokenInfo_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_TokenInfo_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_TokenInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.CloudCommons.TokenInfo.class, io.fathom.cloud.protobuf.CloudCommons.TokenInfo.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<TokenInfo> PARSER =
+        new com.google.protobuf.AbstractParser<TokenInfo>() {
+      public TokenInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TokenInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TokenInfo> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional int64 user_id = 1;
     public static final int USER_ID_FIELD_NUMBER = 1;
     private long userId_;
+    /**
+     * <code>optional int64 user_id = 1;</code>
+     */
     public boolean hasUserId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>optional int64 user_id = 1;</code>
+     */
     public long getUserId() {
       return userId_;
     }
-    
+
     // optional int64 expiration = 2;
     public static final int EXPIRATION_FIELD_NUMBER = 2;
     private long expiration_;
+    /**
+     * <code>optional int64 expiration = 2;</code>
+     */
     public boolean hasExpiration() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional int64 expiration = 2;</code>
+     */
     public long getExpiration() {
       return expiration_;
     }
-    
+
     // optional int64 project_id = 3;
     public static final int PROJECT_ID_FIELD_NUMBER = 3;
     private long projectId_;
+    /**
+     * <code>optional int64 project_id = 3;</code>
+     */
     public boolean hasProjectId() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
+    /**
+     * <code>optional int64 project_id = 3;</code>
+     */
     public long getProjectId() {
       return projectId_;
     }
-    
+
     // optional int64 domain_id = 4;
     public static final int DOMAIN_ID_FIELD_NUMBER = 4;
     private long domainId_;
+    /**
+     * <code>optional int64 domain_id = 4;</code>
+     */
     public boolean hasDomainId() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
+    /**
+     * <code>optional int64 domain_id = 4;</code>
+     */
     public long getDomainId() {
       return domainId_;
     }
-    
+
     // optional bytes token_secret = 5;
     public static final int TOKEN_SECRET_FIELD_NUMBER = 5;
     private com.google.protobuf.ByteString tokenSecret_;
+    /**
+     * <code>optional bytes token_secret = 5;</code>
+     */
     public boolean hasTokenSecret() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
+    /**
+     * <code>optional bytes token_secret = 5;</code>
+     */
     public com.google.protobuf.ByteString getTokenSecret() {
       return tokenSecret_;
     }
-    
+
     // optional .fathomcloud.protobuf.TokenScope token_scope = 6;
     public static final int TOKEN_SCOPE_FIELD_NUMBER = 6;
     private io.fathom.cloud.protobuf.CloudCommons.TokenScope tokenScope_;
+    /**
+     * <code>optional .fathomcloud.protobuf.TokenScope token_scope = 6;</code>
+     */
     public boolean hasTokenScope() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.TokenScope token_scope = 6;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.TokenScope getTokenScope() {
       return tokenScope_;
     }
-    
+
     // repeated int64 roles = 7;
     public static final int ROLES_FIELD_NUMBER = 7;
     private java.util.List<java.lang.Long> roles_;
+    /**
+     * <code>repeated int64 roles = 7;</code>
+     */
     public java.util.List<java.lang.Long>
         getRolesList() {
       return roles_;
     }
+    /**
+     * <code>repeated int64 roles = 7;</code>
+     */
     public int getRolesCount() {
       return roles_.size();
     }
+    /**
+     * <code>repeated int64 roles = 7;</code>
+     */
     public long getRoles(int index) {
       return roles_.get(index);
     }
-    
+
     // repeated int64 domain_roles = 8;
     public static final int DOMAIN_ROLES_FIELD_NUMBER = 8;
     private java.util.List<java.lang.Long> domainRoles_;
+    /**
+     * <code>repeated int64 domain_roles = 8;</code>
+     *
+     * <pre>
+     * This lets us use a project token where we really should use a domain token 
+     * </pre>
+     */
     public java.util.List<java.lang.Long>
         getDomainRolesList() {
       return domainRoles_;
     }
+    /**
+     * <code>repeated int64 domain_roles = 8;</code>
+     *
+     * <pre>
+     * This lets us use a project token where we really should use a domain token 
+     * </pre>
+     */
     public int getDomainRolesCount() {
       return domainRoles_.size();
     }
+    /**
+     * <code>repeated int64 domain_roles = 8;</code>
+     *
+     * <pre>
+     * This lets us use a project token where we really should use a domain token 
+     * </pre>
+     */
     public long getDomainRoles(int index) {
       return domainRoles_.get(index);
     }
-    
+
     // optional bool service_token = 9;
     public static final int SERVICE_TOKEN_FIELD_NUMBER = 9;
     private boolean serviceToken_;
+    /**
+     * <code>optional bool service_token = 9;</code>
+     */
     public boolean hasServiceToken() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
+    /**
+     * <code>optional bool service_token = 9;</code>
+     */
     public boolean getServiceToken() {
       return serviceToken_;
     }
-    
+
     // optional int64 instance_id = 10;
     public static final int INSTANCE_ID_FIELD_NUMBER = 10;
     private long instanceId_;
+    /**
+     * <code>optional int64 instance_id = 10;</code>
+     */
     public boolean hasInstanceId() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
+    /**
+     * <code>optional int64 instance_id = 10;</code>
+     */
     public long getInstanceId() {
       return instanceId_;
     }
-    
+
     private void initFields() {
       userId_ = 0L;
       expiration_ = 0L;
@@ -2858,8 +3832,8 @@ public final class CloudCommons {
       domainId_ = 0L;
       tokenSecret_ = com.google.protobuf.ByteString.EMPTY;
       tokenScope_ = io.fathom.cloud.protobuf.CloudCommons.TokenScope.Unscoped;
-      roles_ = java.util.Collections.emptyList();;
-      domainRoles_ = java.util.Collections.emptyList();;
+      roles_ = java.util.Collections.emptyList();
+      domainRoles_ = java.util.Collections.emptyList();
       serviceToken_ = false;
       instanceId_ = 0L;
     }
@@ -2867,11 +3841,11 @@ public final class CloudCommons {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -2907,12 +3881,12 @@ public final class CloudCommons {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -2968,94 +3942,83 @@ public final class CloudCommons {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.CloudCommons.TokenInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.TokenInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.TokenInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.TokenInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.TokenInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.TokenInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.TokenInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.TokenInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.TokenInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.TokenInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.TokenInfo prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.TokenInfo}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.CloudCommons.TokenInfoOrBuilder {
@@ -3063,18 +4026,21 @@ public final class CloudCommons {
           getDescriptor() {
         return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_TokenInfo_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_TokenInfo_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_TokenInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.CloudCommons.TokenInfo.class, io.fathom.cloud.protobuf.CloudCommons.TokenInfo.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.CloudCommons.TokenInfo.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -3085,7 +4051,7 @@ public final class CloudCommons {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         userId_ = 0L;
@@ -3100,9 +4066,9 @@ public final class CloudCommons {
         bitField0_ = (bitField0_ & ~0x00000010);
         tokenScope_ = io.fathom.cloud.protobuf.CloudCommons.TokenScope.Unscoped;
         bitField0_ = (bitField0_ & ~0x00000020);
-        roles_ = java.util.Collections.emptyList();;
+        roles_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000040);
-        domainRoles_ = java.util.Collections.emptyList();;
+        domainRoles_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000080);
         serviceToken_ = false;
         bitField0_ = (bitField0_ & ~0x00000100);
@@ -3110,20 +4076,20 @@ public final class CloudCommons {
         bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.TokenInfo.getDescriptor();
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_TokenInfo_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.TokenInfo getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.CloudCommons.TokenInfo.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.TokenInfo build() {
         io.fathom.cloud.protobuf.CloudCommons.TokenInfo result = buildPartial();
         if (!result.isInitialized()) {
@@ -3131,17 +4097,7 @@ public final class CloudCommons {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.CloudCommons.TokenInfo buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.CloudCommons.TokenInfo result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.TokenInfo buildPartial() {
         io.fathom.cloud.protobuf.CloudCommons.TokenInfo result = new io.fathom.cloud.protobuf.CloudCommons.TokenInfo(this);
         int from_bitField0_ = bitField0_;
@@ -3192,7 +4148,7 @@ public final class CloudCommons {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.CloudCommons.TokenInfo) {
           return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.TokenInfo)other);
@@ -3201,7 +4157,7 @@ public final class CloudCommons {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.TokenInfo other) {
         if (other == io.fathom.cloud.protobuf.CloudCommons.TokenInfo.getDefaultInstance()) return this;
         if (other.hasUserId()) {
@@ -3251,206 +4207,179 @@ public final class CloudCommons {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              userId_ = input.readInt64();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              expiration_ = input.readInt64();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              projectId_ = input.readInt64();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              domainId_ = input.readInt64();
-              break;
-            }
-            case 42: {
-              bitField0_ |= 0x00000010;
-              tokenSecret_ = input.readBytes();
-              break;
-            }
-            case 48: {
-              int rawValue = input.readEnum();
-              io.fathom.cloud.protobuf.CloudCommons.TokenScope value = io.fathom.cloud.protobuf.CloudCommons.TokenScope.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(6, rawValue);
-              } else {
-                bitField0_ |= 0x00000020;
-                tokenScope_ = value;
-              }
-              break;
-            }
-            case 56: {
-              ensureRolesIsMutable();
-              roles_.add(input.readInt64());
-              break;
-            }
-            case 58: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              while (input.getBytesUntilLimit() > 0) {
-                addRoles(input.readInt64());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            case 64: {
-              ensureDomainRolesIsMutable();
-              domainRoles_.add(input.readInt64());
-              break;
-            }
-            case 66: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              while (input.getBytesUntilLimit() > 0) {
-                addDomainRoles(input.readInt64());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000100;
-              serviceToken_ = input.readBool();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000200;
-              instanceId_ = input.readInt64();
-              break;
-            }
+        io.fathom.cloud.protobuf.CloudCommons.TokenInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.CloudCommons.TokenInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional int64 user_id = 1;
       private long userId_ ;
+      /**
+       * <code>optional int64 user_id = 1;</code>
+       */
       public boolean hasUserId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional int64 user_id = 1;</code>
+       */
       public long getUserId() {
         return userId_;
       }
+      /**
+       * <code>optional int64 user_id = 1;</code>
+       */
       public Builder setUserId(long value) {
         bitField0_ |= 0x00000001;
         userId_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 user_id = 1;</code>
+       */
       public Builder clearUserId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         userId_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional int64 expiration = 2;
       private long expiration_ ;
+      /**
+       * <code>optional int64 expiration = 2;</code>
+       */
       public boolean hasExpiration() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional int64 expiration = 2;</code>
+       */
       public long getExpiration() {
         return expiration_;
       }
+      /**
+       * <code>optional int64 expiration = 2;</code>
+       */
       public Builder setExpiration(long value) {
         bitField0_ |= 0x00000002;
         expiration_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 expiration = 2;</code>
+       */
       public Builder clearExpiration() {
         bitField0_ = (bitField0_ & ~0x00000002);
         expiration_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional int64 project_id = 3;
       private long projectId_ ;
+      /**
+       * <code>optional int64 project_id = 3;</code>
+       */
       public boolean hasProjectId() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional int64 project_id = 3;</code>
+       */
       public long getProjectId() {
         return projectId_;
       }
+      /**
+       * <code>optional int64 project_id = 3;</code>
+       */
       public Builder setProjectId(long value) {
         bitField0_ |= 0x00000004;
         projectId_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 project_id = 3;</code>
+       */
       public Builder clearProjectId() {
         bitField0_ = (bitField0_ & ~0x00000004);
         projectId_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional int64 domain_id = 4;
       private long domainId_ ;
+      /**
+       * <code>optional int64 domain_id = 4;</code>
+       */
       public boolean hasDomainId() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
+      /**
+       * <code>optional int64 domain_id = 4;</code>
+       */
       public long getDomainId() {
         return domainId_;
       }
+      /**
+       * <code>optional int64 domain_id = 4;</code>
+       */
       public Builder setDomainId(long value) {
         bitField0_ |= 0x00000008;
         domainId_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 domain_id = 4;</code>
+       */
       public Builder clearDomainId() {
         bitField0_ = (bitField0_ & ~0x00000008);
         domainId_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional bytes token_secret = 5;
       private com.google.protobuf.ByteString tokenSecret_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes token_secret = 5;</code>
+       */
       public boolean hasTokenSecret() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
+      /**
+       * <code>optional bytes token_secret = 5;</code>
+       */
       public com.google.protobuf.ByteString getTokenSecret() {
         return tokenSecret_;
       }
+      /**
+       * <code>optional bytes token_secret = 5;</code>
+       */
       public Builder setTokenSecret(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -3460,21 +4389,33 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bytes token_secret = 5;</code>
+       */
       public Builder clearTokenSecret() {
         bitField0_ = (bitField0_ & ~0x00000010);
         tokenSecret_ = getDefaultInstance().getTokenSecret();
         onChanged();
         return this;
       }
-      
+
       // optional .fathomcloud.protobuf.TokenScope token_scope = 6;
       private io.fathom.cloud.protobuf.CloudCommons.TokenScope tokenScope_ = io.fathom.cloud.protobuf.CloudCommons.TokenScope.Unscoped;
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenScope token_scope = 6;</code>
+       */
       public boolean hasTokenScope() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenScope token_scope = 6;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.TokenScope getTokenScope() {
         return tokenScope_;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenScope token_scope = 6;</code>
+       */
       public Builder setTokenScope(io.fathom.cloud.protobuf.CloudCommons.TokenScope value) {
         if (value == null) {
           throw new NullPointerException();
@@ -3484,31 +4425,46 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenScope token_scope = 6;</code>
+       */
       public Builder clearTokenScope() {
         bitField0_ = (bitField0_ & ~0x00000020);
         tokenScope_ = io.fathom.cloud.protobuf.CloudCommons.TokenScope.Unscoped;
         onChanged();
         return this;
       }
-      
+
       // repeated int64 roles = 7;
-      private java.util.List<java.lang.Long> roles_ = java.util.Collections.emptyList();;
+      private java.util.List<java.lang.Long> roles_ = java.util.Collections.emptyList();
       private void ensureRolesIsMutable() {
         if (!((bitField0_ & 0x00000040) == 0x00000040)) {
           roles_ = new java.util.ArrayList<java.lang.Long>(roles_);
           bitField0_ |= 0x00000040;
          }
       }
+      /**
+       * <code>repeated int64 roles = 7;</code>
+       */
       public java.util.List<java.lang.Long>
           getRolesList() {
         return java.util.Collections.unmodifiableList(roles_);
       }
+      /**
+       * <code>repeated int64 roles = 7;</code>
+       */
       public int getRolesCount() {
         return roles_.size();
       }
+      /**
+       * <code>repeated int64 roles = 7;</code>
+       */
       public long getRoles(int index) {
         return roles_.get(index);
       }
+      /**
+       * <code>repeated int64 roles = 7;</code>
+       */
       public Builder setRoles(
           int index, long value) {
         ensureRolesIsMutable();
@@ -3516,12 +4472,18 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated int64 roles = 7;</code>
+       */
       public Builder addRoles(long value) {
         ensureRolesIsMutable();
         roles_.add(value);
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated int64 roles = 7;</code>
+       */
       public Builder addAllRoles(
           java.lang.Iterable<? extends java.lang.Long> values) {
         ensureRolesIsMutable();
@@ -3529,31 +4491,62 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated int64 roles = 7;</code>
+       */
       public Builder clearRoles() {
-        roles_ = java.util.Collections.emptyList();;
+        roles_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
         return this;
       }
-      
+
       // repeated int64 domain_roles = 8;
-      private java.util.List<java.lang.Long> domainRoles_ = java.util.Collections.emptyList();;
+      private java.util.List<java.lang.Long> domainRoles_ = java.util.Collections.emptyList();
       private void ensureDomainRolesIsMutable() {
         if (!((bitField0_ & 0x00000080) == 0x00000080)) {
           domainRoles_ = new java.util.ArrayList<java.lang.Long>(domainRoles_);
           bitField0_ |= 0x00000080;
          }
       }
+      /**
+       * <code>repeated int64 domain_roles = 8;</code>
+       *
+       * <pre>
+       * This lets us use a project token where we really should use a domain token 
+       * </pre>
+       */
       public java.util.List<java.lang.Long>
           getDomainRolesList() {
         return java.util.Collections.unmodifiableList(domainRoles_);
       }
+      /**
+       * <code>repeated int64 domain_roles = 8;</code>
+       *
+       * <pre>
+       * This lets us use a project token where we really should use a domain token 
+       * </pre>
+       */
       public int getDomainRolesCount() {
         return domainRoles_.size();
       }
+      /**
+       * <code>repeated int64 domain_roles = 8;</code>
+       *
+       * <pre>
+       * This lets us use a project token where we really should use a domain token 
+       * </pre>
+       */
       public long getDomainRoles(int index) {
         return domainRoles_.get(index);
       }
+      /**
+       * <code>repeated int64 domain_roles = 8;</code>
+       *
+       * <pre>
+       * This lets us use a project token where we really should use a domain token 
+       * </pre>
+       */
       public Builder setDomainRoles(
           int index, long value) {
         ensureDomainRolesIsMutable();
@@ -3561,12 +4554,26 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated int64 domain_roles = 8;</code>
+       *
+       * <pre>
+       * This lets us use a project token where we really should use a domain token 
+       * </pre>
+       */
       public Builder addDomainRoles(long value) {
         ensureDomainRolesIsMutable();
         domainRoles_.add(value);
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated int64 domain_roles = 8;</code>
+       *
+       * <pre>
+       * This lets us use a project token where we really should use a domain token 
+       * </pre>
+       */
       public Builder addAllDomainRoles(
           java.lang.Iterable<? extends java.lang.Long> values) {
         ensureDomainRolesIsMutable();
@@ -3574,130 +4581,271 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated int64 domain_roles = 8;</code>
+       *
+       * <pre>
+       * This lets us use a project token where we really should use a domain token 
+       * </pre>
+       */
       public Builder clearDomainRoles() {
-        domainRoles_ = java.util.Collections.emptyList();;
+        domainRoles_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000080);
         onChanged();
         return this;
       }
-      
+
       // optional bool service_token = 9;
       private boolean serviceToken_ ;
+      /**
+       * <code>optional bool service_token = 9;</code>
+       */
       public boolean hasServiceToken() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
+      /**
+       * <code>optional bool service_token = 9;</code>
+       */
       public boolean getServiceToken() {
         return serviceToken_;
       }
+      /**
+       * <code>optional bool service_token = 9;</code>
+       */
       public Builder setServiceToken(boolean value) {
         bitField0_ |= 0x00000100;
         serviceToken_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bool service_token = 9;</code>
+       */
       public Builder clearServiceToken() {
         bitField0_ = (bitField0_ & ~0x00000100);
         serviceToken_ = false;
         onChanged();
         return this;
       }
-      
+
       // optional int64 instance_id = 10;
       private long instanceId_ ;
+      /**
+       * <code>optional int64 instance_id = 10;</code>
+       */
       public boolean hasInstanceId() {
         return ((bitField0_ & 0x00000200) == 0x00000200);
       }
+      /**
+       * <code>optional int64 instance_id = 10;</code>
+       */
       public long getInstanceId() {
         return instanceId_;
       }
+      /**
+       * <code>optional int64 instance_id = 10;</code>
+       */
       public Builder setInstanceId(long value) {
         bitField0_ |= 0x00000200;
         instanceId_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 instance_id = 10;</code>
+       */
       public Builder clearInstanceId() {
         bitField0_ = (bitField0_ & ~0x00000200);
         instanceId_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.TokenInfo)
     }
-    
+
     static {
       defaultInstance = new TokenInfo(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.TokenInfo)
   }
-  
+
   public interface TokenOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional bytes signature = 1;
+    /**
+     * <code>optional bytes signature = 1;</code>
+     */
     boolean hasSignature();
+    /**
+     * <code>optional bytes signature = 1;</code>
+     */
     com.google.protobuf.ByteString getSignature();
-    
+
     // optional .fathomcloud.protobuf.TokenInfo token_info = 2;
+    /**
+     * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+     */
     boolean hasTokenInfo();
+    /**
+     * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.TokenInfo getTokenInfo();
+    /**
+     * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.TokenInfoOrBuilder getTokenInfoOrBuilder();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.Token}
+   */
   public static final class Token extends
       com.google.protobuf.GeneratedMessage
       implements TokenOrBuilder {
     // Use Token.newBuilder() to construct.
-    private Token(Builder builder) {
+    private Token(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Token(boolean noInit) {}
-    
+    private Token(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final Token defaultInstance;
     public static Token getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public Token getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Token(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              signature_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              io.fathom.cloud.protobuf.CloudCommons.TokenInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = tokenInfo_.toBuilder();
+              }
+              tokenInfo_ = input.readMessage(io.fathom.cloud.protobuf.CloudCommons.TokenInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(tokenInfo_);
+                tokenInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Token_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Token_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Token_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.CloudCommons.Token.class, io.fathom.cloud.protobuf.CloudCommons.Token.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<Token> PARSER =
+        new com.google.protobuf.AbstractParser<Token>() {
+      public Token parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Token(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Token> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional bytes signature = 1;
     public static final int SIGNATURE_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString signature_;
+    /**
+     * <code>optional bytes signature = 1;</code>
+     */
     public boolean hasSignature() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>optional bytes signature = 1;</code>
+     */
     public com.google.protobuf.ByteString getSignature() {
       return signature_;
     }
-    
+
     // optional .fathomcloud.protobuf.TokenInfo token_info = 2;
     public static final int TOKEN_INFO_FIELD_NUMBER = 2;
     private io.fathom.cloud.protobuf.CloudCommons.TokenInfo tokenInfo_;
+    /**
+     * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+     */
     public boolean hasTokenInfo() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.TokenInfo getTokenInfo() {
       return tokenInfo_;
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.TokenInfoOrBuilder getTokenInfoOrBuilder() {
       return tokenInfo_;
     }
-    
+
     private void initFields() {
       signature_ = com.google.protobuf.ByteString.EMPTY;
       tokenInfo_ = io.fathom.cloud.protobuf.CloudCommons.TokenInfo.getDefaultInstance();
@@ -3706,11 +4854,11 @@ public final class CloudCommons {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -3722,12 +4870,12 @@ public final class CloudCommons {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3741,94 +4889,83 @@ public final class CloudCommons {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.CloudCommons.Token parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Token parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Token parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Token parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Token parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Token parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Token parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Token parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Token parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.Token parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.Token prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.Token}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.CloudCommons.TokenOrBuilder {
@@ -3836,18 +4973,21 @@ public final class CloudCommons {
           getDescriptor() {
         return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Token_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Token_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Token_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.CloudCommons.Token.class, io.fathom.cloud.protobuf.CloudCommons.Token.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.CloudCommons.Token.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -3859,7 +4999,7 @@ public final class CloudCommons {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         signature_ = com.google.protobuf.ByteString.EMPTY;
@@ -3872,20 +5012,20 @@ public final class CloudCommons {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.Token.getDescriptor();
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_Token_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.Token getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.CloudCommons.Token.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.Token build() {
         io.fathom.cloud.protobuf.CloudCommons.Token result = buildPartial();
         if (!result.isInitialized()) {
@@ -3893,17 +5033,7 @@ public final class CloudCommons {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.CloudCommons.Token buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.CloudCommons.Token result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.Token buildPartial() {
         io.fathom.cloud.protobuf.CloudCommons.Token result = new io.fathom.cloud.protobuf.CloudCommons.Token(this);
         int from_bitField0_ = bitField0_;
@@ -3924,7 +5054,7 @@ public final class CloudCommons {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.CloudCommons.Token) {
           return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.Token)other);
@@ -3933,7 +5063,7 @@ public final class CloudCommons {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.Token other) {
         if (other == io.fathom.cloud.protobuf.CloudCommons.Token.getDefaultInstance()) return this;
         if (other.hasSignature()) {
@@ -3945,62 +5075,47 @@ public final class CloudCommons {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              signature_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              io.fathom.cloud.protobuf.CloudCommons.TokenInfo.Builder subBuilder = io.fathom.cloud.protobuf.CloudCommons.TokenInfo.newBuilder();
-              if (hasTokenInfo()) {
-                subBuilder.mergeFrom(getTokenInfo());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setTokenInfo(subBuilder.buildPartial());
-              break;
-            }
+        io.fathom.cloud.protobuf.CloudCommons.Token parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.CloudCommons.Token) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional bytes signature = 1;
       private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes signature = 1;</code>
+       */
       public boolean hasSignature() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional bytes signature = 1;</code>
+       */
       public com.google.protobuf.ByteString getSignature() {
         return signature_;
       }
+      /**
+       * <code>optional bytes signature = 1;</code>
+       */
       public Builder setSignature(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -4010,20 +5125,29 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bytes signature = 1;</code>
+       */
       public Builder clearSignature() {
         bitField0_ = (bitField0_ & ~0x00000001);
         signature_ = getDefaultInstance().getSignature();
         onChanged();
         return this;
       }
-      
+
       // optional .fathomcloud.protobuf.TokenInfo token_info = 2;
       private io.fathom.cloud.protobuf.CloudCommons.TokenInfo tokenInfo_ = io.fathom.cloud.protobuf.CloudCommons.TokenInfo.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.CloudCommons.TokenInfo, io.fathom.cloud.protobuf.CloudCommons.TokenInfo.Builder, io.fathom.cloud.protobuf.CloudCommons.TokenInfoOrBuilder> tokenInfoBuilder_;
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+       */
       public boolean hasTokenInfo() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.TokenInfo getTokenInfo() {
         if (tokenInfoBuilder_ == null) {
           return tokenInfo_;
@@ -4031,6 +5155,9 @@ public final class CloudCommons {
           return tokenInfoBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+       */
       public Builder setTokenInfo(io.fathom.cloud.protobuf.CloudCommons.TokenInfo value) {
         if (tokenInfoBuilder_ == null) {
           if (value == null) {
@@ -4044,6 +5171,9 @@ public final class CloudCommons {
         bitField0_ |= 0x00000002;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+       */
       public Builder setTokenInfo(
           io.fathom.cloud.protobuf.CloudCommons.TokenInfo.Builder builderForValue) {
         if (tokenInfoBuilder_ == null) {
@@ -4055,6 +5185,9 @@ public final class CloudCommons {
         bitField0_ |= 0x00000002;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+       */
       public Builder mergeTokenInfo(io.fathom.cloud.protobuf.CloudCommons.TokenInfo value) {
         if (tokenInfoBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
@@ -4071,6 +5204,9 @@ public final class CloudCommons {
         bitField0_ |= 0x00000002;
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+       */
       public Builder clearTokenInfo() {
         if (tokenInfoBuilder_ == null) {
           tokenInfo_ = io.fathom.cloud.protobuf.CloudCommons.TokenInfo.getDefaultInstance();
@@ -4081,11 +5217,17 @@ public final class CloudCommons {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.TokenInfo.Builder getTokenInfoBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getTokenInfoFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.TokenInfoOrBuilder getTokenInfoOrBuilder() {
         if (tokenInfoBuilder_ != null) {
           return tokenInfoBuilder_.getMessageOrBuilder();
@@ -4093,6 +5235,9 @@ public final class CloudCommons {
           return tokenInfo_;
         }
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.TokenInfo token_info = 2;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           io.fathom.cloud.protobuf.CloudCommons.TokenInfo, io.fathom.cloud.protobuf.CloudCommons.TokenInfo.Builder, io.fathom.cloud.protobuf.CloudCommons.TokenInfoOrBuilder> 
           getTokenInfoFieldBuilder() {
@@ -4106,80 +5251,183 @@ public final class CloudCommons {
         }
         return tokenInfoBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.Token)
     }
-    
+
     static {
       defaultInstance = new Token(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.Token)
   }
-  
+
   public interface PeerRequestOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;
+    /**
+     * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+     */
     java.util.List<io.fathom.cloud.protobuf.CloudCommons.FixReplica> 
         getFixReplicaList();
+    /**
+     * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.FixReplica getFixReplica(int index);
+    /**
+     * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+     */
     int getFixReplicaCount();
+    /**
+     * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+     */
     java.util.List<? extends io.fathom.cloud.protobuf.CloudCommons.FixReplicaOrBuilder> 
         getFixReplicaOrBuilderList();
+    /**
+     * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.FixReplicaOrBuilder getFixReplicaOrBuilder(
         int index);
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.PeerRequest}
+   */
   public static final class PeerRequest extends
       com.google.protobuf.GeneratedMessage
       implements PeerRequestOrBuilder {
     // Use PeerRequest.newBuilder() to construct.
-    private PeerRequest(Builder builder) {
+    private PeerRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private PeerRequest(boolean noInit) {}
-    
+    private PeerRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final PeerRequest defaultInstance;
     public static PeerRequest getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public PeerRequest getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PeerRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                fixReplica_ = new java.util.ArrayList<io.fathom.cloud.protobuf.CloudCommons.FixReplica>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              fixReplica_.add(input.readMessage(io.fathom.cloud.protobuf.CloudCommons.FixReplica.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          fixReplica_ = java.util.Collections.unmodifiableList(fixReplica_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PeerRequest_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PeerRequest_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PeerRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.CloudCommons.PeerRequest.class, io.fathom.cloud.protobuf.CloudCommons.PeerRequest.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<PeerRequest> PARSER =
+        new com.google.protobuf.AbstractParser<PeerRequest>() {
+      public PeerRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PeerRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PeerRequest> getParserForType() {
+      return PARSER;
+    }
+
     // repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;
     public static final int FIX_REPLICA_FIELD_NUMBER = 1;
     private java.util.List<io.fathom.cloud.protobuf.CloudCommons.FixReplica> fixReplica_;
+    /**
+     * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+     */
     public java.util.List<io.fathom.cloud.protobuf.CloudCommons.FixReplica> getFixReplicaList() {
       return fixReplica_;
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+     */
     public java.util.List<? extends io.fathom.cloud.protobuf.CloudCommons.FixReplicaOrBuilder> 
         getFixReplicaOrBuilderList() {
       return fixReplica_;
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+     */
     public int getFixReplicaCount() {
       return fixReplica_.size();
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.FixReplica getFixReplica(int index) {
       return fixReplica_.get(index);
     }
+    /**
+     * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.FixReplicaOrBuilder getFixReplicaOrBuilder(
         int index) {
       return fixReplica_.get(index);
     }
-    
+
     private void initFields() {
       fixReplica_ = java.util.Collections.emptyList();
     }
@@ -4187,11 +5435,11 @@ public final class CloudCommons {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -4200,12 +5448,12 @@ public final class CloudCommons {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       for (int i = 0; i < fixReplica_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -4215,94 +5463,83 @@ public final class CloudCommons {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.CloudCommons.PeerRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.PeerRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.PeerRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.PeerRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.PeerRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.PeerRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.PeerRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.PeerRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.PeerRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.PeerRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.PeerRequest prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.PeerRequest}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.CloudCommons.PeerRequestOrBuilder {
@@ -4310,18 +5547,21 @@ public final class CloudCommons {
           getDescriptor() {
         return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PeerRequest_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PeerRequest_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PeerRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.CloudCommons.PeerRequest.class, io.fathom.cloud.protobuf.CloudCommons.PeerRequest.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.CloudCommons.PeerRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -4333,7 +5573,7 @@ public final class CloudCommons {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         if (fixReplicaBuilder_ == null) {
@@ -4344,20 +5584,20 @@ public final class CloudCommons {
         }
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.PeerRequest.getDescriptor();
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_PeerRequest_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.PeerRequest getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.CloudCommons.PeerRequest.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.PeerRequest build() {
         io.fathom.cloud.protobuf.CloudCommons.PeerRequest result = buildPartial();
         if (!result.isInitialized()) {
@@ -4365,17 +5605,7 @@ public final class CloudCommons {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.CloudCommons.PeerRequest buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.CloudCommons.PeerRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.PeerRequest buildPartial() {
         io.fathom.cloud.protobuf.CloudCommons.PeerRequest result = new io.fathom.cloud.protobuf.CloudCommons.PeerRequest(this);
         int from_bitField0_ = bitField0_;
@@ -4391,7 +5621,7 @@ public final class CloudCommons {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.CloudCommons.PeerRequest) {
           return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.PeerRequest)other);
@@ -4400,7 +5630,7 @@ public final class CloudCommons {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.PeerRequest other) {
         if (other == io.fathom.cloud.protobuf.CloudCommons.PeerRequest.getDefaultInstance()) return this;
         if (fixReplicaBuilder_ == null) {
@@ -4432,46 +5662,30 @@ public final class CloudCommons {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder subBuilder = io.fathom.cloud.protobuf.CloudCommons.FixReplica.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addFixReplica(subBuilder.buildPartial());
-              break;
-            }
+        io.fathom.cloud.protobuf.CloudCommons.PeerRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.CloudCommons.PeerRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;
       private java.util.List<io.fathom.cloud.protobuf.CloudCommons.FixReplica> fixReplica_ =
         java.util.Collections.emptyList();
@@ -4481,10 +5695,13 @@ public final class CloudCommons {
           bitField0_ |= 0x00000001;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           io.fathom.cloud.protobuf.CloudCommons.FixReplica, io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder, io.fathom.cloud.protobuf.CloudCommons.FixReplicaOrBuilder> fixReplicaBuilder_;
-      
+
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public java.util.List<io.fathom.cloud.protobuf.CloudCommons.FixReplica> getFixReplicaList() {
         if (fixReplicaBuilder_ == null) {
           return java.util.Collections.unmodifiableList(fixReplica_);
@@ -4492,6 +5709,9 @@ public final class CloudCommons {
           return fixReplicaBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public int getFixReplicaCount() {
         if (fixReplicaBuilder_ == null) {
           return fixReplica_.size();
@@ -4499,6 +5719,9 @@ public final class CloudCommons {
           return fixReplicaBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.FixReplica getFixReplica(int index) {
         if (fixReplicaBuilder_ == null) {
           return fixReplica_.get(index);
@@ -4506,6 +5729,9 @@ public final class CloudCommons {
           return fixReplicaBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public Builder setFixReplica(
           int index, io.fathom.cloud.protobuf.CloudCommons.FixReplica value) {
         if (fixReplicaBuilder_ == null) {
@@ -4520,6 +5746,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public Builder setFixReplica(
           int index, io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder builderForValue) {
         if (fixReplicaBuilder_ == null) {
@@ -4531,6 +5760,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public Builder addFixReplica(io.fathom.cloud.protobuf.CloudCommons.FixReplica value) {
         if (fixReplicaBuilder_ == null) {
           if (value == null) {
@@ -4544,6 +5776,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public Builder addFixReplica(
           int index, io.fathom.cloud.protobuf.CloudCommons.FixReplica value) {
         if (fixReplicaBuilder_ == null) {
@@ -4558,6 +5793,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public Builder addFixReplica(
           io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder builderForValue) {
         if (fixReplicaBuilder_ == null) {
@@ -4569,6 +5807,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public Builder addFixReplica(
           int index, io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder builderForValue) {
         if (fixReplicaBuilder_ == null) {
@@ -4580,6 +5821,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public Builder addAllFixReplica(
           java.lang.Iterable<? extends io.fathom.cloud.protobuf.CloudCommons.FixReplica> values) {
         if (fixReplicaBuilder_ == null) {
@@ -4591,6 +5835,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public Builder clearFixReplica() {
         if (fixReplicaBuilder_ == null) {
           fixReplica_ = java.util.Collections.emptyList();
@@ -4601,6 +5848,9 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public Builder removeFixReplica(int index) {
         if (fixReplicaBuilder_ == null) {
           ensureFixReplicaIsMutable();
@@ -4611,10 +5861,16 @@ public final class CloudCommons {
         }
         return this;
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder getFixReplicaBuilder(
           int index) {
         return getFixReplicaFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.FixReplicaOrBuilder getFixReplicaOrBuilder(
           int index) {
         if (fixReplicaBuilder_ == null) {
@@ -4622,6 +5878,9 @@ public final class CloudCommons {
           return fixReplicaBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public java.util.List<? extends io.fathom.cloud.protobuf.CloudCommons.FixReplicaOrBuilder> 
            getFixReplicaOrBuilderList() {
         if (fixReplicaBuilder_ != null) {
@@ -4630,15 +5889,24 @@ public final class CloudCommons {
           return java.util.Collections.unmodifiableList(fixReplica_);
         }
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder addFixReplicaBuilder() {
         return getFixReplicaFieldBuilder().addBuilder(
             io.fathom.cloud.protobuf.CloudCommons.FixReplica.getDefaultInstance());
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder addFixReplicaBuilder(
           int index) {
         return getFixReplicaFieldBuilder().addBuilder(
             index, io.fathom.cloud.protobuf.CloudCommons.FixReplica.getDefaultInstance());
       }
+      /**
+       * <code>repeated .fathomcloud.protobuf.FixReplica fix_replica = 1;</code>
+       */
       public java.util.List<io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder> 
            getFixReplicaBuilderList() {
         return getFixReplicaFieldBuilder().getBuilderList();
@@ -4657,118 +5925,236 @@ public final class CloudCommons {
         }
         return fixReplicaBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.PeerRequest)
     }
-    
+
     static {
       defaultInstance = new PeerRequest(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.PeerRequest)
   }
-  
+
   public interface FixReplicaOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional string blob_store_key = 1;
+    /**
+     * <code>optional string blob_store_key = 1;</code>
+     */
     boolean hasBlobStoreKey();
-    String getBlobStoreKey();
-    
+    /**
+     * <code>optional string blob_store_key = 1;</code>
+     */
+    java.lang.String getBlobStoreKey();
+    /**
+     * <code>optional string blob_store_key = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getBlobStoreKeyBytes();
+
     // repeated bytes blob_key = 2;
+    /**
+     * <code>repeated bytes blob_key = 2;</code>
+     */
     java.util.List<com.google.protobuf.ByteString> getBlobKeyList();
+    /**
+     * <code>repeated bytes blob_key = 2;</code>
+     */
     int getBlobKeyCount();
+    /**
+     * <code>repeated bytes blob_key = 2;</code>
+     */
     com.google.protobuf.ByteString getBlobKey(int index);
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.FixReplica}
+   */
   public static final class FixReplica extends
       com.google.protobuf.GeneratedMessage
       implements FixReplicaOrBuilder {
     // Use FixReplica.newBuilder() to construct.
-    private FixReplica(Builder builder) {
+    private FixReplica(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private FixReplica(boolean noInit) {}
-    
+    private FixReplica(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final FixReplica defaultInstance;
     public static FixReplica getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public FixReplica getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FixReplica(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              blobStoreKey_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                blobKey_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              blobKey_.add(input.readBytes());
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          blobKey_ = java.util.Collections.unmodifiableList(blobKey_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_FixReplica_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_FixReplica_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_FixReplica_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.CloudCommons.FixReplica.class, io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<FixReplica> PARSER =
+        new com.google.protobuf.AbstractParser<FixReplica>() {
+      public FixReplica parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FixReplica(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FixReplica> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional string blob_store_key = 1;
     public static final int BLOB_STORE_KEY_FIELD_NUMBER = 1;
     private java.lang.Object blobStoreKey_;
+    /**
+     * <code>optional string blob_store_key = 1;</code>
+     */
     public boolean hasBlobStoreKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public String getBlobStoreKey() {
+    /**
+     * <code>optional string blob_store_key = 1;</code>
+     */
+    public java.lang.String getBlobStoreKey() {
       java.lang.Object ref = blobStoreKey_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           blobStoreKey_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getBlobStoreKeyBytes() {
+    /**
+     * <code>optional string blob_store_key = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getBlobStoreKeyBytes() {
       java.lang.Object ref = blobStoreKey_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         blobStoreKey_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // repeated bytes blob_key = 2;
     public static final int BLOB_KEY_FIELD_NUMBER = 2;
     private java.util.List<com.google.protobuf.ByteString> blobKey_;
+    /**
+     * <code>repeated bytes blob_key = 2;</code>
+     */
     public java.util.List<com.google.protobuf.ByteString>
         getBlobKeyList() {
       return blobKey_;
     }
+    /**
+     * <code>repeated bytes blob_key = 2;</code>
+     */
     public int getBlobKeyCount() {
       return blobKey_.size();
     }
+    /**
+     * <code>repeated bytes blob_key = 2;</code>
+     */
     public com.google.protobuf.ByteString getBlobKey(int index) {
       return blobKey_.get(index);
     }
-    
+
     private void initFields() {
       blobStoreKey_ = "";
-      blobKey_ = java.util.Collections.emptyList();;
+      blobKey_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -4780,12 +6166,12 @@ public final class CloudCommons {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -4804,94 +6190,83 @@ public final class CloudCommons {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.CloudCommons.FixReplica parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.FixReplica parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.FixReplica parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.FixReplica parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.FixReplica parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.FixReplica parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.FixReplica parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.FixReplica parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.FixReplica parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.FixReplica parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.FixReplica prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.FixReplica}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.CloudCommons.FixReplicaOrBuilder {
@@ -4899,18 +6274,21 @@ public final class CloudCommons {
           getDescriptor() {
         return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_FixReplica_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_FixReplica_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_FixReplica_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.CloudCommons.FixReplica.class, io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.CloudCommons.FixReplica.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -4921,29 +6299,29 @@ public final class CloudCommons {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         blobStoreKey_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        blobKey_ = java.util.Collections.emptyList();;
+        blobKey_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.FixReplica.getDescriptor();
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_FixReplica_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.FixReplica getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.CloudCommons.FixReplica.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.FixReplica build() {
         io.fathom.cloud.protobuf.CloudCommons.FixReplica result = buildPartial();
         if (!result.isInitialized()) {
@@ -4951,17 +6329,7 @@ public final class CloudCommons {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.CloudCommons.FixReplica buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.CloudCommons.FixReplica result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.FixReplica buildPartial() {
         io.fathom.cloud.protobuf.CloudCommons.FixReplica result = new io.fathom.cloud.protobuf.CloudCommons.FixReplica(this);
         int from_bitField0_ = bitField0_;
@@ -4979,7 +6347,7 @@ public final class CloudCommons {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.CloudCommons.FixReplica) {
           return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.FixReplica)other);
@@ -4988,11 +6356,13 @@ public final class CloudCommons {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.FixReplica other) {
         if (other == io.fathom.cloud.protobuf.CloudCommons.FixReplica.getDefaultInstance()) return this;
         if (other.hasBlobStoreKey()) {
-          setBlobStoreKey(other.getBlobStoreKey());
+          bitField0_ |= 0x00000001;
+          blobStoreKey_ = other.blobStoreKey_;
+          onChanged();
         }
         if (!other.blobKey_.isEmpty()) {
           if (blobKey_.isEmpty()) {
@@ -5007,66 +6377,73 @@ public final class CloudCommons {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              blobStoreKey_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              ensureBlobKeyIsMutable();
-              blobKey_.add(input.readBytes());
-              break;
-            }
+        io.fathom.cloud.protobuf.CloudCommons.FixReplica parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.CloudCommons.FixReplica) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional string blob_store_key = 1;
       private java.lang.Object blobStoreKey_ = "";
+      /**
+       * <code>optional string blob_store_key = 1;</code>
+       */
       public boolean hasBlobStoreKey() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public String getBlobStoreKey() {
+      /**
+       * <code>optional string blob_store_key = 1;</code>
+       */
+      public java.lang.String getBlobStoreKey() {
         java.lang.Object ref = blobStoreKey_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           blobStoreKey_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setBlobStoreKey(String value) {
+      /**
+       * <code>optional string blob_store_key = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getBlobStoreKeyBytes() {
+        java.lang.Object ref = blobStoreKey_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          blobStoreKey_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string blob_store_key = 1;</code>
+       */
+      public Builder setBlobStoreKey(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -5075,36 +6452,59 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string blob_store_key = 1;</code>
+       */
       public Builder clearBlobStoreKey() {
         bitField0_ = (bitField0_ & ~0x00000001);
         blobStoreKey_ = getDefaultInstance().getBlobStoreKey();
         onChanged();
         return this;
       }
-      void setBlobStoreKey(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
+      /**
+       * <code>optional string blob_store_key = 1;</code>
+       */
+      public Builder setBlobStoreKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         blobStoreKey_ = value;
         onChanged();
+        return this;
       }
-      
+
       // repeated bytes blob_key = 2;
-      private java.util.List<com.google.protobuf.ByteString> blobKey_ = java.util.Collections.emptyList();;
+      private java.util.List<com.google.protobuf.ByteString> blobKey_ = java.util.Collections.emptyList();
       private void ensureBlobKeyIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
           blobKey_ = new java.util.ArrayList<com.google.protobuf.ByteString>(blobKey_);
           bitField0_ |= 0x00000002;
          }
       }
+      /**
+       * <code>repeated bytes blob_key = 2;</code>
+       */
       public java.util.List<com.google.protobuf.ByteString>
           getBlobKeyList() {
         return java.util.Collections.unmodifiableList(blobKey_);
       }
+      /**
+       * <code>repeated bytes blob_key = 2;</code>
+       */
       public int getBlobKeyCount() {
         return blobKey_.size();
       }
+      /**
+       * <code>repeated bytes blob_key = 2;</code>
+       */
       public com.google.protobuf.ByteString getBlobKey(int index) {
         return blobKey_.get(index);
       }
+      /**
+       * <code>repeated bytes blob_key = 2;</code>
+       */
       public Builder setBlobKey(
           int index, com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -5115,6 +6515,9 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated bytes blob_key = 2;</code>
+       */
       public Builder addBlobKey(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -5124,6 +6527,9 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated bytes blob_key = 2;</code>
+       */
       public Builder addAllBlobKey(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
         ensureBlobKeyIsMutable();
@@ -5131,197 +6537,408 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated bytes blob_key = 2;</code>
+       */
       public Builder clearBlobKey() {
-        blobKey_ = java.util.Collections.emptyList();;
+        blobKey_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.FixReplica)
     }
-    
+
     static {
       defaultInstance = new FixReplica(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.FixReplica)
   }
-  
+
   public interface NodeDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional string key = 1;
+    /**
+     * <code>optional string key = 1;</code>
+     */
     boolean hasKey();
-    String getKey();
-    
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    java.lang.String getKey();
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getKeyBytes();
+
     // repeated string address = 2;
-    java.util.List<String> getAddressList();
+    /**
+     * <code>repeated string address = 2;</code>
+     */
+    java.util.List<java.lang.String>
+    getAddressList();
+    /**
+     * <code>repeated string address = 2;</code>
+     */
     int getAddressCount();
-    String getAddress(int index);
-    
+    /**
+     * <code>repeated string address = 2;</code>
+     */
+    java.lang.String getAddress(int index);
+    /**
+     * <code>repeated string address = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getAddressBytes(int index);
+
     // optional string store = 3;
+    /**
+     * <code>optional string store = 3;</code>
+     */
     boolean hasStore();
-    String getStore();
-    
+    /**
+     * <code>optional string store = 3;</code>
+     */
+    java.lang.String getStore();
+    /**
+     * <code>optional string store = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getStoreBytes();
+
     // optional string queue = 4;
+    /**
+     * <code>optional string queue = 4;</code>
+     */
     boolean hasQueue();
-    String getQueue();
-    
+    /**
+     * <code>optional string queue = 4;</code>
+     */
+    java.lang.String getQueue();
+    /**
+     * <code>optional string queue = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getQueueBytes();
+
     // optional .fathomcloud.protobuf.NodeType node_type = 5;
+    /**
+     * <code>optional .fathomcloud.protobuf.NodeType node_type = 5;</code>
+     */
     boolean hasNodeType();
+    /**
+     * <code>optional .fathomcloud.protobuf.NodeType node_type = 5;</code>
+     */
     io.fathom.cloud.protobuf.CloudCommons.NodeType getNodeType();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.NodeData}
+   */
   public static final class NodeData extends
       com.google.protobuf.GeneratedMessage
       implements NodeDataOrBuilder {
     // Use NodeData.newBuilder() to construct.
-    private NodeData(Builder builder) {
+    private NodeData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private NodeData(boolean noInit) {}
-    
+    private NodeData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final NodeData defaultInstance;
     public static NodeData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public NodeData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private NodeData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              key_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                address_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              address_.add(input.readBytes());
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000002;
+              store_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000004;
+              queue_ = input.readBytes();
+              break;
+            }
+            case 40: {
+              int rawValue = input.readEnum();
+              io.fathom.cloud.protobuf.CloudCommons.NodeType value = io.fathom.cloud.protobuf.CloudCommons.NodeType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(5, rawValue);
+              } else {
+                bitField0_ |= 0x00000008;
+                nodeType_ = value;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          address_ = new com.google.protobuf.UnmodifiableLazyStringList(address_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_NodeData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_NodeData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_NodeData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.CloudCommons.NodeData.class, io.fathom.cloud.protobuf.CloudCommons.NodeData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<NodeData> PARSER =
+        new com.google.protobuf.AbstractParser<NodeData>() {
+      public NodeData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new NodeData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NodeData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional string key = 1;
     public static final int KEY_FIELD_NUMBER = 1;
     private java.lang.Object key_;
+    /**
+     * <code>optional string key = 1;</code>
+     */
     public boolean hasKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public String getKey() {
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    public java.lang.String getKey() {
       java.lang.Object ref = key_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           key_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getKeyBytes() {
+    /**
+     * <code>optional string key = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
       java.lang.Object ref = key_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         key_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // repeated string address = 2;
     public static final int ADDRESS_FIELD_NUMBER = 2;
     private com.google.protobuf.LazyStringList address_;
-    public java.util.List<String>
+    /**
+     * <code>repeated string address = 2;</code>
+     */
+    public java.util.List<java.lang.String>
         getAddressList() {
       return address_;
     }
+    /**
+     * <code>repeated string address = 2;</code>
+     */
     public int getAddressCount() {
       return address_.size();
     }
-    public String getAddress(int index) {
+    /**
+     * <code>repeated string address = 2;</code>
+     */
+    public java.lang.String getAddress(int index) {
       return address_.get(index);
     }
-    
+    /**
+     * <code>repeated string address = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAddressBytes(int index) {
+      return address_.getByteString(index);
+    }
+
     // optional string store = 3;
     public static final int STORE_FIELD_NUMBER = 3;
     private java.lang.Object store_;
+    /**
+     * <code>optional string store = 3;</code>
+     */
     public boolean hasStore() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    public String getStore() {
+    /**
+     * <code>optional string store = 3;</code>
+     */
+    public java.lang.String getStore() {
       java.lang.Object ref = store_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           store_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getStoreBytes() {
+    /**
+     * <code>optional string store = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStoreBytes() {
       java.lang.Object ref = store_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         store_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional string queue = 4;
     public static final int QUEUE_FIELD_NUMBER = 4;
     private java.lang.Object queue_;
+    /**
+     * <code>optional string queue = 4;</code>
+     */
     public boolean hasQueue() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public String getQueue() {
+    /**
+     * <code>optional string queue = 4;</code>
+     */
+    public java.lang.String getQueue() {
       java.lang.Object ref = queue_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           queue_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getQueueBytes() {
+    /**
+     * <code>optional string queue = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getQueueBytes() {
       java.lang.Object ref = queue_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         queue_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional .fathomcloud.protobuf.NodeType node_type = 5;
     public static final int NODE_TYPE_FIELD_NUMBER = 5;
     private io.fathom.cloud.protobuf.CloudCommons.NodeType nodeType_;
+    /**
+     * <code>optional .fathomcloud.protobuf.NodeType node_type = 5;</code>
+     */
     public boolean hasNodeType() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
+    /**
+     * <code>optional .fathomcloud.protobuf.NodeType node_type = 5;</code>
+     */
     public io.fathom.cloud.protobuf.CloudCommons.NodeType getNodeType() {
       return nodeType_;
     }
-    
+
     private void initFields() {
       key_ = "";
       address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -5333,11 +6950,11 @@ public final class CloudCommons {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -5358,12 +6975,12 @@ public final class CloudCommons {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -5394,94 +7011,83 @@ public final class CloudCommons {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.CloudCommons.NodeData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.NodeData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.NodeData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.NodeData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.NodeData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.NodeData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.NodeData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.NodeData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.NodeData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.CloudCommons.NodeData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.CloudCommons.NodeData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.NodeData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.CloudCommons.NodeDataOrBuilder {
@@ -5489,18 +7095,21 @@ public final class CloudCommons {
           getDescriptor() {
         return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_NodeData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_NodeData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_NodeData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.CloudCommons.NodeData.class, io.fathom.cloud.protobuf.CloudCommons.NodeData.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.CloudCommons.NodeData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -5511,7 +7120,7 @@ public final class CloudCommons {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         key_ = "";
@@ -5526,20 +7135,20 @@ public final class CloudCommons {
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.CloudCommons.NodeData.getDescriptor();
+        return io.fathom.cloud.protobuf.CloudCommons.internal_static_fathomcloud_protobuf_NodeData_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.NodeData getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.CloudCommons.NodeData.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.NodeData build() {
         io.fathom.cloud.protobuf.CloudCommons.NodeData result = buildPartial();
         if (!result.isInitialized()) {
@@ -5547,17 +7156,7 @@ public final class CloudCommons {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.CloudCommons.NodeData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.CloudCommons.NodeData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.CloudCommons.NodeData buildPartial() {
         io.fathom.cloud.protobuf.CloudCommons.NodeData result = new io.fathom.cloud.protobuf.CloudCommons.NodeData(this);
         int from_bitField0_ = bitField0_;
@@ -5588,7 +7187,7 @@ public final class CloudCommons {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.CloudCommons.NodeData) {
           return mergeFrom((io.fathom.cloud.protobuf.CloudCommons.NodeData)other);
@@ -5597,11 +7196,13 @@ public final class CloudCommons {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.CloudCommons.NodeData other) {
         if (other == io.fathom.cloud.protobuf.CloudCommons.NodeData.getDefaultInstance()) return this;
         if (other.hasKey()) {
-          setKey(other.getKey());
+          bitField0_ |= 0x00000001;
+          key_ = other.key_;
+          onChanged();
         }
         if (!other.address_.isEmpty()) {
           if (address_.isEmpty()) {
@@ -5614,10 +7215,14 @@ public final class CloudCommons {
           onChanged();
         }
         if (other.hasStore()) {
-          setStore(other.getStore());
+          bitField0_ |= 0x00000004;
+          store_ = other.store_;
+          onChanged();
         }
         if (other.hasQueue()) {
-          setQueue(other.getQueue());
+          bitField0_ |= 0x00000008;
+          queue_ = other.queue_;
+          onChanged();
         }
         if (other.hasNodeType()) {
           setNodeType(other.getNodeType());
@@ -5625,87 +7230,73 @@ public final class CloudCommons {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              key_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              ensureAddressIsMutable();
-              address_.add(input.readBytes());
-              break;
-            }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              store_ = input.readBytes();
-              break;
-            }
-            case 34: {
-              bitField0_ |= 0x00000008;
-              queue_ = input.readBytes();
-              break;
-            }
-            case 40: {
-              int rawValue = input.readEnum();
-              io.fathom.cloud.protobuf.CloudCommons.NodeType value = io.fathom.cloud.protobuf.CloudCommons.NodeType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(5, rawValue);
-              } else {
-                bitField0_ |= 0x00000010;
-                nodeType_ = value;
-              }
-              break;
-            }
+        io.fathom.cloud.protobuf.CloudCommons.NodeData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.CloudCommons.NodeData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional string key = 1;
       private java.lang.Object key_ = "";
+      /**
+       * <code>optional string key = 1;</code>
+       */
       public boolean hasKey() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public String getKey() {
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public java.lang.String getKey() {
         java.lang.Object ref = key_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           key_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setKey(String value) {
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getKeyBytes() {
+        java.lang.Object ref = key_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          key_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public Builder setKey(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -5714,18 +7305,29 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string key = 1;</code>
+       */
       public Builder clearKey() {
         bitField0_ = (bitField0_ & ~0x00000001);
         key_ = getDefaultInstance().getKey();
         onChanged();
         return this;
       }
-      void setKey(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
+      /**
+       * <code>optional string key = 1;</code>
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         key_ = value;
         onChanged();
+        return this;
       }
-      
+
       // repeated string address = 2;
       private com.google.protobuf.LazyStringList address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureAddressIsMutable() {
@@ -5734,18 +7336,37 @@ public final class CloudCommons {
           bitField0_ |= 0x00000002;
          }
       }
-      public java.util.List<String>
+      /**
+       * <code>repeated string address = 2;</code>
+       */
+      public java.util.List<java.lang.String>
           getAddressList() {
         return java.util.Collections.unmodifiableList(address_);
       }
+      /**
+       * <code>repeated string address = 2;</code>
+       */
       public int getAddressCount() {
         return address_.size();
       }
-      public String getAddress(int index) {
+      /**
+       * <code>repeated string address = 2;</code>
+       */
+      public java.lang.String getAddress(int index) {
         return address_.get(index);
       }
+      /**
+       * <code>repeated string address = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAddressBytes(int index) {
+        return address_.getByteString(index);
+      }
+      /**
+       * <code>repeated string address = 2;</code>
+       */
       public Builder setAddress(
-          int index, String value) {
+          int index, java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -5754,7 +7375,11 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
-      public Builder addAddress(String value) {
+      /**
+       * <code>repeated string address = 2;</code>
+       */
+      public Builder addAddress(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -5763,41 +7388,82 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated string address = 2;</code>
+       */
       public Builder addAllAddress(
-          java.lang.Iterable<String> values) {
+          java.lang.Iterable<java.lang.String> values) {
         ensureAddressIsMutable();
         super.addAll(values, address_);
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated string address = 2;</code>
+       */
       public Builder clearAddress() {
         address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
-      void addAddress(com.google.protobuf.ByteString value) {
-        ensureAddressIsMutable();
+      /**
+       * <code>repeated string address = 2;</code>
+       */
+      public Builder addAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureAddressIsMutable();
         address_.add(value);
         onChanged();
+        return this;
       }
-      
+
       // optional string store = 3;
       private java.lang.Object store_ = "";
+      /**
+       * <code>optional string store = 3;</code>
+       */
       public boolean hasStore() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      public String getStore() {
+      /**
+       * <code>optional string store = 3;</code>
+       */
+      public java.lang.String getStore() {
         java.lang.Object ref = store_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           store_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setStore(String value) {
+      /**
+       * <code>optional string store = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStoreBytes() {
+        java.lang.Object ref = store_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          store_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string store = 3;</code>
+       */
+      public Builder setStore(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -5806,34 +7472,72 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string store = 3;</code>
+       */
       public Builder clearStore() {
         bitField0_ = (bitField0_ & ~0x00000004);
         store_ = getDefaultInstance().getStore();
         onChanged();
         return this;
       }
-      void setStore(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000004;
+      /**
+       * <code>optional string store = 3;</code>
+       */
+      public Builder setStoreBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
         store_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional string queue = 4;
       private java.lang.Object queue_ = "";
+      /**
+       * <code>optional string queue = 4;</code>
+       */
       public boolean hasQueue() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      public String getQueue() {
+      /**
+       * <code>optional string queue = 4;</code>
+       */
+      public java.lang.String getQueue() {
         java.lang.Object ref = queue_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           queue_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setQueue(String value) {
+      /**
+       * <code>optional string queue = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getQueueBytes() {
+        java.lang.Object ref = queue_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          queue_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string queue = 4;</code>
+       */
+      public Builder setQueue(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -5842,26 +7546,46 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string queue = 4;</code>
+       */
       public Builder clearQueue() {
         bitField0_ = (bitField0_ & ~0x00000008);
         queue_ = getDefaultInstance().getQueue();
         onChanged();
         return this;
       }
-      void setQueue(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000008;
+      /**
+       * <code>optional string queue = 4;</code>
+       */
+      public Builder setQueueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
         queue_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional .fathomcloud.protobuf.NodeType node_type = 5;
       private io.fathom.cloud.protobuf.CloudCommons.NodeType nodeType_ = io.fathom.cloud.protobuf.CloudCommons.NodeType.STORAGE;
+      /**
+       * <code>optional .fathomcloud.protobuf.NodeType node_type = 5;</code>
+       */
       public boolean hasNodeType() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.NodeType node_type = 5;</code>
+       */
       public io.fathom.cloud.protobuf.CloudCommons.NodeType getNodeType() {
         return nodeType_;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.NodeType node_type = 5;</code>
+       */
       public Builder setNodeType(io.fathom.cloud.protobuf.CloudCommons.NodeType value) {
         if (value == null) {
           throw new NullPointerException();
@@ -5871,24 +7595,27 @@ public final class CloudCommons {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional .fathomcloud.protobuf.NodeType node_type = 5;</code>
+       */
       public Builder clearNodeType() {
         bitField0_ = (bitField0_ & ~0x00000010);
         nodeType_ = io.fathom.cloud.protobuf.CloudCommons.NodeType.STORAGE;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.NodeData)
     }
-    
+
     static {
       defaultInstance = new NodeData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.NodeData)
   }
-  
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_fathomcloud_protobuf_ItemStateData_descriptor;
   private static
@@ -5939,7 +7666,7 @@ public final class CloudCommons {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_fathomcloud_protobuf_NodeData_fieldAccessorTable;
-  
+
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -5989,81 +7716,61 @@ public final class CloudCommons {
           internal_static_fathomcloud_protobuf_ItemStateData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_ItemStateData_descriptor,
-              new java.lang.String[] { "CreatedAt", "UpdatedAt", "DeletedAt", },
-              io.fathom.cloud.protobuf.CloudCommons.ItemStateData.class,
-              io.fathom.cloud.protobuf.CloudCommons.ItemStateData.Builder.class);
+              new java.lang.String[] { "CreatedAt", "UpdatedAt", "DeletedAt", });
           internal_static_fathomcloud_protobuf_SecretData_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_fathomcloud_protobuf_SecretData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_SecretData_descriptor,
-              new java.lang.String[] { "EncryptedWith", "Ciphertext", "Version", "HashIv", },
-              io.fathom.cloud.protobuf.CloudCommons.SecretData.class,
-              io.fathom.cloud.protobuf.CloudCommons.SecretData.Builder.class);
+              new java.lang.String[] { "EncryptedWith", "Ciphertext", "Version", "HashIv", });
           internal_static_fathomcloud_protobuf_PasswordHashData_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_fathomcloud_protobuf_PasswordHashData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_PasswordHashData_descriptor,
-              new java.lang.String[] { "Data", "Salt", "Rounds", },
-              io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.class,
-              io.fathom.cloud.protobuf.CloudCommons.PasswordHashData.Builder.class);
+              new java.lang.String[] { "Data", "Salt", "Rounds", });
           internal_static_fathomcloud_protobuf_KeyValueData_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_fathomcloud_protobuf_KeyValueData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_KeyValueData_descriptor,
-              new java.lang.String[] { "Key", "Value", },
-              io.fathom.cloud.protobuf.CloudCommons.KeyValueData.class,
-              io.fathom.cloud.protobuf.CloudCommons.KeyValueData.Builder.class);
+              new java.lang.String[] { "Key", "Value", });
           internal_static_fathomcloud_protobuf_Attributes_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_fathomcloud_protobuf_Attributes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_Attributes_descriptor,
-              new java.lang.String[] { "UserAttributes", },
-              io.fathom.cloud.protobuf.CloudCommons.Attributes.class,
-              io.fathom.cloud.protobuf.CloudCommons.Attributes.Builder.class);
+              new java.lang.String[] { "UserAttributes", });
           internal_static_fathomcloud_protobuf_TokenInfo_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_fathomcloud_protobuf_TokenInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_TokenInfo_descriptor,
-              new java.lang.String[] { "UserId", "Expiration", "ProjectId", "DomainId", "TokenSecret", "TokenScope", "Roles", "DomainRoles", "ServiceToken", "InstanceId", },
-              io.fathom.cloud.protobuf.CloudCommons.TokenInfo.class,
-              io.fathom.cloud.protobuf.CloudCommons.TokenInfo.Builder.class);
+              new java.lang.String[] { "UserId", "Expiration", "ProjectId", "DomainId", "TokenSecret", "TokenScope", "Roles", "DomainRoles", "ServiceToken", "InstanceId", });
           internal_static_fathomcloud_protobuf_Token_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_fathomcloud_protobuf_Token_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_Token_descriptor,
-              new java.lang.String[] { "Signature", "TokenInfo", },
-              io.fathom.cloud.protobuf.CloudCommons.Token.class,
-              io.fathom.cloud.protobuf.CloudCommons.Token.Builder.class);
+              new java.lang.String[] { "Signature", "TokenInfo", });
           internal_static_fathomcloud_protobuf_PeerRequest_descriptor =
             getDescriptor().getMessageTypes().get(7);
           internal_static_fathomcloud_protobuf_PeerRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_PeerRequest_descriptor,
-              new java.lang.String[] { "FixReplica", },
-              io.fathom.cloud.protobuf.CloudCommons.PeerRequest.class,
-              io.fathom.cloud.protobuf.CloudCommons.PeerRequest.Builder.class);
+              new java.lang.String[] { "FixReplica", });
           internal_static_fathomcloud_protobuf_FixReplica_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_fathomcloud_protobuf_FixReplica_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_FixReplica_descriptor,
-              new java.lang.String[] { "BlobStoreKey", "BlobKey", },
-              io.fathom.cloud.protobuf.CloudCommons.FixReplica.class,
-              io.fathom.cloud.protobuf.CloudCommons.FixReplica.Builder.class);
+              new java.lang.String[] { "BlobStoreKey", "BlobKey", });
           internal_static_fathomcloud_protobuf_NodeData_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_fathomcloud_protobuf_NodeData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_NodeData_descriptor,
-              new java.lang.String[] { "Key", "Address", "Store", "Queue", "NodeType", },
-              io.fathom.cloud.protobuf.CloudCommons.NodeData.class,
-              io.fathom.cloud.protobuf.CloudCommons.NodeData.Builder.class);
+              new java.lang.String[] { "Key", "Address", "Store", "Queue", "NodeType", });
           return null;
         }
       };
@@ -6072,6 +7779,6 @@ public final class CloudCommons {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-  
+
   // @@protoc_insertion_point(outer_class_scope)
 }

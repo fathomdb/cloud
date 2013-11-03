@@ -10,64 +10,160 @@ public final class DbaasModel {
   }
   public interface InstanceDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional int64 id = 1;
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     boolean hasId();
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     long getId();
-    
+
     // optional int64 project = 2;
+    /**
+     * <code>optional int64 project = 2;</code>
+     */
     boolean hasProject();
+    /**
+     * <code>optional int64 project = 2;</code>
+     */
     long getProject();
   }
+  /**
+   * Protobuf type {@code fathomcloud.protobuf.InstanceData}
+   */
   public static final class InstanceData extends
       com.google.protobuf.GeneratedMessage
       implements InstanceDataOrBuilder {
     // Use InstanceData.newBuilder() to construct.
-    private InstanceData(Builder builder) {
+    private InstanceData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private InstanceData(boolean noInit) {}
-    
+    private InstanceData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final InstanceData defaultInstance;
     public static InstanceData getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public InstanceData getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InstanceData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              project_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.fathom.cloud.protobuf.DbaasModel.internal_static_fathomcloud_protobuf_InstanceData_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.fathom.cloud.protobuf.DbaasModel.internal_static_fathomcloud_protobuf_InstanceData_fieldAccessorTable;
+      return io.fathom.cloud.protobuf.DbaasModel.internal_static_fathomcloud_protobuf_InstanceData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.fathom.cloud.protobuf.DbaasModel.InstanceData.class, io.fathom.cloud.protobuf.DbaasModel.InstanceData.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<InstanceData> PARSER =
+        new com.google.protobuf.AbstractParser<InstanceData>() {
+      public InstanceData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InstanceData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InstanceData> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional int64 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private long id_;
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     public long getId() {
       return id_;
     }
-    
+
     // optional int64 project = 2;
     public static final int PROJECT_FIELD_NUMBER = 2;
     private long project_;
+    /**
+     * <code>optional int64 project = 2;</code>
+     */
     public boolean hasProject() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional int64 project = 2;</code>
+     */
     public long getProject() {
       return project_;
     }
-    
+
     private void initFields() {
       id_ = 0L;
       project_ = 0L;
@@ -76,11 +172,11 @@ public final class DbaasModel {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -92,12 +188,12 @@ public final class DbaasModel {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -111,94 +207,83 @@ public final class DbaasModel {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static io.fathom.cloud.protobuf.DbaasModel.InstanceData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.DbaasModel.InstanceData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.DbaasModel.InstanceData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static io.fathom.cloud.protobuf.DbaasModel.InstanceData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.DbaasModel.InstanceData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.DbaasModel.InstanceData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.DbaasModel.InstanceData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static io.fathom.cloud.protobuf.DbaasModel.InstanceData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static io.fathom.cloud.protobuf.DbaasModel.InstanceData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static io.fathom.cloud.protobuf.DbaasModel.InstanceData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(io.fathom.cloud.protobuf.DbaasModel.InstanceData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code fathomcloud.protobuf.InstanceData}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements io.fathom.cloud.protobuf.DbaasModel.InstanceDataOrBuilder {
@@ -206,18 +291,21 @@ public final class DbaasModel {
           getDescriptor() {
         return io.fathom.cloud.protobuf.DbaasModel.internal_static_fathomcloud_protobuf_InstanceData_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.fathom.cloud.protobuf.DbaasModel.internal_static_fathomcloud_protobuf_InstanceData_fieldAccessorTable;
+        return io.fathom.cloud.protobuf.DbaasModel.internal_static_fathomcloud_protobuf_InstanceData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.fathom.cloud.protobuf.DbaasModel.InstanceData.class, io.fathom.cloud.protobuf.DbaasModel.InstanceData.Builder.class);
       }
-      
+
       // Construct using io.fathom.cloud.protobuf.DbaasModel.InstanceData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -228,7 +316,7 @@ public final class DbaasModel {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         id_ = 0L;
@@ -237,20 +325,20 @@ public final class DbaasModel {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.fathom.cloud.protobuf.DbaasModel.InstanceData.getDescriptor();
+        return io.fathom.cloud.protobuf.DbaasModel.internal_static_fathomcloud_protobuf_InstanceData_descriptor;
       }
-      
+
       public io.fathom.cloud.protobuf.DbaasModel.InstanceData getDefaultInstanceForType() {
         return io.fathom.cloud.protobuf.DbaasModel.InstanceData.getDefaultInstance();
       }
-      
+
       public io.fathom.cloud.protobuf.DbaasModel.InstanceData build() {
         io.fathom.cloud.protobuf.DbaasModel.InstanceData result = buildPartial();
         if (!result.isInitialized()) {
@@ -258,17 +346,7 @@ public final class DbaasModel {
         }
         return result;
       }
-      
-      private io.fathom.cloud.protobuf.DbaasModel.InstanceData buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        io.fathom.cloud.protobuf.DbaasModel.InstanceData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public io.fathom.cloud.protobuf.DbaasModel.InstanceData buildPartial() {
         io.fathom.cloud.protobuf.DbaasModel.InstanceData result = new io.fathom.cloud.protobuf.DbaasModel.InstanceData(this);
         int from_bitField0_ = bitField0_;
@@ -285,7 +363,7 @@ public final class DbaasModel {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.fathom.cloud.protobuf.DbaasModel.InstanceData) {
           return mergeFrom((io.fathom.cloud.protobuf.DbaasModel.InstanceData)other);
@@ -294,7 +372,7 @@ public final class DbaasModel {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(io.fathom.cloud.protobuf.DbaasModel.InstanceData other) {
         if (other == io.fathom.cloud.protobuf.DbaasModel.InstanceData.getDefaultInstance()) return this;
         if (other.hasId()) {
@@ -306,109 +384,113 @@ public final class DbaasModel {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              id_ = input.readInt64();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              project_ = input.readInt64();
-              break;
-            }
+        io.fathom.cloud.protobuf.DbaasModel.InstanceData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.fathom.cloud.protobuf.DbaasModel.InstanceData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional int64 id = 1;
       private long id_ ;
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public long getId() {
         return id_;
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public Builder setId(long value) {
         bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional int64 project = 2;
       private long project_ ;
+      /**
+       * <code>optional int64 project = 2;</code>
+       */
       public boolean hasProject() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional int64 project = 2;</code>
+       */
       public long getProject() {
         return project_;
       }
+      /**
+       * <code>optional int64 project = 2;</code>
+       */
       public Builder setProject(long value) {
         bitField0_ |= 0x00000002;
         project_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 project = 2;</code>
+       */
       public Builder clearProject() {
         bitField0_ = (bitField0_ & ~0x00000002);
         project_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:fathomcloud.protobuf.InstanceData)
     }
-    
+
     static {
       defaultInstance = new InstanceData(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:fathomcloud.protobuf.InstanceData)
   }
-  
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_fathomcloud_protobuf_InstanceData_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_fathomcloud_protobuf_InstanceData_fieldAccessorTable;
-  
+
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -432,9 +514,7 @@ public final class DbaasModel {
           internal_static_fathomcloud_protobuf_InstanceData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_fathomcloud_protobuf_InstanceData_descriptor,
-              new java.lang.String[] { "Id", "Project", },
-              io.fathom.cloud.protobuf.DbaasModel.InstanceData.class,
-              io.fathom.cloud.protobuf.DbaasModel.InstanceData.Builder.class);
+              new java.lang.String[] { "Id", "Project", });
           return null;
         }
       };
@@ -444,6 +524,6 @@ public final class DbaasModel {
           io.fathom.cloud.protobuf.CloudCommons.getDescriptor(),
         }, assigner);
   }
-  
+
   // @@protoc_insertion_point(outer_class_scope)
 }
