@@ -10,6 +10,7 @@ import io.fathom.cloud.storage.FileBlob;
 import io.fathom.cloud.storage.FileServiceInternal;
 import io.fathom.cloud.storage.FsBucket;
 import io.fathom.cloud.storage.FsFile;
+import io.fathom.cloud.storage.services.MimeTypes;
 
 import java.io.File;
 import java.util.Date;
