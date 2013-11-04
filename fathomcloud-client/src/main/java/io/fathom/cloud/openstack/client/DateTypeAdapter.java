@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -16,7 +19,9 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.JsonSyntaxException;
 
-class DateTypeAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
+public class DateTypeAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
+    private static final Logger log = LoggerFactory.getLogger(DateTypeAdapter.class);
+
     private final DateFormat dateFormat;
     private final DateFormat dateFormatZulu;
     private final DateFormat dateFormatZuluNoMillis;
@@ -51,6 +56,7 @@ class DateTypeAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
             useDateFormat = hasMillis ? dateFormatZulu : dateFormatZuluNoMillis;
         } else {
             if (!hasMillis) {
+                log.warn("Cannot deserialize date: {}", s);
                 throw new UnsupportedOperationException();
             }
             useDateFormat = dateFormat;
