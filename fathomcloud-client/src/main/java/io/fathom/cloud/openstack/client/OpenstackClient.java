@@ -50,6 +50,18 @@ public class OpenstackClient {
     public OpenstackIdentityClient getIdentity() throws RestClientException {
         if (identity == null) {
             URI uri = getEndpoint(OpenstackIdentityClient.SERVICE_TYPE);
+
+            // Remove /v2.0, if it is there
+            // (we are supposed to expose it in the service catalog, but that is technically wrong)
+            String uriString = uri.toString();
+            if (!uriString.endsWith("/")) {
+                uriString += "/";
+            }
+            if (uriString.endsWith("/v2.0/")) {
+                uriString = uriString.substring(0, uriString.length() - 5);
+            }
+            uri = URI.create(uriString);
+
             identity = new OpenstackIdentityClient(tokenProvider.getHttpClient(), uri, tokenProvider);
         }
         return identity;

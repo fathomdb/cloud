@@ -152,11 +152,13 @@ public class LoginServiceImpl implements LoginService {
             service.id = service.name;
             service.type = serviceType.getType();
 
-            String url = baseUrl + "/openstack/" + serviceType.getUrl();
+            String url = baseUrl + "/openstack/" + serviceType.getUrlSuffix();
             if (serviceType != ServiceType.IDENTITY) {
                 // TODO: Transform to attribute on ServiceType?
-                // TODO: Do we need 'v2.0' on identity endpoint?
                 url += "/" + project.getId();
+            } else {
+                // Yuk... identity needs v2.0
+                url += "/v2.0";
             }
 
             addEndpoint(service, url);

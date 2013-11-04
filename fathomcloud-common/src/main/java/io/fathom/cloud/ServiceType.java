@@ -30,7 +30,7 @@ public class ServiceType {
         return type;
     }
 
-    public String getUrl() {
+    public String getUrlSuffix() {
         return type;
     }
 
