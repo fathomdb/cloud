@@ -196,7 +196,7 @@ public class EmbeddedSshd {
         });
 
         sshd.setPort(configuration.lookup("sshd.port", 2222));
-        String hostkeyPath = configuration.lookup("sshd.hostkey", "/var/fathomcloud/hostkey.ser");
+        String hostkeyPath = configuration.lookup("sshd.hostkey", "hostkey.ser");
         sshd.setKeyPairProvider(new SimpleGeneratorHostKeyProvider(hostkeyPath));
         sshd.setCommandFactory(sshCommandFactory);
 
