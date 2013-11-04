@@ -2,7 +2,7 @@ package io.fathom.cloud.identity.commands;
 
 import io.fathom.cloud.CloudException;
 import io.fathom.cloud.WellKnownRoles;
-import io.fathom.cloud.commands.Cmdlet;
+import io.fathom.cloud.commands.TypedCmdlet;
 import io.fathom.cloud.identity.LoginService;
 import io.fathom.cloud.identity.model.AuthenticatedUser;
 import io.fathom.cloud.identity.services.IdentityService;
@@ -17,7 +17,7 @@ import org.kohsuke.args4j.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class UserCreateCmdlet extends Cmdlet {
+public class UserCreateCmdlet extends TypedCmdlet {
     public UserCreateCmdlet() {
         super("id-user-create");
     }
@@ -37,7 +37,7 @@ public class UserCreateCmdlet extends Cmdlet {
     LoginService loginService;
 
     @Override
-    public void run() throws CloudException {
+    protected UserData run0() throws CloudException {
         log.info("Creating user: {}", username);
 
         DomainData domain = identityService.getDefaultDomain();
@@ -59,14 +59,20 @@ public class UserCreateCmdlet extends Cmdlet {
             throw new IllegalStateException();
         }
 
-        ProjectData.Builder projectBuilder = ProjectData.newBuilder();
-        projectBuilder.setName("default");
-        projectBuilder.setDomainId(domain.getId());
+        boolean CREATE_PROJECT = false;
+        if (CREATE_PROJECT) {
+            ProjectData.Builder projectBuilder = ProjectData.newBuilder();
+            projectBuilder.setName("default");
+            projectBuilder.setDomainId(domain.getId());
 
-        ProjectData project = identityService.createProject(projectBuilder, authenticatedUser,
-                WellKnownRoles.ROLE_ID_ADMIN);
-        if (project == null) {
-            throw new IllegalStateException();
+            ProjectData project = identityService.createProject(projectBuilder, authenticatedUser,
+                    WellKnownRoles.ROLE_ID_ADMIN);
+            if (project == null) {
+                throw new IllegalStateException();
+            }
         }
+
+        return user;
     }
+
 }
