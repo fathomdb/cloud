@@ -71,15 +71,15 @@ public class LoginServiceImpl implements LoginService {
     public List<Service> buildServiceMap(String baseUrl, ProjectData project) {
         List<Service> services = Lists.newArrayList();
 
-        {
-            Service service = new Service();
-            services.add(service);
-
-            service.id = service.name = "keystone";
-            service.type = ServiceType.IDENTITY.getType();
-
-            addEndpoint(service, baseUrl + "/openstack/identity/v2.0");
-        }
+        // {
+        // Service service = new Service();
+        // services.add(service);
+        //
+        // service.id = service.name = "keystone";
+        // service.type = ServiceType.IDENTITY.getType();
+        //
+        // addEndpoint(service, baseUrl + "/openstack/identity/v2.0");
+        // }
 
         if (project != null) {
             Service service = new Service();
@@ -148,9 +148,17 @@ public class LoginServiceImpl implements LoginService {
             services.add(service);
 
             service.name = serviceType.getName();
+            service.id = service.name;
             service.type = serviceType.getType();
 
-            addEndpoint(service, baseUrl + "/openstack/" + serviceType.getUrl() + "/" + project.getId());
+            String url = baseUrl + "/openstack/" + serviceType.getUrl();
+            if (serviceType != ServiceType.IDENTITY) {
+                // TODO: Transform to attribute on ServiceType?
+                // TODO: Do we need 'v2.0' on identity endpoint?
+                url += "/" + project.getId();
+            }
+
+            addEndpoint(service, url);
         }
 
         return services;
