@@ -61,6 +61,8 @@ public interface IdentityService extends LifecycleListener {
 
     List<DomainData> listDomains(UserData user) throws CloudException;
 
+    DomainData findDomain(UserData user, String id) throws CloudException;
+
     List<GroupData> listGroups(AuthenticatedUser user) throws CloudException;
 
     List<RoleData> listRoles() throws CloudException;

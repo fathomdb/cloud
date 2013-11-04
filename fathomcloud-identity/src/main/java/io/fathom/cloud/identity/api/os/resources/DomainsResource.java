@@ -3,6 +3,7 @@ package io.fathom.cloud.identity.api.os.resources;
 import io.fathom.cloud.CloudException;
 import io.fathom.cloud.identity.api.os.model.v3.Domain;
 import io.fathom.cloud.identity.api.os.model.v3.DomainList;
+import io.fathom.cloud.identity.api.os.model.v3.DomainWrapper;
 import io.fathom.cloud.identity.services.IdentityService;
 import io.fathom.cloud.protobuf.IdentityModel.DomainData;
 import io.fathom.cloud.protobuf.IdentityModel.UserData;
@@ -10,6 +11,7 @@ import io.fathom.cloud.protobuf.IdentityModel.UserData;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.slf4j.Logger;
@@ -37,6 +39,19 @@ public class DomainsResource extends IdentityResourceBase {
             response.domains.add(domain);
         }
 
+        return response;
+    }
+
+    @GET
+    @Path("{id}")
+    public DomainWrapper getDomain(@PathParam("id") String id) throws CloudException {
+        UserData user = getUser();
+
+        DomainData data = identityService.findDomain(user, id);
+        notFoundIfNull(data);
+
+        DomainWrapper response = new DomainWrapper();
+        response.domain = toModel(data);
         return response;
     }
 

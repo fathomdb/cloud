@@ -8,8 +8,8 @@ import io.fathom.cloud.identity.model.AuthenticatedProject;
 import io.fathom.cloud.identity.model.AuthenticatedUser;
 import io.fathom.cloud.identity.secrets.Migrations;
 import io.fathom.cloud.identity.secrets.SecretToken;
-import io.fathom.cloud.identity.secrets.Secrets;
 import io.fathom.cloud.identity.secrets.SecretToken.SecretTokenType;
+import io.fathom.cloud.identity.secrets.Secrets;
 import io.fathom.cloud.identity.state.AuthRepository;
 import io.fathom.cloud.openstack.client.identity.ChallengeResponses;
 import io.fathom.cloud.protobuf.IdentityModel.CredentialData;
@@ -455,6 +455,18 @@ public class IdentityServiceImpl implements IdentityService {
             ret.add(domain);
         }
         return ret;
+    }
+
+    @Override
+    public DomainData findDomain(UserData user, String id) throws CloudException {
+        DomainData domain = authRepository.getDomains().find(Long.valueOf(id));
+
+        // TODO: Other domains?
+        if (domain != null && domain.getId() != user.getDomainId()) {
+            domain = null;
+        }
+
+        return domain;
     }
 
     @Override
