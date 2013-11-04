@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 
 import com.google.common.io.ByteSource;
 import com.google.common.io.Files;
@@ -49,8 +50,11 @@ public class ResumableMD5Digest {
 
     static {
         try {
-            MASTER = MessageDigest.getInstance("MD5");
+            // Provider[] providers = Security.getProviders();
+            MASTER = MessageDigest.getInstance("MD5", "SUN");
         } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("Unable to get MD5", e);
+        } catch (NoSuchProviderException e) {
             throw new IllegalStateException("Unable to get MD5", e);
         }
 
