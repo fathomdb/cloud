@@ -34,6 +34,7 @@ import javax.inject.Singleton;
 import org.keyczar.AesKey;
 import org.keyczar.KeyczarUtils;
 import org.keyczar.exceptions.KeyczarException;
+import org.keyczar.interfaces.KeyczarReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -418,6 +419,31 @@ public class LoginServiceImpl implements LoginService {
         }
 
         return userWithSecret;
+    }
+
+    @Override
+    @Transactional
+    public void changePassword(DomainData domain, String username, String password, KeyczarReader recoveryKey)
+            throws CloudException {
+        if (Strings.isNullOrEmpty(username)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (Strings.isNullOrEmpty(password)) {
+            throw new IllegalArgumentException();
+        }
+
+        CredentialData credential = authRepository.getUsernames(domain).find(username);
+        if (credential == null) {
+            throw new IllegalArgumentException();
+        }
+
+        UserData user = authRepository.getUsers().find(credential.getUserId());
+        if (user == null) {
+            throw new IllegalArgumentException();
+        }
+
+        secretService.changePassword(user, credential, password, recoveryKey);
     }
 
     protected TokenInfo findTokenInfo(String tokenId) {

@@ -5,10 +5,13 @@ import io.fathom.cloud.identity.api.os.model.v2.V2AuthCredentials;
 import io.fathom.cloud.identity.api.os.model.v3.Service;
 import io.fathom.cloud.identity.model.AuthenticatedUser;
 import io.fathom.cloud.protobuf.CloudCommons.TokenInfo;
+import io.fathom.cloud.protobuf.IdentityModel.DomainData;
 import io.fathom.cloud.protobuf.IdentityModel.ProjectData;
 import io.fathom.cloud.server.resources.ClientCertificate;
 
 import java.util.List;
+
+import org.keyczar.interfaces.KeyczarReader;
 
 import com.fathomdb.TimeSpan;
 import com.google.protobuf.ByteString;
@@ -35,4 +38,7 @@ public interface LoginService {
             ByteString response) throws CloudException;
 
     ByteString createRegistrationChallenge(ClientCertificate clientCertificate) throws CloudException;
+
+    void changePassword(DomainData domain, String username, String password, KeyczarReader recoveryKey)
+            throws CloudException;
 }

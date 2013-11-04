@@ -1,5 +1,6 @@
 package io.fathom.cloud.identity.secrets;
 
+import io.fathom.cloud.CloudException;
 import io.fathom.cloud.identity.Users;
 import io.fathom.cloud.identity.model.AuthenticatedProject;
 import io.fathom.cloud.identity.model.AuthenticatedUser;
@@ -37,6 +38,7 @@ import org.keyczar.KeyczarUtils;
 import org.keyczar.RsaPrivateKey;
 import org.keyczar.RsaPublicKey;
 import org.keyczar.exceptions.KeyczarException;
+import org.keyczar.interfaces.KeyczarReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -161,6 +163,23 @@ public class Secrets {
             }
         }
 
+        return ret;
+    }
+
+    public UserWithSecret checkPasswordRecovery(UserData user, CredentialData credential, KeyczarReader recoveryKey) {
+        SecretToken secretToken = null;
+
+        try {
+            secretToken = getSecretWithRecovery(user.getSecretStore(), recoveryKey);
+        } catch (KeyczarException e) {
+            log.info("Error while checking recovery key", e);
+        }
+
+        if (secretToken == null) {
+            return null;
+        }
+
+        UserWithSecret ret = checkSecret(user, secretToken);
         return ret;
     }
 
@@ -612,6 +631,42 @@ public class Secrets {
         b.setCiphertext(ByteString.copyFrom(ciphertext));
     }
 
+    public static SecretToken getSecretWithRecovery(SecretStoreData data, KeyczarReader recoveryKey)
+            throws KeyczarException {
+        for (SecretKeyData entry : data.getSecretKeyList()) {
+            if (entry.getType() != SecretKeyType.ENCRYPTED_WITH_FORGOTPASSWORD_PUBKEY) {
+                continue;
+            }
+
+            int version = 0;
+            if (entry.hasVersion()) {
+                version = entry.getVersion();
+            }
+
+            AesKey aesKey;
+
+            if (version == 1) {
+                Crypter crypter = new Crypter(recoveryKey);
+
+                byte[] plaintext;
+                try {
+                    plaintext = crypter.decrypt(entry.getCiphertext().toByteArray());
+                } catch (KeyczarException e) {
+                    throw new IllegalStateException("Error decrypting token", e);
+                }
+
+                aesKey = KeyczarUtils.unpack(plaintext);
+
+            } else {
+                throw new IllegalStateException();
+            }
+
+            return new SecretToken(SecretTokenType.USER_SECRET, aesKey, null);
+        }
+
+        return null;
+    }
+
     public static SecretToken getSecretFromPassword(SecretStoreData data, final String password)
             throws KeyczarException {
         for (SecretKeyData entry : data.getSecretKeyList()) {
@@ -723,6 +778,29 @@ public class Secrets {
         log.warn("Unable to build auth challenge for credential: {}", credential);
 
         return null;
+    }
+
+    public void changePassword(UserData user, CredentialData credential, String password, KeyczarReader recoveryKey)
+            throws CloudException {
+        if (Strings.isNullOrEmpty(password)) {
+            throw new IllegalArgumentException();
+        }
+
+        UserWithSecret userWithSecret = checkPasswordRecovery(user, credential, recoveryKey);
+        if (userWithSecret == null) {
+            throw new IllegalArgumentException();
+        }
+
+        UserData.Builder b = UserData.newBuilder(user);
+
+        SecretStoreData.Builder secretStore = b.getSecretStoreBuilder();
+
+        Secrets.setPassword(secretStore, password, userWithSecret.getSecretToken());
+
+        UserSecretData.Builder s = UserSecretData.newBuilder(userWithSecret.userSecretData);
+        b.setSecretData(Secrets.buildUserSecret(userWithSecret.getSecretToken(), s.build()));
+
+        user = authRepository.getUsers().update(b);
     }
 
 }

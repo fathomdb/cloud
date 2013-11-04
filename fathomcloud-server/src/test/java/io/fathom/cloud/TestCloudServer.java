@@ -21,11 +21,9 @@ import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.security.KeyPair;
-import java.security.Security;
 import java.util.Properties;
 
 import org.apache.curator.test.TestingServer;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -112,14 +110,32 @@ public class TestCloudServer {
         runSshCommand("id-role-grant", "-u", username, "-p", password, "-touser", username, "-proj", project, "-r",
                 "admin");
 
-        TokenProvider tokenProvider = AuthTokenProvider.build(identityClient, project, username, password);
-        OpenstackClient client = OpenstackClient.build(tokenProvider);
+        {
+            TokenProvider tokenProvider = AuthTokenProvider.build(identityClient, project, username, password);
+            OpenstackClient client = OpenstackClient.build(tokenProvider);
 
-        V2ProjectList projects = client.getIdentity().listProjects();
+            V2ProjectList projects = client.getIdentity().listProjects();
 
-        assertEquals(1, projects.tenants.size());
-        assertEquals(project, projects.tenants.get(0).name);
-        assertEquals(true, projects.tenants.get(0).enabled);
+            assertEquals(1, projects.tenants.size());
+            assertEquals(project, projects.tenants.get(0).name);
+            assertEquals(true, projects.tenants.get(0).enabled);
+        }
+
+        String password2 = "moresecrets";
+        runSshCommand("id-password-change", "-u", username, "-p", password2, "-o", workdir.resolve("passwordrecovery")
+                .toString());
+
+        {
+            TokenProvider tokenProvider = AuthTokenProvider.build(identityClient, project, username, password2);
+            OpenstackClient client = OpenstackClient.build(tokenProvider);
+
+            V2ProjectList projects = client.getIdentity().listProjects();
+
+            assertEquals(1, projects.tenants.size());
+            assertEquals(project, projects.tenants.get(0).name);
+            assertEquals(true, projects.tenants.get(0).enabled);
+        }
+
     }
 
     private void runSshCommand(String... args) throws Exception {
