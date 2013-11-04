@@ -116,7 +116,8 @@ public class SshCommandFactory implements CommandFactory {
             return command;
         } catch (Exception e) {
             log.warn("Error building command for line: " + line, e);
-            throw new IllegalArgumentException("Error building command for line: " + line, e);
+            Command command = new PrintErrorCommand("Error building command for line: " + line, cmdlet);
+            return command;
         }
     }
 
