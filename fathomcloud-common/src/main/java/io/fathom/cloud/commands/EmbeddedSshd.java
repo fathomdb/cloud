@@ -196,8 +196,8 @@ public class EmbeddedSshd {
         });
 
         sshd.setPort(configuration.lookup("sshd.port", 2222));
-        String hostkeyPath = configuration.lookup("sshd.hostkey", "hostkey.ser");
-        sshd.setKeyPairProvider(new SimpleGeneratorHostKeyProvider(hostkeyPath));
+        File hostkeyPath = configuration.lookupFile("sshd.hostkey", "hostkey.ser");
+        sshd.setKeyPairProvider(new SimpleGeneratorHostKeyProvider(hostkeyPath.getAbsolutePath()));
         sshd.setCommandFactory(sshCommandFactory);
 
         List<NamedFactory<Command>> subsystemFactories = sshd.getSubsystemFactories();
