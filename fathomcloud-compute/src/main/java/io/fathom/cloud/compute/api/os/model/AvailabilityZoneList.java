@@ -2,7 +2,9 @@ package io.fathom.cloud.compute.api.os.model;
 
 import java.util.List;
 
-public class AvailabilityZoneList {
-    public List<AvailabilityZone> availabilityZoneInfo;
+import javax.xml.bind.annotation.XmlElement;
 
+public class AvailabilityZoneList {
+    @XmlElement(name = "availabilityZoneInfo")
+    public List<AvailabilityZone> availabilityZoneInfo;
 }
