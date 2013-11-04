@@ -7,7 +7,10 @@ import java.util.Map;
 import javax.xml.bind.annotation.XmlElement;
 
 public class Server {
+    @XmlElement(name = "accessIPv4")
     public String accessIPv4;
+
+    @XmlElement(name = "accessIPv6")
     public String accessIPv6;
 
     public Addresses addresses;
@@ -31,32 +34,30 @@ public class Server {
 
     public String status;
 
-    public String tenant_id;
+    public String tenantId;
 
     public Date updated;
 
-    @XmlElement(name = "user_id")
     public String userId;
 
     // For create
+    @XmlElement(name = "flavorRef")
     public String flavorRef;
+
+    @XmlElement(name = "imageRef")
     public String imageRef;
 
-    @XmlElement(name = "max_count")
     public int maxCount;
 
-    @XmlElement(name = "min_count")
     public int minCount;
 
-    @XmlElement(name = "security_groups")
     public List<SecurityGroup> securityGroups;
 
+    @XmlElement(name = "adminPass")
     public String adminPass;
 
-    @XmlElement(name = "key_name")
     public String keyName;
 
-    @XmlElement(name = "availability_zone")
     public String availabilityZone;
 
     @XmlElement(name = "OS-EXT-STS:task_state")

@@ -4,25 +4,28 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
 
+import com.google.gson.internal.bind.IncludeNull;
+
 public class Flavor {
     public String id;
 
+    @IncludeNull
     public List<Link> links;
 
     public String name;
 
     @XmlAttribute
-    public int ram;
+    public Integer ram;
 
     @XmlAttribute
-    public int disk;
+    public Integer disk;
 
     @XmlAttribute
-    public int swap;
+    public Integer swap;
 
     @XmlAttribute
-    public int vcpus;
+    public Integer vcpus;
 
     @XmlAttribute(name = "OS-FLV-EXT-DATA:ephemeral")
-    public int ephemeral;
+    public Integer ephemeral;
 }
