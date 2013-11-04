@@ -53,6 +53,10 @@ public class SshCommandFactory implements CommandFactory {
             cmdlet = cmdlets.getCommand("help");
         }
 
+        if (cmdlet == null) {
+            throw new IllegalStateException("Unable to find cmdlet / help cmdlet");
+        }
+
         return cmdlet;
     }
 
