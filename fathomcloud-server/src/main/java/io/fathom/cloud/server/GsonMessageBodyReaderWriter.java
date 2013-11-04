@@ -1,6 +1,7 @@
 package io.fathom.cloud.server;
 
 import io.fathom.cloud.json.GsonFieldNamingStrategy;
+import io.fathom.cloud.openstack.client.DateTypeAdapter;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +11,7 @@ import java.io.OutputStreamWriter;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Map;
 
 import javax.inject.Singleton;
@@ -44,6 +46,8 @@ public final class GsonMessageBodyReaderWriter implements MessageBodyWriter<Obje
 
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.setFieldNamingStrategy(fieldNamingStrategy);
+
+            gsonBuilder.registerTypeAdapter(Date.class, new DateTypeAdapter());
 
             Excluder excluder = Excluder.DEFAULT;
             Map<Type, InstanceCreator<?>> instanceCreators = Collections.emptyMap();
