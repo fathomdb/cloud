@@ -102,9 +102,10 @@ public class V2TokensResource extends IdentityResourceBase {
         token.expires = TokenAuth.getExpiration(tokenInfo);
         token.id = tokenService.encodeToken(tokenInfo);
         if (project != null) {
-            Tenant tenant = token.tenant = new Tenant();
+            Tenant tenant = new Tenant();
             tenant.id = "" + project.getId();
             tenant.name = project.getName();
+            token.tenant = tenant;
         }
 
         if (project != null) {

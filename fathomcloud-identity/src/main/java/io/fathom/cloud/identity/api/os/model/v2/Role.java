@@ -9,13 +9,13 @@ public class Role {
     @XmlAttribute
     public String name;
 
-    @XmlAttribute
+    @XmlAttribute(name = "tenantId")
     public String tenantId;
 
     @XmlAttribute
     public String description;
 
-    @XmlAttribute
+    @XmlAttribute(name = "serviceId")
     public String serviceId;
 
 }

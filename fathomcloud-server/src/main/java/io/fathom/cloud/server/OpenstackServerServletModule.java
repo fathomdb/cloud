@@ -3,7 +3,6 @@ package io.fathom.cloud.server;
 import io.fathom.cloud.jaxrs.JaxrsServletModule;
 import io.fathom.cloud.server.auth.TokenAuthFilter;
 
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,12 +11,6 @@ import org.apache.wink.guice.InjectedRestServlet;
 import org.apache.wink.server.internal.registry.ServerInjectableFactory;
 import org.eclipse.jetty.servlets.GzipFilter;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.AnnotationIntrospector;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import com.fathomdb.Configuration;
 import com.fathomdb.extensions.Extensions;
 import com.fathomdb.extensions.HttpConfiguration;
@@ -85,34 +78,27 @@ public class OpenstackServerServletModule extends JaxrsServletModule {
         // filter("/*").through(AwsFilter.class);
         // }
 
-        // Configure Jackson for JSON output
-        {
-            ObjectMapper objectMapper = new ObjectMapper();
-            // Include always because horizon etc are really fussy
-            // objectMapper.setSerializationInclusion(Include.NON_NULL);
-            objectMapper.setSerializationInclusion(Include.ALWAYS);
-
-            // Use JAXB annotations
-            AnnotationIntrospector introspector = new JaxbAnnotationIntrospector();
-            objectMapper = objectMapper.setAnnotationIntrospector(introspector);
-
-            // mapper = mapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES,
-            // true);
-            // mapper =
-            // mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES,
-            // true);
-            // mapper = mapper.configure(JsonParser.Feature.ALLOW_COMMENTS,
-            // true);
-
-            objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-
-            objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SZ"));
-
-            JacksonJsonProvider jacksonJsonProvider = new JacksonJsonProvider(objectMapper);
-            bind(JacksonJsonProvider.class).toInstance(jacksonJsonProvider);
-        }
+        // // Configure Jackson for JSON output
+        // {
+        // ObjectMapper objectMapper = new ObjectMapper();
+        // // Include always because horizon etc are really fussy
+        // // objectMapper.setSerializationInclusion(Include.NON_NULL);
+        // objectMapper.setSerializationInclusion(Include.ALWAYS);
+        //
+        // // Use JAXB annotations
+        // AnnotationIntrospector introspector = new JaxbAnnotationIntrospector();
+        // objectMapper = objectMapper.setAnnotationIntrospector(introspector);
+        //
+        // objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        //
+        // objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SZ"));
+        //
+        // JacksonJsonProvider jacksonJsonProvider = new JacksonJsonProvider(objectMapper);
+        // bind(JacksonJsonProvider.class).toInstance(jacksonJsonProvider);
+        // }
 
         bind(GsonObjectMessageBodyHandler.class);
+        bind(GsonMessageBodyReaderWriter.class);
 
         // filter("/api/*").through(CORSFilter.class);
 

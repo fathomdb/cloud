@@ -5,12 +5,17 @@ import io.fathom.cloud.Extension;
 import javax.xml.bind.annotation.XmlElement;
 
 public class V2AuthCredentials {
+    @XmlElement(name = "tenantName")
     public String tenantName;
+
+    @XmlElement(name = "tenantId")
     public String tenantId;
 
+    @XmlElement(name = "passwordCredentials")
     public PasswordCredentials passwordCredentials;
 
     @Extension
+    @XmlElement(name = "challengeResponse")
     public ChallengeResponse challengeResponse;
 
     @XmlElement(name = "token")

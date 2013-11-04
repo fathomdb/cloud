@@ -1,4 +1,4 @@
-package io.fathom.cloud.identity.api.os.model.v3;
+package io.fathom.cloud.identity.api.os.resources;
 
 import java.io.IOException;
 import java.net.URI;
