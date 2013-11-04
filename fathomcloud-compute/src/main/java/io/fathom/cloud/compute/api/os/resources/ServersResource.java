@@ -434,19 +434,29 @@ public class ServersResource extends ComputeResourceBase {
         return Response.status(Status.ACCEPTED).entity(response).build();
     }
 
-    private Server toModel(ReservationData reservation, InstanceData instance, boolean details) {
+    private Server toModel(ReservationData reservation, InstanceData instance, boolean details) throws CloudException {
         Server server = new Server();
 
         server.id = "" + instance.getId();
         server.links = Lists.newArrayList();
         server.name = instance.getName();
 
-        server.flavor = new Flavor();
+        FlavorData flavor;
         if (instance.hasFlavor()) {
-            server.flavor.id = "" + instance.getFlavor().getId();
+            flavor = instance.getFlavor();
+        } else {
+            // TODO: I don't think any of these escaped publicly... remove.
+            // Most clients freak out if we don't have a flavor...
+            log.warn("No flavor associated with instance: {}", instance);
+            flavor = flavors.list().get(0);
         }
 
-        server.tenant_id = "" + instance.getProjectId();
+        if (flavor != null) {
+            server.flavor = new Flavor();
+            server.flavor.id = "" + flavor.getId();
+        }
+
+        server.tenantId = "" + instance.getProjectId();
 
         if (details) {
             server.progress = 0;
