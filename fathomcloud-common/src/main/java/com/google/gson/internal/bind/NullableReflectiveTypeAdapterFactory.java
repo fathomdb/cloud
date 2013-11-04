@@ -70,6 +70,12 @@ public final class NullableReflectiveTypeAdapterFactory implements TypeAdapterFa
             return null; // it's a primitive!
         }
 
+        // Because we're inserting ourselves with a higher priority than the normal ReflectiveTypeAdapterFactory,
+        // we need to explicitly skip non-compound types that are directly handled
+        if (raw.getPackage().getName().startsWith("java.")) {
+            return null;
+        }
+
         ObjectConstructor<T> constructor = constructorConstructor.get(type);
         return new Adapter<T>(constructor, getBoundFields(gson, type, raw));
     }
