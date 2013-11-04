@@ -1,5 +1,7 @@
 package io.fathom.cloud.openstack.client.identity.model;
 
+import io.fathom.cloud.openstack.client.SimpleRestClient;
+
 public class V2Project {
     public String id;
 
@@ -7,4 +9,10 @@ public class V2Project {
 
     public String description;
     public boolean enabled;
+
+    @Override
+    public String toString() {
+        return SimpleRestClient.asJson(this);
+    }
+
 }

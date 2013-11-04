@@ -53,6 +53,10 @@ public class SshCommandFactory implements CommandFactory {
             cmdlet = cmdlets.getCommand("help");
         }
 
+        if (cmdlet == null) {
+            throw new IllegalStateException("Unable to find cmdlet / help cmdlet");
+        }
+
         return cmdlet;
     }
 
@@ -116,7 +120,8 @@ public class SshCommandFactory implements CommandFactory {
             return command;
         } catch (Exception e) {
             log.warn("Error building command for line: " + line, e);
-            throw new IllegalArgumentException("Error building command for line: " + line, e);
+            Command command = new PrintErrorCommand("Error building command for line: " + line, cmdlet);
+            return command;
         }
     }
 

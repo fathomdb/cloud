@@ -102,8 +102,21 @@ public class CloudServer {
     // RestEasyExternalInjector resteasy;
 
     public static void main(String[] args) throws Exception {
-        // dockerTest();
+        try {
+            Configuration configuration = ConfigurationImpl.load();
 
+            CloudServer server = build(configuration);
+            // server.startZk();
+
+            server.start();
+        } catch (Exception e) {
+            log.error("Error during startup", e);
+
+            System.exit(1);
+        }
+    }
+
+    public static CloudServer build(Configuration configuration) throws Exception {
         // Everything works better when we're in a sensible timezone
         // (in particular the default XML serialization)
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
@@ -121,8 +134,6 @@ public class CloudServer {
          */
 
         LogbackHook.attachToRootLogger();
-
-        Configuration configuration = ConfigurationImpl.load();
 
         // TODO: Switch to ServiceLoadDiscovery
         Discovery discovery = new ClasspathDiscovery("com.fathomdb.", "io.fathom.");
@@ -149,23 +160,16 @@ public class CloudServer {
 
         Injector injector = extensions.createInjector(configuration, modules);
 
-        try {
-            CloudServer server = injector.getInstance(CloudServer.class);
-            // server.startZk();
+        CloudServer server = injector.getInstance(CloudServer.class);
+        // server.startZk();
 
-            server.start();
-
-        } catch (Exception e) {
-            log.error("Error during startup", e);
-
-            System.exit(1);
-        }
+        return server;
     }
 
     // @Inject
     // CreatePasswordRecoveryKey cprk;
 
-    private void start() throws Exception {
+    void start() throws Exception {
         waitForZk();
 
         persistService.start();

@@ -1,5 +1,7 @@
 package io.fathom.cloud.identity;
 
+import io.fathom.cloud.OpenstackExtensionBase;
+import io.fathom.cloud.ServiceType;
 import io.fathom.cloud.identity.api.os.resources.BrokenClientsFilter;
 import io.fathom.cloud.identity.api.os.resources.CredentialsResource;
 import io.fathom.cloud.identity.api.os.resources.DomainsResource;
@@ -19,16 +21,19 @@ import io.fathom.cloud.identity.services.IdentityService;
 import io.fathom.cloud.identity.services.IdentityServiceImpl;
 import io.fathom.cloud.server.auth.SharedSecretTokenService;
 import io.fathom.cloud.server.auth.TokenEncoder;
+import io.fathom.cloud.server.model.Project;
 import io.fathom.cloud.services.Attachments;
 import io.fathom.cloud.services.AuthService;
+
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fathomdb.extensions.ExtensionModuleBase;
 import com.fathomdb.extensions.HttpConfiguration;
+import com.google.common.collect.Lists;
 
-public class IdentityExtension extends ExtensionModuleBase {
+public class IdentityExtension extends OpenstackExtensionBase {
 
     private static final Logger log = LoggerFactory.getLogger(IdentityExtension.class);
 
@@ -62,5 +67,12 @@ public class IdentityExtension extends ExtensionModuleBase {
         // External services
         bind(AuthService.class).to(AuthServiceImpl.class);
         bind(Attachments.class).to(AttachmentsImpl.class);
+    }
+
+    @Override
+    public List<ServiceType> getServices(Project project, String baseUrl) {
+        List<ServiceType> serviceTypes = Lists.newArrayList();
+        serviceTypes.add(ServiceType.IDENTITY);
+        return serviceTypes;
     }
 }

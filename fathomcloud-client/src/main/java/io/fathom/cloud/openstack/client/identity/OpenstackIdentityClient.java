@@ -34,6 +34,8 @@ import com.google.common.io.ByteSource;
 public class OpenstackIdentityClient extends OpenstackServiceClientBase {
     private static final Logger log = LoggerFactory.getLogger(OpenstackIdentityClient.class);
 
+    public static final String SERVICE_TYPE = "identity";
+
     public OpenstackIdentityClient(HttpClient httpClient, URI uri, TokenProvider tokenProvider) {
         super(httpClient, uri, tokenProvider);
     }

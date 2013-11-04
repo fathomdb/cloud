@@ -1,6 +1,7 @@
 package io.fathom.cloud.openstack.client;
 
 import io.fathom.cloud.openstack.client.dns.OpenstackDnsClient;
+import io.fathom.cloud.openstack.client.identity.OpenstackIdentityClient;
 import io.fathom.cloud.openstack.client.identity.TokenProvider;
 import io.fathom.cloud.openstack.client.keystore.OpenstackKeystoreClient;
 import io.fathom.cloud.openstack.client.storage.OpenstackStorageClient;
@@ -42,6 +43,16 @@ public class OpenstackClient {
             storage = new OpenstackStorageClient(tokenProvider.getHttpClient(), uri, tokenProvider);
         }
         return storage;
+    }
+
+    OpenstackIdentityClient identity;
+
+    public OpenstackIdentityClient getIdentity() throws RestClientException {
+        if (identity == null) {
+            URI uri = getEndpoint(OpenstackIdentityClient.SERVICE_TYPE);
+            identity = new OpenstackIdentityClient(tokenProvider.getHttpClient(), uri, tokenProvider);
+        }
+        return identity;
     }
 
     private URI getEndpoint(String serviceType) throws RestClientException {
