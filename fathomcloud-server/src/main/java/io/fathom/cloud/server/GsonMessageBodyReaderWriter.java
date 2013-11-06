@@ -20,6 +20,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.StreamingOutput;
 import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
@@ -64,6 +65,10 @@ public final class GsonMessageBodyReaderWriter implements MessageBodyWriter<Obje
     @Override
     public boolean isReadable(Class<?> type, Type genericType, java.lang.annotation.Annotation[] annotations,
             MediaType mediaType) {
+        if (StreamingOutput.class.isAssignableFrom(type)) {
+            return false;
+        }
+
         return true;
     }
 
@@ -88,6 +93,10 @@ public final class GsonMessageBodyReaderWriter implements MessageBodyWriter<Obje
 
     @Override
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
+        if (StreamingOutput.class.isAssignableFrom(type)) {
+            return false;
+        }
+
         return true;
     }
 
