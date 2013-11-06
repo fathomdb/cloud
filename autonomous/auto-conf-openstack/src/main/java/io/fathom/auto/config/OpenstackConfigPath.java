@@ -1,8 +1,6 @@
 package io.fathom.auto.config;
 
 import io.fathom.auto.TimeSpan;
-import io.fathom.auto.config.ConfigEntry;
-import io.fathom.auto.config.ConfigPath;
 import io.fathom.auto.locks.OpenstackPseudoLock;
 import io.fathom.cloud.openstack.client.RestClientException;
 import io.fathom.cloud.openstack.client.storage.StorageObject;
@@ -51,11 +49,14 @@ public class OpenstackConfigPath extends ConfigPath {
         try {
             StoragePath path = getStoragePath();
 
-            for (StorageObjectInfo o : path.listChildren(false)) {
-                String name = path.stripPrefix(o.name);
-                long version = o.getLastModifiedTimestamp();
-                ConfigEntry child = new ConfigEntry(name, version);
-                children.add(child);
+            List<StorageObjectInfo> childNodes = path.listChildren(false);
+            if (childNodes != null) {
+                for (StorageObjectInfo o : childNodes) {
+                    String name = path.stripPrefix(o.name);
+                    long version = o.getLastModifiedTimestamp();
+                    ConfigEntry child = new ConfigEntry(name, version);
+                    children.add(child);
+                }
             }
         } catch (RestClientException e) {
             throw new IOException("Error listing children", e);
