@@ -562,12 +562,12 @@ public class DnsServiceImpl implements DnsService, LifecycleListener {
         return createRecordset(project, (DnsZone) zone, data);
     }
 
-    private DnsRecordset toRecord(DnsZone zone, DnsRecordsetData data) {
-        if (data == null) {
-            return null;
-        }
-        return new DnsRecordset(zone, data);
-    }
+    // private DnsRecordset toRecord(DnsZone zone, DnsRecordsetData data) {
+    // if (data == null) {
+    // return null;
+    // }
+    // return new DnsRecordset(zone, data);
+    // }
 
     @Override
     public void start() throws Exception {
