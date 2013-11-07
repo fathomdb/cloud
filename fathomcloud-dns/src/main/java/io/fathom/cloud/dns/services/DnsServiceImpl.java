@@ -25,7 +25,6 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import org.slf4j.Logger;
@@ -512,7 +511,7 @@ public class DnsServiceImpl implements DnsService, LifecycleListener {
 
     @Override
     public List<DnsRecordset> listRecordsets(Project project, Zone zone) throws CloudException {
-        return listRecordsets(project, zone, null);
+        return listRecordsets(project, zone, new StoreOptions[0]);
     }
 
     public List<DnsRecordset> listRecordsets(Project project, Zone zone, StoreOptions... options) throws CloudException {
