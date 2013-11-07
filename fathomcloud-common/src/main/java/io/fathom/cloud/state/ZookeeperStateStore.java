@@ -79,7 +79,8 @@ public class ZookeeperStateStore extends StateStore {
                 if (readVersion != -1) {
                     log.warn("Duplicate read on " + zkPath);
                     if (readVersion != stat.getVersion()) {
-                        log.warn("Read version out of date on {} readVersion={}", zkPath, readVersion);
+                        log.warn("Read version out of date on {} readVersion={} vs statVersion={}", zkPath,
+                                readVersion, stat.getVersion());
                         throw new OptimisticLockException();
                     }
                 } else {
