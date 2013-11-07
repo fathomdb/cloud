@@ -21,9 +21,11 @@ import io.fathom.cloud.state.StoreOptions;
 
 import java.net.InetAddress;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import org.slf4j.Logger;
@@ -36,6 +38,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Sets;
@@ -442,12 +445,29 @@ public class DnsServiceImpl implements DnsService, LifecycleListener {
 
         Set<Long> dirtyDomains = Sets.newHashSet();
 
-        for (String systemKey : requestedState.keys()) {
+        for (String systemKey : requestedState.keySet()) {
             Set<DnsRecordsetData> requested = Sets.newHashSet(requestedState.get(systemKey));
-            Set<DnsRecordsetData> current = Sets.newHashSet(dbState.get(systemKey));
 
-            SetView<DnsRecordsetData> add = Sets.difference(requested, current);
-            SetView<DnsRecordsetData> remove = Sets.difference(current, requested);
+            Map<DnsRecordsetData, Long> current = Maps.newHashMap();
+
+            for (DnsRecordsetData db : dbState.get(systemKey)) {
+                long id = db.getId();
+
+                DnsRecordsetData.Builder b = DnsRecordsetData.newBuilder(db);
+                b.clearId();
+                b.clearState();
+                current.put(b.build(), id);
+            }
+
+            SetView<DnsRecordsetData> add = Sets.difference(requested, current.keySet());
+            SetView<DnsRecordsetData> remove = Sets.difference(current.keySet(), requested);
+
+            for (DnsRecordsetData a : add) {
+                log.debug("Add: {}", a);
+            }
+            for (DnsRecordsetData r : remove) {
+                log.debug("Remove: {}", r);
+            }
 
             for (DnsRecordsetData a : add) {
                 DnsRecordsetData.Builder b = DnsRecordsetData.newBuilder(a);
@@ -457,7 +477,8 @@ public class DnsServiceImpl implements DnsService, LifecycleListener {
             }
 
             for (DnsRecordsetData r : remove) {
-                repository.getDnsRecordsets(projectId, r.getZoneId()).delete(r.getId());
+                long id = current.get(r);
+                repository.getDnsRecordsets(projectId, r.getZoneId()).delete(id);
                 dirtyDomains.add(r.getZoneId());
             }
         }
