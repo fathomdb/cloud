@@ -20,7 +20,6 @@ import javax.inject.Singleton;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.ByteSource;
-import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 
 @Singleton
@@ -70,7 +69,7 @@ public class SelfHostedDnsBackend extends DnsBackendBase {
 
             String contents = gson.toJson(zoneData);
 
-            ByteSource bytes = ByteStreams.asByteSource(contents.getBytes(Charsets.UTF_8));
+            ByteSource bytes = ByteSource.wrap(contents.getBytes(Charsets.UTF_8));
 
             String contentType = "application/json";
             Map<String, String> userAttributes = null;
