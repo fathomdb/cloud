@@ -93,6 +93,7 @@ public class MetadataServices {
         MetadataData.Builder mb = b.getMetadataBuilder();
 
         if (!setMetadataKey(mb, key, value)) {
+            log.warn("Could not replace metadata key: {}={}.  Metadata={}", key, value, mb.build());
             throw new IllegalArgumentException();
         }
 
