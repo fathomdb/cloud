@@ -102,8 +102,7 @@ public class MetadataServices {
         return updated;
     }
 
-    private boolean setMetadataKey(io.fathom.cloud.protobuf.CloudModel.MetadataData.Builder mb, String key,
-            String value) {
+    private boolean setMetadataKey(io.fathom.cloud.protobuf.CloudModel.MetadataData.Builder mb, String key, String value) {
         boolean found = false;
         for (int i = 0; i < mb.getEntryCount(); i++) {
             MetadataEntryData.Builder eb = mb.getEntryBuilder(i);

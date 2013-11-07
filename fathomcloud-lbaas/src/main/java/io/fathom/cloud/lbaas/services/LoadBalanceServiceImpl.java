@@ -15,6 +15,8 @@ import io.fathom.cloud.protobuf.LbaasModel.LbaasServerData;
 import io.fathom.cloud.server.model.Project;
 import io.fathom.cloud.state.NumberedItemCollection;
 
+import java.net.Inet6Address;
+import java.net.InetAddress;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,6 +30,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.google.common.net.InetAddresses;
 import com.google.inject.persist.Transactional;
 
 @Singleton
@@ -149,6 +152,8 @@ public class LoadBalanceServiceImpl implements LoadBalanceService {
         Set<LbaasServerData> dirtyServers = Sets.newHashSet();
 
         for (LbaasServerData a : add) {
+            log.info("Add LB: {}", a);
+
             LbaasServerData.Builder b = LbaasServerData.newBuilder(a);
             LbaasServerData created = collection.create(b);
 
@@ -156,6 +161,8 @@ public class LoadBalanceServiceImpl implements LoadBalanceService {
         }
 
         for (LbaasServerData r : remove.values()) {
+            log.info("Remove LB: {}", r);
+
             LbaasServerData deleted = collection.delete(r.getId());
 
             if (deleted == null) {
@@ -177,24 +184,41 @@ public class LoadBalanceServiceImpl implements LoadBalanceService {
             hosts.add(mapping.getHost());
         }
 
-        List<DnsRecordSpec> records = Lists.newArrayList();
+        List<DnsRecordSpec> ipv4 = Lists.newArrayList();
+        List<DnsRecordSpec> ipv6 = Lists.newArrayList();
         for (LbaasServerData server : repository.getServers(project).list()) {
             String ip = server.getIp();
 
             DnsRecordSpec record = new DnsRecordSpec();
             record.address = ip;
 
-            records.add(record);
+            InetAddress address = InetAddresses.forString(ip);
+            if (address instanceof Inet6Address) {
+                ipv6.add(record);
+            } else {
+                ipv4.add(record);
+            }
         }
 
         List<DnsRecordsetSpec> dnsRecordsets = Lists.newArrayList();
         for (String host : hosts) {
-            DnsRecordsetSpec dnsRecord = new DnsRecordsetSpec();
-            dnsRecord.fqdn = host;
-            dnsRecord.type = "A";
-            dnsRecord.records = Lists.newArrayList(records);
+            if (!ipv4.isEmpty()) {
+                DnsRecordsetSpec dnsRecord = new DnsRecordsetSpec();
+                dnsRecord.fqdn = host;
+                dnsRecord.type = "A";
+                dnsRecord.records = Lists.newArrayList(ipv4);
 
-            dnsRecordsets.add(dnsRecord);
+                dnsRecordsets.add(dnsRecord);
+            }
+
+            if (!ipv6.isEmpty()) {
+                DnsRecordsetSpec dnsRecord = new DnsRecordsetSpec();
+                dnsRecord.fqdn = host;
+                dnsRecord.type = "AAAA";
+                dnsRecord.records = Lists.newArrayList(ipv6);
+
+                dnsRecordsets.add(dnsRecord);
+            }
         }
 
         String systemKey = "__lb__/" + project.getId();
