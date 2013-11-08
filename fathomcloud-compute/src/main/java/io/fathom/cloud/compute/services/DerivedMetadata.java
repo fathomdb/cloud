@@ -73,7 +73,6 @@ public class DerivedMetadata {
     }
 
     private void addLbaasMapping(InstanceData instance, String fqdn) {
-
         for (InetAddress ip : publicIps) {
             LbaasMapping lbaasMapping = new LbaasMapping();
             lbaasMapping.host = fqdn;

@@ -39,7 +39,7 @@ public class MetadataServices {
             throws CloudException {
         InstanceData instance = findInstance(project, instanceId);
         if (instance == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Instance not found: " + instanceId);
         }
 
         InstanceData.Builder b = InstanceData.newBuilder(instance);
