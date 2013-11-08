@@ -56,7 +56,7 @@ public class SelfHostedLbaasBackend extends LbaasBackendBase {
             List<LbaasMapping> mappings = lbaas.listMappings(project, host);
             data.mappings = mappings;
 
-            String path = "services/lb/__default/data/" + Escaping.escape(host);
+            String path = "__default/lb/data/" + Escaping.escape(host);
             String bucket = "__services";
 
             String contents = gson.toJson(data);
