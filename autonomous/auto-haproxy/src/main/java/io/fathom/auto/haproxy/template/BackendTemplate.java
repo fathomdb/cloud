@@ -49,6 +49,8 @@ public class BackendTemplate extends TemplateBase<Backend> {
                 String line = "server " + mapping.key + " " + mapping.ip;
                 if (mapping.port != null) {
                     line += ":" + mapping.port;
+                } else {
+                    line += ":" + "+8000";
                 }
                 println(line);
             }
