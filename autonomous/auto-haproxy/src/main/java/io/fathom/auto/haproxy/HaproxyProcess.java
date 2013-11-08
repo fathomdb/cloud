@@ -47,6 +47,9 @@ public class HaproxyProcess {
                 return true;
             } else {
                 log.warn("Error validating haproxy config.  Exit code {}", exitCode);
+
+                String config = Files.toString(configFile, Charsets.UTF_8);
+                log.warn("Bad haproxy config: {}", config);
             }
         }
 
