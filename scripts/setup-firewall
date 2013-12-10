@@ -103,14 +103,27 @@ sudo tee /etc/apply.d/ip6tables/20-fathomcloud-bridge <<EOF
 COMMIT
 EOF
 
+sudo tee /etc/apply.d/iptables/20-allow-ipv6 <<EOF
+*filter
+-A INPUT -p ipv6 -j ACCEPT
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/iptables/20-fathomcloud-compute-local <<EOF
+*filter
+:os-compute-local -
+COMMIT
+EOF
+
+sudo tee /etc/apply.d/ip6tables/20-fathomcloud-compute-local <<EOF
+*filter
+:os-compute-local -
+COMMIT
+EOF
+
 sudo tee /etc/apply.d/ip6tables/60-fathomcloud-compute-default <<EOF
 *filter
 -A os-compute-sg-fallback -j DROP
 COMMIT
 EOF
 
-sudo tee /etc/apply.d/iptables/20-allow-ipv6 <<EOF
-*filter
--A INPUT -p ipv6 -j ACCEPT
-COMMIT
-EOF
