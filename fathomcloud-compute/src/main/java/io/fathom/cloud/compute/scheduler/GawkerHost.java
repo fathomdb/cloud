@@ -10,6 +10,7 @@ import io.fathom.cloud.compute.actions.ConfigureVirtualIp;
 import io.fathom.cloud.compute.actions.network.VirtualIpMapper;
 import io.fathom.cloud.compute.networks.IpRange;
 import io.fathom.cloud.compute.networks.VirtualIp;
+import io.fathom.cloud.compute.scheduler.HostFilesystem.Snapshot;
 import io.fathom.cloud.compute.scheduler.LxcConfigBuilder.Volume;
 import io.fathom.cloud.compute.scheduler.SshCommand.SshCommandExecution;
 import io.fathom.cloud.compute.services.DatacenterManager;
@@ -21,15 +22,12 @@ import io.fathom.cloud.protobuf.CloudModel.SecurityGroupData;
 import io.fathom.cloud.services.ImageKey;
 import io.fathom.cloud.services.ImageService;
 import io.fathom.cloud.sftp.RemoteFile;
-import io.fathom.cloud.sftp.RemoteTempFile;
 import io.fathom.cloud.sftp.Sftp;
 import io.fathom.cloud.ssh.SftpChannel;
-import io.fathom.cloud.ssh.SftpChannel.WriteMode;
 import io.fathom.cloud.ssh.SshConfig;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
@@ -43,7 +41,6 @@ import org.slf4j.LoggerFactory;
 
 import com.fathomdb.TimeSpan;
 import com.google.common.base.Charsets;
-import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.net.InetAddresses;
@@ -60,6 +57,8 @@ public class GawkerHost extends SchedulerHost {
 
     private final DatacenterManager datacenter;
 
+    final HostFilesystem hostFilesystem;
+
     public GawkerHost(DatacenterManager datacenter, HostData hostInfo, SshConfig sshConfig) {
         super(hostInfo);
         this.datacenter = datacenter;
@@ -68,6 +67,9 @@ public class GawkerHost extends SchedulerHost {
         this.networks = buildNetworks();
 
         this.secretsDir = new File("/var/fathomcloud/secrets/containers/");
+
+        log.info("TODO: Auto-detect btrfs and use it!");
+        this.hostFilesystem = new SimpleHostFilesystem(sshConfig);
     }
 
     @Override
@@ -171,7 +173,7 @@ public class GawkerHost extends SchedulerHost {
             args.add(new File(configDir, "config.lxc").getAbsolutePath());
             process.Args = args;
 
-            process.Dir = getRootFs(containerId).getAbsolutePath();
+            process.Dir = hostFilesystem.getRootFs(containerId).getAbsolutePath();
 
             String json = new Gson().toJson(process);
             sftp.writeAtomic(new RemoteFile(processFile), json.getBytes(Charsets.UTF_8));
@@ -186,14 +188,6 @@ public class GawkerHost extends SchedulerHost {
 
     private File getConfigDir(UUID containerId) {
         return new File("/var/fathomcloud/vms/" + containerId + "/");
-    }
-
-    private File getRootFs(UUID containerId) {
-        return new File("/var/fathomcloud/rootfs/" + containerId + "/");
-    }
-
-    private File getVolumePath(VolumeType volumeType, UUID volumeId) {
-        return new File("/volumes/" + volumeType.name().toLowerCase() + "/" + volumeId + "/");
     }
 
     private Sftp buildSftp() throws CloudException {
@@ -223,7 +217,7 @@ public class GawkerHost extends SchedulerHost {
 
             lxcConfig.hostname = "s" + containerId;
             lxcConfig.bridge = "virbr0";
-            lxcConfig.rootfs = getRootFs(containerId).getAbsolutePath();
+            lxcConfig.rootfs = hostFilesystem.getRootFs(containerId).getAbsolutePath();
 
             lxcConfig.configDir = getConfigDir(containerId).getAbsolutePath();
 
@@ -308,11 +302,11 @@ public class GawkerHost extends SchedulerHost {
 
     private void createContainer(UUID containerId, ContainerInfo container) throws CloudException {
         try (Sftp sftp = buildSftp()) {
-            File rootfsPath = getRootFs(containerId);
-            copyImageToRootfs(container.imageId, rootfsPath);
+            File rootfsPath = hostFilesystem.getRootFs(containerId);
+            hostFilesystem.copyImageToRootfs(container.imageId, rootfsPath);
 
             for (VolumeType volumeType : new VolumeType[] { VolumeType.Ephemeral, VolumeType.Persistent }) {
-                File path = createVolume(volumeType, containerId);
+                File path = hostFilesystem.createVolume(volumeType, containerId);
 
                 Volume volume = new Volume();
                 volume.hostPath = path.getAbsolutePath();
@@ -356,36 +350,6 @@ public class GawkerHost extends SchedulerHost {
         }
     }
 
-    private void copyImageToRootfs(ImageKey imageId, File rootfsPath) throws IOException {
-        RemoteFile imageVolume = getImagePath(imageId);
-
-        List<String> cmd = Lists.newArrayList();
-        cmd.add("sudo /sbin/btrfs");
-        cmd.add("subvolume");
-        cmd.add("snapshot");
-        cmd.add(imageVolume.getSshPath().getAbsolutePath());
-        cmd.add(rootfsPath.getAbsolutePath());
-
-        SshCommand sshCommand = new SshCommand(sshConfig, Joiner.on(" ").join(cmd));
-        sshCommand.run();
-    }
-
-    private File createVolume(VolumeType volumeType, UUID volumeId) throws IOException {
-        File imageVolume = getVolumePath(volumeType, volumeId);
-
-        ShellCommand cmd = ShellCommand.create("/sbin/btrfs");
-        cmd.literal("subvolume");
-        cmd.literal("create");
-        cmd.arg(imageVolume);
-
-        cmd.useSudo();
-
-        SshCommand sshCommand = cmd.withSsh(sshConfig);
-        sshCommand.run();
-
-        return imageVolume;
-    }
-
     @Override
     public boolean stopContainer(UUID containerId) throws CloudException {
         try (Sftp sftp = buildSftp()) {
@@ -399,27 +363,7 @@ public class GawkerHost extends SchedulerHost {
 
     @Override
     public boolean hasImage(ImageKey imageId) throws IOException, CloudException {
-        RemoteFile imageFile = getImagePath(imageId);
-
-        try (SftpChannel sftp = buildSftp(getImageTmpdir())) {
-            return sftp.exists(imageFile.getSshPath());
-        }
-    }
-
-    private RemoteFile getImagePath(ImageKey imageId) {
-        RemoteFile imageDir = getImageBaseDir();
-        RemoteFile imageFile = new RemoteFile(imageDir, imageId.getKey());
-        return imageFile;
-    }
-
-    private RemoteFile getImageBaseDir() {
-        RemoteFile imageDir = new RemoteFile(new File("/var/fathomcloud/images"));
-        return imageDir;
-    }
-
-    private RemoteFile getImageTmpdir() {
-        RemoteFile imageDir = getImageBaseDir();
-        return new RemoteFile(imageDir, "tmp");
+        return hostFilesystem.hasImage(imageId);
     }
 
     private RemoteFile getSystemTempDir() {
@@ -428,43 +372,7 @@ public class GawkerHost extends SchedulerHost {
 
     @Override
     public void uploadImage(ImageKey imageId, BlobData imageData) throws IOException, CloudException {
-        // TODO: Support side-load
-        // TODO: Move to script
-        // TODO: Delete tempImageId on fail
-        ImageKey tempImageId = new ImageKey(UUID.randomUUID().toString());
-
-        try (Sftp sftp = buildSftp(getImageTmpdir())) {
-            sftp.mkdirs(getImageTmpdir().getSshPath());
-
-            try (RemoteTempFile tar = sftp.buildRemoteTemp()) {
-                try (OutputStream os = sftp.writeFile(tar.getSshPath(), WriteMode.Overwrite)) {
-                    imageData.copyTo(os);
-                }
-
-                RemoteFile tempVolume = getImagePath(tempImageId);
-
-                {
-                    String cmd = "sudo btrfs subvolume create " + tempVolume.getSshPath();
-                    SshCommand sshCommand = new SshCommand(sshConfig, cmd);
-                    sshCommand.run();
-                }
-
-                {
-                    String cmd = "sudo tar --numeric-owner -f " + tar.getSshPath() + " -C " + tempVolume.getSshPath()
-                            + " -xz";
-                    SshCommand sshCommand = new SshCommand(sshConfig, cmd);
-                    sshCommand.run();
-                }
-
-                RemoteFile imageVolume = getImagePath(imageId);
-                {
-                    String cmd = "sudo btrfs subvolume snapshot -r " + tempVolume.getSshPath() + " "
-                            + imageVolume.getSshPath();
-                    SshCommand sshCommand = new SshCommand(sshConfig, cmd);
-                    sshCommand.run();
-                }
-            }
-        }
+        hostFilesystem.uploadImage(imageId, imageData);
     }
 
     @Override
@@ -588,39 +496,14 @@ public class GawkerHost extends SchedulerHost {
         LxcFreezer freezer = new LxcFreezer(lxcPath, containerId);
         freezer.setFrozen(true);
 
-        try {
-            String filename = UUID.randomUUID().toString() + ".tar.gz";
-            File snapshotFile = new File(getImageTmpdir().getSshPath(), filename);
-
-            File rootfs = getRootFs(containerId);
-
-            String command = String.format("sudo tar -c -z -C %s -f %s .", rootfs.getAbsolutePath(),
-                    snapshotFile.getAbsolutePath());
-
-            SshCommand sshCommand = new SshCommand(sshConfig, command);
-            sshCommand.run();
-
+        try (Snapshot snapshot = hostFilesystem.snapshotImage(containerId)) {
             // We can unfreeze the VM now
             freezer.setFrozen(false);
 
             // TODO: Support side-load
 
-            TempFile tempFile = TempFile.create();
-            try {
-                try (Sftp sftp = buildSftp(getImageTmpdir())) {
-                    sftp.copy(new RemoteFile(snapshotFile), tempFile.getFile());
-
-                    sftp.delete(snapshotFile);
-                }
-
-                TempFile ret = tempFile;
-                tempFile = null;
-                return ret;
-            } finally {
-                if (tempFile != null) {
-                    tempFile.close();
-                }
-            }
+            TempFile snapshotFile = snapshot.copyToFile();
+            return snapshotFile;
         } finally {
             if (freezer.isFrozen()) {
                 freezer.setFrozen(false);
@@ -695,14 +578,7 @@ public class GawkerHost extends SchedulerHost {
 
         // TODO: Check if running??
 
-        {
-            // TODO: Delete snapshots??
-            File dir = getRootFs(containerId);
-            String command = String.format("sudo btrfs subvolume ", dir.getAbsolutePath());
-
-            SshCommand sshCommand = new SshCommand(sshConfig, command);
-            sshCommand.run();
-        }
+        hostFilesystem.purgeInstance(containerId);
 
         {
             File dir = getConfigDir(containerId);

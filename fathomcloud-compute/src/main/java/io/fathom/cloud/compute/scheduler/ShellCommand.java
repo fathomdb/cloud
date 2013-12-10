@@ -25,8 +25,9 @@ public class ShellCommand {
         argQuoted(file.getAbsolutePath());
     }
 
-    public void literal(String literal) {
+    public ShellCommand literal(String literal) {
         args.add(literal);
+        return this;
     }
 
     public void argQuoted(String s) {

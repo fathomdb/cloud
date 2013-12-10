@@ -16,19 +16,37 @@ if [[ ${IPV6_BRIDGE_PREFIX} == "" ]]; then
 fi
 
 
-sudo btrfs subvolume create /volumes/persistent/fathomcloud
+FSTYPE=`df -T /volumes/ | awk '{print $2}' | tail -n1`
+
+if [[ ${FSTYPE} == "btrfs" ]]; then
+	sudo btrfs subvolume create /volumes/persistent/fathomcloud
+else
+	sudo mkdir /volumes/persistent/fathomcloud
+fi
 sudo chown fathomcloud /volumes/persistent/fathomcloud
 sudo ln -s /volumes/persistent/fathomcloud /var/fathomcloud
 
-sudo btrfs subvolume create /volumes/ephemeral/images
+if [[ ${FSTYPE} == "btrfs" ]]; then
+	sudo btrfs subvolume create /volumes/ephemeral/images
+else
+	sudo mkdir /volumes/ephemeral/images
+fi
 sudo chown fathomcloud /volumes/ephemeral/images
 sudo ln -s /volumes/ephemeral/images /var/fathomcloud/images
 
-sudo btrfs subvolume create /volumes/ephemeral/rootfs
+if [[ ${FSTYPE} == "btrfs" ]]; then
+	sudo btrfs subvolume create /volumes/ephemeral/rootfs
+else
+	sudo mkdir /volumes/ephemeral/rootfs
+fi
 sudo chown fathomcloud /volumes/ephemeral/rootfs
 sudo ln -s /volumes/ephemeral/rootfs /var/fathomcloud/roots
 
-sudo btrfs subvolume create /volumes/persistent/vms
+if [[ ${FSTYPE} == "btrfs" ]]; then
+	sudo btrfs subvolume create /volumes/persistent/vms
+else
+	sudo mkdir /volumes/persistent/vms
+fi
 sudo chown fathomcloud /volumes/persistent/vms
 sudo ln -s /volumes/persistent/vms /var/fathomcloud/vms
 
@@ -39,19 +57,30 @@ sudo mkdir -p /var/fathomcloud/secrets
 sudo chown fathomcloud:root /var/fathomcloud/secrets
 sudo chmod 770 /var/fathomcloud/secrets/
 
-# A bit of a trick here; we create a read-write temporary image; snapshot it read-only; then delete the read-write version
-sudo btrfs subvolume create /var/fathomcloud/images/temp-1
 sudo wget "https://fathom-cloud-images.s3.amazonaws.com/images/fathomcloud/image.tgz" -O /tmp/image.tgz
-sudo tar --numeric-owner -f  /tmp/image.tgz -C /var/fathomcloud/images/temp-1 -xz
-sudo rm /tmp/image.tgz
+if [[ ${FSTYPE} == "btrfs" ]]; then
+	# A bit of a trick here; we create a read-write temporary image; snapshot it read-only; then delete the read-write version
+	sudo btrfs subvolume create /var/fathomcloud/images/temp-1
+	sudo tar --numeric-owner -f  /tmp/image.tgz -C /var/fathomcloud/images/temp-1 -xz
+	sudo rm /tmp/image.tgz
 
-sudo btrfs subvolume snapshot -r /var/fathomcloud/images/temp-1 /var/fathomcloud/images/00000000-0000-c10d-0000-000000000000
-sudo btrfs subvolume delete /var/fathomcloud/images/temp-1 
+	sudo btrfs subvolume snapshot -r /var/fathomcloud/images/temp-1 /var/fathomcloud/images/00000000-0000-c10d-0000-000000000000
+	sudo btrfs subvolume delete /var/fathomcloud/images/temp-1 
 
-sudo btrfs subvolume snapshot /var/fathomcloud/images/00000000-0000-c10d-0000-000000000000 /var/fathomcloud/rootfs/00000000-0000-c10d-0000-000000000000
+	sudo btrfs subvolume snapshot /var/fathomcloud/images/00000000-0000-c10d-0000-000000000000 /var/fathomcloud/rootfs/00000000-0000-c10d-0000-000000000000
 
-sudo btrfs subvolume create /volumes/ephemeral/00000000-0000-c10d-0000-000000000000
-sudo btrfs subvolume create /volumes/persistent/00000000-0000-c10d-0000-000000000000
+	sudo btrfs subvolume create /volumes/ephemeral/00000000-0000-c10d-0000-000000000000
+	sudo btrfs subvolume create /volumes/persistent/00000000-0000-c10d-0000-000000000000
+else
+	sudo mv /tmp/image.tgz /var/fathomcloud/images/00000000-0000-c10d-0000-000000000000.tgz
+	sudo mkdir -p /var/fathomcloud/rootfs/00000000-0000-c10d-0000-000000000000
+	
+	sudo /bin/tar --numeric-owner -f /var/fathomcloud/images/00000000-0000-c10d-0000-000000000000.tgz -C /var/fathomcloud/rootfs/00000000-0000-c10d-0000-000000000000 -xz
+	
+	sudo mkdir /volumes/ephemeral/00000000-0000-c10d-0000-000000000000
+	sudo mkdir /volumes/persistent/00000000-0000-c10d-0000-000000000000
+fi
+
 
 VMDIR=/var/fathomcloud/vms/00000000-0000-c10d-0000-000000000000
 sudo mkdir ${VMDIR}
