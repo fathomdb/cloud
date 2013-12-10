@@ -28,6 +28,9 @@ wget -O - https://apt-fathomdb.s3.amazonaws.com/packaging@fathomdb.com.gpg.key |
 apt-get update
 apt-get install --yes applyd
 
+# Don't allow any firewall rules present now to be copied over...
+rm /etc/apply.d/*/00-saved
+
 cd ~
 wget http://apache.osuosl.org/zookeeper/zookeeper-3.4.5/zookeeper-3.4.5.tar.gz
 tar zxf zookeeper-3.4.5.tar.gz
